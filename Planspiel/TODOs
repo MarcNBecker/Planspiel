@@ -1,6 +1,9 @@
 TODOS:
 
-- Klassen erstellen (erledigt von Marc)
+ACHTUNG: GETTER/SETTER sind HOLE/SETZE Methoden
+		 Ann-Kathrin muss noch das geupdatete Klassendiagramm hochladen!!
+
+
 - Methoden aus UML einfügen
 	- Natalie: Filiale, Haendler, Kredit
 	- Daniel: Kunde, Lager, Produkt
