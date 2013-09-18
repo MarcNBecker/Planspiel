@@ -10,7 +10,7 @@ Eher unabhängige Klassen:
 
 - Kunde (außer Verbuchung des Umsatzes)
 
-- Produkt  (--> in Bearbeitung - Natalie)
+(done -> der neue Konstruktor ist ein Vorschlag um die Angebotserzeugung des Händlers zu unterstützen) - Produkt  
 
 - Standort (wie werden Kunden erzeugt und beeinflusst?)
 
