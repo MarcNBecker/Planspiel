@@ -1,7 +1,7 @@
 TODOS:
 
 Eher unabh‰ngige Klassen:
-- Kredit
+- Kredit (currently working: Marc)
 - H‰ndler (hier ist es noch tricky zu wissen, wie der H‰ndler das Angebot erzeugt)
 - Kunde (auﬂer Verbuchung des Umsatzes)
 - Produkt
