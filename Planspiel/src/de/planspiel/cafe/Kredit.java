@@ -2,23 +2,31 @@ package de.planspiel.cafe;
 
 public class Kredit {
 	
-	private static double aktuellerZinssatz;
-	private static int aktuelleLaufzeit;
+	private static double aktuellerZinssatz = 0; // TODO sinnvoller Startwert
+	private static int aktuelleLaufzeit = 1; // TODO sinnvoller Startwert
 	
+	private Unternehmenskette kette;
 	private double restbetrag;
-	private double zinssatz;
+	private double zinssatz; // pro periode
 	private double tilgung;
 	private int laufzeit;
 
-	public Kredit(double betrag) {
-		this.zinssatz = aktuellerZinssatz;
-		this.laufzeit = aktuelleLaufzeit;
-		this.restbetrag = betrag;
-		this.tilgung = (int) betrag / laufzeit; // logisch?
+	public Kredit(Unternehmenskette kette, double betrag) {
+		this.kette = kette;
+		zinssatz = aktuellerZinssatz;
+		laufzeit = aktuelleLaufzeit;
+		restbetrag = betrag;
+		tilgung = betrag / laufzeit;
 	}
 
 	public void tilgen() {
-		// TODO
+		if (holeRestbetrag() > 0) {
+			// TODO zinskosten verbuchen
+			// holeKette().verbuchenKosten(restbetrag * zinssatz);
+			setzeRestbetrag(holeRestbetrag() - holeTilgung());
+		}
+		// TODO Kredit entfernen
+		// holeKette().entferneKredit(this);
 	}
 	
 	public static double holeAktuellerZinssatz() {
@@ -26,7 +34,9 @@ public class Kredit {
 	}
 
 	public static void setzeAktuellerZinssatz(double aktuellerZinssatz) {
-		Kredit.aktuellerZinssatz = aktuellerZinssatz;
+		if(aktuellerZinssatz >= 0 && aktuellerZinssatz <= 1) {
+			Kredit.aktuellerZinssatz = aktuellerZinssatz;
+		}
 	}
 
 	public static int holeAktuelleLaufzeit() {
@@ -34,15 +44,25 @@ public class Kredit {
 	}
 
 	public static void setzeAktuelleLaufzeit(int aktuelleLaufzeit) {
-		Kredit.aktuelleLaufzeit = aktuelleLaufzeit;
+		if (aktuelleLaufzeit > 0) {
+			Kredit.aktuelleLaufzeit = aktuelleLaufzeit;
+		}
 	}
 
+	public Unternehmenskette holeKette() {
+		return kette;
+	}
+	
 	public double holeRestbetrag() {
 		return restbetrag;
 	}
 
 	public void setzeRestbetrag(double restbetrag) {
-		this.restbetrag = restbetrag;
+		if (restbetrag > 0) {
+			this.restbetrag = restbetrag;
+		} else {
+			this.restbetrag = 0;
+		}
 	}
 
 	public double holeZinssatz() {

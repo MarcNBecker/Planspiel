@@ -1,18 +1,30 @@
 TODOS:
 
+
 Eher unabhängige Klassen:
-- Kredit (currently working: Marc)
+(done -> Zu klären sind die neuen Funktionen für die Unternehmenskette) - Kredit
+
 - Händler (hier ist es noch tricky zu wissen, wie der Händler das Angebot erzeugt)
+
 - Kunde (außer Verbuchung des Umsatzes)
+
 - Produkt
+
 - Standort (wie werden Kunden erzeugt und beeinflusst?)
+
 - Report (noch sehr schlecht definiert)
 
+
 Eher verstrickte Klassen:
+
 - Filiale (Standort vor Filiale)
+
 - Lager (Report vor Lager)
+
 - Unternehmenskette (Report vor Unternehmenskette)
+
 - Spiel (gegen Ende Programmieren)
+
 
 NOCH ZU KLÄREN:
 In der Unternehmenskette brauchen Kapital und Gehalt einen sinnvollen Start-Wert.
