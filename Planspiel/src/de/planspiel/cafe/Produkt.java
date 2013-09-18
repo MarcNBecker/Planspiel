@@ -16,13 +16,51 @@ public class Produkt {
 		this.menge = 0;
 	}
 	
-	public boolean vergleichen() {
-		// TODO
-		return true;	
+	/*
+	 * Konsturktor für Produkte, die vom Händler zufällig erzeugt werden
+	 */
+	public Produkt (String name, double qualitaet, double ekpreis){
+		this.name = name;
+		this.qualitaet = qualitaet;
+		this.preis = -1;
+		this.ekpreis = ekpreis;
+		this.menge = 0;
 	}
 	
+	/* 
+	 * Vergleicht ein übergebenes Produkt mit sich selbst (Obergrenze Preis, Untergrenze Qualität)
+	 * Return true falls die Produkte übereinstimmen
+	 * Return false falls die Produkte nicht übereinstimmen
+	 */
+	public boolean vergleichen(Produkt produkt) {
+		// Prüfen: Name gleich, Qualität gleich oder höher, Preis gleich oder kleiner
+		if (produkt.holeName().equals(this.holeName()) 
+				&& produkt.holeQualitaet() >= this.holeQualitaet() 
+				&& produkt.holePreis() <= this.holePreis())
+			return true;
+		else
+			return false;	
+	}
+	
+	/*
+	 * Verschmilzt das bereits vorhandene Produkt mit dem Übergebenen
+	 * Return null falls es sich nicht um gleichnamige Produkte handelt
+	 * Return Produkt falls es sich um die gleichen Produkte handelt (mit neuen Werten)
+	 */
 	public Produkt verschmelzen(Produkt produkt) {
-		return null;
+		if (produkt.holeName().equals(this.holeName()))
+			return null;
+		else { //Else-Zweig nicht zwingend notwendig
+			//Berechne Gesamtmenge, neue durchschnittliche Qualität und neuen durchschnittlichen EkPreis, übernimm Werte 
+			int gesamtmenge = this.holeMenge() + produkt.holeMenge();
+			double ekPreisDurchschnitt = (this.holePreis() * (double) this.holeMenge() + produkt.holePreis() * (double) produkt.holeMenge()) / (double) (gesamtmenge);
+			double qualitaetDurchschnitt = (this.holeQualitaet() * (double) this.holeMenge() + produkt.holeQualitaet() * (double) produkt.holeMenge()) / (double) (gesamtmenge);
+			
+			this.setzeQualitaet(qualitaetDurchschnitt);
+			this.setzeEkpreis(ekPreisDurchschnitt);
+			this.setzeMenge(gesamtmenge);
+			return this;
+		}
 	}
 	
 	public String holeName() {
