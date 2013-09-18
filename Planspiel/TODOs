@@ -1,7 +1,9 @@
 TODOS:
 
+ÄNDERUNGEN AM UML MODEL BITTE IN DER DATEI UML-UPDATES VERMERKEN!!!
 
 Eher unabhängige Klassen:
+
 (done -> Zu klären sind die neuen Funktionen für die Unternehmenskette) - Kredit
 
 - Händler (hier ist es noch tricky zu wissen, wie der Händler das Angebot erzeugt)
