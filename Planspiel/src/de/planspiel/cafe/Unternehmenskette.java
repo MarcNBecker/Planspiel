@@ -3,6 +3,7 @@ package de.planspiel.cafe;
 import java.util.Vector;
 
 public class Unternehmenskette {
+	
 	private String name;
 	private double kapital;
 	private Vector<Filiale> filialenListe;	
@@ -32,6 +33,10 @@ public class Unternehmenskette {
 	}
 	
 	public void berechnenKosten() {
+		// TODO
+	}
+	
+	public void holeAnzahlFilialen(){
 		// TODO
 	}
 	

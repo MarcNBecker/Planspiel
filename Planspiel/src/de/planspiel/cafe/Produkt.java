@@ -1,30 +1,32 @@
 package de.planspiel.cafe;
 
 public class Produkt {
-	String name;
-	double qualität;
-	double preis;
-	double ekpreis;
-	int menge;
 	
-	public Produkt() {
-		
+	private String name;
+	private double qualitaet;
+	private double preis;
+	private double ekpreis;
+	private int menge;
+	
+	public Produkt(String name) {
+		this.name = name;
+		this.qualitaet = -1;
+		this.preis = -1;
+		this.ekpreis = -1;
+		this.menge = 0;
 	}
 	
 	public boolean vergleichen() {
+		// TODO
 		return true;	
-	}
-	
-	public void setzenVerkaufspreis(double verkaufspreis) {
-		
 	}
 	
 	public String holeName() {
 		return this.name;
 	}
 	
-	public double holeQualität() {
-		return this.qualität;
+	public double holeQualitaet() {
+		return this.qualitaet;
 	}
 	
 	public double holePreis() {
@@ -39,12 +41,8 @@ public class Produkt {
 		return this.menge;
 	}
 	
-	public void setzeName(String name) {
-		this.name = name;
-	}
-	
-	public void setzeQualität(double qualität) {
-		this.qualität = qualität;
+	public void setzeQualitaet(double qualitaet) {
+		this.qualitaet = qualitaet;
 	}
 	
 	public void setzePreis(double preis) {

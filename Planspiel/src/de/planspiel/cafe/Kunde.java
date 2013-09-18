@@ -3,44 +3,48 @@ package de.planspiel.cafe;
 import java.util.Vector;
 
 public class Kunde {
-	private Vector<Unternehmenskette> kettenliste;
+	
+	private Vector<Unternehmenskette> kettenListe;
 	private Vector<Produkt> produkte;
-	private int präferenz;
+	private int praeferenz; // TODO WIE WIRD DIE GESETZT? ENUM VLT EHER?
 	
 	public Kunde() {
-		
+		kettenListe = new Vector<Unternehmenskette>();
+		produkte = new Vector<Produkt>();
+		praeferenz = 0;
 	}
 	
-	public void kennenlernen(Unternehmenskette ukette) {
-		// TO DO
-		hinzufügenUnternehmenskette(ukette);
+	public void kennenlernen(Unternehmenskette kette) {
+		// TODO
+		hinzufuegenUnternehmenskette(kette);
 	}
 	
 	public void simulierenEinkauf() {
-		// TO DO
+		// TODO
 	}
 	
-	public Vector<Unternehmenskette> holeKettenliste() {
-		return this.kettenliste;
+	public Vector<Unternehmenskette> holeKettenListe() {
+		return this.kettenListe;
+	}
+	
+	public void hinzufuegenUnternehmenskette (Unternehmenskette ukette) {
+		this.kettenListe.add(ukette);
 	}
 	
 	public Vector<Produkt> holeProdukte() {
 		return this.produkte;
 	}
 	
-	public int holePräferenz() {
-		return this.präferenz;
-	}
-	
-	public void setzePräferenz (int präferenz) {
-		this.präferenz=präferenz;
-	}
-	
-	public void hinzufügenUnternehmenskette (Unternehmenskette ukette) {
-		this.kettenliste.add(ukette);
-	}
-	
-	public void hinzufügenProdukt (Produkt produkt) {
+	public void hinzufuegenProdukt (Produkt produkt) {
 		this.produkte.add(produkt);
 	}
+	
+	public int holePraeferenz() {
+		return this.praeferenz;
+	}
+	
+	public void setzePraeferenz (int praeferenz) {
+		this.praeferenz=praeferenz;
+	}
+
 }
