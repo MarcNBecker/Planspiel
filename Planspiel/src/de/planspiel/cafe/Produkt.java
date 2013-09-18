@@ -21,6 +21,10 @@ public class Produkt {
 		return true;	
 	}
 	
+	public Produkt verschmelzen(Produkt produkt) {
+		return null;
+	}
+	
 	public String holeName() {
 		return this.name;
 	}
