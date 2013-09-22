@@ -22,11 +22,11 @@ public class Spiel {
 		// TODO
 	}
 	
-	public int getRundenzahl() {
+	public int holeRundenzahl() {
 		return rundenzahl;
 	}
 
-	public Vector<Standort> getStandortListe() {
+	public Vector<Standort> holeStandortListe() {
 		return standortListe;
 	}
 
@@ -34,7 +34,7 @@ public class Spiel {
 		standortListe.add(standort);
 	}
 
-	public Vector<Unternehmenskette> getKettenListe() {
+	public Vector<Unternehmenskette> holeKettenListe() {
 		return kettenListe;
 	}
 

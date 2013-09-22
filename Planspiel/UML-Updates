@@ -1,9 +1,8 @@
-Alle ä,ö,ü zu ae,oe,ue
-
-Alle xxxliste zu xxxListe
-
-Im Interface Event start() zu starten()
-
-Im Produkt wurde folgende Methode hinzugefügt: public Produkt verschmelzen(Produkt produkt);
-
-Ansonsten wurden in allen Klassen "hole" und "setze" Methoden implementiert..dazu bitte jede Klasse checken, wie diese Funktionen aussehen
+Kathi:
+<< Soweit alles eingetragen
+<< Fragen: holeStartKapazitaet():void
+           zufallszahl()
+           Attribut zu Unternehmenskette (unternehmenskette, ukette und kette verwendet)
+           weitere Attribute von Report
+           Signatur generierenAngebot
+           kein setzeLager(Lager lager) in Unternehmenskette

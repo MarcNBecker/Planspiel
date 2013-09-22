@@ -40,19 +40,23 @@ public class Unternehmenskette {
 		// TODO
 	}
 	
-	public String getName() {
+	public String holeName() {
 		return name;
 	}
 	
-	public double getKapital() {
+	public void setzeName(String name) {
+		this.name = name;
+	}
+	
+	public double holeKapital() {
 		return kapital;
 	}
 	
-	public void setKapital(double kapital) {
+	public void setzeKapital(double kapital) {
 		this.kapital = kapital;
 	}
 	
-	public Vector<Filiale> getFilialenListe() {
+	public Vector<Filiale> holeFilialenListe() {
 		return filialenListe;
 	}
 	
@@ -60,11 +64,11 @@ public class Unternehmenskette {
 		filialenListe.add(filiale);
 	}
 	
-	public Lager getLager() {
+	public Lager holeLager() {
 		return lager;
 	}
 	
-	public Vector<Kredit> getKreditListe() {
+	public Vector<Kredit> holeKreditListe() {
 		return kreditListe;
 	}
 	
@@ -72,11 +76,11 @@ public class Unternehmenskette {
 		kreditListe.add(kredit);
 	}
 	
-	public double getGehalt() {
+	public double holeGehalt() {
 		return gehalt;
 	}
 	
-	public void setGehalt(double gehalt) {
+	public void setzeGehalt(double gehalt) {
 		this.gehalt = gehalt;
 	}
 	
