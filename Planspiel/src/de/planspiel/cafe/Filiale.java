@@ -29,14 +29,9 @@ public class Filiale {
 	 * @return Menge, die tatsächlich verkauft wird (z.B. bei Minderbestand)
 	 */
 	public int verkaufen(Produkttypen name, int menge) {
-		if (pruefenKundenprodukt(this.holeKette().holeLager()
-				.suchenProdukt(name))==true) {
-			Produkt lagerProdukt = this.holeKette().holeLager()
-					.auslagern(name, menge);
-			return lagerProdukt.holeMenge();
-		} else {
-			return 0;
-		}
+		Produkt lagerProdukt = this.holeKette().holeLager().auslagern(name, menge);
+		// TODO kette.verbuchenUmsatz();
+		return lagerProdukt.holeMenge();
 	}
 
 	/**
@@ -45,7 +40,7 @@ public class Filiale {
 	 *            Ist das gewollte Produkt vom Kunden. Es wird geprüft, ob das
 	 *            Produkt im Lager ist und ob die Eigenschaften (Qualität, etc.)
 	 *            stimmen.
-	 * @return boolean Gibt zurück, ob ein Produkt vorhanden ist und, ob die
+	 * @return Gibt zurück, ob ein Produkt vorhanden ist und, ob die
 	 *         gewollten Eigenschaften (Qualität, etc.) mit dem Produkt im Lager
 	 *         übereinstimmen.
 	 */
@@ -63,48 +58,22 @@ public class Filiale {
 	}
 
 	/**
-	 * Berechnet die Gesamtkosten der Filiale.
-	 * @return help Double-Wert, der die Höhe der Mitarbeiter- und
-	 *         Standort-Kosten gebündelt zurückgibt.
+	 * Verbucht die Gesamtkosten der Filiale.
 	 */
-	public double berechnenKosten() {
-		// TODO
-		double kosten = 0.0;
+	public void verbuchenKosten() {
 		// Kosten für die Mitarbeiter
-		kosten = (this.holeMitarbeiter() * this.holeKette().holeGehalt());
+		double kosten = (this.holeMitarbeiter() * this.holeKette().holeGehalt());
+		this.holeKette().verbuchenKosten(Kostenverursacher.PERSONAL, kosten);
 		// Kosten für den Standort
-		kosten = kosten + (this.holeStandort().holeLaufendeFilialkosten());
-		return kosten;
+		double filialKosten = (this.holeStandort().holeLaufendeFilialkosten());
+		this.holeKette().verbuchenKosten(Kostenverursacher.FILIALE_UNTERHALTUNG, filialKosten);
 	}
 
 	/**
-	 * Stellt eine Menge von Mitarbeitern ein.
-	 * @param anzahl
-	 *            Int-Wert, der die Anzahl der zu einstellenden Mitarbeitern
-	 *            angibt.
+	 * Muss jede Runde einmal aufgerufen werden.
 	 */
-	public void einstellenMitarbeiter(int anzahl) {
-		this.setzeMitarbeiter(this.holeMitarbeiter() + anzahl);
-	}
-
-	/**
-	 * Entlässt eine Menge von Mitarbeitern und verbucht die dafür entstehenden Kosten.
-	 * @param anzahl
-	 *            Int-Wert, der die Anzahl der zu entlassenden Mitarbeitern
-	 *            angibt.
-	 */
-	public void entlassenMitarbeiter(int anzahl) {
-		this.setzeMitarbeiter(this.holeMitarbeiter() - anzahl);
-		for (int i = 0; i < anzahl; i++) {
-			this.holeKette().verbuchenKosten(Kostenverursacher.PERSONAL,
-					this.holeKette().holeEntlassungskosten());
-		}
-	}
-
 	public void initialisierenKapazitaet() {
-		// TODO Bitte in Verbindung mit berechneKapazität in der Klasse Standort nochmal prüfen
-		this.setzeFreieKapazitaet(this.holeStandort().berechnenKapazitaet(
-				this.holeMitarbeiter()));
+		this.setzeFreieKapazitaet(this.holeStandort().berechnenKapazitaet(this.holeMitarbeiter()));
 	}
 
 	public int holeMitarbeiter() {

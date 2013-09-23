@@ -16,9 +16,10 @@ Kostenverursacher
 Produkttypen
 
 Filiale:
-- entlassenMitarbeiter(int anzahl); hat jetzt einen Parameter (vereinfacht das Entlassen)
-- berechnenKosten():double    berechnenKosten ist kein void. Es gibt die Höhe der Kosten für eine Filiale zurück.
+- entlassenMitarbeiter(int anzahl); gelöscht
+- verbuchenKosten():void   verbuchenKosten
 - verkaufen(Produkttypen name, int menge):int; Parameter name von String zu Produkttypen geändert
+- einstellenMitarbeiter() gelöscht
 
 Produkt: 
 - Produkt(name:Produkttypen); Änderung von String zum ENUM Produkttypen.
@@ -35,4 +36,7 @@ Spiel:
 - public static Spiel spiel; Statisches Attribut vom Typ Spiel
 - getSpiel();
 - Attribut Händler-Liste?
+
+Händler: 
+- ausgebenAngebot() gelöscht
 
