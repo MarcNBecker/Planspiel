@@ -8,6 +8,18 @@ public class Spiel {
 
 	}
 	
+	/*
+	 * Zufallszahl zwischen 0 und Grenzen mit zwei Nachkommastellen erzeugen - optional auch mit Untergrenze
+	 */
+	public static double generiereZufallszahl(int grenze){
+		double zufallszahl = Math.random()*grenze;
+		int zufallszahl100 = (int) zufallszahl * 100;
+		zufallszahl = zufallszahl100 / 100;
+		
+		return zufallszahl;
+	}
+
+	
 	private int rundenzahl;
 	private Vector<Standort> standortListe;
 	private Vector<Unternehmenskette> kettenListe;

@@ -27,8 +27,8 @@ public class Kunde {
 		return this.kettenListe;
 	}
 	
-	public void hinzufuegenUnternehmenskette (Unternehmenskette ukette) {
-		this.kettenListe.add(ukette);
+	public void hinzufuegenUnternehmenskette (Unternehmenskette kette) {
+		this.kettenListe.add(kette);
 	}
 	
 	public Vector<Produkt> holeProdukte() {

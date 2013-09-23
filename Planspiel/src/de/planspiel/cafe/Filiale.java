@@ -40,7 +40,7 @@ public class Filiale {
 		// TODO
 	}
 	
-	public void holeStartKapazitaet() {
+	public void initialisierenKapazitaet() {
 		// TODO
 	}
 	
