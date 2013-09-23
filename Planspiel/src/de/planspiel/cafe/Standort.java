@@ -39,9 +39,27 @@ public class Standort {
 		// TODO
 	}
 	
+	/**
+	 * Berechnet die Kunden, die an diesem Standort von der übergebenen Menge an Mitarbeiter bedient werden können.
+	 * Dem liegt eine lineare Funktion zu Grunde, die durch die Attribute minKunden, maxKunden und maxMitarbeiter des Standortes
+	 * definiert werden
+	 * @param mitarbeiter Aktuelle Mitarbeiteranzahl der Filiale, für die die Kapazität berechnet werden soll
+	 * @return Kundenkapazität, also die Anzahl der Kunden, die in dieser Periode bedient werden können
+	 */
 	public int berechnenKapazitaet(int mitarbeiter) {
-		
-		return 0;
+		if(mitarbeiter < 1){
+			return 0;
+		} else if (mitarbeiter == 1) {
+			return minKunden;
+		} else if (mitarbeiter >= maxMitarbeiter){
+			return maxKunden;
+		} else {
+			//f(x) = m*x + b
+			double b = (holeMaxKunden() - (holeMinKunden() * holeMaxMitarbeiter())) / (1 - holeMaxKunden());
+			double m = holeMinKunden() - b;
+			int kundenKapazitaet = (int)((m * mitarbeiter) + b);
+			return kundenKapazitaet;
+		}
 	}
 	
 	public Vector<Kunde> holeKundenkreis() {
