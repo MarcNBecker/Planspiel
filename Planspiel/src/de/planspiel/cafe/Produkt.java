@@ -16,8 +16,12 @@ public class Produkt {
 		this.menge = 0;
 	}
 	
-	/*
-	 * Konsturktor für Produkte, die vom Händler zufällig erzeugt werden
+	/**
+	 * Konstruktor für Produkte, die vom Händler zufällig erzeugt werden
+	 * @param name Enum-Wert, um welches Produkt es sich handelt
+	 * @param qualitaet Double-Wert, der die Produktqualitaet angibt
+	 * @param ekpreis Double-Wert, der den Einkaufspreis angibt
+	 * @author Natalie
 	 */
 	public Produkt (String name, double qualitaet, double ekpreis){
 		this.name = name;
@@ -27,10 +31,11 @@ public class Produkt {
 		this.menge = 0;
 	}
 	
-	/* 
+	/** 
 	 * Vergleicht ein übergebenes Produkt mit sich selbst (Obergrenze Preis, Untergrenze Qualität)
-	 * Return true falls die Produkte übereinstimmen
-	 * Return false falls die Produkte nicht übereinstimmen
+	 * @param produkt Produkt, dessen Name, Qualitaet und Preis mit sich selbst verglichen werden
+	 * @return true falls die Produkte übereinstimmen, false falls die Produkte nicht übereinstimmen
+	 * @author Natalie
 	 */
 	public boolean vergleichen(Produkt produkt) {
 		// Prüfen: Name gleich, Qualität gleich oder höher, Preis gleich oder kleiner
@@ -42,10 +47,12 @@ public class Produkt {
 			return false;	
 	}
 	
-	/*
-	 * Verschmilzt das bereits vorhandene Produkt mit dem Übergebenen
-	 * Return null falls es sich nicht um gleichnamige Produkte handelt
-	 * Return Produkt falls es sich um die gleichen Produkte handelt (mit neuen Werten)
+	/**
+	 * Verschmilzt das bereits vorhandene Produkt mit dem Übergebenen, berechnet neue Durchschnittsqualitaet,
+	 * Durchschnittspreis und Gesamtmenge
+	 * @param produkt Produkt, das mit dem Existierenden verschmolzen wird
+	 * @return null falls es sich nicht um gleichnamige Produkte handet, Produkt falls es sich um die gleichen Produkte handelt 
+	 * @author Natalie
 	 */
 	public Produkt verschmelzen(Produkt produkt) {
 		if (produkt.holeName().equals(this.holeName()))
