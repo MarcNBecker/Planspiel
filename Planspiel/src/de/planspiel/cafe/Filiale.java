@@ -21,7 +21,7 @@ public class Filiale {
 	}
 
 	/**
-	 * 
+	 * Gibt die Menge zurück, die tatsächlich an den Kunden verkauft wurde.
 	 * @param name
 	 *            Produkttyp, der verkauft werden soll
 	 * @param menge
@@ -40,6 +40,7 @@ public class Filiale {
 	}
 
 	/**
+	 * Prüft, ob das gewünschte Produkt vorhanden ist. Dabei werden die Eigenschaften (Qualität, etc.) berücksichtigt.
 	 * @param produkt
 	 *            Ist das gewollte Produkt vom Kunden. Es wird geprüft, ob das
 	 *            Produkt im Lager ist und ob die Eigenschaften (Qualität, etc.)
@@ -62,6 +63,7 @@ public class Filiale {
 	}
 
 	/**
+	 * Berechnet die Gesamtkosten der Filiale.
 	 * @return help Double-Wert, der die Höhe der Mitarbeiter- und
 	 *         Standort-Kosten gebündelt zurückgibt.
 	 */
@@ -76,6 +78,7 @@ public class Filiale {
 	}
 
 	/**
+	 * Stellt eine Menge von Mitarbeitern ein.
 	 * @param anzahl
 	 *            Int-Wert, der die Anzahl der zu einstellenden Mitarbeitern
 	 *            angibt.
@@ -85,6 +88,7 @@ public class Filiale {
 	}
 
 	/**
+	 * Entlässt eine Menge von Mitarbeitern und verbucht die dafür entstehenden Kosten.
 	 * @param anzahl
 	 *            Int-Wert, der die Anzahl der zu entlassenden Mitarbeitern
 	 *            angibt.

@@ -68,10 +68,6 @@ public class Lager {
 		return null;
 	}
 	
-	public void auswaehlenHaendler(Haendler haendler) {
-		// TODO
-	}
-	
 	public Vector<Produkt> holeProduktliste() {
 		return this.produktListe;
 	}

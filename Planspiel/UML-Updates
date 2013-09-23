@@ -27,6 +27,7 @@ Produkt:
 Lager:
 - suchenProdukt(Produkttypen name, int menge);  siehe auslagern
 - auslagern(Produkttypen name);  Parameter von String auf das ENUM Produkttypen ändern.
+- auswaehlenHaendler(Haendler haendler):void; wurde entfernt!
 
 Marktanteil:
 
@@ -34,3 +35,4 @@ Spiel:
 - public static Spiel spiel; Statisches Attribut vom Typ Spiel
 - getSpiel();
 - Attribut Händler-Liste?
+
