@@ -19,12 +19,13 @@ public class Spiel {
 		return zufallszahl;
 	}
 
-	
+	private static Spiel spiel;
 	private int rundenzahl;
 	private Vector<Standort> standortListe;
 	private Vector<Unternehmenskette> kettenListe;
 	
 	public Spiel(int rundenzahl) {
+		Spiel.spiel = this;
 		this.rundenzahl = rundenzahl;
 		this.standortListe = new Vector<Standort>();
 		this.kettenListe = new Vector<Unternehmenskette>();
@@ -52,5 +53,9 @@ public class Spiel {
 
 	public void hinzufuegenUnternehmenskette(Unternehmenskette kette) {
 		kettenListe.add(kette);
-	}	
+	}
+	
+	public static Spiel holeSpiel(){
+		return spiel;
+	}
 }
