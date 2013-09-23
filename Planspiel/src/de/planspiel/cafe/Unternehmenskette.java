@@ -44,9 +44,6 @@ public class Unternehmenskette {
 		return name;
 	}
 	
-	public void setzeName(String name) {
-		this.name = name;
-	}
 	
 	public double holeKapital() {
 		return kapital;
