@@ -70,6 +70,7 @@ public class Produkt {
 		}
 	}
 	
+	
 	public Produkttypen holeName() {
 		return this.name;
 	}
