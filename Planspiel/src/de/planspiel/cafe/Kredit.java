@@ -21,12 +21,10 @@ public class Kredit {
 
 	public void tilgen() {
 		if (holeRestbetrag() > 0) {
-			// TODO zinskosten verbuchen
-			// holeKette().verbuchenKosten(restbetrag * zinssatz);
+			holeKette().verbuchenKosten("zins", restbetrag * zinssatz);
 			setzeRestbetrag(holeRestbetrag() - holeTilgung());
 		}
-		// TODO Kredit entfernen
-		// holeKette().entferneKredit(this);
+		holeKette().entfernenKredit(this);
 	}
 	
 	public static double holeAktuellerZinssatz() {

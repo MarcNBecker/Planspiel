@@ -32,7 +32,15 @@ public class Unternehmenskette {
 		// TODO	
 	}
 	
-	public void berechnenKosten() {
+	public void entfernenKredit(Kredit kredit) {
+		// TODO
+	}
+	
+	public void verbuchenKosten(String kostenVerursacher, double betrag){
+		// TODO
+	}
+	
+	public void berechnenFilialKosten() {
 		// TODO
 	}
 	

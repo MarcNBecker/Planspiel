@@ -1,0 +1,4 @@
+Unternnehmenskette:
+- verbucheKosten();
+- berechneFilialKosten();
+- entfernenKredit();
