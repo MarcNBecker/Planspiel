@@ -32,12 +32,22 @@ public class Filiale {
 		// TODO
 	}
 	
+	/**
+	 * @author Daniel
+	 */
 	public void einstellenMitarbeiter() {
-		// TODO
+		// TODO Kostet das Einstellen von Mitarbeitern Geld?
+		this.setzeMitarbeiter(this.holeMitarbeiter()+1);
 	}
 	
+	/**
+	 * @author Daniel
+	 */
 	public void entlassenMitarbeiter() {
-		// TODO
+		// TODO Muss Geld dafür bezahlt werden, um ein Mitarbeiter zu entlassen?
+		this.setzeMitarbeiter(this.holeMitarbeiter()-1);
+		// Soll ein Mitarbeiter entlassen werden, dann können wir auf das ENUM für die Kostenträger zurückgreifen. (Kosten für die Entlasstung von Mitarbeitern)
+		// Verbuchung mit kette.verbuchen();
 	}
 	
 	public void initialisierenKapazitaet() {
