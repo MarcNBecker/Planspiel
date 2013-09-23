@@ -11,15 +11,16 @@ public class Lager {
 	}
 	
 	/**
-	 * 
-	 * @param produkt
+	 * Lagert das übergebene Produkt ein, falls es schon vorhanden ist werden die Produkte miteinander verschmolzen
+	 * @param produkt Produkt, das eingelagert werden soll
 	 */
 	public void einlagern(Produkt produkt) {
-		// TODO
-		//Falls Produkt noch nicht vorhanden
-		produktListe.add(produkt);
-		//Andernfalls schon vorhandenes Produkt mit neuem verschmelzen
-		
+		Produkt produktGesucht = suchenProdukt(produkt.holeName());
+		if (produktGesucht == null){ //Falls Produkt noch nicht vorhanden
+			produktListe.add(produkt);
+		} else {
+			produktGesucht.verschmelzen(produkt);//Andernfalls schon vorhandenes Produkt mit neuem verschmelzen
+		}
 	}
 	
 	public Produkt auslagern(Produkttypen name, int menge) {
