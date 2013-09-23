@@ -13,6 +13,7 @@ public class Lager {
 	/**
 	 * Lagert das übergebene Produkt ein, falls es schon vorhanden ist werden die Produkte miteinander verschmolzen
 	 * @param produkt Produkt, das eingelagert werden soll
+	 * @author Natalie
 	 */
 	public void einlagern(Produkt produkt) {
 		Produkt produktGesucht = suchenProdukt(produkt.holeName());
@@ -28,6 +29,7 @@ public class Lager {
 	 * @param name Produkttypen-Wert, welches Produkt ausgelagert werden soll
 	 * @param menge int-Wert, welche Menge ausgelagert werden soll
 	 * @return Null, falls das Produkt nicht vorhanden ist, ansonsten ein neues Produkt, welches die ausgelagerte Menge enthält sowie entsprechende Qualität und Preis
+	 * @author Natalie
 	 */
 	public Produkt auslagern(Produkttypen name, int menge) {
 		Produkt gesuchtesProdukt = suchenProdukt(name);		
