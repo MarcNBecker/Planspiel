@@ -1,0 +1,9 @@
+Unternnehmenskette:
+- verbucheKosten();
+- berechneFilialKosten();
+- entfernenKredit();
+- Attribut entlassungskosten mit GETTER SETTER
+
+ENUMS:
+Kostenverursacher
+Produkttypen
