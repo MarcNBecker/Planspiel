@@ -14,7 +14,7 @@ public class Report {
 	private Unternehmenskette kette;
 	private double kapital;
 	private double kreditsumme;
-	private Lager lager;
+	private Lager lager; // neues Objekt anlegen
 	private HashMap<Filiale, double[]> filialenListe; // double[3]
 														// AnzahlMitarbeiter,
 														// Auslastung,
@@ -27,7 +27,6 @@ public class Report {
 	private double rohstoffkosten;
 	private double umsatzerloese;
 	private double rundenergebnis;
-	private int anzahlKunden;
 	private Marktanteil marktanteil;
 
 	// Attribut für Ereignisse + getter, setter
@@ -35,7 +34,23 @@ public class Report {
 	public Report(int runde, Unternehmenskette kette) {
 		this.runde = runde;
 		this.kette = kette;
-		this.filialenListe = new HashMap<Filiale, double[]>(kette.holeAnzahlFilialen());
+		this.filialenListe = new HashMap<Filiale, double[]>(
+				kette.holeAnzahlFilialen());
+	}
+	
+	/**
+	 * Berechnet das Rundenergebnis, indem alle addierten Kosten von den
+	 * Umsatzerlösen abgezogen werden
+	 */
+	public void berechneRundenergebnis() {
+
+		if (this.holeRundenergebnis() == 0.0) {
+			double kosten = this.holeAnschaffungskosten()
+					+ this.holeUnterhaltungskosten()
+					+ this.holePersonalkosten() + this.holeKreditkosten()
+					+ this.holeMarketingkosten() + this.holeRohstoffkosten();
+			this.rundenergebnis = this.holeUmsatzerloese() - kosten;
+		}
 	}
 
 	public int holeRunde() {
@@ -72,10 +87,6 @@ public class Report {
 
 	public HashMap<Filiale, double[]> holeFilialenListe() {
 		return filialenListe;
-	}
-
-	public void setzeFilialenListe(HashMap<Filiale, double[]> filialenListe) {
-		this.filialenListe = filialenListe;
 	}
 
 	public double holeAnschaffungskosten() {
@@ -136,28 +147,6 @@ public class Report {
 
 	public double holeRundenergebnis() {
 		return rundenergebnis;
-	}
-
-	/**
-	 * Berechnet das Rundenergebnis, indem alle addierten Kosten von den
-	 * Umsatzerlösen abgezogen werden
-	 */
-	public void berechneRundenergebnis() {
-		double kosten = this.holeAnschaffungskosten()
-				+ this.holeUnterhaltungskosten() + this.holePersonalkosten()
-				+ this.holeKreditkosten() + this.holeMarketingkosten()
-				+ this.holeRohstoffkosten();
-		if (this.holeRundenergebnis() != 0.0) {
-			this.rundenergebnis = this.holeUmsatzerloese() - kosten;
-		}
-	}
-
-	public int holeAnzahlKunden() {
-		return anzahlKunden;
-	}
-
-	public void setzeAnzahlKunden(int anzahlKunden) {
-		this.anzahlKunden = anzahlKunden;
 	}
 
 	public Marktanteil holeMarktanteil() {

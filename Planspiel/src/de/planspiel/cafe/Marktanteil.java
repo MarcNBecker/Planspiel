@@ -24,24 +24,14 @@ public class Marktanteil {
 		return verkaufsListe;
 	}
 
-	public void setzeMarktanteilListe(
-			HashMap<Unternehmenskette, Integer> verkaufsListe) {
-		this.verkaufsListe = verkaufsListe;
-	}
-	
-	public HashMap<Unternehmenskette, Double> berechnenMarktanteil()
-	{
-		HashMap<Unternehmenskette,Double> marktanteilListe = new HashMap<Unternehmenskette,Double>(this.verkaufsListe.size());
-		Unternehmenskette[] kettenListe = (Unternehmenskette[]) marktanteilListe.entrySet().toArray();
-		Object[] zwischenListe = marktanteilListe.values().toArray();
-		int[] anzahlKunden = new int[zwischenListe.length];
-		for(int i = 0; i < zwischenListe.length - 1; i++)
-		{
-			anzahlKunden[i] = Integer.parseInt(zwischenListe[i].toString());
-		}
-		for(int i = 0; i < this.verkaufsListe.size(); i++)
-		{
-			double marktanteil =  Math.round(anzahlKunden[i] / this.gesamtKunden * 100.) / 100.;
+	public HashMap<Unternehmenskette, Double> berechnenMarktanteil() {
+		HashMap<Unternehmenskette, Double> marktanteilListe = new HashMap<Unternehmenskette, Double>(
+				this.verkaufsListe.size());
+		Unternehmenskette[] kettenListe = (Unternehmenskette[]) verkaufsListe
+				.entrySet().toArray();
+		for (int i = 0; i < kettenListe.length; i++) {
+			double marktanteil = Math.round(verkaufsListe.get(kettenListe[i]) / this.holeGesamtKunden()
+					* 100.0) / 100.0;
 			marktanteilListe.put(kettenListe[i], marktanteil);
 		}
 		return marktanteilListe;
