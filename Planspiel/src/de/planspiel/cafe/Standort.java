@@ -2,6 +2,11 @@ package de.planspiel.cafe;
 
 import java.util.Vector;
 
+/**
+ * 
+ * @author Marc Becker
+ *
+ */
 public class Standort {
 	
 	private Vector<Kunde> kundenkreis;
@@ -35,7 +40,7 @@ public class Standort {
 	}
 	
 	public int berechnenKapazitaet(int mitarbeiter) {
-		// TODO
+		
 		return 0;
 	}
 	

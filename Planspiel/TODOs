@@ -10,6 +10,7 @@ Eher unabhängige Klassen:
 
 - Report (noch sehr schlecht definiert)
 
+- Marktanteilklasse mit Gesamtkundenanzahl und Hashmap für Kunde pro Unternehmenskette
 
 Eher verstrickte Klassen:
 

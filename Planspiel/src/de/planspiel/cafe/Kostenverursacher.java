@@ -2,8 +2,8 @@ package de.planspiel.cafe;
 
 /**
  * 
- * Verschiedene Kostenverursacher, die vom Report genutzt werden, um Kosten zuzuordnen
- * @author D059166
+ * Verschiedene Kostenverursacher, die vom Spiel genutzt werden, um Kosten zuzuordnen
+ * @author Marc Becker
  *
  */
 public enum Kostenverursacher {
