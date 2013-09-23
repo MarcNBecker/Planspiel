@@ -18,12 +18,8 @@ public class Haendler {
 		for (int i = 0; i < Produkttypen.values().length; i++){
 			//Konstruktor: Produkt (name, qualitaet, ekpreis) 
 			produktListe.add(new Produkt(Produkttypen.values()[i], Spiel.generiereZufallszahl(10), Spiel.generiereZufallszahl(20))); 
-			//TODO Abhängigkeit Preis von Qualität?
+			//TODO Abhängigkeit Preis von Qualität? Obergrenze Preis/Qualität?
 		}
-	}
-	
-	public Vector<Produkt> ausgebenAngebot() {
-		return holeProduktListe();
 	}
 	
 	public Vector<Produkt> holeProduktListe() {
