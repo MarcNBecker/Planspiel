@@ -15,16 +15,15 @@ public class Haendler {
 	 * @author Natalie
 	 */
 	public void generierenAngebot() {
-		// TODO Entscheidung: Wie viele Produkte bietet ein Händler an? Evtl. Schleife und Produktnamen in ENUM speichern
-		//Konstruktor: Produkt (name, qualitaet, ekpreis) 
-		produktListe.add(new Produkt(Produkttypen.KAFFEE, Spiel.generiereZufallszahl(10), Spiel.generiereZufallszahl(20)) );  // Abhängigkeit Preis von Qualität?
-		produktListe.add(new Produkt(Produkttypen.TEE, Spiel.generiereZufallszahl(10), Spiel.generiereZufallszahl(20)));
-		produktListe.add(new Produkt(Produkttypen.KUCHEN, Spiel.generiereZufallszahl(10), Spiel.generiereZufallszahl(20)));
+		for (int i = 0; i < Produkttypen.values().length; i++){
+			//Konstruktor: Produkt (name, qualitaet, ekpreis) 
+			produktListe.add(new Produkt(Produkttypen.values()[i], Spiel.generiereZufallszahl(10), Spiel.generiereZufallszahl(20))); 
+			//TODO Abhängigkeit Preis von Qualität?
+		}
 	}
 	
 	public Vector<Produkt> ausgebenAngebot() {
-		// TODO für die GUI? entspricht doch eigentlich holeProduktListe?
-		return null;
+		return holeProduktListe();
 	}
 	
 	public Vector<Produkt> holeProduktListe() {
