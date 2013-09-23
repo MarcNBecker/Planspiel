@@ -13,6 +13,7 @@ public class Lager {
 	/**
 	 * Lagert das übergebene Produkt ein, falls es schon vorhanden ist werden die Produkte miteinander verschmolzen
 	 * @param produkt Produkt, das eingelagert werden soll
+	 * @author Natalie
 	 */
 	public void einlagern(Produkt produkt) {
 		Produkt produktGesucht = suchenProdukt(produkt.holeName());
@@ -23,9 +24,32 @@ public class Lager {
 		}
 	}
 	
+	/**
+	 * Lagert eine bestimmte Menge eines Produktes aus dem Lager aus - falls weniger auf Lager ist, wird auch nur die geringere Menge ausgelagert
+	 * @param name Produkttypen-Wert, welches Produkt ausgelagert werden soll
+	 * @param menge int-Wert, welche Menge ausgelagert werden soll
+	 * @return Null, falls das Produkt nicht vorhanden ist, ansonsten ein neues Produkt, welches die ausgelagerte Menge enthält sowie entsprechende Qualität und Preis
+	 * @author Natalie
+	 */
 	public Produkt auslagern(Produkttypen name, int menge) {
-		//TODO
-		return null;
+		Produkt gesuchtesProdukt = suchenProdukt(name);		
+		if (gesuchtesProdukt == null){
+			return null;
+		} else { //Falls Produkt vorhanden - neues Produkt zurückgeben, das gleiche Eigenschaften hat, und (maximal mögliche) Menge
+			Produkt rueckgabeProdukt = new Produkt(gesuchtesProdukt.holeName());
+			int vorhandeneMenge = gesuchtesProdukt.holeMenge();
+			if (vorhandeneMenge < menge){ //Falls weniger da ist als der Kunde haben will - Rückgabemenge ist die vorhandene Menge!! Nichts mehr im Lager
+				gesuchtesProdukt.setzeMenge(0);
+				rueckgabeProdukt.setzeMenge(vorhandeneMenge);
+			} else { //Es ist noch genug auf Lager - Vom Lager was weg nehmen und Rückgabemenge ist die gewünschte Menge
+				gesuchtesProdukt.setzeMenge(vorhandeneMenge - menge);
+				rueckgabeProdukt.setzeMenge(menge);
+			}	
+			//Preis und Qualität übernehmen vom Lagerprodukt
+			rueckgabeProdukt.setzePreis(gesuchtesProdukt.holePreis());
+			rueckgabeProdukt.setzeQualitaet(gesuchtesProdukt.holeQualitaet());
+			return rueckgabeProdukt;
+		}		
 	}
 	
 	/**
@@ -42,10 +66,6 @@ public class Lager {
 		}
 		//falls Produkt nicht vorhanden
 		return null;
-	}
-	
-	public void auswaehlenHaendler(Haendler haendler) {
-		// TODO
 	}
 	
 	public Vector<Produkt> holeProduktliste() {
