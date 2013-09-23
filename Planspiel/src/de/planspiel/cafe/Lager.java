@@ -16,11 +16,11 @@ public class Lager {
 	 * @author Natalie
 	 */
 	public void einlagern(Produkt produkt) {
-		Produkt produktGesucht = suchenProdukt(produkt.holeName());
-		if (produktGesucht == null){ //Falls Produkt noch nicht vorhanden
+		Produkt gesuchtesProdukt = suchenProdukt(produkt.holeName());
+		if (gesuchtesProdukt == null){ //Falls Produkt noch nicht vorhanden
 			produktListe.add(produkt);
 		} else {
-			produktGesucht.verschmelzen(produkt);//Andernfalls schon vorhandenes Produkt mit neuem verschmelzen
+			gesuchtesProdukt.verschmelzen(produkt);//Andernfalls schon vorhandenes Produkt mit neuem verschmelzen
 		}
 	}
 	
