@@ -104,6 +104,9 @@ public class Produkt {
 	}
 	
 	public void setzeMenge(int menge) {
+		//Negative Mengen sind nicht zulässig
+		if (menge < 0)
+			menge = 0;
 		this.menge = menge;
 	}
 }
