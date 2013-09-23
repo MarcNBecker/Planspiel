@@ -15,9 +15,9 @@ public class Haendler {
 	 * @author Natalie
 	 */
 	public void generierenAngebot() {
-		for (int i = 0; i < Produkttypen.values().length; i++){
+		for (int i = 0; i < Produkttyp.values().length; i++){
 			//Konstruktor: Produkt (name, qualitaet, ekpreis) 
-			produktListe.add(new Produkt(Produkttypen.values()[i], Spiel.generiereZufallszahl(10), Spiel.generiereZufallszahl(20))); 
+			produktListe.add(new Produkt(Produkttyp.values()[i], Spiel.generierenZufallszahl(10), Spiel.generierenZufallszahl(20))); 
 			//TODO Abhängigkeit Preis von Qualität? Obergrenze Preis/Qualität?
 		}
 	}

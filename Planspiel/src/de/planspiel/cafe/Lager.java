@@ -31,7 +31,7 @@ public class Lager {
 	 * @return Null, falls das Produkt nicht vorhanden ist, ansonsten ein neues Produkt, welches die ausgelagerte Menge enthält sowie entsprechende Qualität und Preis
 	 * @author Natalie
 	 */
-	public Produkt auslagern(Produkttypen name, int menge) {
+	public Produkt auslagern(Produkttyp name, int menge) {
 		Produkt gesuchtesProdukt = suchenProdukt(name);		
 		if (gesuchtesProdukt == null){
 			return null;
@@ -58,7 +58,7 @@ public class Lager {
 	 * @return Null falls das Produkt noch nicht existiert, Produkt wenn es gefunden wurde
 	 * @author Natalie
 	 */
-	public Produkt suchenProdukt(Produkttypen name) {
+	public Produkt suchenProdukt(Produkttyp name) {
 		for (int i = 0; i < produktListe.size(); i++){
 			if (produktListe.get(i).holeName() == name){
 				return produktListe.get(i);

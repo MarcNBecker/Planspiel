@@ -6,6 +6,6 @@ package de.planspiel.cafe;
  * @author D059166
  *
  */
-public enum Produkttypen {
+public enum Produkttyp {
 	KAFFEE, TEE, KUCHEN
 }

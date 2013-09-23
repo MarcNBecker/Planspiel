@@ -49,6 +49,7 @@ public class Unternehmenskette {
 	public void aufnehmenKredit(double betrag) {
 		if(betrag <= pruefeKreditwuerdigkeit()){
 			hinzufuegenKredit(new Kredit(this, betrag));
+			setzeKapital(holeKapital() + betrag);
 		}
 	}
 	
@@ -58,7 +59,7 @@ public class Unternehmenskette {
 	 * @return Maximaler Betrag, der dem Spieler als Kredit gewährt werden kann
 	 */
 	public double pruefeKreditwuerdigkeit() {
-		double fremdkapital = 0;
+		double fremdkapital = 0.0;
 		for(int i=0; i<holeKreditListe().size(); i++){
 			Kredit kredit = holeKreditListe().get(i);
 			fremdkapital = fremdkapital + kredit.holeRestbetrag();
@@ -73,7 +74,7 @@ public class Unternehmenskette {
 	}
 	
 	public void entfernenKredit(Kredit kredit) {
-		if(kredit.holeRestbetrag() == 0){
+		if(kredit.holeRestbetrag() == 0.0){
 			kreditListe.remove(kredit);
 		}
 	}

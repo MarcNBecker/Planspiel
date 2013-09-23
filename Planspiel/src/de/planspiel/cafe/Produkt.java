@@ -2,13 +2,13 @@ package de.planspiel.cafe;
 
 public class Produkt {
 	
-	private Produkttypen name;
+	private Produkttyp name;
 	private double qualitaet;
 	private double preis;
 	private double ekpreis;
 	private int menge;
 	
-	public Produkt(Produkttypen name) {
+	public Produkt(Produkttyp name) {
 		this.name = name;
 		this.qualitaet = -1;
 		this.preis = -1;
@@ -23,7 +23,7 @@ public class Produkt {
 	 * @param ekpreis Double-Wert, der den Einkaufspreis angibt
 	 * @author Natalie
 	 */
-	public Produkt (Produkttypen name, double qualitaet, double ekpreis){
+	public Produkt (Produkttyp name, double qualitaet, double ekpreis){
 		this.name = name;
 		this.qualitaet = qualitaet;
 		this.preis = -1;
@@ -71,7 +71,7 @@ public class Produkt {
 	}
 	
 	
-	public Produkttypen holeName() {
+	public Produkttyp holeName() {
 		return this.name;
 	}
 	

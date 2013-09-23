@@ -28,7 +28,7 @@ public class Filiale {
 	 *            Menge, die von dem Produkttypen verkauft werden soll
 	 * @return Menge, die tatsächlich verkauft wird (z.B. bei Minderbestand)
 	 */
-	public int verkaufen(Produkttypen name, int menge) {
+	public int verkaufen(Produkttyp name, int menge) {
 		if (pruefenKundenprodukt(this.holeKette().holeLager()
 				.suchenProdukt(name))==true) {
 			Produkt lagerProdukt = this.holeKette().holeLager()

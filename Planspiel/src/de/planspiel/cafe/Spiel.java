@@ -7,17 +7,6 @@ public class Spiel {
 	public static void main(String[] args) {
 
 	}
-	
-	/*
-	 * Zufallszahl zwischen 0 und Grenzen mit zwei Nachkommastellen erzeugen - optional auch mit Untergrenze
-	 */
-	public static double generiereZufallszahl(int grenze){
-		double zufallszahl = Math.random()*grenze;
-		int zufallszahl100 = (int) zufallszahl * 100;
-		zufallszahl = zufallszahl100 / 100;
-		
-		return zufallszahl;
-	}
 
 	private static Spiel spiel;
 	private int rundenzahl;
@@ -33,6 +22,21 @@ public class Spiel {
 
 	public void spielen() {
 		// TODO
+	}
+	
+	public static Spiel holeSpiel(){
+		return spiel;
+	}
+	
+	/**
+	 * Zufallszahl zwischen 0 und Grenzen mit zwei Nachkommastellen erzeugen - optional auch mit Untergrenze
+	 */
+	public static double generierenZufallszahl(int grenze){
+		double zufallszahl = Math.random()*grenze;
+		int zufallszahl100 = (int) zufallszahl * 100;
+		zufallszahl = zufallszahl100 / 100;
+		
+		return zufallszahl;
 	}
 	
 	public int holeRundenzahl() {
@@ -54,8 +58,5 @@ public class Spiel {
 	public void hinzufuegenUnternehmenskette(Unternehmenskette kette) {
 		kettenListe.add(kette);
 	}
-	
-	public static Spiel holeSpiel(){
-		return spiel;
-	}
+
 }

@@ -28,18 +28,17 @@ public class Kredit {
 		zinssatz = aktuellerZinssatz;
 		laufzeit = aktuelleLaufzeit;
 		restbetrag = betrag;
-		tilgung = betrag / laufzeit;
+		tilgung = ((int) betrag / laufzeit) + 1.0;
 	}
 
 	/**
 	 * Tilgt den Kredit und verbucht die Kreditaufwendungen mit der Unternehmenskette
 	 */
 	public void tilgen() {
-		if (holeRestbetrag() > 0) {
-			holeKette().verbuchenKosten(Kostenverursacher.KREDIT, restbetrag * zinssatz);
+		if (holeRestbetrag() > 0.0) {
+			holeKette().verbuchenKosten(Kostenverursacher.KREDIT, holeRestbetrag() * holeZinssatz() + holeTilgung());
 			setzeRestbetrag(holeRestbetrag() - holeTilgung());
 		}
-		holeKette().entfernenKredit(this);
 	}
 	
 	public static double holeAktuellerZinssatz() {
@@ -84,6 +83,7 @@ public class Kredit {
 			this.restbetrag = restbetrag;
 		} else {
 			this.restbetrag = 0;
+			holeKette().entfernenKredit(this);
 		}
 	}
 
