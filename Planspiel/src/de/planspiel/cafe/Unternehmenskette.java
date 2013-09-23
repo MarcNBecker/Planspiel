@@ -10,14 +10,16 @@ public class Unternehmenskette {
 	private Lager lager;
 	private Vector<Kredit> kreditListe;
 	private double gehalt;
+	private double entlassungskosten;
 
 	public Unternehmenskette(String name){
 		this.name = name;
 		this.filialenListe = new Vector<Filiale>();
 		this.kreditListe = new Vector<Kredit>();
 		this.lager = new Lager();
-		this.kapital = 0; // TODO Start-Wert hier einpflegen!
-		this.gehalt = 0; // TODO Start-Wert ???
+		this.kapital = 0; // TODO Start-Wert
+		this.gehalt = 0; // TODO Start-Wert
+		this.entlassungskosten = 0; // TODO Start-Wert
 	}
 	
 	public void eroeffnenFiliale(Filiale filiale) {
@@ -36,7 +38,7 @@ public class Unternehmenskette {
 		// TODO
 	}
 	
-	public void verbuchenKosten(String kostenVerursacher, double betrag){
+	public void verbuchenKosten(Kostenverursacher verursacher, double betrag){
 		// TODO
 	}
 	
@@ -89,4 +91,11 @@ public class Unternehmenskette {
 		this.gehalt = gehalt;
 	}
 	
+	public void setzeEntlassungskosten(double entlassungskosten) {
+		this.entlassungskosten = entlassungskosten;
+	}
+	
+	public double holeEntlassungskosten() {
+		return entlassungskosten;
+	}
 }

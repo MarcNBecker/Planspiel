@@ -4,14 +4,7 @@ TODOS:
 
 Eher unabhängige Klassen:
 
-(done -> Zu klären sind die neuen Funktionen für die Unternehmenskette) - Kredit
-TODO ENUM FÜR DIE KOSTENVERURSACHER
-
-- Händler (TODO: Produktnamen in einem ENUM festhalten, so können die Produkte generiert werden ohne die Namen speziell festzulegen)
-
 - Kunde (außer Verbuchung des Umsatzes)
-
-(done -> der neue Konstruktor ist ein Vorschlag um die Angebotserzeugung des Händlers zu unterstützen) - Produkt  
 
 - Standort (wie werden Kunden erzeugt und beeinflusst?)
 

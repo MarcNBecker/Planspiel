@@ -1,5 +1,11 @@
 package de.planspiel.cafe;
 
+/**
+ * 
+ * Klasse zur Simulation von Krediten
+ * @author D059166
+ *
+ */
 public class Kredit {
 	
 	private static double aktuellerZinssatz = 0; // TODO sinnvoller Startwert
@@ -11,6 +17,11 @@ public class Kredit {
 	private double tilgung;
 	private int laufzeit;
 
+	/**
+	 * Beim Erstellen eines neuen Kredites werden die aktuellen Zinssätze und Laufzeiten, die für alle
+	 * @param kette Unternehmenskette, die den Kredit beantragt
+	 * @param betrag Betrag, des Kredits. Dieser darf das Verhältnis 3:1 von EK zu FK nicht übeschreiten
+	 */
 	public Kredit(Unternehmenskette kette, double betrag) {
 		this.kette = kette;
 		zinssatz = aktuellerZinssatz;
@@ -21,7 +32,7 @@ public class Kredit {
 
 	public void tilgen() {
 		if (holeRestbetrag() > 0) {
-			holeKette().verbuchenKosten("zins", restbetrag * zinssatz);
+			holeKette().verbuchenKosten(Kostenverursacher.KREDIT, restbetrag * zinssatz);
 			setzeRestbetrag(holeRestbetrag() - holeTilgung());
 		}
 		holeKette().entfernenKredit(this);
