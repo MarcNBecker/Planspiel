@@ -33,3 +33,4 @@ Marktanteil:
 Spiel:
 - public static Spiel spiel; Statisches Attribut vom Typ Spiel
 - getSpiel();
+- Attribut Händler-Liste?
