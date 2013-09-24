@@ -22,6 +22,21 @@ public class Haendler {
 		}
 	}
 	
+	/**
+	 * Sucht im vorhandenen Produktvektor nach dem angegebenen Produkt
+	 * @param name Produkttyp-Wert, der angibt welches Produkt gesucht wird
+	 * @return Null, falls das Produkt nicht vorhanden ist, ansonsten das gesuchte Produkt
+	 */
+	public Produkt suchenProdukt(Produkttyp name) {
+		for (int i = 0; i < produktListe.size(); i++){
+			if (produktListe.get(i).holeName() == name){
+				return produktListe.get(i);
+			}
+		}
+		//falls Produkt nicht vorhanden
+		return null;
+	}
+	
 	public Vector<Produkt> holeProduktListe() {
 		return produktListe;
 	}

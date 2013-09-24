@@ -28,18 +28,26 @@ public class Unternehmenskette {
 		this.filialenListe = new Vector<Filiale>();
 		this.reportListe = new Vector<Report>();
 		this.kreditListe = new Vector<Kredit>();
-		this.lager = new Lager();
+		this.lager = new Lager(this);
 		this.kapital = 0; // TODO Start-Wert
 		this.gehalt = 0; // TODO Start-Wert
 		this.entlassungskosten = 0; // TODO Start-Wert
 	}
 	
-	public void eroeffnenFiliale(Filiale filiale) {
-		// TODO
+	/**
+	 * Erzeugt ein neues Filale-Objekt und gibt dieses an den Standort weiter
+	 * @param standort Standort an dem das Filialeobjekt erzeugt werden soll
+	 */
+	public void eroeffnenFiliale(Standort standort) {
+		Filiale neueFiliale = new Filiale(standort, this);
+		hinzufuegenFiliale(neueFiliale);
 	}
 	
 	public void schlieﬂenFiliale(Filiale filiale) {
-		// TODO
+		if(holeFilialenListe().contains(filiale)){
+			holeFilialenListe().remove(filiale);
+			filiale.holeStandort().entfernenFiliale(filiale);
+		}
 	}
 	
 	/**
@@ -84,7 +92,7 @@ public class Unternehmenskette {
 	}
 	
 	public void berechnenFilialKosten() {
-		// TODO
+		
 	}
 	
 	public int holeAnzahlFilialen(){
