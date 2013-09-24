@@ -11,6 +11,7 @@ public class Spiel {
 	private static Spiel spiel;
 	private int rundenzahl;
 	private Vector<Standort> standortListe;
+	private Vector<Haendler> haendlerListe;
 	private Vector<Unternehmenskette> kettenListe;
 	
 	public Spiel(int rundenzahl) {
@@ -51,6 +52,14 @@ public class Spiel {
 		standortListe.add(standort);
 	}
 
+	public Vector<Haendler> holeHaendlerListe() {
+		return haendlerListe;
+	}
+	
+	public void hinzufuegenHaendler(Haendler haendler) {
+		haendlerListe.add(haendler);
+	}
+	
 	public Vector<Unternehmenskette> holeKettenListe() {
 		return kettenListe;
 	}
