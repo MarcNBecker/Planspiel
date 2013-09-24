@@ -5,7 +5,7 @@ import java.util.Vector;
 /**
  * Klasse zur Simulation der Unternehmenskette.
  * Diese ist die oberste Einheit eines Spielers und ist direkt dem Spiel untergeordnet.
- * @author D059166
+ * @author Marc Becker
  *
  */
 public class Unternehmenskette {
@@ -43,6 +43,10 @@ public class Unternehmenskette {
 		hinzufuegenFiliale(neueFiliale);
 	}
 	
+	/**
+	 * Entfernt eine Filiale vom Standort und der Unternehmenskette
+	 * @param filiale Filiale, die geschlossen werden soll
+	 */
 	public void schließenFiliale(Filiale filiale) {
 		if(holeFilialenListe().contains(filiale)){
 			holeFilialenListe().remove(filiale);
@@ -81,8 +85,12 @@ public class Unternehmenskette {
 		}
 	}
 	
+	/**
+	 * Entfernt einen Kredit vom Unternehmen
+	 * @param kredit
+	 */
 	public void entfernenKredit(Kredit kredit) {
-		if(kredit.holeRestbetrag() == 0.0){
+		if(kredit != null && kredit.holeRestbetrag() == 0.0){
 			kreditListe.remove(kredit);
 		}
 	}
@@ -96,22 +104,34 @@ public class Unternehmenskette {
 	}
 	
 	public void berechnenFilialKosten() {
-		
+		// TODO
 	}
 	
+	/**
+	 * @return Anzahl der Filialen des Unternehmens
+	 */
 	public int holeAnzahlFilialen(){
 		return filialenListe.size();
 	}
 	
+	/**
+	 * @return Name der Unternehmenskette
+	 */
 	public String holeName() {
 		return name;
 	}
 	
-	
+	/**
+	 * @return Kapital der Unternehmenskette
+	 */
 	public double holeKapital() {
 		return kapital;
 	}
 	
+	/**
+	 * Setzt das Kapital der Unternehmenskette neu
+	 * @param kapital
+	 */
 	public void setzeKapital(double kapital) {
 		if(kapital >= 0) {
 			this.kapital = kapital;
@@ -120,50 +140,94 @@ public class Unternehmenskette {
 		}
 	}
 	
+	/**
+	 * @return Liste aller Filialen des Unternehmens
+	 */
 	public Vector<Filiale> holeFilialenListe() {
 		return filialenListe;
 	}
 	
+	/**
+	 * Fügt eine Filiale zum Unternehmen hinzu
+	 * @param filiale Filiale ungleich null
+	 */
 	public void hinzufuegenFiliale(Filiale filiale) {
-		filialenListe.add(filiale);
+		if(filiale != null) {
+			filialenListe.add(filiale);
+		}
 	}
 	
+	/**
+	 * @return Liste aller Reports des Unternehmens
+	 */
 	public Vector<Report> holeReportListe() {
 		return reportListe;
 	}
 	
+	/**
+	 * Fügt einen neuen Report hinzu
+	 * @param report Report ungleich null
+	 */
 	public void hinzufuegenReport(Report report) {
-		reportListe.add(report);
+		if(report != null) {
+			reportListe.add(report);
+		}
 	}
 	
+	/**
+	 * @return Gibt das Lager zurück
+	 */
 	public Lager holeLager() {
 		return lager;
 	}
 	
+	/**
+	 * @return Gibt eine Liste aller Kredite zurück
+	 */
 	public Vector<Kredit> holeKreditListe() {
 		return kreditListe;
 	}
 	
+	/**
+	 * Fügt einen Kredit der Kreditliste hinzu
+	 * @param kredit Kredit ungleich null
+	 */
 	public void hinzufuegenKredit(Kredit kredit) {
-		kreditListe.add(kredit);
+		if(kredit != null) {
+			kreditListe.add(kredit);
+		}
 	}
 	
+	/**
+	 * @return Mitarbeitergehalt
+	 */
 	public double holeGehalt() {
 		return gehalt;
 	}
 	
+	/**
+	 * Setzt das Mitarbeitergehalt
+	 * @param gehalt Gehalt größer gleich 0
+	 */
 	public void setzeGehalt(double gehalt) {
 		if(gehalt >= 0) {
 			this.gehalt = gehalt;
 		}
 	}
 	
+	/**
+	 * Setzt die Kosten zur Entlassung eines Mitarbeiters
+	 * @param entlassungskosten Kosten größer gleich 0
+	 */
 	public void setzeEntlassungskosten(double entlassungskosten) {
 		if(entlassungskosten >= 0) {
 			this.entlassungskosten = entlassungskosten;
 		}
 	}
 	
+	/**
+	 * @return Entlassungskosten
+	 */
 	public double holeEntlassungskosten() {
 		return entlassungskosten;
 	}
