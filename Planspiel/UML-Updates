@@ -1,2 +1,10 @@
 Standort
 - Konstruktor anteilFilialverkauf wieder wegnehmen
+
+Kunde:
+- private Standort standort; neues Attribut
+- private Praeferenz praeferenz; der Typ ist anders
+- public Kunde(Standort standort, Praeferenz praeferenz); Parameter hinzugefügt
+
+Praeferenz:
+-> neues ENUM
