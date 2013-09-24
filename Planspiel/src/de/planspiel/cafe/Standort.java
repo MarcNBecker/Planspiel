@@ -82,15 +82,32 @@ public class Standort {
 		return filialenListe;
 	}
 	
+	/**
+	 * Fügt eine Filiale zum Standort hinzu und verbucht die passenden Kosten mit der Unternehmenskette
+	 * @param filiale neue Filiale
+	 */
 	public void hinzufuegenFiliale(Filiale filiale){
-		// TODO ??
+		Unternehmenskette kette = filiale.holeKette();
+		kette.verbuchenKosten(Kostenverursacher.FILIALE_ANSCHAFFUNG, holeStartFilialkosten());
 		filialenListe.add(filiale);
 	}
 	
+	
+	public void entfernenFiliale(Filiale filiale) {
+		
+	}
+	/**
+	 * Gibt die Kosten zurück, die zum eröffnen einer neuen Filiale benötigt werden
+	 * @return Kosten zur Eröffnung
+	 */
 	public double holeStartFilialkosten() {
 		return startFilialkosten;
 	}
 	
+	/**
+	 * Setzt die Kosten zur Eröffnung einer Filiale
+	 * @param startFilialkosten neue Kosten
+	 */
 	public void setzeStartFilialkosten(double startFilialkosten) {
 		this.startFilialkosten = startFilialkosten;
 	}

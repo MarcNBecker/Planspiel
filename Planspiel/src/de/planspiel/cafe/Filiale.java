@@ -12,6 +12,7 @@ public class Filiale {
 		this.kette = kette;
 		this.mitarbeiter = 0;
 		this.freieKapazitaet = 0;
+		standort.hinzufuegenFiliale(this);
 	}
 	
 
