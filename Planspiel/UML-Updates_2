@@ -1,7 +1,8 @@
-Lager:
-- privates Attribut Unternehmenskette mit getter/setter
-- Konstruktor bekommt Attribut Unternehmenskette
+Neues Enum Ertragsverursacher
+
+Unternehmenskette:
+- neue Methode public void verbuchenErtrag(Ertragsverursacher verursacher, double betrag);
 
 Standort:
-- neue Methode public void entfernenFiliale(Filiale filiale)
-
+- neues Attribut double anteilFilialverkauf mit getter/setter
+- neues Attribut im Konstruktor anteilFilialverkauf

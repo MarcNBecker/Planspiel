@@ -13,6 +13,7 @@ public class Standort {
 	private double laufendeFilialkosten;
 	private Vector<Filiale> filialenListe;
 	private double startFilialkosten;
+	private double anteilFilialverkauf;
 	private int minKunden; //Anzahl der zu bedienenden Kunden ab einem Mitarbeiter
 	private int maxKunden; //Anzahl der zu bedienenden Kunden ab maxMitarbeiter Mitarbeiter
 	private int maxMitarbeiter;
@@ -22,12 +23,13 @@ public class Standort {
 		this.filialenListe = new Vector<Filiale>();
 	}
 	
-	public Standort(double laufendeFilialkosten, double startFilialkosten, int minKunden, int maxKunden, int maxMitarbeiter){
+	public Standort(double laufendeFilialkosten, double startFilialkosten, double anteilFilialverkauf, int minKunden, int maxKunden, int maxMitarbeiter){
 		this();
-		this.laufendeFilialkosten = laufendeFilialkosten;
-		this.startFilialkosten = startFilialkosten;
-		this.minKunden = minKunden;
-		this.maxKunden = maxKunden;
+		setzeLaufendeFilialkosten(laufendeFilialkosten);
+		setzeStartFilialkosten(startFilialkosten);
+		setzeAnteilFilialverkauf(anteilFilialverkauf);
+		setzeMinKunden(minKunden);
+		setzeMaxKunden(maxKunden);
 		this.maxMitarbeiter = maxMitarbeiter;
 	}
 	
@@ -94,7 +96,10 @@ public class Standort {
 	
 	
 	public void entfernenFiliale(Filiale filiale) {
-		
+		if(holeFilialenListe().contains(filiale)){
+			holeFilialenListe().remove(filiale);
+			filiale.holeKette().verbuchenErtrag(Ertragsverursacher.FILIALE_VERKAUF, holeAnteilFilialverkauf() * holeStartFilialkosten());
+		}
 	}
 	/**
 	 * Gibt die Kosten zurück, die zum eröffnen einer neuen Filiale benötigt werden
@@ -110,6 +115,18 @@ public class Standort {
 	 */
 	public void setzeStartFilialkosten(double startFilialkosten) {
 		this.startFilialkosten = startFilialkosten;
+	}
+	
+	public double holeAnteilFilialverkauf() {
+		return anteilFilialverkauf;
+	}
+	
+	public void setzeAnteilFilialverkauf(double anteilFilialverkauf) {
+		if (anteilFilialverkauf <= 1 && anteilFilialverkauf >= 0){
+			this.anteilFilialverkauf = anteilFilialverkauf;
+		} else {
+			this.anteilFilialverkauf = 0;
+		}
 	}
 	
 	public int holeMinKunden() {

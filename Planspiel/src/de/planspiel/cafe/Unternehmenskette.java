@@ -91,6 +91,10 @@ public class Unternehmenskette {
 		// TODO
 	}
 	
+	public void verbuchenErtrag(Ertragsverursacher verursacher, double betrag){
+		// TODO
+	}
+	
 	public void berechnenFilialKosten() {
 		
 	}
