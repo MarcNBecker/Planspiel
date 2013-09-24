@@ -97,11 +97,11 @@ public class Unternehmenskette {
 	}
 	
 	public void verbuchenKosten(Kostenverursacher verursacher, double betrag){
-		// TODO
+		// TODO WICHTIG MIT KAPITAL UND REPORT VERBUCHEN!
 	}
 	
 	public void verbuchenErtrag(Ertragsverursacher verursacher, double betrag){
-		// TODO
+		// TODO WICHTIG MIT KAPITAL UND REPORT VERBUCHEN!
 	}
 	
 	public void berechnenFilialKosten() {

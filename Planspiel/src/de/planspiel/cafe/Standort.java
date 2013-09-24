@@ -35,11 +35,11 @@ public class Standort {
 	 * @param maxKunden Kunden, die von maxMitarbeiter Mitarbeiter bedient werden können
 	 * @param maxMitarbeiter Mitarbeiteranzahl, ab der sich zusätzliche Mitarbeiter nicht mehr lohnen
 	 */
-	public Standort(double laufendeFilialkosten, double startFilialkosten, double anteilFilialverkauf, int minKunden, int maxKunden, int maxMitarbeiter){
+	public Standort(double laufendeFilialkosten, double startFilialkosten, int minKunden, int maxKunden, int maxMitarbeiter){
 		this();
 		setzeLaufendeFilialkosten(laufendeFilialkosten);
 		setzeStartFilialkosten(startFilialkosten);
-		setzeAnteilFilialverkauf(anteilFilialverkauf);
+		setzeAnteilFilialverkauf(0.5);
 		setzeMinKunden(minKunden);
 		setzeMaxKunden(maxKunden);
 		setzeMaxMitarbeiter(maxMitarbeiter);

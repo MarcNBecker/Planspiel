@@ -1,10 +1,2 @@
-Unternehmenskette:
-- private hinzufuegenKredit
-- private hinzufuegenFiliale
-
-Lager:
-- getter für Kette
-- private hinzufuegenProdukt
-
-Filiale:
-- void verkaufen()
+Standort
+- Konstruktor anteilFilialverkauf wieder wegnehmen
