@@ -32,12 +32,11 @@ public class Filiale {
 	 *            Produkttyp, der verkauft werden soll
 	 * @param menge
 	 *            Menge, die von dem Produkttypen verkauft werden soll
-	 * @return Menge, die tatsächlich verkauft wird (z.B. bei Minderbestand)
 	 */
-	public int verkaufen(Produkttyp name, int menge) {
+	public void verkaufen(Produkttyp name, int menge) {
 		Produkt lagerProdukt = this.holeKette().holeLager().auslagern(name, menge);
-		// TODO kette.verbuchenUmsatz();
-		return lagerProdukt.holeMenge();
+		holeKette().verbuchenErtrag(Ertragsverursacher.UMSATZERLOESE, lagerProdukt.holeMenge() * lagerProdukt.holePreis());
+		setzeFreieKapazitaet(holeFreieKapazitaet() - 1);
 	}
 
 	/**

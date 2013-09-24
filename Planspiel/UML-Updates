@@ -1,1 +1,10 @@
-DONE
+Unternehmenskette:
+- private hinzufuegenKredit
+- private hinzufuegenFiliale
+
+Lager:
+- getter für Kette
+- private hinzufuegenProdukt
+
+Filiale:
+- void verkaufen()

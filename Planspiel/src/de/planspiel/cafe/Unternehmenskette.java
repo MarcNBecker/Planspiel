@@ -151,7 +151,7 @@ public class Unternehmenskette {
 	 * Fügt eine Filiale zum Unternehmen hinzu
 	 * @param filiale Filiale ungleich null
 	 */
-	public void hinzufuegenFiliale(Filiale filiale) {
+	private void hinzufuegenFiliale(Filiale filiale) {
 		if(filiale != null) {
 			filialenListe.add(filiale);
 		}
@@ -192,7 +192,7 @@ public class Unternehmenskette {
 	 * Fügt einen Kredit der Kreditliste hinzu
 	 * @param kredit Kredit ungleich null
 	 */
-	public void hinzufuegenKredit(Kredit kredit) {
+	private void hinzufuegenKredit(Kredit kredit) {
 		if(kredit != null) {
 			kreditListe.add(kredit);
 		}
