@@ -49,7 +49,7 @@ public class Produkt {
 	
 	/**
 	 * Verschmilzt das bereits vorhandene Produkt mit dem Übergebenen, berechnet neue Durchschnittsqualitaet,
-	 * Durchschnittspreis und Gesamtmenge
+	 * Durchschnittsekpreis und Gesamtmenge und übernimmt Verkaufspreis vom aufrufenden Produkt
 	 * @param produkt Produkt, das mit dem Existierenden verschmolzen wird
 	 * @return null falls es sich nicht um gleichnamige Produkte handet, Produkt falls es sich um die gleichen Produkte handelt 
 	 * @author Natalie
@@ -60,7 +60,7 @@ public class Produkt {
 		else { //Else-Zweig nicht zwingend notwendig
 			//Berechne Gesamtmenge, neue durchschnittliche Qualität und neuen durchschnittlichen EkPreis, übernimm Werte 
 			int gesamtmenge = this.holeMenge() + produkt.holeMenge();
-			double ekPreisDurchschnitt = (this.holePreis() * (double) this.holeMenge() + produkt.holePreis() * (double) produkt.holeMenge()) / (double) (gesamtmenge);
+			double ekPreisDurchschnitt = (this.holeEkpreis() * (double) this.holeMenge() + produkt.holeEkpreis() * (double) produkt.holeMenge()) / (double) (gesamtmenge);
 			double qualitaetDurchschnitt = (this.holeQualitaet() * (double) this.holeMenge() + produkt.holeQualitaet() * (double) produkt.holeMenge()) / (double) (gesamtmenge);
 			
 			this.setzeQualitaet(qualitaetDurchschnitt);
