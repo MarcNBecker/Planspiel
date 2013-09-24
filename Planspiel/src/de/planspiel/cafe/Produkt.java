@@ -41,6 +41,19 @@ public class Produkt {
 		setzeMenge(0);
 	}
 	
+	/**
+	 * Konstruktor für Produkte, die von der Entscheidung erzeugt werden und nur Name und Menge besitzen
+	 * @param name Produkttyp-Wert, der angibt welches Produkt es ist
+	 * @param menge int-Wert, der die gewünschte Menge angibt
+	 */
+	public Produkt (Produkttyp name, int menge){
+		this.name = name;
+		setzeQualitaet(0);
+		setzePreis(0);
+		setzeEkpreis(0);
+		setzeMenge(menge);
+	}
+	
 	/** 
 	 * Vergleicht ein übergebenes Produkt mit sich selbst (Obergrenze Preis, Untergrenze Qualität)
 	 * @param produkt Produkt, dessen Name, Qualitaet und Preis mit sich selbst verglichen werden
@@ -59,7 +72,7 @@ public class Produkt {
 	
 	/**
 	 * Verschmilzt das bereits vorhandene Produkt mit dem Übergebenen, berechnet neue Durchschnittsqualitaet,
-	 * Durchschnittspreis und Gesamtmenge
+	 * Durchschnittsekpreis und Gesamtmenge und übernimmt Verkaufspreis vom aufrufenden Produkt
 	 * @param produkt Produkt, das mit dem Existierenden verschmolzen wird
 	 * @return null falls es sich nicht um gleichnamige Produkte handet, Produkt falls es sich um die gleichen Produkte handelt 
 	 * @author Natalie
@@ -70,7 +83,7 @@ public class Produkt {
 		else { //Else-Zweig nicht zwingend notwendig
 			//Berechne Gesamtmenge, neue durchschnittliche Qualität und neuen durchschnittlichen EkPreis, übernimm Werte 
 			int gesamtmenge = this.holeMenge() + produkt.holeMenge();
-			double ekPreisDurchschnitt = (this.holePreis() * (double) this.holeMenge() + produkt.holePreis() * (double) produkt.holeMenge()) / (double) (gesamtmenge);
+			double ekPreisDurchschnitt = (this.holeEkpreis() * (double) this.holeMenge() + produkt.holeEkpreis() * (double) produkt.holeMenge()) / (double) (gesamtmenge);
 			double qualitaetDurchschnitt = (this.holeQualitaet() * (double) this.holeMenge() + produkt.holeQualitaet() * (double) produkt.holeMenge()) / (double) (gesamtmenge);
 			
 			this.setzeQualitaet(qualitaetDurchschnitt);
