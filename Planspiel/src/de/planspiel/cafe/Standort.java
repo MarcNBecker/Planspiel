@@ -126,18 +126,19 @@ public class Standort {
 	
 	/**
 	 * Fügt eine Filiale zum Standort hinzu und verbucht die passenden Kosten mit der Unternehmenskette
+	 * Diese Methode sollte nicht direkt aufgerufen werden!
 	 * @param filiale neue Filiale
 	 */
 	public void hinzufuegenFiliale(Filiale filiale){
 		if (filiale != null) {
-			Unternehmenskette kette = filiale.holeKette();
-			kette.verbuchenKosten(Kostenverursacher.FILIALE_ANSCHAFFUNG, holeStartFilialkosten());
-			filialenListe.add(filiale);
+			filiale.holeKette().verbuchenKosten(Kostenverursacher.FILIALE_ANSCHAFFUNG, holeStartFilialkosten());
+			holeFilialenListe().add(filiale);
 		}
 	}
 	
 	/**
 	 * Entfernt eine Filiale aus dem Standort und verbucht den Verkaufsertrag mit der Unternehmenskette
+	 * Diese Methode sollte nicht direkt aufgerufen werden!
 	 * @param filiale
 	 */
 	public void entfernenFiliale(Filiale filiale) {

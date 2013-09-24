@@ -39,16 +39,17 @@ public class Unternehmenskette {
 	 * @param standort Standort an dem das Filialeobjekt erzeugt werden soll
 	 */
 	public void eroeffnenFiliale(Standort standort) {
+		//Der Konstrukter von Filiale ruft die entsprechende Standort-Methode auf
 		Filiale neueFiliale = new Filiale(standort, this);
 		hinzufuegenFiliale(neueFiliale);
 	}
 	
 	/**
-	 * Entfernt eine Filiale vom Standort und der Unternehmenskette
+	 * Entfernt eine Filiale ohne Mitarbeiter vom Standort und der Unternehmenskette
 	 * @param filiale Filiale, die geschlossen werden soll
 	 */
 	public void schlieﬂenFiliale(Filiale filiale) {
-		if(holeFilialenListe().contains(filiale)){
+		if(holeFilialenListe().contains(filiale) && filiale.holeMitarbeiter() == 0){
 			holeFilialenListe().remove(filiale);
 			filiale.holeStandort().entfernenFiliale(filiale);
 		}
