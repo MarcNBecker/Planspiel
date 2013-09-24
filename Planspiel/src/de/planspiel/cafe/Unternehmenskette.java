@@ -29,9 +29,9 @@ public class Unternehmenskette {
 		this.reportListe = new Vector<Report>();
 		this.kreditListe = new Vector<Kredit>();
 		this.lager = new Lager(this);
-		this.kapital = 0; // TODO Start-Wert
-		this.gehalt = 0; // TODO Start-Wert
-		this.entlassungskosten = 0; // TODO Start-Wert
+		setzeKapital(0); // TODO Start-Wert
+		setzeGehalt(0); // TODO Start-Wert
+		setzeEntlassungskosten(0); // TODO Start-Wert
 	}
 	
 	/**
@@ -113,7 +113,11 @@ public class Unternehmenskette {
 	}
 	
 	public void setzeKapital(double kapital) {
-		this.kapital = kapital;
+		if(kapital >= 0) {
+			this.kapital = kapital;
+		} else {
+			// TODO Was passiert wenn das Kapital unter 0 fällt?
+		}
 	}
 	
 	public Vector<Filiale> holeFilialenListe() {
@@ -149,11 +153,15 @@ public class Unternehmenskette {
 	}
 	
 	public void setzeGehalt(double gehalt) {
-		this.gehalt = gehalt;
+		if(gehalt >= 0) {
+			this.gehalt = gehalt;
+		}
 	}
 	
 	public void setzeEntlassungskosten(double entlassungskosten) {
-		this.entlassungskosten = entlassungskosten;
+		if(entlassungskosten >= 0) {
+			this.entlassungskosten = entlassungskosten;
+		}
 	}
 	
 	public double holeEntlassungskosten() {

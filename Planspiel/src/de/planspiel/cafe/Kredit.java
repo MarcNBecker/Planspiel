@@ -48,6 +48,9 @@ public class Kredit {
 		}
 	}
 
+	/**
+	 * @return Aktueller globaler Zinssatz
+	 */
 	public static double holeAktuellerZinssatz() {
 		return aktuellerZinssatz;
 	}
@@ -61,7 +64,10 @@ public class Kredit {
 			Kredit.aktuellerZinssatz = aktuellerZinssatz;
 		}
 	}
-
+	
+	/**
+	 * @return Aktuelle globale Kreditlaufzeit
+	 */
 	public static int holeAktuelleLaufzeit() {
 		return aktuelleLaufzeit;
 	}
@@ -75,11 +81,17 @@ public class Kredit {
 			Kredit.aktuelleLaufzeit = aktuelleLaufzeit;
 		}
 	}
-
+	
+	/**
+	 * @return Unternehmenskette die den Kredit beantragt hat
+	 */
 	public Unternehmenskette holeKette() {
 		return kette;
 	}
-
+	
+	/**
+	 * @return Restbetrag des Kredits, der noch getilgt werden muss
+	 */
 	public double holeRestbetrag() {
 		return restbetrag;
 	}
@@ -97,15 +109,24 @@ public class Kredit {
 			holeKette().entfernenKredit(this);
 		}
 	}
-
+	
+	/**
+	 * @return Zinssatz dieses Kredites
+	 */
 	public double holeZinssatz() {
 		return zinssatz;
 	}
 
+	/**
+	 * @return Tilgung dieses Kredites
+	 */
 	public double holeTilgung() {
 		return tilgung;
 	}
-
+	
+	/**
+	 * @return Laufzeit dieses Kredites
+	 */
 	public int holeLaufzeit() {
 		return laufzeit;
 	}

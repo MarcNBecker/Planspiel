@@ -2,12 +2,21 @@ package de.planspiel.cafe;
 
 import java.util.Vector;
 
+/**
+ * Klasse zur Organisation des Händlers
+ * @author Natalie
+ *
+ */
 public class Haendler {
 	
 	private Vector<Produkt> produktListe;
 	
+	/**
+	 * Erzeugt einen neuen Händler und generiert direkt ein erstes Angebot
+	 */
 	public Haendler() {
 		produktListe = new Vector<Produkt>();
+		generierenAngebot();
 	}
 	
 	/**
@@ -37,6 +46,9 @@ public class Haendler {
 		return null;
 	}
 	
+	/**
+	 * @return Produktliste des Händlers
+	 */
 	public Vector<Produkt> holeProduktListe() {
 		return produktListe;
 	}

@@ -2,11 +2,20 @@ package de.planspiel.cafe;
 
 import java.util.Vector;
 
+/**
+ * Klasse zur Organisation der Produktbestände eines Unternehmens
+ * @author Natalie
+ *
+ */
 public class Lager {
 	
 	private Vector<Produkt> produktListe;
 	private Unternehmenskette kette;
 	
+	/**
+	 * Erzeugt eines neues Lager, welches zu einer bestimmten Unternehmenskette gehört
+	 * @param kette
+	 */
 	public Lager(Unternehmenskette kette) {
 		produktListe = new Vector<Produkt>();
 		this.kette = kette;
@@ -93,12 +102,21 @@ public class Lager {
 		}		
 	}
 	
+	/**
+	 * @return Gibt den Lagerbestand, zurück
+	 */
 	public Vector<Produkt> holeProduktliste() {
 		return this.produktListe;
 	}
 	
+	/**
+	 * Fügt ein neues Produkt hinzu
+	 * @param produkt Produkt, dass nicht null ist
+	 */
 	public void hinzufuegenProdukt(Produkt produkt) {
-		this.produktListe.add(produkt);
+		if(produkt != null) {
+			this.produktListe.add(produkt);
+		}
 	}
 		
 }

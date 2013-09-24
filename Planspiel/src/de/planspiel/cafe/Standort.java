@@ -30,7 +30,7 @@ public class Standort {
 		setzeAnteilFilialverkauf(anteilFilialverkauf);
 		setzeMinKunden(minKunden);
 		setzeMaxKunden(maxKunden);
-		this.maxMitarbeiter = maxMitarbeiter;
+		setzeMaxMitarbeiter(maxMitarbeiter);
 	}
 	
 	public void generierenKundenliste() {
@@ -77,7 +77,9 @@ public class Standort {
 	}
 	
 	public void setzeLaufendeFilialkosten(double laufendeFilialkosten) {
-		this.laufendeFilialkosten = laufendeFilialkosten;
+		if (laufendeFilialkosten >= 0) {
+			this.laufendeFilialkosten = laufendeFilialkosten;
+		}
 	}
 	
 	public Vector<Filiale> holeFilialenListe() {
@@ -114,7 +116,9 @@ public class Standort {
 	 * @param startFilialkosten neue Kosten
 	 */
 	public void setzeStartFilialkosten(double startFilialkosten) {
-		this.startFilialkosten = startFilialkosten;
+		if(startFilialkosten >= 0) {
+			this.startFilialkosten = startFilialkosten;
+		}
 	}
 	
 	public double holeAnteilFilialverkauf() {
@@ -134,7 +138,9 @@ public class Standort {
 	}
 	
 	public void setzeMinKunden(int minKunden) {
-		this.minKunden = minKunden;
+		if(minKunden > 0) {
+			this.minKunden = minKunden;
+		}
 	}
 	
 	public int holeMaxKunden() {
@@ -142,7 +148,9 @@ public class Standort {
 	}
 	
 	public void setzeMaxKunden(int maxKunden) {
-		this.maxKunden = maxKunden;
+		if (maxKunden > holeMinKunden()) {
+			this.maxKunden = maxKunden;
+		}
 	}
 	
 	public int holeMaxMitarbeiter() {
@@ -150,6 +158,8 @@ public class Standort {
 	}
 	
 	public void setzeMaxMitarbeiter(int maxMitarbeiter) {
-		this.maxMitarbeiter = maxMitarbeiter;
+		if(maxMitarbeiter > 1) {
+			this.maxMitarbeiter = maxMitarbeiter;
+		}
 	}
 }
