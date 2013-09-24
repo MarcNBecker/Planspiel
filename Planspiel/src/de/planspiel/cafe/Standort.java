@@ -13,28 +13,49 @@ public class Standort {
 	private double laufendeFilialkosten;
 	private Vector<Filiale> filialenListe;
 	private double startFilialkosten;
+	private double anteilFilialverkauf;
 	private int minKunden; //Anzahl der zu bedienenden Kunden ab einem Mitarbeiter
 	private int maxKunden; //Anzahl der zu bedienenden Kunden ab maxMitarbeiter Mitarbeiter
 	private int maxMitarbeiter;
 	
+	/**
+	 * Erzeugt einen undefinierten Standort
+	 */
 	public Standort(){
 		this.kundenkreis = new Vector<Kunde>();
 		this.filialenListe = new Vector<Filiale>();
 	}
 	
+	/**
+	 * Erzeugt einen neuen Standort
+	 * @param laufendeFilialkosten
+	 * @param startFilialkosten
+	 * @param anteilFilialverkauf Prozentualer Anteil an den startFilialkosten, die man bei Verkauf einer Filiale zurückbekommt
+	 * @param minKunden Kunden, die von einen Mitarbeiter bedient werden können
+	 * @param maxKunden Kunden, die von maxMitarbeiter Mitarbeiter bedient werden können
+	 * @param maxMitarbeiter Mitarbeiteranzahl, ab der sich zusätzliche Mitarbeiter nicht mehr lohnen
+	 */
 	public Standort(double laufendeFilialkosten, double startFilialkosten, int minKunden, int maxKunden, int maxMitarbeiter){
 		this();
-		this.laufendeFilialkosten = laufendeFilialkosten;
-		this.startFilialkosten = startFilialkosten;
-		this.minKunden = minKunden;
-		this.maxKunden = maxKunden;
-		this.maxMitarbeiter = maxMitarbeiter;
+		setzeLaufendeFilialkosten(laufendeFilialkosten);
+		setzeStartFilialkosten(startFilialkosten);
+		setzeAnteilFilialverkauf(0.5);
+		setzeMinKunden(minKunden);
+		setzeMaxKunden(maxKunden);
+		setzeMaxMitarbeiter(maxMitarbeiter);
 	}
 	
+	/**
+	 * 
+	 */
 	public void generierenKundenliste() {
 		// TODO
 	}
 	
+	/**
+	 * 
+	 * @param kette
+	 */
 	public void beeinflussenKunden(Unternehmenskette kette) {
 		// TODO
 	}
@@ -62,40 +83,71 @@ public class Standort {
 		}
 	}
 	
+	/**
+	 * @return Alle Kunden an diesem Standort
+	 */
 	public Vector<Kunde> holeKundenkreis() {
 		return kundenkreis;
 	}
 	
+	/**
+	 * Fügt dem Standort einen Kunden hinzu
+	 * @param kunde Kunde ungleich null
+	 */
 	public void hinzufuegenKunde(Kunde kunde) {
-		kundenkreis.add(kunde);
+		if(kunde != null) {
+			kundenkreis.add(kunde);
+		}
 	}
 	
+	/**
+	 * @return Gibt die laufenden Filialkosten zurück
+	 */
 	public double holeLaufendeFilialkosten() {
 		return laufendeFilialkosten;
 	}
 	
+	/**
+	 * Setzt die laufenden Filialkosten
+	 * @param laufendeFilialkosten Filialkosten größer gleich 0
+	 */
 	public void setzeLaufendeFilialkosten(double laufendeFilialkosten) {
-		this.laufendeFilialkosten = laufendeFilialkosten;
+		if (laufendeFilialkosten >= 0) {
+			this.laufendeFilialkosten = laufendeFilialkosten;
+		}
 	}
 	
+	/**
+	 * @return Gibt eine Liste aller Filialen am Standort zurück
+	 */
 	public Vector<Filiale> holeFilialenListe() {
 		return filialenListe;
 	}
 	
 	/**
 	 * Fügt eine Filiale zum Standort hinzu und verbucht die passenden Kosten mit der Unternehmenskette
+	 * Diese Methode sollte nicht direkt aufgerufen werden!
 	 * @param filiale neue Filiale
 	 */
 	public void hinzufuegenFiliale(Filiale filiale){
-		Unternehmenskette kette = filiale.holeKette();
-		kette.verbuchenKosten(Kostenverursacher.FILIALE_ANSCHAFFUNG, holeStartFilialkosten());
-		filialenListe.add(filiale);
+		if (filiale != null) {
+			filiale.holeKette().verbuchenKosten(Kostenverursacher.FILIALE_ANSCHAFFUNG, holeStartFilialkosten());
+			holeFilialenListe().add(filiale);
+		}
 	}
 	
-	
+	/**
+	 * Entfernt eine Filiale aus dem Standort und verbucht den Verkaufsertrag mit der Unternehmenskette
+	 * Diese Methode sollte nicht direkt aufgerufen werden!
+	 * @param filiale
+	 */
 	public void entfernenFiliale(Filiale filiale) {
-		
+		if(holeFilialenListe().contains(filiale)){
+			holeFilialenListe().remove(filiale);
+			filiale.holeKette().verbuchenErtrag(Ertragsverursacher.FILIALE_VERKAUF, holeAnteilFilialverkauf() * holeStartFilialkosten());
+		}
 	}
+	
 	/**
 	 * Gibt die Kosten zurück, die zum eröffnen einer neuen Filiale benötigt werden
 	 * @return Kosten zur Eröffnung
@@ -109,30 +161,78 @@ public class Standort {
 	 * @param startFilialkosten neue Kosten
 	 */
 	public void setzeStartFilialkosten(double startFilialkosten) {
-		this.startFilialkosten = startFilialkosten;
+		if(startFilialkosten >= 0) {
+			this.startFilialkosten = startFilialkosten;
+		}
 	}
 	
+	/**
+	 * @return Gibt den prozentualen Anteil an den startFilialkosten zurück, den man beim Verkauf bekommt
+	 */
+	public double holeAnteilFilialverkauf() {
+		return anteilFilialverkauf;
+	}
+	
+	/**
+	 * Setzt den prozentualen Anteil an den startFilialksoten, den man beim Verkauf einer Filiale bekommt
+	 * @param anteilFilialverkauf Zwischen 0 und 1
+	 */
+	public void setzeAnteilFilialverkauf(double anteilFilialverkauf) {
+		if (anteilFilialverkauf <= 1 && anteilFilialverkauf >= 0){
+			this.anteilFilialverkauf = anteilFilialverkauf;
+		} else {
+			this.anteilFilialverkauf = 0;
+		}
+	}
+	
+	/**
+	 * @return Kundenanzahl, die von einem Mitarbeiter bedient werden kann
+	 */
 	public int holeMinKunden() {
 		return minKunden;
 	}
 	
+	/**
+	 * Setzt die Kundenanzahl, die von einem Mitarbeiter bedient werden kann
+	 * @param minKunden Kundenanzahl größer 0
+	 */
 	public void setzeMinKunden(int minKunden) {
-		this.minKunden = minKunden;
+		if(minKunden > 0) {
+			this.minKunden = minKunden;
+		}
 	}
 	
+	/**
+	 * @return Kundenanzahl, die von maxMitarbeiter Mitarbeiter bedient werden können
+	 */
 	public int holeMaxKunden() {
 		return maxKunden;
 	}
 	
+	/**
+	 * Setzt die Kundenanzahl, die von maxMitarbeiter Mitarbeiter bedient werden können
+	 * @param maxKunden Kundenanzahl größer als minKunden
+	 */
 	public void setzeMaxKunden(int maxKunden) {
-		this.maxKunden = maxKunden;
+		if (maxKunden > holeMinKunden()) {
+			this.maxKunden = maxKunden;
+		}
 	}
 	
+	/**
+	 * @return maximale Mitarbeiterzahl, die es sich lohnt einzustellen
+	 */
 	public int holeMaxMitarbeiter() {
 		return maxMitarbeiter;
 	}
 	
+	/**
+	 * Setzt die maximale Mitarbeiterzahl, bis zu der es sich lohnt einzustellen
+	 * @param maxMitarbeiter Maximale Mitarbeiteranzahl größer 1
+	 */
 	public void setzeMaxMitarbeiter(int maxMitarbeiter) {
-		this.maxMitarbeiter = maxMitarbeiter;
+		if(maxMitarbeiter > 1) {
+			this.maxMitarbeiter = maxMitarbeiter;
+		}
 	}
 }

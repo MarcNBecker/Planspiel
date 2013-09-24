@@ -42,7 +42,7 @@ public class Report {
 	 * Berechnet das Rundenergebnis, indem alle addierten Kosten von den
 	 * Umsatzerlösen abgezogen werden
 	 */
-	public void berechneRundenergebnis() {
+	public void berechnenRundenergebnis() {
 
 		if (this.holeRundenergebnis() == 0.0) {
 			double kosten = this.holeAnschaffungskosten()

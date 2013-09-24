@@ -1,7 +1,0 @@
-Lager:
-- privates Attribut Unternehmenskette mit getter/setter
-- Konstruktor bekommt Attribut Unternehmenskette
-
-Standort:
-- neue Methode public void entfernenFiliale(Filiale filiale)
-

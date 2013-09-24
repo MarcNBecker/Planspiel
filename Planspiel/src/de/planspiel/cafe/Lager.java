@@ -2,11 +2,20 @@ package de.planspiel.cafe;
 
 import java.util.Vector;
 
+/**
+ * Klasse zur Organisation der Produktbestände eines Unternehmens
+ * @author Natalie
+ *
+ */
 public class Lager {
 	
 	private Vector<Produkt> produktListe;
 	private Unternehmenskette kette;
 	
+	/**
+	 * Erzeugt eines neues Lager, welches zu einer bestimmten Unternehmenskette gehört
+	 * @param kette
+	 */
 	public Lager(Unternehmenskette kette) {
 		produktListe = new Vector<Produkt>();
 		this.kette = kette;
@@ -20,7 +29,7 @@ public class Lager {
 	public void einlagern(Produkt produkt) {
 		Produkt gesuchtesProdukt = suchenProdukt(produkt.holeName());
 		if (gesuchtesProdukt == null){ //Falls Produkt noch nicht vorhanden
-			produktListe.add(produkt);
+			hinzufuegenProdukt(produkt);
 		} else {
 			gesuchtesProdukt.verschmelzen(produkt);//Andernfalls schon vorhandenes Produkt mit neuem verschmelzen
 		}
@@ -61,9 +70,9 @@ public class Lager {
 	 * @author Natalie
 	 */
 	public Produkt suchenProdukt(Produkttyp name) {
-		for (int i = 0; i < produktListe.size(); i++){
-			if (produktListe.get(i).holeName() == name){
-				return produktListe.get(i);
+		for (int i = 0; i < holeProduktliste().size(); i++){
+			if (holeProduktliste().get(i).holeName() == name){
+				return holeProduktliste().get(i);
 			}
 		}
 		//falls Produkt nicht vorhanden
@@ -87,18 +96,33 @@ public class Lager {
 			einkaufProdukt.setzeEkpreis(vergleichProdukt.holeEkpreis());
 			einkaufProdukt.setzeQualitaet(vergleichProdukt.holeQualitaet());
 			//Rohstoffkosten verbuchen
-			kette.verbuchenKosten(Kostenverursacher.ROHSTOFF, (einkaufProdukt.holeMenge()*einkaufProdukt.holeEkpreis()));
+			holeKette().verbuchenKosten(Kostenverursacher.ROHSTOFF, (einkaufProdukt.holeMenge()*einkaufProdukt.holeEkpreis()));
 			//Pro Produkt einlagern
 			einlagern(einkaufProdukt);
 		}		
 	}
 	
+	/**
+	 * @return Gibt den Lagerbestand, zurück
+	 */
 	public Vector<Produkt> holeProduktliste() {
 		return this.produktListe;
 	}
 	
-	public void hinzufuegenProdukt(Produkt produkt) {
-		this.produktListe.add(produkt);
+	/**
+	 * Fügt ein neues Produkt hinzu
+	 * @param produkt Produkt, dass nicht null ist
+	 */
+	private void hinzufuegenProdukt(Produkt produkt) {
+		if(produkt != null) {
+			this.produktListe.add(produkt);
+		}
 	}
-		
+	
+	/**
+	 * @return Gibt die Kette des Lagers zurück
+	 */
+	public Unternehmenskette holeKette(){
+		return kette;
+	}
 }

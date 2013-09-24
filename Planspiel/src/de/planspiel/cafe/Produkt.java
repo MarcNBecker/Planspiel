@@ -1,5 +1,11 @@
 package de.planspiel.cafe;
 
+/**
+ * Klasse zur Organisation von Produkten
+ * Diese Klasse wird auch als Kommunikation zwischen Produkt-Verwaltern genutzt
+ * @author Natalie
+ *
+ */
 public class Produkt {
 	
 	private Produkttyp name;
@@ -8,12 +14,16 @@ public class Produkt {
 	private double ekpreis;
 	private int menge;
 	
+	/**
+	 * Erstellt ein Produkt anhand seines Produkttyps
+	 * @param name Produkttyp
+	 */
 	public Produkt(Produkttyp name) {
 		this.name = name;
-		this.qualitaet = -1;
-		this.preis = -1;
-		this.ekpreis = -1;
-		this.menge = 0;
+		setzeQualitaet(0);
+		setzePreis(0);
+		setzeEkpreis(0);
+		setzeMenge(0);
 	}
 	
 	/**
@@ -25,10 +35,10 @@ public class Produkt {
 	 */
 	public Produkt (Produkttyp name, double qualitaet, double ekpreis){
 		this.name = name;
-		this.qualitaet = qualitaet;
-		this.preis = -1;
-		this.ekpreis = ekpreis;
-		this.menge = 0;
+		setzeQualitaet(qualitaet);
+		setzePreis(0);
+		setzeEkpreis(ekpreis);
+		setzeMenge(0);
 	}
 	
 	/** 
@@ -70,43 +80,80 @@ public class Produkt {
 		}
 	}
 	
-	
+	/**
+	 * @return Produkttyp des Produkts
+	 */
 	public Produkttyp holeName() {
 		return this.name;
 	}
 	
+	/**
+	 * @return Qualität des Produkts
+	 */
 	public double holeQualitaet() {
 		return this.qualitaet;
 	}
 	
+	/**
+	 * @return Verkaufspreis des Produkts
+	 */
 	public double holePreis() {
 		return this.preis;
 	}
 	
+	/**
+	 * @return Einkaufspreis des Produkts
+	 */
 	public double holeEkpreis() {
 		return this.ekpreis;
 	}
 	
+	/**
+	 * @return Menge in der das Produkt vorliegt
+	 */
 	public int holeMenge() {
 		return this.menge;
 	}
 	
+	/**
+	 * Setzt die neue Qualität des Produktes
+	 * @param qualitaet Qualität zwischen 0 und 1
+	 */
 	public void setzeQualitaet(double qualitaet) {
-		this.qualitaet = qualitaet;
+		if(qualitaet >= 0 && qualitaet <= 1) {
+			this.qualitaet = qualitaet;
+		}
 	}
 	
+	/**
+	 * Setzt den neuen Verkaufspreis
+	 * @param preis Preis größer 0
+	 */
 	public void setzePreis(double preis) {
-		this.preis = preis;
+		if(preis >= 0){
+			this.preis = preis;
+		}
 	}
 	
+	/**
+	 * Setzt den neuen Einkaufspreis
+	 * @param ekpreis Preis größer 0
+	 */
 	public void setzeEkpreis(double ekpreis) {
-		this.ekpreis = ekpreis;
+		if(ekpreis >= 0){
+			this.ekpreis = ekpreis;
+		}
 	}
 	
+	/**
+	 * Setzt die neue Menge in der das Produkt vorliegt
+	 * @param menge Menge wird auf 0 gekappt, wenn sie kleiner als 0 ist.
+	 */
 	public void setzeMenge(int menge) {
 		//Negative Mengen sind nicht zulässig
-		if (menge < 0)
+		if (menge < 0) {
 			menge = 0;
+		}
 		this.menge = menge;
 	}
 }
