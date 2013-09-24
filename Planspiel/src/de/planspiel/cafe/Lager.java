@@ -68,6 +68,17 @@ public class Lager {
 		return null;
 	}
 	
+	public void einkaufen(Vector<Produkt> einkaufsliste, Haendler haendler){
+		//TODO Vector hat Namen und Mengen, wir müssen:
+		for (int i = 0; i < einkaufsliste.size(); i++){
+			haendler.sucheProdukt(einkaufsliste.get(i).holeName());
+		}
+		
+		//vom Haendler EKPreis und Qualitaet auslesen pro Produkt und im neuen Vektor speichern
+		//Rohstoffkosten pro Produkt verbuchen
+		//Pro Produkt einlagern
+	}
+	
 	public Vector<Produkt> holeProduktliste() {
 		return this.produktListe;
 	}
