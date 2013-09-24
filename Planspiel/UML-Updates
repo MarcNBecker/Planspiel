@@ -6,5 +6,8 @@ Kunde:
 - private Praeferenz praeferenz; der Typ ist anders
 - public Kunde(Standort standort, Praeferenz praeferenz); Parameter hinzugefügt
 
+Produkt:
+- neuer Konstruktor public Produkt ( Produkttyp name, int menge )
+
 Praeferenz:
 -> neues ENUM
