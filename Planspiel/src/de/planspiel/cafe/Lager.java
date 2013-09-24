@@ -5,9 +5,11 @@ import java.util.Vector;
 public class Lager {
 	
 	private Vector<Produkt> produktListe;
+	private Unternehmenskette kette;
 	
-	public Lager() {
+	public Lager(Unternehmenskette kette) {
 		produktListe = new Vector<Produkt>();
+		this.kette = kette;
 	}
 	
 	/**
@@ -68,15 +70,27 @@ public class Lager {
 		return null;
 	}
 	
+	/**
+	 * Übernimmt Daten der Entscheidung und kauft die gewünschten Rohstoffe beim Händler ein,
+	 * verbucht Kosten pro Rohstoff und lagert diesen ein!
+	 * @param einkaufsliste	Vector<Produkt>, der die Namen und die Mengen der gewünschten Produkte enthält
+	 * @param haendler Haendler-Objekt, das angibt bei welchem Händler gekauft wird
+	 * @author Natalie
+	 */
 	public void einkaufen(Vector<Produkt> einkaufsliste, Haendler haendler){
-		//TODO Vector hat Namen und Mengen, wir müssen:
+		Produkt einkaufProdukt = null;
+		Produkt vergleichProdukt = null;
 		for (int i = 0; i < einkaufsliste.size(); i++){
-			haendler.suchenProdukt(einkaufsliste.get(i).holeName());
-		}
-		
-		//vom Haendler EKPreis und Qualitaet auslesen pro Produkt und im neuen Vektor speichern
-		//Rohstoffkosten pro Produkt verbuchen
-		//Pro Produkt einlagern
+			einkaufProdukt = einkaufsliste.get(i);
+			vergleichProdukt = haendler.suchenProdukt(einkaufProdukt.holeName());		
+			//vom Haendler EKPreis und Qualitaet auslesen und im neuen Vektor speichern
+			einkaufProdukt.setzeEkpreis(vergleichProdukt.holeEkpreis());
+			einkaufProdukt.setzeQualitaet(vergleichProdukt.holeQualitaet());
+			//Rohstoffkosten verbuchen
+			kette.verbuchenKosten(Kostenverursacher.ROHSTOFF, (einkaufProdukt.holeMenge()*einkaufProdukt.holeEkpreis()));
+			//Pro Produkt einlagern
+			einlagern(einkaufProdukt);
+		}		
 	}
 	
 	public Vector<Produkt> holeProduktliste() {
