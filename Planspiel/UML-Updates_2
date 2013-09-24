@@ -1,8 +1,0 @@
-Neues Enum Ertragsverursacher
-
-Unternehmenskette:
-- neue Methode public void verbuchenErtrag(Ertragsverursacher verursacher, double betrag);
-
-Standort:
-- neues Attribut double anteilFilialverkauf mit getter/setter
-- neues Attribut im Konstruktor anteilFilialverkauf
