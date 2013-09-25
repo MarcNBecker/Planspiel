@@ -46,10 +46,24 @@ public class Standort {
 	}
 	
 	/**
-	 * 
+	 * Die Anzahl der Kunden eines Stadorts ergibt sich aus Anzahl der Unternehmensketten * maximale Kunden einer Filiale / 2
+	 * Über eine Zufallszahl wird entschieden, welche Präferenz der Kunde hat
+	 * Kunde wird in die Kundenliste des Standorts eingefügt
 	 */
 	public void generierenKundenliste() {
-		// TODO
+		int anzahlKunden = Spiel.holeSpiel().holeKettenListe().size() * this.holeMaxKunden() / 2;
+		for (int i = 0; i < anzahlKunden; i++)
+		{
+			double zahl = Zufall.generierenZufallszahl(3);
+			Praeferenz praeferenz = null;
+			if (zahl <= 1.0)
+				praeferenz = Praeferenz.PREIS;
+			else if (zahl <= 2.0)
+				praeferenz = Praeferenz.QUALITAET;
+			else if (zahl <= 3.0)
+				praeferenz = Praeferenz.AVG;
+			this.hinzufuegenKunde(new Kunde(this, praeferenz));
+		}
 	}
 	
 	/**

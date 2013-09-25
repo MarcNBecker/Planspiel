@@ -39,16 +39,6 @@ public class Spiel {
 		return spiel;
 	}
 	
-	/**
-	 * Zufallszahl zwischen 0 und Grenzen mit zwei Nachkommastellen erzeugen - optional auch mit Untergrenze
-	 */
-	public static double generierenZufallszahl(int grenze){
-		double zufallszahl = Math.random()*grenze;
-		int zufallszahl100 = (int) zufallszahl * 100;
-		zufallszahl = zufallszahl100 / 100;
-		
-		return zufallszahl;
-	}
 	
 	/**
 	 * @return Gibt die aktuelle Rundenzahl zurück
