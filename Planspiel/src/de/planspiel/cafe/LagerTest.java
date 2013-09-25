@@ -14,6 +14,7 @@ public class LagerTest {
 	
 	@Before 
 	public void erstelleSUT(){
+		//Zufall.setzeTestmodus(true); Zufall.setzeTestZufallszahl(5.0)
 		kette = new Unternehmenskette("Test");
 		lager = new Lager(kette);
 		einkaufsliste = new Vector<Produkt>();
@@ -63,5 +64,6 @@ public class LagerTest {
 		lager = null;
 		einkaufsliste = null;
 		haendler = null;
+		//Zufall.setzeTestmodus(false);
 	}
 }
