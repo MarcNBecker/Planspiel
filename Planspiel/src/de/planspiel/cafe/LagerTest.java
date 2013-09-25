@@ -17,35 +17,40 @@ public class LagerTest {
 		kette = new Unternehmenskette("Test");
 		lager = new Lager(kette);
 		einkaufsliste = new Vector<Produkt>();
-		einkaufsliste.add(new Produkt(Produkttyp.KAFFEE, 0.5, 4));
 		haendler = new Haendler();
-		haendler.generierenAngebot();
+		haendler.generierenAngebot(); //Hier kommen Zufallszahlen rein - das wollen wir nicht!
 	}
 	
 	@Test
-	public void testenProduktEinlagern(){		
+	public void testenProduktEinlagern(){	
+		einkaufsliste.add(new Produkt(Produkttyp.KAFFEE, 0.5, 4));	
 		lager.einlagern(einkaufsliste.get(0));
 		assertEquals(lager.suchenProdukt(Produkttyp.KAFFEE), einkaufsliste.get(0));
 	}
 	
-	/*@Test 
-	public void testenProduktAuslagern(){
+	@Test 
+	public void testenProduktAuslagernMehr(){
+		einkaufsliste.add(new Produkt(Produkttyp.TEE, 50)); //Name und Menge übergeben
 		lager.einlagern(einkaufsliste.get(0));
-		Produkt ausgelagertesProdukt = lager.auslagern(Produkttyp.KAFFEE, 10);
-		if (einkaufsliste.get(0).holeMenge() < 10){
-			assertEquals(ausgelagertesProdukt, einkaufsliste.get(0));
-		}			
-		else {
-			einkaufsliste.get(0).setzeMenge(10);
-			assertEquals(ausgelagertesProdukt, einkaufsliste.get(0));
-		}
-	}*/
+		Produkt ausgelagertesProdukt = lager.auslagern(Produkttyp.TEE, 10);
+		Produkt vergleichProdukt = new Produkt(Produkttyp.TEE, 10);
+		assertEquals(ausgelagertesProdukt, vergleichProdukt);
+	}
+	
+	@Test 
+	public void testenProduktAuslagernWeniger(){
+		einkaufsliste.add(new Produkt(Produkttyp.TEE, 5)); //Name und Menge übergeben
+		lager.einlagern(einkaufsliste.get(0));
+		Produkt ausgelagertesProdukt = lager.auslagern(Produkttyp.TEE, 10);
+		assertEquals(ausgelagertesProdukt, einkaufsliste.get(0));
+	}
 	
 	/*@Test
 	public void testenProduktEinkaufen(){
 		lager.einkaufen(einkaufsliste, haendler);
 		
-	}*/
+	} */
+	
 	
 	@After
 	public void zuruecksetzen(){
