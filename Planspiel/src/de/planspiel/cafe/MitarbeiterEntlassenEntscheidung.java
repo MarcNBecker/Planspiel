@@ -1,6 +1,6 @@
 package de.planspiel.cafe;
 
-public class MitarbeiterEntscheidung implements Entscheidung {
+public class MitarbeiterEntlassenEntscheidung implements Entscheidung {
 
 	@Override
 	public void ausfuehren() {

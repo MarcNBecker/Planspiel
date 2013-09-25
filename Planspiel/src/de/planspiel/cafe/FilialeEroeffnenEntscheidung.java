@@ -1,6 +1,6 @@
 package de.planspiel.cafe;
 
-public class FilialenEntscheidung implements Entscheidung {
+public class FilialeEroeffnenEntscheidung implements Entscheidung {
 
 	@Override
 	public void ausfuehren() {
