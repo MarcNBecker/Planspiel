@@ -1,10 +1,16 @@
-package de.planspiel.cafe;
+package de.planspiel.test;
 
 import java.util.Vector;
 
 import static org.junit.Assert.*;
 
 import org.junit.*;
+
+import de.planspiel.cafe.Haendler;
+import de.planspiel.cafe.Lager;
+import de.planspiel.cafe.Produkt;
+import de.planspiel.cafe.Produkttyp;
+import de.planspiel.cafe.Unternehmenskette;
 
 public class LagerTest {
 	
