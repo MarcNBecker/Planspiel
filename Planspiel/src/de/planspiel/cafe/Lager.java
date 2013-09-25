@@ -103,7 +103,20 @@ public class Lager {
 	}
 	
 	/**
-	 * @return Gibt den Lagerbestand, zurück
+	 * Berechnet aktuellen Wert des UV (also des Lagers), mit Wert pro Produkt = Einkaufspreis
+	 * @return 0.0 Falls nichts auf Lager ist, ansonsten Summe der Produktwerte
+	 * @author Natalie
+	 */
+	public double berechnenWert(){
+		double wert = 0.0;
+		for (int i=0; i<holeProduktliste().size();i++){
+			wert += holeProduktliste().get(i).holeEkpreis() * holeProduktliste().get(i).holeMenge();
+		}
+		return wert;
+	}
+	
+	/**
+	 * @return Gibt den Lagerbestand zurück
 	 */
 	public Vector<Produkt> holeProduktliste() {
 		return this.produktListe;
