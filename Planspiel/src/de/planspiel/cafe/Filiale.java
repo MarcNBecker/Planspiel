@@ -65,7 +65,7 @@ public class Filiale {
 	/**
 	 * Verbucht die Gesamtkosten der Filiale.
 	 */
-	public void verbuchenKosten() {
+	public void berechnenKosten() {
 		// Kosten für die Mitarbeiter
 		double kosten = (this.holeMitarbeiter() * this.holeKette().holeGehalt());
 		this.holeKette().verbuchenKosten(Kostenverursacher.PERSONAL, kosten);

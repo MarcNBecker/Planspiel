@@ -105,7 +105,10 @@ public class Unternehmenskette {
 	}
 	
 	public void berechnenFilialKosten() {
-		// TODO
+		for (int i=0; i<holeFilialenListe().size(); i++){
+			Filiale filiale = holeFilialenListe().get(i);
+			filiale.berechnenKosten();
+		}
 	}
 	
 	/**
