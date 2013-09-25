@@ -97,11 +97,47 @@ public class Unternehmenskette {
 	}
 	
 	public void verbuchenKosten(Kostenverursacher verursacher, double betrag){
-		// TODO WICHTIG MIT KAPITAL UND REPORT VERBUCHEN!
+		if(verursacher == null) {
+			return;
+		}
+		
+		//Die Reports werden an der Stelle "Runde des Reports" - 1 gespeichert!!
+		Report aktuellerReport = holeReportListe().get(Spiel.holeSpiel().holeAktuelleRunde()-1);
+		aktuellerReport.setzeKapital(aktuellerReport.holeKapital() - betrag);
+		setzeKapital(holeKapital() - betrag);
+		
+		switch(verursacher){
+		case FILIALE_ANSCHAFFUNG:
+			aktuellerReport.setzeAnschaffungskosten(aktuellerReport.holeAnschaffungskosten() + betrag);
+		case FILIALE_UNTERHALTUNG:
+			aktuellerReport.setzeUnterhaltungskosten(aktuellerReport.holeUnterhaltungskosten() + betrag);
+		case KREDIT:
+			aktuellerReport.setzeKreditkosten(aktuellerReport.holeKreditkosten() + betrag);
+		case MARKETING:
+			aktuellerReport.setzeMarketingkosten(aktuellerReport.holeMarketingkosten() + betrag);
+		case PERSONAL:
+			aktuellerReport.setzePersonalkosten(aktuellerReport.holePersonalkosten() + betrag);
+		case ROHSTOFF:
+			aktuellerReport.setzeRohstoffkosten(aktuellerReport.holeRohstoffkosten() + betrag);
+		}
 	}
 	
 	public void verbuchenErtrag(Ertragsverursacher verursacher, double betrag){
-		// TODO WICHTIG MIT KAPITAL UND REPORT VERBUCHEN!
+		if(verursacher == null) {
+			return;
+		}
+		
+		//Die Reports werden an der Stelle "Runde des Reports" - 1 gespeichert!!
+		Report aktuellerReport = holeReportListe().get(Spiel.holeSpiel().holeAktuelleRunde()-1);
+		aktuellerReport.setzeKapital(aktuellerReport.holeKapital() + betrag);
+		setzeKapital(holeKapital() + betrag);
+		
+		switch(verursacher) {
+		case FILIALE_VERKAUF:
+			aktuellerReport.setzeSonstigeErloese(aktuellerReport.holeSonstigeErloese() + betrag);
+		case UMSATZERLOESE:
+			aktuellerReport.setzeUmsatzerloese(aktuellerReport.holeUmsatzerloese() + betrag);
+		}
 	}
 	
 	public void berechnenFilialKosten() {
@@ -140,7 +176,8 @@ public class Unternehmenskette {
 		if(kapital >= 0) {
 			this.kapital = kapital;
 		} else {
-			// TODO Was passiert wenn das Kapital unter 0 fällt?
+			// TODO Was passiert wenn das Kapital unter 0 fällt? Dies muss eine Auswirkung auf verbuchenKosten haben!!!
+			aufnehmenKredit(Math.abs(kapital));
 		}
 	}
 	

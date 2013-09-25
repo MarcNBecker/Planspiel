@@ -10,6 +10,7 @@ public class Spiel {
 
 	private static Spiel spiel;
 	private int rundenzahl;
+	private int aktuelleRunde;
 	private Vector<Standort> standortListe;
 	private Vector<Haendler> haendlerListe;
 	private Vector<Unternehmenskette> kettenListe;
@@ -21,6 +22,7 @@ public class Spiel {
 	public Spiel(int rundenzahl) {
 		Spiel.spiel = this;
 		this.rundenzahl = rundenzahl;
+		setzeAktuelleRunde(1);
 		this.standortListe = new Vector<Standort>();
 		this.kettenListe = new Vector<Unternehmenskette>();
 	}
@@ -45,6 +47,21 @@ public class Spiel {
 	 */
 	public int holeRundenzahl() {
 		return rundenzahl;
+	}
+	
+	/**
+	 * @return Aktuelle Rundennummer. Die erste Rundennummer ist 1, die letzte Rundennummer wird durch Rundenzahl bestimmt
+	 */
+	public int holeAktuelleRunde() {
+		return aktuelleRunde;
+	}
+	
+	/**
+	 * Setzt die neue aktuelle Runde, die z.B. für die Kreditlaufzeit oder den Report-Vektor genutzt wird
+	 * @param aktuelleRunde
+	 */
+	public void setzeAktuelleRunde(int aktuelleRunde) {
+		this.aktuelleRunde = aktuelleRunde;
 	}
 	
 	/**

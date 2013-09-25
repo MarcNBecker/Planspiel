@@ -7,7 +7,7 @@ package de.planspiel.cafe;
  *
  */
 public enum Kostenverursacher {
-	KREDIT, LAGER, MARKETING,
+	KREDIT, MARKETING,
 	FILIALE_ANSCHAFFUNG, FILIALE_UNTERHALTUNG,
 	PERSONAL, ROHSTOFF
 }

@@ -26,6 +26,7 @@ public class Report {
 	private double marketingkosten;
 	private double rohstoffkosten;
 	private double umsatzerloese;
+	private double sonstigeerloese;
 	private double rundenergebnis;
 	private Marktanteil marktanteil;
 
@@ -145,6 +146,14 @@ public class Report {
 		this.umsatzerloese = umsatzerloese;
 	}
 
+	public double holeSonstigeErloese() {
+		return sonstigeerloese;
+	}
+	
+	public void setzeSonstigeErloese(double sonstigeerloese) {
+		this.sonstigeerloese = sonstigeerloese;
+	}
+	
 	public double holeRundenergebnis() {
 		return rundenergebnis;
 	}
