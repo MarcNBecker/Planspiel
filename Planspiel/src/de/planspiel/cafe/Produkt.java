@@ -55,7 +55,7 @@ public class Produkt {
 	}
 	
 	/** 
-	 * Vergleicht ein übergebenes Produkt mit sich selbst (Obergrenze Preis, Untergrenze Qualität)
+	 * Vergleicht ein übergebenes Produkt mit sich selbst (meine Obergrenze Preis eingehalten?, meine Untergrenze Qualität eingehalten?)
 	 * @param produkt Produkt, dessen Name, Qualitaet und Preis mit sich selbst verglichen werden
 	 * @return true falls die Produkte übereinstimmen, false falls die Produkte nicht übereinstimmen
 	 * @author Natalie
