@@ -4,3 +4,8 @@ public double berechneWert
 Unternehmenskette:
 public double berechnenGesamtkapital()
 public double berechnenFremdkapital()
+
+Report:
+- holeRundenergebnis gelöscht
+- berechnenRundenergebnis gibt double zurück
+- Attribut rundenErgebnis gelöscht

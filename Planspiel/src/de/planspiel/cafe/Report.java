@@ -3,9 +3,10 @@ package de.planspiel.cafe;
 import java.util.HashMap;
 
 /**
- * 
+ * Organisation der Rundenstände
  * für jede Unternehmenskette gibt es pro Runde einen Report, der alle
  * Zwischenergebnisse aufnimmt
+ * @author Ann-Kathrin
  * 
  */
 
@@ -27,7 +28,6 @@ public class Report {
 	private double rohstoffkosten;
 	private double umsatzerloese;
 	private double sonstigeerloese;
-	private double rundenergebnis;
 	private Marktanteil marktanteil;
 
 	// Attribut für Ereignisse + getter, setter
@@ -46,16 +46,14 @@ public class Report {
 	
 	/**
 	 * Berechnet das Rundenergebnis, indem alle addierten Kosten von den
-	 * Umsatzerlösen abgezogen werden
+	 * Erlösen abgezogen werden
 	 */
-	public void berechnenRundenergebnis() {
-		if (this.holeRundenergebnis() == 0.0) {
-			double kosten = this.holeAnschaffungskosten()
-					+ this.holeUnterhaltungskosten()
-					+ this.holePersonalkosten() + this.holeKreditkosten()
-					+ this.holeMarketingkosten() + this.holeRohstoffkosten();
-			this.rundenergebnis = this.holeUmsatzerloese() + this.holeSonstigeErloese() - kosten;
-		}
+	public double berechnenRundenergebnis() {
+		double kosten = this.holeAnschaffungskosten()
+				+ this.holeUnterhaltungskosten()
+				+ this.holePersonalkosten() + this.holeKreditkosten()
+				+ this.holeMarketingkosten() + this.holeRohstoffkosten();
+		return this.holeUmsatzerloese() + this.holeSonstigeErloese() - kosten;
 	}
 
 	/**
@@ -129,79 +127,138 @@ public class Report {
 	public HashMap<Filiale, double[]> holeFilialenListe() {
 		return filialenListe;
 	}
-
+	
+	/**
+	 * @return Anschaffungskosten einer Filiale
+	 */
 	public double holeAnschaffungskosten() {
 		return anschaffungskosten;
 	}
 
+	/**
+	 * Setzt die Anschaffungskosten
+	 * @param anschaffungskosten
+	 */
 	public void setzeAnschaffungskosten(double anschaffungskosten) {
 		this.anschaffungskosten = anschaffungskosten;
 	}
-
+	
+	/**
+	 * @return Unterhaltungskosten einer Filiale
+	 */
 	public double holeUnterhaltungskosten() {
 		return unterhaltungskosten;
 	}
-
+	
+	/**
+	 * Setzt die Unterhaltungskosten einer Filiale
+	 * @param unterhaltungskosten
+	 */
 	public void setzeUnterhaltungskosten(double unterhaltungskosten) {
 		this.unterhaltungskosten = unterhaltungskosten;
 	}
-
+	
+	/**
+	 * @return Mitarbeiterkosten
+	 */
 	public double holePersonalkosten() {
 		return personalkosten;
 	}
-
+	
+	/**
+	 * Setzt die Personalkosten
+	 * @param personalkosten
+	 */
 	public void setzePersonalkosten(double personalkosten) {
 		this.personalkosten = personalkosten;
 	}
 
+	/**
+	 * @return Kreditkosten (Zinsaufwendungen und Tilgungen)
+	 */
 	public double holeKreditkosten() {
 		return kreditkosten;
 	}
 
+	/**
+	 * Setzt die Kreditkosten
+	 * @param kreditkosten
+	 */
 	public void setzeKreditkosten(double kreditkosten) {
 		this.kreditkosten = kreditkosten;
 	}
-
+	
+	/**
+	 * @return Marketingkosten
+	 */
 	public double holeMarketingkosten() {
 		return marketingkosten;
 	}
 
+	/**
+	 * Setzt die Marketingkosten
+	 * @param marketingkosten
+	 */
 	public void setzeMarketingkosten(double marketingkosten) {
 		this.marketingkosten = marketingkosten;
 	}
-
+	
+	/**
+	 * @return Rohstoffkosten
+	 */
 	public double holeRohstoffkosten() {
 		return rohstoffkosten;
 	}
-
+	
+	/**
+	 * Setzt die Rohstoffkosten
+	 * @param rohstoffkosten
+	 */
 	public void setzeRohstoffkosten(double rohstoffkosten) {
 		this.rohstoffkosten = rohstoffkosten;
 	}
-
+	
+	/**
+	 * @return Umsatzerlöse
+	 */
 	public double holeUmsatzerloese() {
 		return umsatzerloese;
 	}
 
+	/**
+	 * Setzt die Umsatzerlöse
+	 * @param umsatzerloese
+	 */
 	public void setzeUmsatzerloese(double umsatzerloese) {
 		this.umsatzerloese = umsatzerloese;
 	}
-
+	
+	/**
+	 * @return Sonstige Erlöse (z.B. Filialverkauf)
+ 	 */
 	public double holeSonstigeErloese() {
 		return sonstigeerloese;
 	}
 	
+	/**
+	 * Setzt die sonstigen Erlöse (z.B. Filialverkauf)
+	 * @param sonstigeerloese
+	 */
 	public void setzeSonstigeErloese(double sonstigeerloese) {
 		this.sonstigeerloese = sonstigeerloese;
 	}
 	
-	public double holeRundenergebnis() {
-		return rundenergebnis;
-	}
-
+	/**
+	 * @return Marktanteil Objekt der Runde
+	 */
 	public Marktanteil holeMarktanteil() {
 		return marktanteil;
 	}
 
+	/**
+	 * Setzt das Marktanteil Objekt
+	 * @param marktanteil
+	 */
 	public void setzeMarktanteil(Marktanteil marktanteil) {
 		this.marktanteil = marktanteil;
 	}
