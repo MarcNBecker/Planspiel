@@ -63,8 +63,8 @@ public class Produkt {
 	public boolean vergleichen(Produkt produkt) {
 		// Prüfen: Name gleich, Qualität gleich oder höher, Preis gleich oder kleiner
 		if (produkt.holeName().equals(this.holeName()) 
-				&& this.holeQualitaet() >= produkt.holeQualitaet() 
-				&& this.holePreis() <= produkt.holePreis())
+				&& produkt.holeQualitaet() >= this.holeQualitaet() 
+				&& produkt.holePreis() <= this.holePreis())
 			return true;
 		else
 			return false;	
@@ -78,7 +78,7 @@ public class Produkt {
 	 * @author Natalie
 	 */
 	public Produkt verschmelzen(Produkt produkt) {
-		if (produkt.holeName().equals(this.holeName()))
+		if (!(produkt.holeName().equals(this.holeName())))
 			return null;
 		else { //Else-Zweig nicht zwingend notwendig
 			//Berechne Gesamtmenge, neue durchschnittliche Qualität und neuen durchschnittlichen EkPreis, übernimm Werte 

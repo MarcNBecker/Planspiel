@@ -12,7 +12,7 @@ public class LagerTest {
 	private Vector<Produkt> einkaufsliste;
 	private Haendler haendler;
 	
-	@BeforeClass 
+	@Before 
 	public void erstelleSUT(){
 		kette = new Unternehmenskette("Test");
 		lager = new Lager(kette);
