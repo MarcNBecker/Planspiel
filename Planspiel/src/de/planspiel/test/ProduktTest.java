@@ -1,7 +1,11 @@
-package de.planspiel.cafe;
+package de.planspiel.test;
 
 import static org.junit.Assert.*;
+
 import org.junit.*;
+
+import de.planspiel.cafe.Produkt;
+import de.planspiel.cafe.Produkttyp;
 
 public class ProduktTest {
 	

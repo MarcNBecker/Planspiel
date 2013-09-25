@@ -1,4 +1,4 @@
-package de.planspiel.cafe;
+package de.planspiel.entscheidung;
 
 public interface Event {
 

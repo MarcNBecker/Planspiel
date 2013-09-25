@@ -3,6 +3,7 @@ package de.planspiel.cafe;
 import java.util.Vector;
 
 import static org.junit.Assert.*;
+
 import org.junit.*;
 
 public class LagerTest {

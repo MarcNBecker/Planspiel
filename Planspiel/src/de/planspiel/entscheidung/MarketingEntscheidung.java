@@ -1,4 +1,5 @@
-package de.planspiel.cafe;
+package de.planspiel.entscheidung;
+
 
 public class MarketingEntscheidung implements Entscheidung {
 
