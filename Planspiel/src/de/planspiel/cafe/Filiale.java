@@ -61,7 +61,15 @@ public class Filiale {
 		}
 		return false;
 	}
-
+	
+	/**
+	 * Berechnet den Wert der Filiale
+	 * @return Wert der Filiale
+	 */
+	public double berechneWert(){
+		return holeStandort().holeStartFilialkosten();
+	}
+	
 	/**
 	 * Verbucht die Gesamtkosten der Filiale.
 	 */

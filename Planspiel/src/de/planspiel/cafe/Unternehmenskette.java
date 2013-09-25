@@ -56,6 +56,30 @@ public class Unternehmenskette {
 	}
 	
 	/**
+	 * Berechnet das gesamte Kapital der Unternehmenskette.
+	 * Dieses setzt sich aus der Kasse (Kapital), dem Wert der Filialen und dem Wert des Lagers zusammen
+	 * @return gesamtes Kapital des Unternehmens
+	 */
+	public double berechneGesamtkapital() {
+		double filialenWert = 0.0;
+		for(int i=0; i<holeFilialenListe().size(); i++) {
+			Filiale filiale = holeFilialenListe().get(i);
+			filialenWert = filiale.berechneWert();
+		}
+		double gesamtkapital = holeKapital() + filialenWert + holeLager().berechneWert();
+		return gesamtkapital;
+	}
+	
+	public double berechneFremdkapital() {
+		double fremdkapital = 0.0;
+		for(int i=0; i<holeKreditListe().size(); i++){
+			Kredit kredit = holeKreditListe().get(i);
+			fremdkapital = fremdkapital + kredit.holeRestbetrag();
+		}
+		return fremdkapital;
+	}
+	
+	/**
 	 * Fügt den Kredit dem Unternehmen hinzu, wenn der Betrag noch im Rahmen der Kreditwürdigkeit liegt
 	 * @param betrag
 	 */
@@ -72,12 +96,8 @@ public class Unternehmenskette {
 	 * @return Maximaler Betrag, der dem Spieler als Kredit gewährt werden kann
 	 */
 	public double pruefeKreditwuerdigkeit() {
-		double fremdkapital = 0.0;
-		for(int i=0; i<holeKreditListe().size(); i++){
-			Kredit kredit = holeKreditListe().get(i);
-			fremdkapital = fremdkapital + kredit.holeRestbetrag();
-		}
-		double eigenkapital = holeKapital() - fremdkapital;
+		double fremdkapital = berechneFremdkapital();
+		double eigenkapital = berechneGesamtkapital() - fremdkapital;
 		double maxKredit = eigenkapital * 3 - fremdkapital;
 		if (maxKredit <= 0){
 			return 0;
@@ -177,7 +197,7 @@ public class Unternehmenskette {
 			this.kapital = kapital;
 		} else {
 			// TODO Was passiert wenn das Kapital unter 0 fällt? Dies muss eine Auswirkung auf verbuchenKosten haben!!!
-			aufnehmenKredit(Math.abs(kapital));
+			
 		}
 	}
 	

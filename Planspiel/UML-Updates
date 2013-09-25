@@ -1,1 +1,5 @@
-DONE
+Filiale:
+public double berechneWert
+
+Unternehmenskette:
+public double berechneEigenkapital()
