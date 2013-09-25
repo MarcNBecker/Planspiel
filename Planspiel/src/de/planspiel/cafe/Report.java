@@ -32,6 +32,11 @@ public class Report {
 
 	// Attribut für Ereignisse + getter, setter
 
+	/**
+	 * Erzeugt einen neuen Report für eine bestimmte Unternehmenskette
+	 * @param runde Runde in der der Report erzeugt wurde
+	 * @param kette Unternehmenskette des Reports
+	 */
 	public Report(int runde, Unternehmenskette kette) {
 		this.runde = runde;
 		this.kette = kette;
@@ -44,48 +49,83 @@ public class Report {
 	 * Umsatzerlösen abgezogen werden
 	 */
 	public void berechnenRundenergebnis() {
-
 		if (this.holeRundenergebnis() == 0.0) {
 			double kosten = this.holeAnschaffungskosten()
 					+ this.holeUnterhaltungskosten()
 					+ this.holePersonalkosten() + this.holeKreditkosten()
 					+ this.holeMarketingkosten() + this.holeRohstoffkosten();
-			this.rundenergebnis = this.holeUmsatzerloese() - kosten;
+			this.rundenergebnis = this.holeUmsatzerloese() + this.holeSonstigeErloese() - kosten;
 		}
 	}
 
+	/**
+	 * @return Runde, in der der Report erzeugt wurde
+	 */
 	public int holeRunde() {
 		return runde;
 	}
 
+	/**
+	 * @return Kette für die der Report erzeugt wurde
+	 */
 	public Unternehmenskette holeKette() {
 		return kette;
 	}
 
+	/**
+	 * @return Kapital der Kette in der aktuellen Runde
+	 */
 	public double holeKapital() {
 		return kapital;
 	}
 
+	/**
+	 * Setzt das Kapital der Kette in der aktuellen Runde
+	 * @param kapital
+	 */
 	public void setzeKapital(double kapital) {
 		this.kapital = kapital;
 	}
 
+	/**
+	 * @return Fremdkapital, also die Summe aller Restbeträge der Kredite in der aktuellen Runde
+	 */
 	public double holeKreditsumme() {
 		return kreditsumme;
 	}
 
+	/**
+	 * Setzt das Fremdkapital, also die Summe aller Restbeträge der Kredite in der aktuellen Runde
+	 * @param kreditsumme Fremdkapital
+	 */
 	public void setzeKreditsumme(double kreditsumme) {
+		if(kreditsumme < 0){
+			kreditsumme = 0;
+		}
 		this.kreditsumme = kreditsumme;
 	}
 
+	/**
+	 * @return Referenz auf ein Snapshot des Lagers in der aktuellen Runde
+	 */
 	public Lager holeLager() {
 		return lager;
 	}
 
+	/**
+	 * Setzt den Snapshot des Lagers in der aktuellen Runde
+	 * !!! Hier darf keine Referenz auf das wirkliche Lager, sondern eine Kopie des Objekts übergeben werden.
+	 * @param lager
+	 */
 	public void setzeLager(Lager lager) {
-		this.lager = lager;
+		if(lager != null) {
+			this.lager = lager;
+		}
 	}
 
+	/**
+	 * @return Gibt die Liste aller Filialen zum Zeitpunkt des Reports zurück mit filialenspezifischen Infos
+	 */
 	public HashMap<Filiale, double[]> holeFilialenListe() {
 		return filialenListe;
 	}
