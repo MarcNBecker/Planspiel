@@ -20,19 +20,49 @@ public class Kunde {
 	 * @param praeferenz Gibt an, welche Praefernez der Kunde hat (siehe ENUM Praeferenz)
 	 */
 	public Kunde(Standort standort, Praeferenz praeferenz) {
-		// TODO in das UML-Diagramm die Paramter einfügen; Die Produktliste muss ordentlich generiert werden; mind. eine Unternehmenskette muss in die kettenListehinzugefügt werden
+		// TODO Dran denken, beim Kundenkreis generieren die kennenlernen-Methode einmal aufzurufen
 		kettenListe = new Vector<Unternehmenskette>();
+		
+		// Produktliste - ANFANG
 		produkte = new Vector<Produkt>();
+		// zufallszahl = Anzahl Produkte (mind. 1, max. anzProdukttypen)
+		int zufallszahl = (int) Math.random()*Produkttyp.values().length+1;
+		for (int i=0; i<zufallszahl;i++) {
+			int zufallsprodukt = (int) (Math.random()*Produkttyp.values().length);
+			// TODO Menge festlegen, die ein Kunde max. kaufen soll
+			int zufallsmenge = 1;
+			//int zufallsmenge = (int) (Math.random()*3+1);
+			
+			 // Würde kein Produkt in der Produktliste sein, dann würde die For-Schleife nicht aufgerufen werden
+			if (produkte.size()==0) {
+				produkte.add(new Produkt(Produkttyp.values()[zufallsprodukt], zufallsmenge));
+			} else {
+				// Sicherstellen, dass kein Produkt zweimal in die Produktliste kommt.
+			for (int j=0; j<produkte.size(); j++) {
+					if (produkte.get(j).holeName()==Produkttyp.values()[zufallsprodukt]) {i--;
+					} else {
+						produkte.add(new Produkt(Produkttyp.values()[zufallsprodukt], zufallsmenge));
+					} // if
+				
+				}// for
+			}
+		} // for
+		// Zusätzliche Eigenschaften festlegen
+		for (int i=0; i<produkte.size(); i++) {
+			produkte.get(i).setzeQualitaet(Zufall.generierenZufallszahl(1));
+			produkte.get(i).setzePreis(Zufall.generierenZufallszahl(15));
+		}
+		// Produktliste -- ENDE
+		
 		this.praeferenz = praeferenz;
-		this.standort = standort; //new
+		this.standort = standort;
 	}
 	
 	/**
-	 * Der Kunde lernt eine neue Unternehmenskette kennen.
+	 * Der Kunde lernt eine neue Unternehmenskette kennen, insofern er sie nicht schon kennt.
 	 * @param kette Gibt an, welche Unternehmenskette der Kunde kennenlernen soll.
 	 */
 	public void kennenlernen(Unternehmenskette kette) {
-		// TODO
 		if (!(kettenListe.contains(kette))) {
 			hinzufuegenUnternehmenskette(kette);
 		}
@@ -42,7 +72,6 @@ public class Kunde {
 	 * Der Kunde kauft ein.
 	 */
 	public void simulierenEinkauf() {
-		// TODO muss aufjedenfall auf Fehler geprüft werden + Filialkapazität einbauen
 		// Unternehmensketten herausfiltern, die eine Filiale am Standort des Kunden haben.
 
 		Vector<Filiale> filialenListe = this.standort.holeFilialenListe();
@@ -115,14 +144,13 @@ public class Kunde {
 					}
 				}// else-AVG
 			} // for
-			// TODO hier muss unbedint das Math.random() überprüft werden
 			if (gleichheitsListe.size()>0) {
-				double zufallszahl = (int) (Math.random()*gleichheitsListe.size());
+				int zufallszahl = (int) (Math.random()*gleichheitsListe.size());
 				favorit = gleichheitsListe.get((int) zufallszahl); 
 			}
 			favorit.verkaufen(produkte.get(0).holeName(), produkte.get(0).holeMenge());
 			// Prüfen, ob unser Favorit auch des Kunden zweites Produkt hat
-			for (int j=0; j<this.produkte.size();j++) {
+			for (int j=1; j<this.produkte.size();j++) {
 				if (produkte.get(j)!=null && favorit.holeKette().holeLager().suchenProdukt(produkte.get(j).holeName())!=null) {
 					favorit.verkaufen(produkte.get(j).holeName(), produkte.get(j).holeMenge());
 				}
@@ -156,6 +184,9 @@ public class Kunde {
 	
 	public void setzePraeferenz (Praeferenz praeferenz) {
 		this.praeferenz=praeferenz;
+	}
+	public Standort holeStandort() {
+		return this.standort;
 	}
 
 }
