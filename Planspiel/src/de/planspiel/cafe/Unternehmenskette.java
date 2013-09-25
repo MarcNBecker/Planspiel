@@ -11,7 +11,7 @@ import java.util.Vector;
 public class Unternehmenskette {
 	
 	private String name;
-	private double kapital;
+	private double kapital; // Eigentlich Kasse!!
 	private Vector<Report> reportListe;
 	private Vector<Filiale> filialenListe;	
 	private Lager lager;
@@ -202,7 +202,7 @@ public class Unternehmenskette {
 		} else {
 			aufnehmenKredit(Math.abs(kapital));
 			if(holeKapital() < 0) {
-				// User rauskicken! verbuchenKosten abbrechen
+				// TODO User rauskicken nachdem sicher alle Erlöse verbucht wurden, wenn er in der zweiten Runden negativ ist! verbuchenKosten abbrechen
 			}
 		}
 	}
