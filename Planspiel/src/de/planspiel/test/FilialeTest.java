@@ -1,7 +1,14 @@
-package de.planspiel.cafe;
+package de.planspiel.test;
 
 import static org.junit.Assert.*;
+
 import org.junit.*;
+
+import de.planspiel.cafe.Filiale;
+import de.planspiel.cafe.Produkt;
+import de.planspiel.cafe.Produkttyp;
+import de.planspiel.cafe.Standort;
+import de.planspiel.cafe.Unternehmenskette;
 
 public class FilialeTest {
 
