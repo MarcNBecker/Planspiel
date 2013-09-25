@@ -3,7 +3,7 @@ package de.planspiel.cafe;
 /**
  * 
  * Verschiedene Produkttypen, die ein Händler anbieten kann
- * @author D059166
+ * @author Marc Becker
  *
  */
 public enum Produkttyp {

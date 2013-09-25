@@ -81,6 +81,7 @@ public class Standort {
 	 * @param kette
 	 */
 	public void beeinflussenKunden(Unternehmenskette kette) {
+		// TODO
 		for (int i = 0; i < this.holeKundenkreis().size(); i++) {
 			this.holeKundenkreis().get(i).kennenlernen(kette);
 		}
