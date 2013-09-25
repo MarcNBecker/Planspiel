@@ -82,7 +82,7 @@ public class Standort {
 	 */
 	public void beeinflussenKunden(Unternehmenskette kette) {
 		for (int i = 0; i < this.holeKundenkreis().size(); i++) {
-
+			this.holeKundenkreis().get(i).kennenlernen(kette);
 		}
 	}
 
