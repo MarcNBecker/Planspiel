@@ -60,17 +60,21 @@ public class Unternehmenskette {
 	 * Dieses setzt sich aus der Kasse (Kapital), dem Wert der Filialen und dem Wert des Lagers zusammen
 	 * @return gesamtes Kapital des Unternehmens
 	 */
-	public double berechneGesamtkapital() {
+	public double berechnenGesamtkapital() {
 		double filialenWert = 0.0;
 		for(int i=0; i<holeFilialenListe().size(); i++) {
 			Filiale filiale = holeFilialenListe().get(i);
-			filialenWert = filiale.berechneWert();
+			filialenWert += filiale.berechnenWert();
 		}
-		double gesamtkapital = holeKapital() + filialenWert + holeLager().berechneWert();
+		double gesamtkapital = holeKapital() + filialenWert + holeLager().berechnenWert();
 		return gesamtkapital;
 	}
 	
-	public double berechneFremdkapital() {
+	/**
+	 * Berechnet das Fremdkapital im Unternehmen. Dies entspricht den Restbeträgen aller Kredite
+	 * @return Fremdkapital des Unternehmen
+	 */
+	public double berechnenFremdkapital() {
 		double fremdkapital = 0.0;
 		for(int i=0; i<holeKreditListe().size(); i++){
 			Kredit kredit = holeKreditListe().get(i);
@@ -96,8 +100,8 @@ public class Unternehmenskette {
 	 * @return Maximaler Betrag, der dem Spieler als Kredit gewährt werden kann
 	 */
 	public double pruefeKreditwuerdigkeit() {
-		double fremdkapital = berechneFremdkapital();
-		double eigenkapital = berechneGesamtkapital() - fremdkapital;
+		double fremdkapital = berechnenFremdkapital();
+		double eigenkapital = berechnenGesamtkapital() - fremdkapital;
 		double maxKredit = eigenkapital * 3 - fremdkapital;
 		if (maxKredit <= 0){
 			return 0;
@@ -123,8 +127,8 @@ public class Unternehmenskette {
 		
 		//Die Reports werden an der Stelle "Runde des Reports" - 1 gespeichert!!
 		Report aktuellerReport = holeReportListe().get(Spiel.holeSpiel().holeAktuelleRunde()-1);
-		aktuellerReport.setzeKapital(aktuellerReport.holeKapital() - betrag);
 		setzeKapital(holeKapital() - betrag);
+		aktuellerReport.setzeKapital(aktuellerReport.holeKapital() - betrag);
 		
 		switch(verursacher){
 		case FILIALE_ANSCHAFFUNG:
@@ -196,8 +200,10 @@ public class Unternehmenskette {
 		if(kapital >= 0) {
 			this.kapital = kapital;
 		} else {
-			// TODO Was passiert wenn das Kapital unter 0 fällt? Dies muss eine Auswirkung auf verbuchenKosten haben!!!
-			
+			aufnehmenKredit(Math.abs(kapital));
+			if(holeKapital() < 0) {
+				// User rauskicken! verbuchenKosten abbrechen
+			}
 		}
 	}
 	

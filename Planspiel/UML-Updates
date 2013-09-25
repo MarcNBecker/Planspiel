@@ -2,4 +2,5 @@ Filiale:
 public double berechneWert
 
 Unternehmenskette:
-public double berechneEigenkapital()
+public double berechnenGesamtkapital()
+public double berechnenFremdkapital()

@@ -66,7 +66,7 @@ public class Filiale {
 	 * Berechnet den Wert der Filiale
 	 * @return Wert der Filiale
 	 */
-	public double berechneWert(){
+	public double berechnenWert(){
 		return holeStandort().holeStartFilialkosten();
 	}
 	
