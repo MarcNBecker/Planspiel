@@ -25,6 +25,7 @@ public class LagerTest {
 	public void testenProduktEinlagern(){	
 		einkaufsliste.add(new Produkt(Produkttyp.KAFFEE, 0.5, 4));	
 		lager.einlagern(einkaufsliste.get(0));
+		
 		assertEquals(lager.suchenProdukt(Produkttyp.KAFFEE), einkaufsliste.get(0));
 	}
 	
@@ -33,8 +34,10 @@ public class LagerTest {
 		einkaufsliste.add(new Produkt(Produkttyp.TEE, 50)); //Name und Menge übergeben
 		lager.einlagern(einkaufsliste.get(0));
 		Produkt ausgelagertesProdukt = lager.auslagern(Produkttyp.TEE, 10);
-		Produkt vergleichProdukt = new Produkt(Produkttyp.TEE, 10);
-		assertEquals(ausgelagertesProdukt, vergleichProdukt);
+		
+		assertEquals(ausgelagertesProdukt.holeName() == Produkttyp.TEE 
+					&& ausgelagertesProdukt.holeMenge() == 10, 
+					true);
 	}
 	
 	@Test 
@@ -42,7 +45,10 @@ public class LagerTest {
 		einkaufsliste.add(new Produkt(Produkttyp.TEE, 5)); //Name und Menge übergeben
 		lager.einlagern(einkaufsliste.get(0));
 		Produkt ausgelagertesProdukt = lager.auslagern(Produkttyp.TEE, 10);
-		assertEquals(ausgelagertesProdukt, einkaufsliste.get(0));
+		
+		assertEquals(ausgelagertesProdukt.holeName() == Produkttyp.TEE 
+					&& ausgelagertesProdukt.holeMenge() == 5, 
+					true);
 	}
 	
 	/*@Test
