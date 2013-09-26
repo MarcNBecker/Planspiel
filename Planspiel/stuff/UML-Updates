@@ -9,3 +9,7 @@ Report:
 - holeRundenergebnis gelöscht
 - berechnenRundenergebnis gibt double zurück
 - Attribut rundenErgebnis gelöscht
+
+Aktivitätsdiagramm:
+- Schritte möglichst kleinschrittig durchführen, d.h. für alles eine Box
+- Bei Prio2, Prio3, etc. Produkten wird die Kapazität nicht runtergesetzt, diese spiegelt ja die Mitarbeiterzeit wieder

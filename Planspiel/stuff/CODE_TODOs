@@ -1,11 +1,5 @@
-Hï¿½ndler:
-Generieren Angebot brauch einen Zusammenhang zwischen Qualitï¿½t und Preis
-
 Spiel:
 Spielen muss noch implementiert werden
-
-Standort:
-Beeinflussen Kunden vom Zufall abhï¿½ngig machen
 
 Kredit:
 Start-Werte setzen
@@ -13,5 +7,8 @@ Start-Werte setzen
 Unternehmenskette:
 Start-Werte setzen
 User bei negativem Kapital in der zweiten Runden hintereinander "rauskicken", d.h. auf pleite setzen
+
+Händler:
+Generieren Angebot brauch einen Zusammenhang zwischen Qualität und Preis
 
 ProduktVerwalter und evtl. weitere Vererbungen einbauen

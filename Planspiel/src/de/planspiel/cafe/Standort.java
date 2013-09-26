@@ -77,13 +77,17 @@ public class Standort {
 	}
 
 	/**
-	 * 
-	 * @param kette
+	 * Beeinflusst die Kunden am Standort. Alle Kunden an diesem Standort werden durchlaufen
+	 * und lernen mit der Wahrscheinlichkeit p die Unternehmenskette kennen.
+	 * @param kette Kette, die der Kunde kennen lernen wird
+	 * @param p Wahrscheinlichkeit mit der der Kunde, die Kette kennenlernt
 	 */
-	public void beeinflussenKunden(Unternehmenskette kette) {
-		// TODO
+	public void beeinflussenKunden(Unternehmenskette kette, Double p) {
 		for (int i = 0; i < this.holeKundenkreis().size(); i++) {
-			this.holeKundenkreis().get(i).kennenlernen(kette);
+			Kunde kunde = holeKundenkreis().get(i);
+			if(Zufall.treffenEntscheidung(p)){
+				kunde.kennenlernen(kette);
+			}
 		}
 	}
 
