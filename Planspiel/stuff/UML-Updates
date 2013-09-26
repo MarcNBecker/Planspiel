@@ -10,5 +10,8 @@ Report:
 - berechnenRundenergebnis gibt double zurück
 - Attribut rundenErgebnis gelöscht
 
+Standort:
+- public beeinflussenKunden(Unternehmenskette kette, int p) wird ÜBERLADEN! Also NICHT die andere Methode löschen
+
 Aktivitätsdiagramm:
 - Schritte möglichst kleinschrittig durchführen, d.h. für alles eine Box

@@ -62,7 +62,9 @@ public class Standort {
 	 * in die Kundenliste des Standorts eingefügt
 	 */
 	public void generierenKundenliste() {
-		int anzahlKunden = Spiel.holeSpiel().holeKettenListe().size() * this.holeMaxKunden() / 2;
+		//Die Anzahl der Kunden wird bestimmt durch alle Ketten multipliziert mit der Hälfte von maxKunden
+		Vector<Unternehmenskette> ketten = Spiel.holeSpiel().holeKettenListe();
+		int anzahlKunden = ketten.size() * this.holeMaxKunden() / 2;
 		for (int i = 0; i < anzahlKunden; i++) {
 			double zahl = Zufall.generierenZufallszahl(3);
 			Praeferenz praeferenz = null;
@@ -73,6 +75,11 @@ public class Standort {
 			else if (zahl <= 3.0)
 				praeferenz = Praeferenz.AVG;
 			this.hinzufuegenKunde(new Kunde(this, praeferenz));
+		}
+		int c = ketten.size() * 2; // Jeder c. Kunde lernt Ketten kennen
+		// TODO Dies ist noch nicht zufällig genug, bzw. fair genug
+		for (int i = 0; i<ketten.size(); i++) {
+			beeinflussenKunden(ketten.get(i), c);
 		}
 	}
 
@@ -91,6 +98,24 @@ public class Standort {
 		}
 	}
 
+	/**
+	 * Beeinflusst die Kunden am Standort. Alle Kunden an diesem Standort werden durchlaufen
+	 * und jeder "c." Kunde lernt die Unternehmenskette kennen
+	 * @param kette Kette, die der Kunde kennen lernen wird
+	 * @param c Jeder "c"te Kunde lernt die Kette kennen. Ist c = 5 bedeutet das, dass jeder 5. Kunde die Kette kennen lernt
+	 */
+	public void beeinflussenKunden(Unternehmenskette kette, int c) {
+		int count = (int)Zufall.generierenZufallszahl(c);
+		for (int i = 0; i < this.holeKundenkreis().size(); i++) {
+			Kunde kunde = holeKundenkreis().get(i);
+			count++;
+			if(count >= c) {
+				count = 0;
+				kunde.kennenlernen(kette);
+			}
+		}
+	}
+	
 	/**
 	 * Berechnet die Kunden, die an diesem Standort von der übergebenen Menge an
 	 * Mitarbeiter bedient werden können. Dem liegt eine lineare Funktion zu
