@@ -7,9 +7,8 @@ import java.util.Vector;
  * @author Natalie
  *
  */
-public class Lager {
+public class Lager extends ProduktVerwalter {
 	
-	private Vector<Produkt> produktListe;
 	private Unternehmenskette kette;
 	
 	/**
@@ -17,7 +16,7 @@ public class Lager {
 	 * @param kette
 	 */
 	public Lager(Unternehmenskette kette) {
-		produktListe = new Vector<Produkt>();
+		super();
 		this.kette = kette;
 	}
 	
@@ -64,22 +63,6 @@ public class Lager {
 	}
 	
 	/**
-	 * Sucht in den vorhandenen Produkten, ob das übergebene Produkt (nach Name) schon existiert
-	 * @param name Produkttypen-Wert, der angibt welches Produkt gesucht wird
-	 * @return Null falls das Produkt noch nicht existiert, Produkt wenn es gefunden wurde
-	 * @author Natalie
-	 */
-	public Produkt suchenProdukt(Produkttyp name) {
-		for (int i = 0; i < holeProduktliste().size(); i++){
-			if (holeProduktliste().get(i).holeName() == name){
-				return holeProduktliste().get(i);
-			}
-		}
-		//falls Produkt nicht vorhanden
-		return null;
-	}
-	
-	/**
 	 * Übernimmt Daten der Entscheidung und kauft die gewünschten Rohstoffe beim Händler ein,
 	 * verbucht Kosten pro Rohstoff und lagert diesen ein!
 	 * @param einkaufsliste	Vector<Produkt>, der die Namen und die Mengen der gewünschten Produkte enthält
@@ -114,23 +97,6 @@ public class Lager {
 			wert += holeProduktliste().get(i).holeEkpreis() * holeProduktliste().get(i).holeMenge();
 		}
 		return wert;
-	}
-	
-	/**
-	 * @return Gibt den Lagerbestand zurück
-	 */
-	public Vector<Produkt> holeProduktliste() {
-		return this.produktListe;
-	}
-	
-	/**
-	 * Fügt ein neues Produkt hinzu
-	 * @param produkt Produkt, dass nicht null ist
-	 */
-	private void hinzufuegenProdukt(Produkt produkt) {
-		if(produkt != null) {
-			this.produktListe.add(produkt);
-		}
 	}
 	
 	/**

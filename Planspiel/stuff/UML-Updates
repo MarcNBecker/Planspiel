@@ -16,5 +16,8 @@ Report:
 Standort:
 - public beeinflussenKunden(Unternehmenskette kette, int p) wird ÜBERLADEN! Also NICHT die andere Methode löschen
 
+Produktverwalter:
+- neue abstrakte Klasse ProduktVerwalter übernimmt die gemeinsamen und auf die produktListe bezogenen Funktionen von Lager und Haendler
+
 Aktivitätsdiagramm:
 - Schritte möglichst kleinschrittig durchführen, d.h. für alles eine Box
