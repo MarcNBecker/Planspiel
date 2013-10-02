@@ -1,4 +1,5 @@
-Pleite-Kriterium muss in den Entscheidungen und bei der Entstehung von Erlösen überprüft werden!
+Entscheidungen implementieren
+Events implementieren
 Exception-Konzept umsetzen
 
 Spiel:
@@ -6,6 +7,7 @@ Spielen muss noch implementiert werden
 
 Kunde:
 checken
+Verkauf verhindern bei Unternehmensketten, die pleite sind
 
 Kredit:
 Start-Werte setzen

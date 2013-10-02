@@ -213,8 +213,10 @@ public class Kunde {
 		return this.kettenListe;
 	}
 
-	public void hinzufuegenUnternehmenskette(Unternehmenskette kette) {
-		this.kettenListe.add(kette);
+	private void hinzufuegenUnternehmenskette(Unternehmenskette kette) {
+		if(kette != null) {
+			this.kettenListe.add(kette);
+		}
 	}
 
 	public Vector<Produkt> holeProdukte() {
@@ -222,7 +224,9 @@ public class Kunde {
 	}
 
 	public void hinzufuegenProdukt(Produkt produkt) {
-		this.produkte.add(produkt);
+		if(produkt != null) {
+			this.produkte.add(produkt);
+		}
 	}
 
 	public Praeferenz holePraeferenz() {
@@ -230,7 +234,9 @@ public class Kunde {
 	}
 
 	public void setzePraeferenz(Praeferenz praeferenz) {
-		this.praeferenz = praeferenz;
+		if(praeferenz != null) {
+			this.praeferenz = praeferenz;
+		}
 	}
 
 	public Standort holeStandort() {

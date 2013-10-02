@@ -131,7 +131,7 @@ public class Unternehmenskette {
 		Report aktuellerReport = holeReportListe().get(Spiel.holeSpiel().holeAktuelleRunde()-1);
 		setzeKasse(holeKasse() - betrag);
 		if(holePleite()){
-			return false; //TODO Exception Konzept muss eigentlich umgesetzt werden
+			return false;
 		}
 		aktuellerReport.setzeKapital(aktuellerReport.holeKapital() - betrag);
 		

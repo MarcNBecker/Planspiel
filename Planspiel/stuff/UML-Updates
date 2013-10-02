@@ -13,6 +13,9 @@ Report:
 - berechnenRundenergebnis gibt double zurück
 - Attribut rundenErgebnis gelöscht
 
+Kunde:
+- hinzufuegenUnternehmenskette() ist private
+
 Standort:
 - public beeinflussenKundenProzentual(Unternehmenskette kette, double p)
 
