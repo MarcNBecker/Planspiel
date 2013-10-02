@@ -96,9 +96,10 @@ public class Lager {
 			einkaufProdukt.setzeEkpreis(vergleichProdukt.holeEkpreis());
 			einkaufProdukt.setzeQualitaet(vergleichProdukt.holeQualitaet());
 			//Rohstoffkosten verbuchen
-			holeKette().verbuchenKosten(Kostenverursacher.ROHSTOFF, (einkaufProdukt.holeMenge()*einkaufProdukt.holeEkpreis()));
-			//Pro Produkt einlagern
-			einlagern(einkaufProdukt);
+			if(holeKette().verbuchenKosten(Kostenverursacher.ROHSTOFF, (einkaufProdukt.holeMenge()*einkaufProdukt.holeEkpreis()))){
+				//Pro Produkt einlagern
+				einlagern(einkaufProdukt);	
+			}
 		}		
 	}
 	

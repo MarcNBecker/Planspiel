@@ -4,6 +4,9 @@ public double berechneWert
 Unternehmenskette:
 public double berechnenGesamtkapital()
 public double berechnenFremdkapital()
+kapital und seine getter/setter wurden in kasse umbenannt
+Attribut boolean pleite mit getter und setter
+verbuchenKosten hat jetzt boolean als Rückgabewert
 
 Report:
 - holeRundenergebnis gelöscht

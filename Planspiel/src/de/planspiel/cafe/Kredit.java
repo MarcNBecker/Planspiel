@@ -43,8 +43,9 @@ public class Kredit {
 	 */
 	public void tilgen() {
 		if (holeRestbetrag() > 0.0) {
-			holeKette().verbuchenKosten(Kostenverursacher.KREDIT, holeRestbetrag() * holeZinssatz() + holeTilgung());
-			setzeRestbetrag(holeRestbetrag() - holeTilgung());
+			if(holeKette().verbuchenKosten(Kostenverursacher.KREDIT, holeRestbetrag() * holeZinssatz() + holeTilgung())){
+				setzeRestbetrag(holeRestbetrag() - holeTilgung());	
+			}
 		}
 	}
 

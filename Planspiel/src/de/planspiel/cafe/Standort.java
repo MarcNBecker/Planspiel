@@ -199,8 +199,9 @@ public class Standort {
 	 */
 	public void hinzufuegenFiliale(Filiale filiale) {
 		if (filiale != null) {
-			filiale.holeKette().verbuchenKosten(Kostenverursacher.FILIALE_ANSCHAFFUNG, holeStartFilialkosten());
-			holeFilialenListe().add(filiale);
+			if(filiale.holeKette().verbuchenKosten(Kostenverursacher.FILIALE_ANSCHAFFUNG, holeStartFilialkosten())){
+				holeFilialenListe().add(filiale);	
+			}
 		}
 	}
 

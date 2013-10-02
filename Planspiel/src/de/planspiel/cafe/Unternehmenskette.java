@@ -11,7 +11,8 @@ import java.util.Vector;
 public class Unternehmenskette {
 	
 	private String name;
-	private double kapital; // Eigentlich Kasse!!
+	private boolean pleite;
+	private double kasse;
 	private Vector<Report> reportListe;
 	private Vector<Filiale> filialenListe;	
 	private Lager lager;
@@ -29,7 +30,8 @@ public class Unternehmenskette {
 		this.reportListe = new Vector<Report>();
 		this.kreditListe = new Vector<Kredit>();
 		this.lager = new Lager(this);
-		setzeKapital(0); // TODO Start-Wert
+		setzePleite(false);
+		setzeKasse(0); // TODO Start-Wert
 		setzeGehalt(0); // TODO Start-Wert
 		setzeEntlassungskosten(0); // TODO Start-Wert
 	}
@@ -66,7 +68,7 @@ public class Unternehmenskette {
 			Filiale filiale = holeFilialenListe().get(i);
 			filialenWert += filiale.berechnenWert();
 		}
-		double gesamtkapital = holeKapital() + filialenWert + holeLager().berechnenWert();
+		double gesamtkapital = holeKasse() + filialenWert + holeLager().berechnenWert();
 		return gesamtkapital;
 	}
 	
@@ -90,7 +92,7 @@ public class Unternehmenskette {
 	public void aufnehmenKredit(double betrag) {
 		if(betrag <= pruefeKreditwuerdigkeit()){
 			hinzufuegenKredit(new Kredit(this, betrag));
-			setzeKapital(holeKapital() + betrag);
+			setzeKasse(holeKasse() + betrag);
 		}
 	}
 	
@@ -120,14 +122,17 @@ public class Unternehmenskette {
 		}
 	}
 	
-	public void verbuchenKosten(Kostenverursacher verursacher, double betrag){
+	public boolean verbuchenKosten(Kostenverursacher verursacher, double betrag){
 		if(verursacher == null) {
-			return;
+			return false;
 		}
 		
 		//Die Reports werden an der Stelle "Runde des Reports" - 1 gespeichert!!
 		Report aktuellerReport = holeReportListe().get(Spiel.holeSpiel().holeAktuelleRunde()-1);
-		setzeKapital(holeKapital() - betrag);
+		setzeKasse(holeKasse() - betrag);
+		if(holePleite()){
+			return false; //TODO Exception Konzept muss eigentlich umgesetzt werden
+		}
 		aktuellerReport.setzeKapital(aktuellerReport.holeKapital() - betrag);
 		
 		switch(verursacher){
@@ -144,6 +149,7 @@ public class Unternehmenskette {
 		case ROHSTOFF:
 			aktuellerReport.setzeRohstoffkosten(aktuellerReport.holeRohstoffkosten() + betrag);
 		}
+		return true;
 	}
 	
 	public void verbuchenErtrag(Ertragsverursacher verursacher, double betrag){
@@ -154,7 +160,7 @@ public class Unternehmenskette {
 		//Die Reports werden an der Stelle "Runde des Reports" - 1 gespeichert!!
 		Report aktuellerReport = holeReportListe().get(Spiel.holeSpiel().holeAktuelleRunde()-1);
 		aktuellerReport.setzeKapital(aktuellerReport.holeKapital() + betrag);
-		setzeKapital(holeKapital() + betrag);
+		setzeKasse(holeKasse() + betrag);
 		
 		switch(verursacher) {
 		case FILIALE_VERKAUF:
@@ -186,23 +192,38 @@ public class Unternehmenskette {
 	}
 	
 	/**
-	 * @return Kapital der Unternehmenskette
+	 * @return Gibt zurück ob das Unternehmen pleite gegangen ist
 	 */
-	public double holeKapital() {
-		return kapital;
+	public boolean holePleite() {
+		return pleite;
 	}
 	
 	/**
-	 * Setzt das Kapital der Unternehmenskette neu
-	 * @param kapital
+	 * Setzt das Unternehmen pleite
+	 * @param pleite
 	 */
-	public void setzeKapital(double kapital) {
-		if(kapital >= 0) {
-			this.kapital = kapital;
+	public void setzePleite(boolean pleite) {
+		this.pleite = pleite;
+	}
+	
+	/**
+	 * @return Kasse der Unternehmenskette
+	 */
+	public double holeKasse() {
+		return kasse;
+	}
+	
+	/**
+	 * Setzt die Kasse der Unternehmenskette neu
+	 * @param kasse
+	 */
+	public void setzeKasse(double kasse) {
+		if(kasse >= 0) {
+			this.kasse = kasse;
 		} else {
-			aufnehmenKredit(Math.abs(kapital));
-			if(holeKapital() < 0) {
-				// TODO User rauskicken nachdem sicher alle Erlöse verbucht wurden, wenn er in der zweiten Runden negativ ist! verbuchenKosten abbrechen
+			aufnehmenKredit(Math.abs(kasse)); //Versuche einen Kredit aufzunehmen
+			if(holeKasse() < 0) { //Versuch fehlgeschlagen => Pleite, da keine Kreditwürdigkeit mehr
+				setzePleite(true);
 			}
 		}
 	}
