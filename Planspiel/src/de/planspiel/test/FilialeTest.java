@@ -18,7 +18,7 @@ public class FilialeTest {
 	
 	@Before
 	public void erstelleSUT() {
-		standort = new Standort();
+		standort = new Standort(5000, 1000, 100, 200, 5);
 		ukette  = new Unternehmenskette("KetteNummer1");
 		fil1 = new Filiale(standort, ukette);
 		fil1.setzeMitarbeiter(1);
@@ -32,7 +32,7 @@ public class FilialeTest {
 	@Test
 	public void testenVerkaufen() {
 		fil1.verkaufen(Produkttyp.KAFFEE, 10);
-		Produkt vergleichsProdukt = new Produkt(Produkttyp.KAFFEE, 20);
+		//Produkt vergleichsProdukt = new Produkt(Produkttyp.KAFFEE, 20);
 		//assertEquals(ukette.holeLager().suchenProdukt(Produkttyp.KAFFEE).holeMenge(), 10);
 		assertEquals(fil1.holeFreieKapazitaet(),0);
 	}

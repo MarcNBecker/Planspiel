@@ -8,6 +8,9 @@ kapital und seine getter/setter wurden in kasse umbenannt
 Attribut boolean pleite mit getter und setter
 verbuchenKosten hat jetzt boolean als Rückgabewert
 
+Zufall:
+- generierenZufallszahl bekommt jetzt double statt int
+
 Report:
 - holeRundenergebnis gelöscht
 - berechnenRundenergebnis gibt double zurück
@@ -18,6 +21,7 @@ Kunde:
 
 Standort:
 - public beeinflussenKundenProzentual(Unternehmenskette kette, double p)
+- Standard Konstruktor gelöscht
 
 Produktverwalter:
 - neue abstrakte Klasse ProduktVerwalter übernimmt die gemeinsamen und auf die produktListe bezogenen Funktionen von Lager und Haendler

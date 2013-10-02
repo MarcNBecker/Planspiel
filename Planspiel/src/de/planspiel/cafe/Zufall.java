@@ -14,15 +14,15 @@ public class Zufall {
 	private static double testZufallszahl = 0.0;
 
 	/**
-	 * Zufallszahl zwischen 0 und Grenze mit zwei Nachkommastellen erzeugen -
+	 * Zufallszahl zwischen 0 und Grenze
 	 * optional auch mit Untergrenze
 	 */
-	public static double generierenZufallszahl(int grenze) {
+	public static double generierenZufallszahl(double grenze) {
 		if (Zufall.holeTestModus())
 			return Zufall.holeTestZufallszahl();
 		double zufallszahl = Math.random() * grenze;
-		int zufallszahl100 = (int) zufallszahl * 100;
-		zufallszahl = zufallszahl100 / 100;
+		//int zufallszahl100 = (int) zufallszahl * 100;
+		//zufallszahl = zufallszahl100 / 100;
 		return zufallszahl;
 	}
 

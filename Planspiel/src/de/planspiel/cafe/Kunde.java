@@ -25,46 +25,44 @@ public class Kunde {
 	 *            Praeferenz)
 	 */
 	public Kunde(Standort standort, Praeferenz praeferenz) {
-		// TODO Dran denken, beim Kundenkreis generieren die
-		// kennenlernen-Methode einmal aufzurufen
-		kettenListe = new Vector<Unternehmenskette>();
-
-		// Produktliste - ANFANG
-		produkte = new Vector<Produkt>();
-		// zufallszahl = Anzahl Produkte (mind. 1, max. anzProdukttypen)
-		int zufallszahl = (int) Math.random() * Produkttyp.values().length + 1;
-		for (int i = 0; i < zufallszahl; i++) {
-			int zufallsprodukt = (int) (Math.random() * Produkttyp.values().length);
-			// TODO Menge festlegen, die ein Kunde max. kaufen soll
-			int zufallsmenge = 1;
-			// int zufallsmenge = (int) (Math.random()*3+1);
-
-			// Würde kein Produkt in der Produktliste sein, dann würde die
-			// For-Schleife nicht aufgerufen werden
-			if (produkte.size() == 0) {
-				produkte.add(new Produkt(Produkttyp.values()[zufallsprodukt], zufallsmenge));
-			} else {
-				// Sicherstellen, dass kein Produkt zweimal in die Produktliste
-				// kommt.
-				for (int j = 0; j < produkte.size(); j++) {
-					if (produkte.get(j).holeName() == Produkttyp.values()[zufallsprodukt]) {
-						i--;
-					} else {
-						produkte.add(new Produkt(Produkttyp.values()[zufallsprodukt], zufallsmenge));
-					} // if
-
-				}// for
-			}
-		} // for
-			// Zusätzliche Eigenschaften festlegen
-		for (int i = 0; i < produkte.size(); i++) {
-			produkte.get(i).setzeQualitaet(Zufall.generierenZufallszahl(1));
-			produkte.get(i).setzePreis(Zufall.generierenZufallszahl(15));
-		}
-		// Produktliste -- ENDE
-
-		this.praeferenz = praeferenz;
+		this.kettenListe = new Vector<Unternehmenskette>();
+		this.produkte = new Vector<Produkt>();
 		this.standort = standort;
+		setzePraeferenz(praeferenz);
+
+		Produkttyp[] produktTypen = Produkttyp.values();
+		Produkt neuesProdukt;
+		PreisQualitaetVerhaeltnis v;
+		double zufallsQualitaet;
+		double zufallsAddition;
+		// zufallszahlWahrscheinlichkeit = Wahrscheinlichkeit mit der Produkt 2, 3, 4, etc. 
+		// geprüft werden ob sie ebenfalls aufgenommen werden sollen
+		double zufallsWahrscheinlichkeit =Zufall.generierenZufallszahl(1);
+		int zufallsProdukt = (int) Zufall.generierenZufallszahl(produktTypen.length);	
+		// 1. Produkt hinzufügen
+		neuesProdukt = new Produkt(produktTypen[zufallsProdukt], 1);
+		//Bereich von 4 bis 7
+		v = new PreisQualitaetVerhaeltnis(Zufall.generierenZufallszahl(3) + 4);
+		zufallsQualitaet = Zufall.generierenZufallszahl(1);
+		zufallsAddition = Zufall.generierenZufallszahl(1 - zufallsQualitaet);
+		neuesProdukt.setzeQualitaet(zufallsQualitaet);
+		neuesProdukt.setzePreis(v.berechnenPreis(zufallsQualitaet+zufallsAddition));
+		hinzufuegenProdukt(neuesProdukt);
+		// 2., 3., 4., etc. zufällig hinzufügen
+		for (int i=0; i<produktTypen.length; i++) {
+			if (i != zufallsProdukt){
+				if(Zufall.treffenEntscheidung(zufallsWahrscheinlichkeit)) {
+					neuesProdukt = new Produkt(produktTypen[i], 1);
+					//Bereich von 4 bis 7
+					v = new PreisQualitaetVerhaeltnis(Zufall.generierenZufallszahl(3) + 4);
+					zufallsQualitaet = Zufall.generierenZufallszahl(1);
+					zufallsAddition = Zufall.generierenZufallszahl(1 - zufallsQualitaet);
+					neuesProdukt.setzeQualitaet(zufallsQualitaet);
+					neuesProdukt.setzePreis(v.berechnenPreis(zufallsQualitaet+zufallsAddition));
+					hinzufuegenProdukt(neuesProdukt);
+				}
+			}
+		}
 	}
 
 	/**
@@ -75,7 +73,7 @@ public class Kunde {
 	 *            Gibt an, welche Unternehmenskette der Kunde kennenlernen soll.
 	 */
 	public void kennenlernen(Unternehmenskette kette) {
-		if (!(kettenListe.contains(kette))) {
+		if (!(holeKettenListe().contains(kette))) {
 			hinzufuegenUnternehmenskette(kette);
 		}
 	}
@@ -86,159 +84,200 @@ public class Kunde {
 	public void simulierenEinkauf() {
 		// Unternehmensketten herausfiltern, die eine Filiale am Standort des
 		// Kunden haben.
-		Vector<Filiale> filialenListe = this.standort.holeFilialenListe();
-		// Filtern nach: Welche KENNE ich davon überhaupt?
-		for (int i = 0; i < filialenListe.size(); i++) {
-			if (!kettenListe.contains(filialenListe.get(i).holeKette())) {
-				filialenListe.remove(i);
-			}
-		}
-		// Filialen herausfiltern, die mein Prio1 Produkt verkaufen
+		Vector<Filiale> filialenListe = holeStandort().holeFilialenListe();
 		Vector<Filiale> favoriten = new Vector<Filiale>();
+
+		Produkt hauptProduktKunde = holeProdukte().get(0); //Prio 1 Produkt
+		
 		for (int i = 0; i < filialenListe.size(); i++) {
-			for (int k = 0; k < filialenListe.get(i).holeKette().holeLager().holeProduktliste().size(); k++) {
-				// prüft, ob das Produkt passt und ob die Menge wenigstens
-				// größer 0 ist und noch genug Kapazitäten vorhanden sind.
-				if (produkte.get(0).vergleichen(filialenListe.get(i).holeKette().holeLager().holeProduktliste().get(k)) && filialenListe.get(i).holeKette().holeLager().holeProduktliste().get(k).holeMenge() > 0 && filialenListe.get(i).holeFreieKapazitaet() > 0) {
-					// Damit ich die jeweilige Filiale der Unternehmenskette in
-					// meiner favoriten-Liste speichern kann, muss ich nochmal
-					// über die naheKetten loopen
-					favoriten.add(filialenListe.get(i));
-				}
+			Filiale filiale = filialenListe.get(i);
+			Unternehmenskette filialenKette = filiale.holeKette();
+			Produkt hauptProduktInFiliale = filialenKette.holeLager().suchenProdukt(hauptProduktKunde.holeName());
+			
+			if (!filialenKette.holePleite() // Ist die Filiale nicht pleite?
+					&& holeKettenListe().contains(filialenKette) // Kennt der Kunde die Kette?
+					&& hauptProduktKunde.vergleichen(hauptProduktInFiliale) // Existiert das Produkt in der entsprechenden Qualität und Preis?
+					&& hauptProduktInFiliale.holeMenge() > 0 // Ist das Produkt noch verfügbar?
+					&& filiale.holeFreieKapazitaet() > 0) { // Ist noch Freie Kapazität in der Filiale?
+				
+				favoriten.add(filiale);
 			}
 		}
+
 		// 3 Fälle - Die Favoritenliste hat ein Element, hat mehr als 1 Element
 		// oder kein Element
+		Filiale verkaufsFiliale = null;
 		if (favoriten.size() == 1) {
-			// favoritenliste hat nur eine Unternehmenskette
-			favoriten.get(0).verkaufen(this.produkte.get(0).holeName(), produkte.get(0).holeMenge()); // --->
-																										// Untermethode?
-			// Prüfen, ob das einzige Element in der Favoritenliste auch das
-			// zweite Produkt, das der Kunde mag, anbietet. Wenn ja, kauft der
-			// Kunde das.
-			// MUSS ANGEPASST WERDEN! vergleichen, menge und kapazität prüfen!
-
-			for (int i = 1; i < this.produkte.size(); i++) {
-				if (produkte.get(i) != null && favoriten.get(0).holeKette().holeLager().suchenProdukt(produkte.get(i).holeName()) != null 
-						&& produkte.get(i).vergleichen(favoriten.get(0).holeKette().holeLager().suchenProdukt(produkte.get(i).holeName())) 
-						&& favoriten.get(0).holeFreieKapazitaet() > 0 
-						&& favoriten.get(0).holeKette().holeLager().suchenProdukt(produkte.get(i).holeName()).holeMenge() > 0) {
-					favoriten.get(0).verkaufen(produkte.get(i).holeName(), produkte.get(i).holeMenge());
-				}
-			}
-		} else if (favoriten.size() != 0) {
+			verkaufsFiliale = favoriten.get(0);
+		} else if (favoriten.size() > 1) {
 			// favoritenliste hat mehrere Unternehmenskette
 
-			// Die erste Filiale in der Favoritenliste ist pauschal der erste
-			// Favorit.
+			// Die erste Filiale in der Favoritenliste ist pauschal der erste Favorit.
 			Filiale favorit = favoriten.get(0);
+			Produkt hauptProduktFavorit = favorit.holeKette().holeLager().suchenProdukt(hauptProduktKunde.holeName());
 			Vector<Filiale> gleichheitsListe = new Vector<Filiale>();
-
-			switch (this.praeferenz) {
-			case PREIS: {
-				for (int i = 1; i < favoriten.size(); i++) { 
-					if (favorit.holeKette().holeLager().suchenProdukt(produkte.get(0).holeName()).holePreis() == favoriten.get(i).holeKette().holeLager().suchenProdukt(produkte.get(0).holeName()).holePreis()) {
-						if (!gleichheitsListe.contains(favorit))
+			gleichheitsListe.add(favorit);
+			
+			switch (holePraeferenz()) {
+				case PREIS: {
+					// Durchlaufe restliche Favoriten
+					for (int i = 1; i < favoriten.size(); i++) {
+						//Bestimme den nächsten Herausforderer
+						Filiale herausforderer = favoriten.get(i);
+						Produkt hauptProduktHerausforderer = herausforderer.holeKette().holeLager().suchenProdukt(hauptProduktKunde.holeName());
+						//Sind beide exakt gleich füge den Herausforderer zur GleichheitsListe
+						if (hauptProduktFavorit.holePreis() == hauptProduktHerausforderer.holePreis()) {
+							gleichheitsListe.add(herausforderer);
+						//Ansosten prüfe ob der Herausforderer besser ist
+						} else if (hauptProduktFavorit.holePreis() > hauptProduktHerausforderer.holePreis()) {
+							//Er ist besser, also mach ihn zum Favorit
+							favorit = herausforderer;
+							hauptProduktFavorit = favorit.holeKette().holeLager().suchenProdukt(hauptProduktKunde.holeName());
+							gleichheitsListe.removeAllElements();
 							gleichheitsListe.add(favorit);
-						gleichheitsListe.add(favoriten.get(i));
-					} else if (favorit.holeKette().holeLager().suchenProdukt(produkte.get(0).holeName()).holePreis() > favoriten.get(i).holeKette().holeLager().suchenProdukt(produkte.get(0).holeName()).holePreis()) {
-						favorit = favoriten.get(i);
-						gleichheitsListe.removeAllElements();
+						}
 					}
+					break;
 				}
-				break;
-			}
-			case QUALITAET: {
-				for (int i = 1; i < favoriten.size(); i++) {
-					if (favorit.holeKette().holeLager().suchenProdukt(produkte.get(0).holeName()).holeQualitaet() == favoriten.get(i).holeKette().holeLager().suchenProdukt(produkte.get(0).holeName()).holeQualitaet()) {
-						if (!gleichheitsListe.contains(favorit))
+				case QUALITAET: {
+					// Durchlaufe restliche Favoriten
+					for (int i = 1; i < favoriten.size(); i++) {
+						//Bestimme den nächsten Herausforderer
+						Filiale herausforderer = favoriten.get(i);
+						Produkt hauptProduktHerausforderer = herausforderer.holeKette().holeLager().suchenProdukt(hauptProduktKunde.holeName());
+						//Sind beide exakt gleich füge den Herausforderer zur GleichheitsListe
+						if (hauptProduktFavorit.holeQualitaet() == hauptProduktHerausforderer.holeQualitaet()) {
+							gleichheitsListe.add(herausforderer);
+						//Ansosten prüfe ob der Herausforderer besser ist
+						} else if (hauptProduktFavorit.holeQualitaet() < hauptProduktHerausforderer.holeQualitaet()) {
+							//Er ist besser, also mach ihn zum Favorit
+							favorit = herausforderer;
+							hauptProduktFavorit = favorit.holeKette().holeLager().suchenProdukt(hauptProduktKunde.holeName());
+							gleichheitsListe.removeAllElements();
 							gleichheitsListe.add(favorit);
-						gleichheitsListe.add(favoriten.get(i));
-					} else if (favorit.holeKette().holeLager().suchenProdukt(produkte.get(0).holeName()).holeQualitaet() > favoriten.get(i).holeKette().holeLager().suchenProdukt(produkte.get(0).holeName()).holeQualitaet()) {
-						favorit = favoriten.get(i);
-						gleichheitsListe.removeAllElements();
+						}
 					}
+					break;
 				}
-				break;
-			}
-			default: {
-				// Average-Case
-				// ggf. mehrmaliges Ausrechnen durch einen boolean abfangen, der
-				// sagt ob der Teil schon berechnet wurde.
-				// Variablen für den Average-Case
-				for (int i = 1; i < favoriten.size(); i++) {
-					double preis = 0;
-					double qualität = 0;
+				case AVG: {					
+					//Average Variablen
+					double preis = 0.0;
+					double qualitaet = 0.0;
 					double avg = 0.0;
-					// berechnen der Average-Werte
-					for (int p = 0; p < favoriten.size(); p++) {
-						preis = preis + favoriten.get(p).holeKette().holeLager().suchenProdukt(produkte.get(0).holeName()).holePreis();
-						qualität = qualität + favoriten.get(p).holeKette().holeLager().suchenProdukt(produkte.get(0).holeName()).holeQualitaet();
+					// Berechnen der Average-Werte
+					for (int i = 0; i < favoriten.size(); i++) {
+						Produkt aktuellesProdukt = favoriten.get(i).holeKette().holeLager().suchenProdukt(holeProdukte().get(0).holeName());
+						preis = preis + aktuellesProdukt.holePreis();
+						qualitaet = qualitaet + aktuellesProdukt.holeQualitaet();
 					}
-					avg = (preis + qualität) / favoriten.size();
-
-					double avgBestDifference = favorit.holeKette().holeLager().suchenProdukt(produkte.get(0).holeName()).holePreis() + favorit.holeKette().holeLager().suchenProdukt(produkte.get(0).holeName()).holeQualitaet();
-					// aktuelles Objekt aus der for-Schleife
-					double avgAktuell = favoriten.get(i).holeKette().holeLager().suchenProdukt(produkte.get(0).holeName()).holePreis() + favoriten.get(i).holeKette().holeLager().suchenProdukt(produkte.get(0).holeName()).holeQualitaet();
-					if (Math.abs(avgBestDifference - avg) > Math.abs(avgAktuell - avg)) {
-						favorit = favoriten.get(i);
+					//Basis Average Wert aller Filialen
+					avg = (preis + qualitaet) / favoriten.size();
+					
+					//Average Wert des Favoriten
+					double avgFavorit = hauptProduktFavorit.holePreis() + hauptProduktFavorit.holeQualitaet();
+					
+					for (int i = 1; i < favoriten.size(); i++) {
+						Filiale herausforderer = favoriten.get(i);
+						Produkt hauptProduktHerausforderer = herausforderer.holeKette().holeLager().suchenProdukt(holeProdukte().get(0).holeName());
+						double avgHerausforderer = hauptProduktHerausforderer.holePreis() + hauptProduktHerausforderer.holeQualitaet();
+						//Sind beide exakt gleich füge den Herausforderer zur Gleichheitsliste
+						if (Math.abs(avgFavorit - avg) == Math.abs(avgHerausforderer - avg)) {
+							gleichheitsListe.add(herausforderer);
+						//Ansosten prüfe ob der Herausforderer besser ist
+						} else if (Math.abs(avgFavorit - avg) > Math.abs(avgHerausforderer - avg)) {
+							//Er ist besser, also mach ihn zum Favorit
+							favorit = herausforderer;
+							hauptProduktFavorit = favorit.holeKette().holeLager().suchenProdukt(hauptProduktKunde.holeName());
+							avgFavorit = hauptProduktFavorit.holePreis() + hauptProduktFavorit.holeQualitaet();
+							gleichheitsListe.removeAllElements();
+							gleichheitsListe.add(favorit);	
+						}
 					}
 				}
-
-			} // default
-			} // switch
+			}
+			
 			if (gleichheitsListe.size() > 0) {
-				int zufallszahl = (int) (Math.random() * gleichheitsListe.size());
+				int zufallszahl = (int) Zufall.generierenZufallszahl(gleichheitsListe.size());
 				favorit = gleichheitsListe.get((int) zufallszahl);
 			}
-			// Evtl in weitere Untermethode auslagern (s. oben)
-			favorit.verkaufen(produkte.get(0).holeName(), produkte.get(0).holeMenge());
-			// Prüfen, ob unser Favorit auch des Kunden zweites Produkt hat
-			for (int j = 1; j < this.produkte.size(); j++) {
-				if (produkte.get(j) != null && favorit.holeKette().holeLager().suchenProdukt(produkte.get(j).holeName()) != null 
-						&& produkte.get(j).vergleichen(favorit.holeKette().holeLager().suchenProdukt(produkte.get(j).holeName())) 
-						&& favorit.holeFreieKapazitaet() > 0 
-						&& favorit.holeKette().holeLager().suchenProdukt(produkte.get(j).holeName()).holeMenge() > 0) {
-					favorit.verkaufen(produkte.get(j).holeName(), produkte.get(j).holeMenge());
-				}
-			}
-		} // if
-		else {
-			// favoritenliste ist leer
+			
+			verkaufsFiliale = favorit;
+		} else {
+			//Kunde kauft bei keiner Filiale ein
+			return;
 		}
-
+		
+		//Führe Verkaufsprozess durch
+		verkaufsFiliale.verkaufen(hauptProduktKunde.holeName(), hauptProduktKunde.holeMenge());
+		//Verkaufe alle weiteren Produkte, die der Kunde kauft an den Kunden, wenn sie verfügbar sind und zum Profil des Kunden passen
+		for (int i = 1; i < holeProdukte().size(); i++) {
+			Produkt aktuellesProduktKunde = holeProdukte().get(i);
+			Produkt aktuellesProduktInFiliale = verkaufsFiliale.holeKette().holeLager().suchenProdukt(aktuellesProduktKunde.holeName());
+			if (aktuellesProduktKunde != null 
+					&& aktuellesProduktInFiliale != null 
+					&& aktuellesProduktKunde.vergleichen(aktuellesProduktInFiliale) // Existiert das Produkt in der enstprechenden Qualität und Preis?
+					&& aktuellesProduktKunde.holeMenge() > 0) { // Ist das Produkt noch verfügbar?
+				
+				verkaufsFiliale.verkaufen(aktuellesProduktKunde.holeName(), aktuellesProduktKunde.holeMenge()); // Verkaufe Produkt
+				verkaufsFiliale.setzeFreieKapazitaet(verkaufsFiliale.holeFreieKapazitaet() + 1); // Korrigiere Kapazität
+			}
+		}
 	}
 
+	/**
+	 * @return Liste aller Unternehmensketten, die der Kunde kennt
+	 */
 	public Vector<Unternehmenskette> holeKettenListe() {
 		return this.kettenListe;
 	}
 
+	/**
+	 * Fügt der Unternehmensliste des Kunden ein Unternehmen hinzu
+	 * @param kette
+	 */
 	private void hinzufuegenUnternehmenskette(Unternehmenskette kette) {
 		if(kette != null) {
 			this.kettenListe.add(kette);
 		}
 	}
 
+	/**
+	 * @return Liste aller Produkte, die der Kunde kauft
+	 */
 	public Vector<Produkt> holeProdukte() {
 		return this.produkte;
 	}
 
+	/**
+	 * Fügt ein Produkt der Produktliste des Kunden hinzu
+	 * @param produkt
+	 */
 	public void hinzufuegenProdukt(Produkt produkt) {
 		if(produkt != null) {
 			this.produkte.add(produkt);
 		}
 	}
 
+	/**
+	 * @return Präferenz beim Einkauf des Kunden, diese ist entweder die maximale Qualität, der minimale Preis oder der Durchschnitt
+	 */
 	public Praeferenz holePraeferenz() {
 		return this.praeferenz;
 	}
 
+	/**
+	 * Setzt die Präferenz des Kunden
+	 * @param praeferenz
+	 */
 	public void setzePraeferenz(Praeferenz praeferenz) {
 		if(praeferenz != null) {
 			this.praeferenz = praeferenz;
 		}
 	}
-
+	
+	/**
+	 * @return Standort, an dem der Kunde sich befindet
+	 */
 	public Standort holeStandort() {
 		return this.standort;
 	}

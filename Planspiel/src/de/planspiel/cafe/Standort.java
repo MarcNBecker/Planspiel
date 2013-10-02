@@ -21,14 +21,6 @@ public class Standort {
 	private int maxMitarbeiter;
 
 	/**
-	 * Erzeugt einen undefinierten Standort
-	 */
-	public Standort() {
-		this.kundenkreis = new Vector<Kunde>();
-		this.filialenListe = new Vector<Filiale>();
-	}
-
-	/**
 	 * Erzeugt einen neuen Standort
 	 * 
 	 * @param laufendeFilialkosten
@@ -46,19 +38,22 @@ public class Standort {
 	 *            mehr lohnen
 	 */
 	public Standort(double laufendeFilialkosten, double startFilialkosten, int minKunden, int maxKunden, int maxMitarbeiter) {
-		this();
+		this.kundenkreis = new Vector<Kunde>();
+		this.filialenListe = new Vector<Filiale>();
 		setzeLaufendeFilialkosten(laufendeFilialkosten);
 		setzeStartFilialkosten(startFilialkosten);
 		setzeAnteilFilialverkauf(0.5);
 		setzeMinKunden(minKunden);
 		setzeMaxKunden(maxKunden);
 		setzeMaxMitarbeiter(maxMitarbeiter);
+		generierenKundenliste();
 	}
 
 	/**
+	 * Generiert die Kundenliste des Standorts
 	 * Die Anzahl der Kunden eines Stadorts ergibt sich aus Anzahl der
-	 * Unternehmensketten * maximale Kunden einer Filiale / 2 Über eine
-	 * Zufallszahl wird entschieden, welche Präferenz der Kunde hat Kunde wird
+	 * Unternehmensketten * maximale Kunden einer Filiale / 2 
+	 * Über eine Zufallszahl wird entschieden, welche Präferenz der Kunde hat Kunde wird
 	 * in die Kundenliste des Standorts eingefügt
 	 */
 	public void generierenKundenliste() {
