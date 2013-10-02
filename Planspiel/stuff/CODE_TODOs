@@ -1,9 +1,11 @@
 Pleite-Kriterium muss in den Entscheidungen und bei der Entstehung von Erlösen überprüft werden!
 Exception-Konzept umsetzen
-ProduktVerwalter und evtl. weitere Vererbungen einbauen
 
 Spiel:
 Spielen muss noch implementiert werden
+
+Kunde:
+checken
 
 Kredit:
 Start-Werte setzen
@@ -11,9 +13,5 @@ Start-Werte setzen
 Unternehmenskette:
 Start-Werte setzen
 
-Händler:
-Generieren Angebot brauch einen Zusammenhang zwischen Qualität und Preis
-
 Standort:
-Zufälligkeit bei dem generieren der Kundenliste erhöhen
-Kunden nach Marktsegmenten generieren
+Start-Werte setzen

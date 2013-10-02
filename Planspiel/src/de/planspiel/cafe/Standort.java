@@ -76,10 +76,8 @@ public class Standort {
 				praeferenz = Praeferenz.AVG;
 			this.hinzufuegenKunde(new Kunde(this, praeferenz));
 		}
-		int c = ketten.size() * 2; // Jeder c. Kunde lernt Ketten kennen
-		// TODO Dies ist noch nicht zufällig genug, bzw. fair genug
 		for (int i = 0; i<ketten.size(); i++) {
-			beeinflussenKunden(ketten.get(i), c);
+			beeinflussenKundenProzentual(ketten.get(i), 0.6); // TODO Startwert festlegen, evtl. Algorithmus exakt programmieren
 		}
 	}
 
@@ -89,7 +87,7 @@ public class Standort {
 	 * @param kette Kette, die der Kunde kennen lernen wird
 	 * @param p Wahrscheinlichkeit mit der der Kunde, die Kette kennenlernt
 	 */
-	public void beeinflussenKunden(Unternehmenskette kette, Double p) {
+	public void beeinflussenKunden(Unternehmenskette kette, double p) {
 		for (int i = 0; i < this.holeKundenkreis().size(); i++) {
 			Kunde kunde = holeKundenkreis().get(i);
 			if(Zufall.treffenEntscheidung(p)){
@@ -100,18 +98,24 @@ public class Standort {
 
 	/**
 	 * Beeinflusst die Kunden am Standort. Alle Kunden an diesem Standort werden durchlaufen
-	 * und jeder "c." Kunde lernt die Unternehmenskette kennen
+	 * und (p*100) % lernen die Kette kennen
 	 * @param kette Kette, die der Kunde kennen lernen wird
-	 * @param c Jeder "c"te Kunde lernt die Kette kennen. Ist c = 5 bedeutet das, dass jeder 5. Kunde die Kette kennen lernt
+	 * @param p (p*100)% Kunden an diesem Standort lernen die Kette kennen
 	 */
-	public void beeinflussenKunden(Unternehmenskette kette, int c) {
-		int count = (int)Zufall.generierenZufallszahl(c);
-		for (int i = 0; i < this.holeKundenkreis().size(); i++) {
-			Kunde kunde = holeKundenkreis().get(i);
-			count++;
-			if(count >= c) {
-				count = 0;
-				kunde.kennenlernen(kette);
+	public void beeinflussenKundenProzentual(Unternehmenskette kette, double p) {
+		int c = (int) (holeKundenkreis().size() * p); //so viele Kunden entsprechen (p*100)%
+		int f = 0; //Anzahl der Zufallsfehler
+		while (c > 0) {
+			int zufallsZahl = (int)Zufall.generierenZufallszahl(holeKundenkreis().size());
+			Kunde kunde = holeKundenkreis().get(zufallsZahl);
+			if(kunde != null && !kunde.holeKettenListe().contains(kette)) {
+				kunde.kennenlernen(kette); //Kunde lernt die Kette kennen
+				c--; // also muss ein Kunde weniger die Kette kennen lernen
+			} else {
+				f++; // es ist ein Zufallsfehler aufgetreten (Kunde kam zum 2. Mal dran)
+				if (f>10){
+					c--; // nach 10 Zufallsfehler wird kein weiterer mehr abgefangen
+				}
 			}
 		}
 	}

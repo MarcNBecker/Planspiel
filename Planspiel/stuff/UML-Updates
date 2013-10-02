@@ -14,10 +14,13 @@ Report:
 - Attribut rundenErgebnis gelöscht
 
 Standort:
-- public beeinflussenKunden(Unternehmenskette kette, int p) wird ÜBERLADEN! Also NICHT die andere Methode löschen
+- public beeinflussenKundenProzentual(Unternehmenskette kette, double p)
 
 Produktverwalter:
 - neue abstrakte Klasse ProduktVerwalter übernimmt die gemeinsamen und auf die produktListe bezogenen Funktionen von Lager und Haendler
+
+PreisQualitaetVerhaeltnis:
+- neue Klasse zur Simulierung des Verhältnisses zwischen Preis und Qualität
 
 Aktivitätsdiagramm:
 - Schritte möglichst kleinschrittig durchführen, d.h. für alles eine Box
