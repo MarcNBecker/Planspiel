@@ -3,11 +3,9 @@ package de.planspiel.cafe;
 import java.util.Vector;
 
 /**
- * 
+ * Klasse zur Organisation des Kunden
  * @author Daniel, Max
- * 
  */
-
 public class Kunde {
 
 	private Vector<Unternehmenskette> kettenListe;
@@ -24,10 +22,20 @@ public class Kunde {
 	 *            Gibt an, welche Praefernez der Kunde hat (siehe ENUM
 	 *            Praeferenz)
 	 */
-	public Kunde(Standort standort, Praeferenz praeferenz) {
+	public Kunde(Standort standort) {
 		this.kettenListe = new Vector<Unternehmenskette>();
 		this.produkte = new Vector<Produkt>();
 		this.standort = standort;
+		
+		//Bestimme Präferenz
+		double zahl = Zufall.generierenZufallszahl(3);
+		Praeferenz praeferenz = null;
+		if (zahl <= 1.0)
+			praeferenz = Praeferenz.PREIS;
+		else if (zahl <= 2.0)
+			praeferenz = Praeferenz.QUALITAET;
+		else if (zahl <= 3.0)
+			praeferenz = Praeferenz.AVG;
 		setzePraeferenz(praeferenz);
 
 		Produkttyp[] produktTypen = Produkttyp.values();

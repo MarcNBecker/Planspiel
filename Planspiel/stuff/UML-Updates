@@ -18,6 +18,7 @@ Report:
 
 Kunde:
 - hinzufuegenUnternehmenskette() ist private
+- Konstruktor bekommt jetzt nur noch den Standort übergeben
 
 Standort:
 - public beeinflussenKundenProzentual(Unternehmenskette kette, double p)

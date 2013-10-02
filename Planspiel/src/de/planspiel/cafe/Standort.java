@@ -61,15 +61,7 @@ public class Standort {
 		Vector<Unternehmenskette> ketten = Spiel.holeSpiel().holeKettenListe();
 		int anzahlKunden = ketten.size() * this.holeMaxKunden() / 2;
 		for (int i = 0; i < anzahlKunden; i++) {
-			double zahl = Zufall.generierenZufallszahl(3);
-			Praeferenz praeferenz = null;
-			if (zahl <= 1.0)
-				praeferenz = Praeferenz.PREIS;
-			else if (zahl <= 2.0)
-				praeferenz = Praeferenz.QUALITAET;
-			else if (zahl <= 3.0)
-				praeferenz = Praeferenz.AVG;
-			this.hinzufuegenKunde(new Kunde(this, praeferenz));
+			this.hinzufuegenKunde(new Kunde(this));
 		}
 		for (int i = 0; i<ketten.size(); i++) {
 			beeinflussenKundenProzentual(ketten.get(i), 0.6); // TODO Startwert festlegen, evtl. Algorithmus exakt programmieren
