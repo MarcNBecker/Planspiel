@@ -1,6 +1,10 @@
-package de.planspiel.cafe;
+package de.planspiel.spiel;
 
 import java.util.Vector;
+
+import de.planspiel.cafe.Haendler;
+import de.planspiel.cafe.Standort;
+import de.planspiel.cafe.Unternehmenskette;
 
 public class Spiel {
 

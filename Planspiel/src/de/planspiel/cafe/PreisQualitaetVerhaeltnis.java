@@ -1,5 +1,7 @@
 package de.planspiel.cafe;
 
+import de.planspiel.spiel.Zufall;
+
 public class PreisQualitaetVerhaeltnis {
 	
 	private double faktor;

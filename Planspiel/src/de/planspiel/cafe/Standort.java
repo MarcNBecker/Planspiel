@@ -2,6 +2,9 @@ package de.planspiel.cafe;
 
 import java.util.Vector;
 
+import de.planspiel.spiel.Spiel;
+import de.planspiel.spiel.Zufall;
+
 /**
  * 
  * @author Marc Becker

@@ -2,6 +2,8 @@ package de.planspiel.cafe;
 
 import java.util.Vector;
 
+import de.planspiel.spiel.Zufall;
+
 /**
  * Klasse zur Organisation des Kunden
  * @author Daniel, Max

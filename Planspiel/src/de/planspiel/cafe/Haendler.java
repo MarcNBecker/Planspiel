@@ -1,5 +1,7 @@
 package de.planspiel.cafe;
 
+import de.planspiel.spiel.Zufall;
+
 /**
  * Klasse zur Organisation des Händlers
  * @author Natalie

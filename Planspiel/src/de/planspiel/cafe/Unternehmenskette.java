@@ -2,6 +2,8 @@ package de.planspiel.cafe;
 
 import java.util.Vector;
 
+import de.planspiel.spiel.Spiel;
+
 /**
  * Klasse zur Simulation der Unternehmenskette.
  * Diese ist die oberste Einheit eines Spielers und ist direkt dem Spiel untergeordnet.

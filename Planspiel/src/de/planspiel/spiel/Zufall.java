@@ -1,4 +1,4 @@
-package de.planspiel.cafe;
+package de.planspiel.spiel;
 
 /**
  * Klasse zur Generierung von Zufallszahlen und zum Treffen von Entscheidungen.

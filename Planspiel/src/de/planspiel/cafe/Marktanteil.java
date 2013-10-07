@@ -2,6 +2,8 @@ package de.planspiel.cafe;
 
 import java.util.HashMap;
 
+import de.planspiel.spiel.Spiel;
+
 /**
  * Klasse zur Organisation von Marktanteilen
  * @author Ann-Kathrin
