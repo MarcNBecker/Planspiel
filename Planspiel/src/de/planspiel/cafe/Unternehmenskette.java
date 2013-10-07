@@ -42,10 +42,11 @@ public class Unternehmenskette {
 	 * Erzeugt ein neues Filale-Objekt und gibt dieses an den Standort weiter
 	 * @param standort Standort an dem das Filialeobjekt erzeugt werden soll
 	 */
-	public void eroeffnenFiliale(Standort standort) {
+	public Filiale eroeffnenFiliale(Standort standort) {
 		//Der Konstrukter von Filiale ruft die entsprechende Standort-Methode auf
 		Filiale neueFiliale = new Filiale(standort, this);
 		hinzufuegenFiliale(neueFiliale);
+		return neueFiliale;
 	}
 	
 	/**
@@ -53,7 +54,7 @@ public class Unternehmenskette {
 	 * @param filiale Filiale, die geschlossen werden soll
 	 */
 	public void schlieﬂenFiliale(Filiale filiale) {
-		if(holeFilialenListe().contains(filiale) && filiale.holeMitarbeiter() == 0){
+		if(holeFilialenListe().contains(filiale)){
 			holeFilialenListe().remove(filiale);
 			filiale.holeStandort().entfernenFiliale(filiale);
 		}
@@ -172,10 +173,18 @@ public class Unternehmenskette {
 		}
 	}
 	
-	public void berechnenFilialKosten() {
+	/**
+	 * Berechnet alle laufenden Kosten des Unternehmens und muss vom Spiel aufgerufen werden
+	 * Diese Kosten sind Filialkosten und Kredittilgungskosten
+	 */
+	public void berechnenKosten() {
 		for (int i=0; i<holeFilialenListe().size(); i++){
 			Filiale filiale = holeFilialenListe().get(i);
 			filiale.berechnenKosten();
+		}
+		for (int i=0; i<holeKreditListe().size(); i++) {
+			Kredit kredit = holeKreditListe().get(i);
+			kredit.tilgen();
 		}
 	}
 	

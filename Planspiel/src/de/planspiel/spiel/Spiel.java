@@ -1,10 +1,12 @@
 package de.planspiel.spiel;
 
+import java.util.HashMap;
 import java.util.Vector;
 
 import de.planspiel.cafe.Haendler;
 import de.planspiel.cafe.Standort;
 import de.planspiel.cafe.Unternehmenskette;
+import de.planspiel.entscheidung.Entscheidung;
 
 public class Spiel {
 
@@ -18,6 +20,7 @@ public class Spiel {
 	private Vector<Standort> standortListe;
 	private Vector<Haendler> haendlerListe;
 	private Vector<Unternehmenskette> kettenListe;
+	private HashMap<Unternehmenskette, Vector<Entscheidung>> rundenEntscheidungen;
 	
 	/**
 	 * Startet ein neues Spiel
@@ -36,6 +39,15 @@ public class Spiel {
 	 */
 	public void spielen() {
 		// TODO
+		// Administratives zum Spielbeginn (Spieler hinzufügen, etc..)
+		// Pro Runde: Rundenzahl setzen
+		// globalen Kreditzinssatz und Laufzeit setzen
+		// rundenEntscheidungs HashMap initialisieren
+		// Entscheidungen aufnehmen
+		// Entscheidungen ausführen
+		// Unternehmenskosten-Funktion aufrufen
+		// rundenEntscheidungs HashMap zurücksetzen
+		// Marktanteile berechnen -> btw..wir müssen noch checken ob die Reports auch richtig generiert und versorgt werden
 	}
 	
 	/**
@@ -117,6 +129,17 @@ public class Spiel {
 		if(kette != null) {
 			kettenListe.add(kette);
 		}
+	}
+	
+	public HashMap<Unternehmenskette, Vector<Entscheidung>> holeRundenEntscheidungen() {
+		return rundenEntscheidungen;
+	}
+	
+	public void hinzufuegenRundenEntscheidung(Entscheidung e){
+		Unternehmenskette kette = e.holeKette();
+		Vector<Entscheidung> entscheidungen = rundenEntscheidungen.get(kette);
+		entscheidungen.add(e);
+		rundenEntscheidungen.put(kette, entscheidungen);
 	}
 
 }

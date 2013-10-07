@@ -1,15 +1,24 @@
 package de.planspiel.entscheidung;
 
+import de.planspiel.cafe.Produkt;
+import de.planspiel.cafe.Produkttyp;
+import de.planspiel.cafe.Unternehmenskette;
 
-public class VerkaufspreisEntscheidung implements Entscheidung {
 
-	// TODO muss die Preise und Produktnamen übergeben bekommen -->Konstruktor?
+public class VerkaufspreisEntscheidung extends Entscheidung {
+
+	private Produkttyp produkttyp;
+	private double vkpreis;
 	
-	@Override
+	public VerkaufspreisEntscheidung(Unternehmenskette kette, Produkttyp produkttyp, double vkpreis) {
+		super(kette);
+		this.produkttyp = produkttyp;
+		this.vkpreis = vkpreis;
+	}
+	
 	public void ausfuehren() {
-		// TODO Auto-generated method stub
-		// TODO muss die Verkaufspreise für die Produkte im Lager setzen
-
+		Produkt p = kette.holeLager().suchenProdukt(produkttyp);
+		p.setzePreis(vkpreis);
 	}
 
 }

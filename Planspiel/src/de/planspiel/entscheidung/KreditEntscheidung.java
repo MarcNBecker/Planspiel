@@ -1,14 +1,21 @@
 package de.planspiel.entscheidung;
 
+import de.planspiel.cafe.Unternehmenskette;
 
-public class KreditEntscheidung implements Entscheidung {
 
-	// TODO muss die Kredithöhe übergeben bekommen -->Konstruktor?
+public class KreditEntscheidung extends Entscheidung {
+
+	private double betrag;
 	
-	@Override
+	public KreditEntscheidung(Unternehmenskette kette, double betrag) {
+		super(kette);
+		this.betrag = betrag;
+	}
+	
 	public void ausfuehren() {
-		// TODO Auto-generated method stub
-		// TODO Kredit der Unternehmenskette hinzufügen, Kapital der Unternehmenskette erhöhen und Kosten an Report weitergeben
+		if(betrag > 0 ){
+			kette.aufnehmenKredit(betrag);	
+		}
 	}
 
 }

@@ -7,6 +7,8 @@ public double berechnenFremdkapital()
 kapital und seine getter/setter wurden in kasse umbenannt
 Attribut boolean pleite mit getter und setter
 verbuchenKosten hat jetzt boolean als Rückgabewert
+eröffnenFiliale gibt jetzt die Filiale zurück
+berechnenFilialKosten heißt jetzt einfach berechnenKosten
 
 Zufall:
 - generierenZufallszahl bekommt jetzt double statt int
@@ -32,3 +34,16 @@ PreisQualitaetVerhaeltnis:
 
 Aktivitätsdiagramm:
 - Schritte möglichst kleinschrittig durchführen, d.h. für alles eine Box
+
+Entscheidung:
+- ist jetzt kein Interface mehr sondern eine abstrakte Klasse
+- ausführen ist abstrakte Methode
+- Sie hat einen eigenen Konstruktor
+- und ein privates Attribut kette vom Typ Unternehmenskette mit einem getter
+- alle Klassen die Entscheidung implementiert haben erben jetzt von ihr
+
+Diverse Entscheidungen:
+- diverse Entscheidungen haben Attribute (ohne getter/setter) und Funktionen bekommen, einfach mal alle durchgehen
+
+Spiel:
+- neues Attribut private HashMap<Unternehmenskette, Vector<Entscheidung>> rundenEntscheidungen mit getter/setter (siehe Code für setter!)

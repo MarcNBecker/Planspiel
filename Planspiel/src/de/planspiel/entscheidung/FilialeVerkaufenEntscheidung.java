@@ -1,12 +1,21 @@
 package de.planspiel.entscheidung;
 
+import de.planspiel.cafe.Filiale;
+import de.planspiel.cafe.Unternehmenskette;
 
-public class FilialeVerkaufenEntscheidung implements Entscheidung {
 
-	@Override
+public class FilialeVerkaufenEntscheidung extends Entscheidung {
+
+	private Filiale filiale;
+	
+	public FilialeVerkaufenEntscheidung(Unternehmenskette kette, Filiale filiale) {
+		super(kette);
+		this.filiale = filiale;
+		new MitarbeiterEntlassenEntscheidung(kette, filiale, filiale.holeMitarbeiter());
+	}
+	
 	public void ausfuehren() {
-		// TODO Auto-generated method stub
-
+		kette.schlieﬂenFiliale(filiale);
 	}
 
 }
