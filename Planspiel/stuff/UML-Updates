@@ -1,11 +1,4 @@
 Entscheidung:
-- alle Klassen die Entscheidung implementiert haben erben jetzt von ihr
-
-Diverse Entscheidungen:
-- diverse Entscheidungen haben Attribute (ohne getter/setter) und Funktionen bekommen, einfach mal alle durchgehen
-
----------------------------------------------------------------------------
-Entscheidung:
 - ausführen ist abstrakte Methode --> wie stellt man das dar?
 
 Produktverwalter:
