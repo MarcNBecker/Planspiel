@@ -43,10 +43,12 @@ public class Spiel {
 		// Pro Runde: Rundenzahl setzen
 		// globalen Kreditzinssatz und Laufzeit setzen
 		// rundenEntscheidungs HashMap initialisieren
+		// Pleite Unternehmen ignorieren
 		// Entscheidungen aufnehmen
 		// Entscheidungen ausführen
 		// Unternehmenskosten-Funktion aufrufen
 		// rundenEntscheidungs HashMap zurücksetzen
+		// Kunden einkaufen lassen
 		// Marktanteile berechnen -> btw..wir müssen noch checken ob die Reports auch richtig generiert und versorgt werden
 	}
 	
@@ -139,7 +141,6 @@ public class Spiel {
 		Unternehmenskette kette = e.holeKette();
 		Vector<Entscheidung> entscheidungen = rundenEntscheidungen.get(kette);
 		entscheidungen.add(e);
-		rundenEntscheidungen.put(kette, entscheidungen);
 	}
 
 }

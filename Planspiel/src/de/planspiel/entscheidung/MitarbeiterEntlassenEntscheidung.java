@@ -13,12 +13,7 @@ import de.planspiel.spiel.Spiel;
  */
 public class MitarbeiterEntlassenEntscheidung extends Entscheidung {
 
-	private static HashMap<Unternehmenskette, Integer> einstellungen;
-	
-	//Initialisieren der Einstellungen
-	static {
-		einstellungen = new HashMap<Unternehmenskette, Integer>(Spiel.holeSpiel().holeKettenListe().size());
-	}
+	private static HashMap<Unternehmenskette, Integer> einstellungen = new HashMap<Unternehmenskette, Integer>(Spiel.holeSpiel().holeKettenListe().size());
 	
 	/**
 	 * Addiert einen bestimmten Wert zu der Anzahl der Einstellungen pro Unternehmenskette

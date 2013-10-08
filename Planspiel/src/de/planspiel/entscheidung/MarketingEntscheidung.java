@@ -48,6 +48,7 @@ public class MarketingEntscheidung extends Entscheidung {
 		// TODO 
 		// hier muss noch eine anständige funktion implementiert werden
 		// alternativ wird der marketing betrag einfach festgelegt und die wahrscheinlichkeit ist immer gleich
+		// werden automtisch alle standorte vom marketing betroffen? => NEIN STANDORT ÜBERGEBEN!
 		return 0.5;
 	}
 

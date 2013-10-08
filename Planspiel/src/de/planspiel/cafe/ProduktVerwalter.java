@@ -17,7 +17,7 @@ public abstract class ProduktVerwalter {
 	/**
 	 * @return Gibt die Produktliste zurück
 	 */
-	public final Vector<Produkt> holeProduktliste() {
+	public Vector<Produkt> holeProduktliste() {
 		return this.produktListe;
 	}
 	
@@ -27,7 +27,7 @@ public abstract class ProduktVerwalter {
 	 * @return Null falls das Produkt noch nicht existiert, Produkt wenn es gefunden wurde
 	 * @author Natalie
 	 */
-	public final Produkt suchenProdukt(Produkttyp name) {
+	public Produkt suchenProdukt(Produkttyp name) {
 		for (int i = 0; i < holeProduktliste().size(); i++){
 			if (holeProduktliste().get(i).holeName() == name){
 				return holeProduktliste().get(i);

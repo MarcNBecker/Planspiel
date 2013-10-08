@@ -1,19 +1,20 @@
-Diskutieren ob Rohstoff und Verkaufspreis Entscheidung weiterhin einzel Entscheidungen bleiben
-Wahrscheinlichkeitsfunktion für Marketingbetrag implementieren
-Report richtig von überall aus setzen
-Events implementieren
-Exception-Konzept umsetzen
-Qualität normalverteilen, beim Erzeugen des Kunden und des Händlers
-Preisfunktion ggf. normieren und mit einem maxPreis pro Produkt abgleichen
+1 - Wahrscheinlichkeitsfunktion für Marketingbetrag implementieren / Marketing pro Standort
+1 - Report richtig von überall aus setzen
+2 - Events implementieren
+2 - Exception-Konzept umsetzen
+1 - Qualität normalverteilen, beim Erzeugen des Kunden und des Händlers
+1 - Preisfunktion ggf. normieren und mit einem maxPreis pro Produkt abgleichen
+2 - Haltbarkeit des Rohstoffes
+2 - GUI mit spielen Funktion verknüpfen
 
 Spiel:
-Spielen muss noch implementiert werden
+1 - Spielen muss noch implementiert werden
 
 Kredit:
-Start-Werte setzen
+2 - Start-Werte setzen
 
 Unternehmenskette:
-Start-Werte setzen
+2 - Start-Werte setzen
 
 Standort:
-Start-Werte setzen
+2 - Start-Werte setzen
