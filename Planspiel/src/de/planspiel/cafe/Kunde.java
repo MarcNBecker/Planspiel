@@ -173,32 +173,35 @@ public class Kunde {
 					//Average Variablen
 					double preis = 0.0;
 					double qualitaet = 0.0;
-					double avg = 0.0;
+					double avgP = 0.0;
+					double avgQ = 0.0;
 					// Berechnen der Average-Werte
 					for (int i = 0; i < favoriten.size(); i++) {
 						Produkt aktuellesProdukt = favoriten.get(i).holeKette().holeLager().suchenProdukt(holeProdukte().get(0).holeName());
 						preis = preis + aktuellesProdukt.holePreis();
 						qualitaet = qualitaet + aktuellesProdukt.holeQualitaet();
 					}
-					//Basis Average Wert aller Filialen
-					avg = (preis + qualitaet) / favoriten.size();
+					//Basis Average Werte aller Filialen
+					avgP = preis / favoriten.size();
+					avgQ = qualitaet / favoriten.size();
 					
 					//Average Wert des Favoriten
-					double avgFavorit = hauptProduktFavorit.holePreis() + hauptProduktFavorit.holeQualitaet();
+					double avgAbweichungFavorit = Math.abs(1 - (hauptProduktFavorit.holePreis() / avgP)) + Math.abs(1 - (hauptProduktFavorit.holeQualitaet() / avgQ));
 					
 					for (int i = 1; i < favoriten.size(); i++) {
 						Filiale herausforderer = favoriten.get(i);
 						Produkt hauptProduktHerausforderer = herausforderer.holeKette().holeLager().suchenProdukt(holeProdukte().get(0).holeName());
-						double avgHerausforderer = hauptProduktHerausforderer.holePreis() + hauptProduktHerausforderer.holeQualitaet();
+						double avgAbweichungHerausforderer = Math.abs(1 - (hauptProduktHerausforderer.holePreis() / avgP)) + Math.abs(1 - (hauptProduktHerausforderer.holeQualitaet() / avgQ));
+						
 						//Sind beide exakt gleich füge den Herausforderer zur Gleichheitsliste
-						if (Math.abs(avgFavorit - avg) == Math.abs(avgHerausforderer - avg)) {
+						if (avgAbweichungFavorit == avgAbweichungHerausforderer) {
 							gleichheitsListe.add(herausforderer);
 						//Ansosten prüfe ob der Herausforderer besser ist
-						} else if (Math.abs(avgFavorit - avg) > Math.abs(avgHerausforderer - avg)) {
+						} else if (avgAbweichungFavorit > avgAbweichungHerausforderer) {
 							//Er ist besser, also mach ihn zum Favorit
 							favorit = herausforderer;
 							hauptProduktFavorit = favorit.holeKette().holeLager().suchenProdukt(hauptProduktKunde.holeName());
-							avgFavorit = hauptProduktFavorit.holePreis() + hauptProduktFavorit.holeQualitaet();
+							avgAbweichungFavorit = Math.abs(1 - (hauptProduktFavorit.holePreis() / avgP)) + Math.abs(1 - (hauptProduktFavorit.holeQualitaet() / avgQ));
 							gleichheitsListe.removeAllElements();
 							gleichheitsListe.add(favorit);	
 						}

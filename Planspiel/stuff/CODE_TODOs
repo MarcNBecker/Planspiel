@@ -4,6 +4,7 @@ Report richtig von überall aus setzen
 Events implementieren
 Exception-Konzept umsetzen
 Qualität normalverteilen, beim Erzeugen des Kunden und des Händlers
+Preisfunktion ggf. normieren und mit einem maxPreis pro Produkt abgleichen
 
 Spiel:
 Spielen muss noch implementiert werden
