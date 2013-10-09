@@ -62,7 +62,7 @@ public class Produkt {
 	 */
 	public boolean vergleichen(Produkt produkt) {
 		// Prüfen: Name gleich, Qualität gleich oder höher, Preis gleich oder kleiner
-		if (produkt.holeName().equals(this.holeName()) 
+		if (produkt != null && produkt.holeName().equals(this.holeName()) 
 				&& produkt.holeQualitaet() >= this.holeQualitaet() 
 				&& produkt.holePreis() <= this.holePreis())
 			return true;
