@@ -43,6 +43,7 @@ public class Spiel {
 		// Pro Runde: Rundenzahl setzen
 		// globalen Kreditzinssatz und Laufzeit setzen
 		// rundenEntscheidungs HashMap initialisieren
+		// Report für jede Unternehmenskette erzeugen
 		// Pleite Unternehmen ignorieren
 		// Entscheidungen aufnehmen
 		// Entscheidungen ausführen

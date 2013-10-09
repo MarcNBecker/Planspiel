@@ -136,7 +136,7 @@ public class Unternehmenskette {
 		if(holePleite()){
 			return false;
 		}
-		aktuellerReport.setzeKapital(aktuellerReport.holeKapital() - betrag);
+		aktuellerReport.setzeKasse(aktuellerReport.holeKasse() - betrag);
 		
 		switch(verursacher){
 		case FILIALE_ANSCHAFFUNG:
@@ -162,7 +162,7 @@ public class Unternehmenskette {
 		
 		//Die Reports werden an der Stelle "Runde des Reports" - 1 gespeichert!!
 		Report aktuellerReport = holeReportListe().get(Spiel.holeSpiel().holeAktuelleRunde()-1);
-		aktuellerReport.setzeKapital(aktuellerReport.holeKapital() + betrag);
+		aktuellerReport.setzeKasse(aktuellerReport.holeKasse() + betrag);
 		setzeKasse(holeKasse() + betrag);
 		
 		switch(verursacher) {
