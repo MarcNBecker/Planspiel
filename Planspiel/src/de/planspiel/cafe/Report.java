@@ -80,7 +80,7 @@ public class Report {
 	/**
 	 * @return Kapital der Kette in der aktuellen Runde
 	 */
-	public double holeKasee() {
+	public double holeKasse() {
 		return kasse;
 	}
 
@@ -89,7 +89,7 @@ public class Report {
 	 * 
 	 * @param kapital
 	 */
-	public void setzeKapital(double kasse) {
+	public void setzeKasse(double kasse) {
 		this.kasse = kasse;
 	}
 
