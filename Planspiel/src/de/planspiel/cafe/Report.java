@@ -15,7 +15,7 @@ public class Report {
 	private Unternehmenskette kette;
 	private double kapital;
 	private double kreditsumme;
-	private Lager lager; // neues Objekt anlegen
+	private VerkaufsListe verkaufsListe;
 	private HashMap<Filiale, double[]> filialenListe; // double[3]
 														// AnzahlMitarbeiter,
 														// Auslastung,
@@ -42,6 +42,7 @@ public class Report {
 		this.kette = kette;
 		this.filialenListe = new HashMap<Filiale, double[]>(
 				kette.holeAnzahlFilialen());
+		this.verkaufsListe = new VerkaufsListe(kette);
 	}
 	
 	/**
@@ -101,24 +102,6 @@ public class Report {
 			kreditsumme = 0;
 		}
 		this.kreditsumme = kreditsumme;
-	}
-
-	/**
-	 * @return Referenz auf ein Snapshot des Lagers in der aktuellen Runde
-	 */
-	public Lager holeLager() {
-		return lager;
-	}
-
-	/**
-	 * Setzt den Snapshot des Lagers in der aktuellen Runde
-	 * !!! Hier darf keine Referenz auf das wirkliche Lager, sondern eine Kopie des Objekts übergeben werden.
-	 * @param lager
-	 */
-	public void setzeLager(Lager lager) {
-		if(lager != null) {
-			this.lager = lager;
-		}
 	}
 
 	/**
@@ -262,5 +245,12 @@ public class Report {
 	public void setzeMarktanteil(Marktanteil marktanteil) {
 		this.marktanteil = marktanteil;
 	}
-
+	
+	/**
+	 * @return Verkaufsliste mit Anzahl verkaufter Produkte der Runde
+	 */
+	public VerkaufsListe holeVerkaufsListe() {
+		return verkaufsListe;
+	}
+	
 }
