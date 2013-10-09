@@ -43,6 +43,8 @@ public class Spiel {
 		// Pro Runde: Rundenzahl setzen
 		// globalen Kreditzinssatz und Laufzeit setzen
 		// rundenEntscheidungs HashMap initialisieren
+		// Kapazitaeten der Filialen initialisieren
+		// Report für jede Unternehmenskette erzeugen
 		// Pleite Unternehmen ignorieren
 		// Entscheidungen aufnehmen
 		// Entscheidungen ausführen
@@ -50,6 +52,7 @@ public class Spiel {
 		// rundenEntscheidungs HashMap zurücksetzen
 		// Kunden einkaufen lassen
 		// Marktanteile berechnen -> btw..wir müssen noch checken ob die Reports auch richtig generiert und versorgt werden
+		// abschließenRunde() vom Report aufrufen
 	}
 	
 	/**

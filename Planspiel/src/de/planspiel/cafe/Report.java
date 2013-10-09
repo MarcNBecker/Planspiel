@@ -1,11 +1,12 @@
 package de.planspiel.cafe;
 
 import java.util.HashMap;
+import java.util.Vector;
 
 /**
- * Organisation der Rundenstände
- * für jede Unternehmenskette gibt es pro Runde einen Report, der alle
- * Zwischenergebnisse aufnimmt
+ * Organisation der Rundenstände für jede Unternehmenskette gibt es pro Runde
+ * einen Report, der alle Zwischenergebnisse aufnimmt
+ * 
  * @author Ann-Kathrin
  * 
  */
@@ -13,9 +14,9 @@ import java.util.HashMap;
 public class Report {
 	private int runde;
 	private Unternehmenskette kette;
-	private double kapital;
+	private double kasse;
 	private double kreditsumme;
-	private Lager lager; // neues Objekt anlegen
+	private VerkaufsListe verkaufsListe;
 	private HashMap<Filiale, double[]> filialenListe; // double[3]
 														// AnzahlMitarbeiter,
 														// Auslastung,
@@ -34,26 +35,47 @@ public class Report {
 
 	/**
 	 * Erzeugt einen neuen Report für eine bestimmte Unternehmenskette
-	 * @param runde Runde in der der Report erzeugt wurde
-	 * @param kette Unternehmenskette des Reports
+	 * 
+	 * @param runde
+	 *            Runde in der der Report erzeugt wurde
+	 * @param kette
+	 *            Unternehmenskette des Reports
 	 */
 	public Report(int runde, Unternehmenskette kette) {
 		this.runde = runde;
 		this.kette = kette;
-		this.filialenListe = new HashMap<Filiale, double[]>(
-				kette.holeAnzahlFilialen());
+		this.verkaufsListe = new VerkaufsListe(kette);
 	}
-	
+
 	/**
-	 * Berechnet das Rundenergebnis, indem alle addierten Kosten von den
-	 * Erlösen abgezogen werden
+	 * Berechnet das Rundenergebnis, indem alle addierten Kosten von den Erlösen
+	 * abgezogen werden
 	 */
 	public double berechnenRundenergebnis() {
 		double kosten = this.holeAnschaffungskosten()
-				+ this.holeUnterhaltungskosten()
-				+ this.holePersonalkosten() + this.holeKreditkosten()
-				+ this.holeMarketingkosten() + this.holeRohstoffkosten();
+				+ this.holeUnterhaltungskosten() + this.holePersonalkosten()
+				+ this.holeKreditkosten() + this.holeMarketingkosten()
+				+ this.holeRohstoffkosten();
 		return this.holeUmsatzerloese() + this.holeSonstigeErloese() - kosten;
+	}
+
+	/**
+	 * Schließt die Runde ab, indem die FilialenListe erzeugt wird. Neben der
+	 * Filiale wird die Anzahl der Mitarbeiter, die Auslastung und die Anzahl
+	 * der Konkurrenzfilialen gespeichert.
+	 */
+	public void abschließenRunde() {
+		this.filialenListe = new HashMap<Filiale, double[]>(
+				kette.holeAnzahlFilialen());
+		Vector<Filiale> filialen = this.kette.holeFilialenListe();
+		double[] infos = new double[3];
+		for (int i = 0; i < filialenListe.size(); i++) {
+			infos[0] = filialen.get(i).holeMitarbeiter();
+			// TODO infos[1] mit Auslastung befüllen
+			infos[2] = filialen.get(i).holeStandort().holeFilialenListe()
+					.size() - 1;
+			filialenListe.put(filialen.get(i), infos);
+		}
 	}
 
 	/**
@@ -73,61 +95,49 @@ public class Report {
 	/**
 	 * @return Kapital der Kette in der aktuellen Runde
 	 */
-	public double holeKapital() {
-		return kapital;
+	public double holeKasse() {
+		return kasse;
 	}
 
 	/**
 	 * Setzt das Kapital der Kette in der aktuellen Runde
+	 * 
 	 * @param kapital
 	 */
-	public void setzeKapital(double kapital) {
-		this.kapital = kapital;
+	public void setzeKasse(double kasse) {
+		this.kasse = kasse;
 	}
 
 	/**
-	 * @return Fremdkapital, also die Summe aller Restbeträge der Kredite in der aktuellen Runde
+	 * @return Fremdkapital, also die Summe aller Restbeträge der Kredite in der
+	 *         aktuellen Runde
 	 */
 	public double holeKreditsumme() {
 		return kreditsumme;
 	}
 
 	/**
-	 * Setzt das Fremdkapital, also die Summe aller Restbeträge der Kredite in der aktuellen Runde
-	 * @param kreditsumme Fremdkapital
+	 * Setzt das Fremdkapital, also die Summe aller Restbeträge der Kredite in
+	 * der aktuellen Runde
+	 * 
+	 * @param kreditsumme
+	 *            Fremdkapital
 	 */
 	public void setzeKreditsumme(double kreditsumme) {
-		if(kreditsumme < 0){
+		if (kreditsumme < 0) {
 			kreditsumme = 0;
 		}
 		this.kreditsumme = kreditsumme;
 	}
 
 	/**
-	 * @return Referenz auf ein Snapshot des Lagers in der aktuellen Runde
-	 */
-	public Lager holeLager() {
-		return lager;
-	}
-
-	/**
-	 * Setzt den Snapshot des Lagers in der aktuellen Runde
-	 * !!! Hier darf keine Referenz auf das wirkliche Lager, sondern eine Kopie des Objekts übergeben werden.
-	 * @param lager
-	 */
-	public void setzeLager(Lager lager) {
-		if(lager != null) {
-			this.lager = lager;
-		}
-	}
-
-	/**
-	 * @return Gibt die Liste aller Filialen zum Zeitpunkt des Reports zurück mit filialenspezifischen Infos
+	 * @return Gibt die Liste aller Filialen zum Zeitpunkt des Reports zurück
+	 *         mit filialenspezifischen Infos
 	 */
 	public HashMap<Filiale, double[]> holeFilialenListe() {
 		return filialenListe;
 	}
-	
+
 	/**
 	 * @return Anschaffungskosten einer Filiale
 	 */
@@ -137,36 +147,39 @@ public class Report {
 
 	/**
 	 * Setzt die Anschaffungskosten
+	 * 
 	 * @param anschaffungskosten
 	 */
 	public void setzeAnschaffungskosten(double anschaffungskosten) {
 		this.anschaffungskosten = anschaffungskosten;
 	}
-	
+
 	/**
 	 * @return Unterhaltungskosten einer Filiale
 	 */
 	public double holeUnterhaltungskosten() {
 		return unterhaltungskosten;
 	}
-	
+
 	/**
 	 * Setzt die Unterhaltungskosten einer Filiale
+	 * 
 	 * @param unterhaltungskosten
 	 */
 	public void setzeUnterhaltungskosten(double unterhaltungskosten) {
 		this.unterhaltungskosten = unterhaltungskosten;
 	}
-	
+
 	/**
 	 * @return Mitarbeiterkosten
 	 */
 	public double holePersonalkosten() {
 		return personalkosten;
 	}
-	
+
 	/**
 	 * Setzt die Personalkosten
+	 * 
 	 * @param personalkosten
 	 */
 	public void setzePersonalkosten(double personalkosten) {
@@ -182,12 +195,13 @@ public class Report {
 
 	/**
 	 * Setzt die Kreditkosten
+	 * 
 	 * @param kreditkosten
 	 */
 	public void setzeKreditkosten(double kreditkosten) {
 		this.kreditkosten = kreditkosten;
 	}
-	
+
 	/**
 	 * @return Marketingkosten
 	 */
@@ -197,27 +211,29 @@ public class Report {
 
 	/**
 	 * Setzt die Marketingkosten
+	 * 
 	 * @param marketingkosten
 	 */
 	public void setzeMarketingkosten(double marketingkosten) {
 		this.marketingkosten = marketingkosten;
 	}
-	
+
 	/**
 	 * @return Rohstoffkosten
 	 */
 	public double holeRohstoffkosten() {
 		return rohstoffkosten;
 	}
-	
+
 	/**
 	 * Setzt die Rohstoffkosten
+	 * 
 	 * @param rohstoffkosten
 	 */
 	public void setzeRohstoffkosten(double rohstoffkosten) {
 		this.rohstoffkosten = rohstoffkosten;
 	}
-	
+
 	/**
 	 * @return Umsatzerlöse
 	 */
@@ -227,27 +243,29 @@ public class Report {
 
 	/**
 	 * Setzt die Umsatzerlöse
+	 * 
 	 * @param umsatzerloese
 	 */
 	public void setzeUmsatzerloese(double umsatzerloese) {
 		this.umsatzerloese = umsatzerloese;
 	}
-	
+
 	/**
 	 * @return Sonstige Erlöse (z.B. Filialverkauf)
- 	 */
+	 */
 	public double holeSonstigeErloese() {
 		return sonstigeerloese;
 	}
-	
+
 	/**
 	 * Setzt die sonstigen Erlöse (z.B. Filialverkauf)
+	 * 
 	 * @param sonstigeerloese
 	 */
 	public void setzeSonstigeErloese(double sonstigeerloese) {
 		this.sonstigeerloese = sonstigeerloese;
 	}
-	
+
 	/**
 	 * @return Marktanteil Objekt der Runde
 	 */
@@ -257,10 +275,18 @@ public class Report {
 
 	/**
 	 * Setzt das Marktanteil Objekt
+	 * 
 	 * @param marktanteil
 	 */
 	public void setzeMarktanteil(Marktanteil marktanteil) {
 		this.marktanteil = marktanteil;
+	}
+
+	/**
+	 * @return Verkaufsliste mit Anzahl verkaufter Produkte der Runde
+	 */
+	public VerkaufsListe holeVerkaufsListe() {
+		return verkaufsListe;
 	}
 
 }
