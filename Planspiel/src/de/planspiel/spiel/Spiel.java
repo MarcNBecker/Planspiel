@@ -51,6 +51,7 @@ public class Spiel {
 		// rundenEntscheidungs HashMap zurücksetzen
 		// Kunden einkaufen lassen
 		// Marktanteile berechnen -> btw..wir müssen noch checken ob die Reports auch richtig generiert und versorgt werden
+		// abschließenRunde() vom Report aufrufen
 	}
 	
 	/**

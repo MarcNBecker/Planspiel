@@ -1,6 +1,7 @@
 package de.planspiel.cafe;
 
 import java.util.HashMap;
+import java.util.Vector;
 
 /**
  * Organisation der Rundenstände für jede Unternehmenskette gibt es pro Runde
@@ -58,9 +59,23 @@ public class Report {
 		return this.holeUmsatzerloese() + this.holeSonstigeErloese() - kosten;
 	}
 
+	/**
+	 * Schließt die Runde ab, indem die FilialenListe erzeugt wird. Neben der
+	 * Filiale wird die Anzahl der Mitarbeiter, die Auslastung und die Anzahl
+	 * der Konkurrenzfilialen gespeichert.
+	 */
 	public void abschließenRunde() {
 		this.filialenListe = new HashMap<Filiale, double[]>(
 				kette.holeAnzahlFilialen());
+		Vector<Filiale> filialen = this.kette.holeFilialenListe();
+		double[] infos = new double[3];
+		for (int i = 0; i < filialenListe.size(); i++) {
+			infos[0] = filialen.get(i).holeMitarbeiter();
+			// TODO infos[1] mit Auslastung befüllen
+			infos[2] = filialen.get(i).holeStandort().holeFilialenListe()
+					.size() - 1;
+			filialenListe.put(filialen.get(i), infos);
+		}
 	}
 
 	/**
