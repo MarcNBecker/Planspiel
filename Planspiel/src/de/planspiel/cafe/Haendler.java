@@ -26,7 +26,7 @@ public class Haendler extends ProduktVerwalter {
 		PreisQualitaetVerhaeltnis v = new PreisQualitaetVerhaeltnis(Zufall.generierenZufallszahl(3) + 3);
 		for (int i = 0; i < Produkttyp.values().length; i++){
 			//Konstruktor: Produkt (name, qualitaet, ekpreis) 
-			double zufallsQualitaet = Zufall.generierenZufallszahl(1);
+			double zufallsQualitaet = Zufall.generierenQualitaet();
 			double preis = v.berechnenPreis(zufallsQualitaet);
 			holeProduktliste().add(new Produkt(Produkttyp.values()[i], zufallsQualitaet, preis)); 
 		}

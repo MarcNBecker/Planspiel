@@ -53,7 +53,7 @@ public class Kunde {
 		neuesProdukt = new Produkt(produktTypen[zufallsProdukt], 1);
 		//Bereich von 4 bis 7
 		v = new PreisQualitaetVerhaeltnis(Zufall.generierenZufallszahl(3) + 4);
-		zufallsQualitaet = Zufall.generierenZufallszahl(1);
+		zufallsQualitaet = Zufall.generierenQualitaet();
 		zufallsAddition = Zufall.generierenZufallszahl(1 - zufallsQualitaet);
 		neuesProdukt.setzeQualitaet(zufallsQualitaet);
 		neuesProdukt.setzePreis(v.berechnenPreis(zufallsQualitaet+zufallsAddition));
@@ -65,7 +65,7 @@ public class Kunde {
 					neuesProdukt = new Produkt(produktTypen[i], 1);
 					//Bereich von 4 bis 7
 					v = new PreisQualitaetVerhaeltnis(Zufall.generierenZufallszahl(3) + 4);
-					zufallsQualitaet = Zufall.generierenZufallszahl(1);
+					zufallsQualitaet = Zufall.generierenQualitaet();
 					zufallsAddition = Zufall.generierenZufallszahl(1 - zufallsQualitaet);
 					neuesProdukt.setzeQualitaet(zufallsQualitaet);
 					neuesProdukt.setzePreis(v.berechnenPreis(zufallsQualitaet+zufallsAddition));

@@ -1,0 +1,3 @@
+Zufall:
+- Zufall hat jetzt private static double testQualität mit getter und setter
+- neue Funktion public static double generierenQualitaet()

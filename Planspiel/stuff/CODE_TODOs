@@ -1,8 +1,6 @@
-1 - Wahrscheinlichkeitsfunktion für Marketingbetrag implementieren / Marketing pro Standort
 1 - Report richtig von überall aus setzen
 2 - Events implementieren
 2 - Exception-Konzept umsetzen
-1 - Qualität normalverteilen, beim Erzeugen des Kunden und des Händlers
 1 - Preisfunktion ggf. normieren und mit einem maxPreis pro Produkt abgleichen
 2 - Haltbarkeit des Rohstoffes
 2 - GUI mit spielen Funktion verknüpfen
@@ -17,4 +15,7 @@ Unternehmenskette:
 2 - Start-Werte setzen
 
 Standort:
+2 - Start-Werte setzen
+
+Marketing-Entscheidung:
 2 - Start-Werte setzen
