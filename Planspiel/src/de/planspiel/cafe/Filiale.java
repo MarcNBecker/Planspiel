@@ -36,7 +36,7 @@ public class Filiale {
 	public void verkaufen(Produkttyp name, int menge) {
 		Produkt lagerProdukt = this.holeKette().holeLager().auslagern(name, menge);
 		holeKette().verbuchenErtrag(Ertragsverursacher.UMSATZERLOESE, lagerProdukt.holeMenge() * lagerProdukt.holePreis());
-		Report report = holeKette().holeReportListe().get(holeKette().holeReportListe().size() - 1);
+		Report report = holeKette().holeReportListe().get(holeKette().holeReportListe().size() - 1); //Ist das der richtige Report??
 		report.holeVerkaufsListe().erhoehenVerkaufsmenge(name, lagerProdukt.holeMenge());
 		setzeFreieKapazitaet(holeFreieKapazitaet() - 1);
 	}
