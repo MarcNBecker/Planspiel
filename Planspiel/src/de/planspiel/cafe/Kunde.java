@@ -226,7 +226,7 @@ public class Kunde {
 			if (aktuellesProduktKunde != null 
 					&& aktuellesProduktInFiliale != null 
 					&& aktuellesProduktKunde.vergleichen(aktuellesProduktInFiliale) // Existiert das Produkt in der enstprechenden Qualität und Preis?
-					&& aktuellesProduktKunde.holeMenge() > 0) { // Ist das Produkt noch verfügbar?
+					&& aktuellesProduktInFiliale.holeMenge() > 0) { // Ist das Produkt noch verfügbar?
 				
 				verkaufsFiliale.verkaufen(aktuellesProduktKunde.holeName(), aktuellesProduktKunde.holeMenge()); // Verkaufe Produkt
 				verkaufsFiliale.setzeFreieKapazitaet(verkaufsFiliale.holeFreieKapazitaet() + 1); // Korrigiere Kapazität
