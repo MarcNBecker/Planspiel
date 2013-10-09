@@ -70,11 +70,11 @@ public class Report {
 		Vector<Filiale> filialen = holeKette().holeFilialenListe();
 		double[] infos = new double[3];
 		for (int i = 0; i < holeFilialenListe().size(); i++) {
-			infos[0] = filialen.get(i).holeMitarbeiter();
-			// TODO infos[1] mit Auslastung befüllen
-			infos[2] = filialen.get(i).holeStandort().holeFilialenListe()
-					.size() - 1;
-			holeFilialenListe().put(filialen.get(i), infos);
+			Filiale filiale = filialen.get(i);
+			infos[0] = filiale.holeMitarbeiter();
+			infos[1] = 1 - (filiale.holeFreieKapazitaet() / filiale.holeStartKapazitaet());
+			infos[2] = filiale.holeStandort().holeFilialenListe().size() - 1;
+			holeFilialenListe().put(filiale, infos);
 		}
 	}
 

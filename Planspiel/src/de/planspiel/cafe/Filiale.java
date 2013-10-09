@@ -11,6 +11,7 @@ public class Filiale {
 	private Standort standort;
 	private Unternehmenskette kette;
 	private int freieKapazitaet;
+	private int startKapazitaet;
 	
 	/**
 	 * Erzeugt eine neue Filiale an einem bestimmten Standort und fügt diese auch dem Standort hinzu
@@ -89,6 +90,7 @@ public class Filiale {
 	 */
 	public void initialisierenKapazitaet() {
 		this.setzeFreieKapazitaet(this.holeStandort().berechnenKapazitaet(this.holeMitarbeiter()));
+		startKapazitaet = freieKapazitaet;
 	}
 	
 	/**
@@ -139,6 +141,12 @@ public class Filiale {
 			this.freieKapazitaet = freieKapazitaet;
 		}
 	}
-
+	
+	/**
+	 * @return Liefert die Startkapazität zurück
+	 */
+	public int holeStartKapazitaet() {
+		return startKapazitaet;
+	}
 }
 
