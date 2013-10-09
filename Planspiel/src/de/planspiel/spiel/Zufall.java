@@ -70,7 +70,6 @@ public class Zufall {
 			double prozent = anv / 6; // Standardabweichung als Pronzentsatz
 			double maxQC = 0.6; // Maximale Qualität vom C-Markt
 			double qualitaet = maxQC * prozent; // Qualität von 0.0 bis 0.6
-			System.out.println("C");
 			return qualitaet;
 		} else { // A-Markt Qualität von 0.6 - 1
 			Random r = new Random();
