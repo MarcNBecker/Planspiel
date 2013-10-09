@@ -66,15 +66,15 @@ public class Report {
 	 */
 	public void abschlieﬂenRunde() {
 		this.filialenListe = new HashMap<Filiale, double[]>(
-				kette.holeAnzahlFilialen());
-		Vector<Filiale> filialen = this.kette.holeFilialenListe();
+				holeKette().holeAnzahlFilialen());
+		Vector<Filiale> filialen = holeKette().holeFilialenListe();
 		double[] infos = new double[3];
-		for (int i = 0; i < filialenListe.size(); i++) {
+		for (int i = 0; i < holeFilialenListe().size(); i++) {
 			infos[0] = filialen.get(i).holeMitarbeiter();
 			// TODO infos[1] mit Auslastung bef¸llen
 			infos[2] = filialen.get(i).holeStandort().holeFilialenListe()
 					.size() - 1;
-			filialenListe.put(filialen.get(i), infos);
+			holeFilialenListe().put(filialen.get(i), infos);
 		}
 	}
 
