@@ -23,12 +23,12 @@ public class Haendler extends ProduktVerwalter {
 	 */
 	public void generierenAngebot() {
 		//Alle Preis Qualität Verhältnis von 3-6
-		PreisQualitaetVerhaeltnis v = new PreisQualitaetVerhaeltnis(Zufall.generierenZufallszahl(3) + 3);
 		for (int i = 0; i < Produkttyp.values().length; i++){
+			Produkttyp aktuellesProdukt = Produkttyp.values()[i];
 			//Konstruktor: Produkt (name, qualitaet, ekpreis) 
 			double zufallsQualitaet = Zufall.generierenQualitaet();
-			double preis = v.berechnenPreis(zufallsQualitaet);
-			holeProduktliste().add(new Produkt(Produkttyp.values()[i], zufallsQualitaet, preis)); 
+			double preis = aktuellesProdukt.holeMaxEK() * PreisQualitaetVerhaeltnis.berechnenPreisFaktor(zufallsQualitaet);
+			holeProduktliste().add(new Produkt(aktuellesProdukt, zufallsQualitaet, preis)); 
 		}
 	}
 

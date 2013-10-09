@@ -7,5 +7,23 @@ package de.planspiel.cafe;
  *
  */
 public enum Produkttyp {
-	KAFFEE, TEE, KUCHEN
+	KAFFEE 	(0.5, 5), // TODO Sinnvollen Start-Werte setzen
+	TEE 	(0.4, 4), // TODO Sinnvollen Start-Werte setzen
+	KUCHEN 	(0.6, 4); // TODO Sinnvollen Start-Werte setzen
+	
+	private final double maxEK;
+	private final double maxVK;
+	
+	private Produkttyp(double maxEK, double maxVK) {
+		this.maxEK = maxEK;
+		this.maxVK = maxVK;
+	}
+	
+	public double holeMaxEK() {
+		return maxEK;
+	}
+	
+	public double holeMaxVK() {
+		return maxVK;
+	}
 }

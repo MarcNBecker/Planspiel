@@ -1,12 +1,11 @@
-1 - Report richtig von überall aus setzen
+1 - Report richtig von überall aus setzen !!!
 2 - Events implementieren
 2 - Exception-Konzept umsetzen
-1 - Preisfunktion ggf. normieren und mit einem maxPreis pro Produkt abgleichen
 2 - Haltbarkeit des Rohstoffes
 2 - GUI mit spielen Funktion verknüpfen
 
 Spiel:
-1 - Spielen muss noch implementiert werden
+1 - Spielen muss noch implementiert werden !!!
 
 Kredit:
 2 - Start-Werte setzen
@@ -18,4 +17,7 @@ Standort:
 2 - Start-Werte setzen
 
 Marketing-Entscheidung:
+2 - Start-Werte setzen
+
+Produkttyp:
 2 - Start-Werte setzen

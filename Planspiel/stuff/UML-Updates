@@ -1,3 +1,13 @@
 Zufall:
 - Zufall hat jetzt private static double testQualität mit getter und setter
 - neue Funktion public static double generierenQualitaet()
+
+PreisQualitätVerhältnis:
+- sieht jetzt anders aus :D 
+
+Report:
+- Lager rausgeschmissen
+- Verkaufsliste rein
+
+Verkausliste:
+- neue Klasse

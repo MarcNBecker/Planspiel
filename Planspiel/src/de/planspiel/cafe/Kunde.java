@@ -42,7 +42,6 @@ public class Kunde {
 
 		Produkttyp[] produktTypen = Produkttyp.values();
 		Produkt neuesProdukt;
-		PreisQualitaetVerhaeltnis v;
 		double zufallsQualitaet;
 		double zufallsAddition;
 		// zufallszahlWahrscheinlichkeit = Wahrscheinlichkeit mit der Produkt 2, 3, 4, etc. 
@@ -52,11 +51,10 @@ public class Kunde {
 		// 1. Produkt hinzufügen
 		neuesProdukt = new Produkt(produktTypen[zufallsProdukt], 1);
 		//Bereich von 4 bis 7
-		v = new PreisQualitaetVerhaeltnis(Zufall.generierenZufallszahl(3) + 4);
 		zufallsQualitaet = Zufall.generierenQualitaet();
 		zufallsAddition = Zufall.generierenZufallszahl(1 - zufallsQualitaet);
 		neuesProdukt.setzeQualitaet(zufallsQualitaet);
-		neuesProdukt.setzePreis(v.berechnenPreis(zufallsQualitaet+zufallsAddition));
+		neuesProdukt.setzePreis(produktTypen[zufallsProdukt].holeMaxVK() * PreisQualitaetVerhaeltnis.berechnenPreisFaktor(zufallsQualitaet+zufallsAddition));
 		hinzufuegenProdukt(neuesProdukt);
 		// 2., 3., 4., etc. zufällig hinzufügen
 		for (int i=0; i<produktTypen.length; i++) {
@@ -64,11 +62,10 @@ public class Kunde {
 				if(Zufall.treffenEntscheidung(zufallsWahrscheinlichkeit)) {
 					neuesProdukt = new Produkt(produktTypen[i], 1);
 					//Bereich von 4 bis 7
-					v = new PreisQualitaetVerhaeltnis(Zufall.generierenZufallszahl(3) + 4);
 					zufallsQualitaet = Zufall.generierenQualitaet();
 					zufallsAddition = Zufall.generierenZufallszahl(1 - zufallsQualitaet);
 					neuesProdukt.setzeQualitaet(zufallsQualitaet);
-					neuesProdukt.setzePreis(v.berechnenPreis(zufallsQualitaet+zufallsAddition));
+					neuesProdukt.setzePreis(produktTypen[zufallsProdukt].holeMaxVK() * PreisQualitaetVerhaeltnis.berechnenPreisFaktor(zufallsQualitaet+zufallsAddition));
 					hinzufuegenProdukt(neuesProdukt);
 				}
 			}
