@@ -33,7 +33,7 @@ public class KundeTest {
 	@Before
 	public void erstelleSUT() {
 		//Spiel mit Anzahl der Runden wird erstellt.
-		Spiel spiel = new Spiel(1);
+		Spiel spiel = new Spiel();
 		
 		//Für jeden Spieler eine Unternehmenskette, damit eine Konkurrenzsituation entsteht
 		ukette  = new Unternehmenskette("KetteNummer1");
@@ -61,8 +61,12 @@ public class KundeTest {
 		fil2 = new Filiale(standort, ukette1);
 		fil2.setzeMitarbeiter(1);
 		fil2.initialisierenKapazitaet();
-		standort.beeinflussenKunden(ukette, 0.99);
-		standort.beeinflussenKunden(ukette1, 0.99);
+		Zufall.setzeTestmodus(false);
+		standort.beeinflussenKunden(ukette, 99);
+		standort.beeinflussenKunden(ukette1, 99);
+		Zufall.setzeTestmodus(true);
+		Zufall.setzeTestZufallszahl(2);
+		Zufall.setzeTestQualitaet(0.4);
 		Produkt p1 = new Produkt(Produkttyp.KAFFEE, 20);
 		Produkt p2 = new Produkt(Produkttyp.KUCHEN, 10);
 		p1.setzePreis(1);
