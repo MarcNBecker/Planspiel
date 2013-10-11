@@ -14,7 +14,7 @@ public class HaendlerTest {
 	Haendler haendler;
 	
 	@BeforeClass
-	public void vorbereiten(){
+	public static void vorbereiten(){
 		Zufall.setzeTestmodus(true);
 		Zufall.setzeTestQualitaet(0.8);
 	}
@@ -30,17 +30,16 @@ public class HaendlerTest {
 		for (int i = 0; i< ekArray.length;i++){  //Array erstellen, das erwartete EKPreise enthält
 			ekArray[i] = Produkttyp.values()[i].holeMaxEK() * PreisQualitaetVerhaeltnis.berechnenPreisFaktor(0.8);
 		}
-		
-		haendler.generierenAngebot();
-		for (int i = 0; i<haendler.holeProduktliste().size(); i++){
-			assertEquals(haendler.holeProduktliste().get(i).holeName(), Produkttyp.values()[i]);
-			assertEquals(haendler.holeProduktliste().get(i).holeQualitaet(), 0.8, 0.0);
-			assertEquals(haendler.holeProduktliste().get(i).holeEkpreis(), ekArray[i], 0.0);	
+	
+		for (int j = 0; j<haendler.holeProduktliste().size(); j++){
+			assertEquals(haendler.holeProduktliste().get(j).holeName(), Produkttyp.values()[j]);
+			assertEquals(haendler.holeProduktliste().get(j).holeQualitaet(), 0.8, 0.0);
+			assertEquals(haendler.holeProduktliste().get(j).holeEkpreis(), ekArray[j], 0.0);	
 		}
 	}
 	
 	@AfterClass
-	public void beenden(){
+	public static void beenden(){
 		Zufall.setzeTestmodus(false);
 	}
 	
