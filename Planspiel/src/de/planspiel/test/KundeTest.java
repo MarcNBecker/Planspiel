@@ -1,11 +1,9 @@
 package de.planspiel.test;
 
-import java.util.Vector;
 
 import org.junit.*;
 
 import de.planspiel.cafe.Filiale;
-import de.planspiel.cafe.Praeferenz;
 import de.planspiel.cafe.Produkt;
 import de.planspiel.cafe.Produkttyp;
 import de.planspiel.cafe.Report;
@@ -14,9 +12,6 @@ import de.planspiel.cafe.Unternehmenskette;
 import de.planspiel.spiel.Spiel;
 
 public class KundeTest {
-	private Vector<Unternehmenskette> kettenListe;
-	private Vector<Produkt> produkte;
-	private Praeferenz praeferenz;
 	private Standort standort;
 	
 	private Unternehmenskette ukette;
