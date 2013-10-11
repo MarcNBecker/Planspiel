@@ -31,7 +31,7 @@ public class Haendler extends ProduktVerwalter {
 			//Konstruktor: Produkt (name, qualitaet, ekpreis) 
 			double zufallsQualitaet = Zufall.generierenQualitaet();
 			double preis = aktuellesProdukt.holeMaxEK() * PreisQualitaetVerhaeltnis.berechnenPreisFaktor(zufallsQualitaet);
-			holeProduktliste().add(new Produkt(aktuellesProdukt, zufallsQualitaet, preis)); 
+			hinzufuegenProdukt(new Produkt(aktuellesProdukt, zufallsQualitaet, preis)); 
 		}
 	}
 	
