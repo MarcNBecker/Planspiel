@@ -28,3 +28,6 @@ Standort:
 
 Marktanteil:
 - public void mitteilenVerkauf(Unternehmenskette kette) hat setzeGesamtKunden ersetzt
+
+Spiel:
+- neues Attribut aktuellerMarktanteil mit getter und setter

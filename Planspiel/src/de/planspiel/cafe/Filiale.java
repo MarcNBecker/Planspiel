@@ -1,5 +1,7 @@
 package de.planspiel.cafe;
 
+import de.planspiel.spiel.Spiel;
+
 /**
  * Klasse zur Organisation von Filialen
  * @author Daniel
@@ -39,6 +41,7 @@ public class Filiale {
 		holeKette().verbuchenErtrag(Ertragsverursacher.UMSATZERLOESE, lagerProdukt.holeMenge() * lagerProdukt.holePreis());
 		Report report = holeKette().holeReportListe().get(holeKette().holeReportListe().size() - 1); //Ist das der richtige Report??
 		report.holeVerkaufsListe().erhoehenVerkaufsmenge(name, lagerProdukt.holeMenge());
+		Spiel.holeSpiel().holeAktuellerMarktanteil().mitteilenVerkauf(holeKette());
 		setzeFreieKapazitaet(holeFreieKapazitaet() - 1);
 	}
 

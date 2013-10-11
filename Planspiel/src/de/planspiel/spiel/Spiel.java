@@ -1,7 +1,6 @@
 package de.planspiel.spiel;
 
 import java.util.HashMap;
-import java.util.Set;
 import java.util.Vector;
 
 import de.planspiel.cafe.Filiale;
@@ -82,6 +81,7 @@ public class Spiel {
 					counter++;
 				}
 			}
+			
 			// Entscheidungs HashMap initialisieren
 			rundenEntscheidungen = new HashMap<Unternehmenskette, Vector<Entscheidung>>(counter);
 						
@@ -142,6 +142,8 @@ public class Spiel {
 			// Runde neu setzen
 			setzeAktuelleRunde(holeAktuelleRunde() + 1);
 		}
+		
+		// TODO Gewinner ausgeben
 		
 	}
 	
