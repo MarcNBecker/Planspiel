@@ -23,8 +23,8 @@ public class PreisQualitaetVTest {
 	
 	@Test
 	public void testenBerechnenPreisfaktor(){
-		assertEquals(PreisQualitaetVerhaeltnis.berechnenPreisFaktor(produkt1.holeQualitaet()), 0.177767, 0.001);
-		assertEquals(PreisQualitaetVerhaeltnis.berechnenPreisFaktor(produkt2.holeQualitaet()), 0.507395, 0.001);		
+		assertEquals(PreisQualitaetVerhaeltnis.berechnenPreisFaktor(produkt1.holeQualitaet()), 0.177767, 0.00001);
+		assertEquals(PreisQualitaetVerhaeltnis.berechnenPreisFaktor(produkt2.holeQualitaet()), 0.507395, 0.00001);		
 	}
 	
 	@After
