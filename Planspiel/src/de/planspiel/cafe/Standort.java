@@ -11,10 +11,11 @@ import de.planspiel.spiel.Zufall;
  * 
  */
 public class Standort {
-
+	
+	private Standorttyp name;
 	private Vector<Kunde> kundenkreis;
-	private double laufendeFilialkosten;
 	private Vector<Filiale> filialenListe;
+	private double laufendeFilialkosten;
 	private double startFilialkosten;
 	private double anteilFilialverkauf;
 	private int minKunden; // Anzahl der zu bedienenden Kunden ab einem
@@ -40,15 +41,16 @@ public class Standort {
 	 *            Mitarbeiteranzahl, ab der sich zusätzliche Mitarbeiter nicht
 	 *            mehr lohnen
 	 */
-	public Standort(double laufendeFilialkosten, double startFilialkosten, int minKunden, int maxKunden, int maxMitarbeiter) {
+	public Standort(Standorttyp name) {
+		this.name = name;
 		this.kundenkreis = new Vector<Kunde>();
 		this.filialenListe = new Vector<Filiale>();
-		setzeLaufendeFilialkosten(laufendeFilialkosten);
-		setzeStartFilialkosten(startFilialkosten);
+		setzeLaufendeFilialkosten(name.holeLaufendeFilialkosten());
+		setzeStartFilialkosten(name.holeStartFilialkosten());
 		setzeAnteilFilialverkauf(0.5);
-		setzeMinKunden(minKunden);
-		setzeMaxKunden(maxKunden);
-		setzeMaxMitarbeiter(maxMitarbeiter);
+		setzeMinKunden(name.holeMinKunden());
+		setzeMaxKunden(name.holeMaxKunden());
+		setzeMaxMitarbeiter(name.holeMaxMitarbeiter());
 		generierenKundenliste();
 	}
 
@@ -138,6 +140,13 @@ public class Standort {
 		}
 	}
 
+	/**
+	 * @return Name des Standorts
+	 */
+	public String holeName() {
+		return name.toString();
+	}
+	
 	/**
 	 * @return Alle Kunden an diesem Standort
 	 */

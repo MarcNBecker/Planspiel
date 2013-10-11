@@ -11,3 +11,17 @@ Report:
 
 Verkausliste:
 - neue Klasse
+
+Haendlertyp:
+- neues Enum
+
+Standorttyp:
+- neues Enum mit Konstruktor und einigen gettern!!
+
+Haendler:
+- Konstruktor hat jetzt Haendlertyp name als WEITERES Attribut
+- privates Attribut Haendlertyp name mit getter (hier ist Rückgabewert String)
+
+Standort:
+- Konstruktor hat jetzt NUR NOCH Standorttyp name als Attribut
+- privates Attribut Standorttyp name mit getter (hier ist Rückgabewert String)

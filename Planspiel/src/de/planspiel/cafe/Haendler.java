@@ -9,11 +9,14 @@ import de.planspiel.spiel.Zufall;
  */
 public class Haendler extends ProduktVerwalter {
 	
+	private Haendlertyp name;
+	
 	/**
 	 * Erzeugt einen neuen Händler und generiert direkt ein erstes Angebot
 	 */
-	public Haendler() {
+	public Haendler(Haendlertyp name) {
 		super();
+		this.name = name;
 		generierenAngebot();
 	}
 	
@@ -30,6 +33,10 @@ public class Haendler extends ProduktVerwalter {
 			double preis = aktuellesProdukt.holeMaxEK() * PreisQualitaetVerhaeltnis.berechnenPreisFaktor(zufallsQualitaet);
 			holeProduktliste().add(new Produkt(aktuellesProdukt, zufallsQualitaet, preis)); 
 		}
+	}
+	
+	public String holeName() {
+		return name.toString();
 	}
 
 }

@@ -8,6 +8,7 @@ import de.planspiel.cafe.Filiale;
 import de.planspiel.cafe.Produkt;
 import de.planspiel.cafe.Produkttyp;
 import de.planspiel.cafe.Standort;
+import de.planspiel.cafe.Standorttyp;
 import de.planspiel.cafe.Unternehmenskette;
 
 public class FilialeTest {
@@ -18,7 +19,7 @@ public class FilialeTest {
 	
 	@Before
 	public void erstelleSUT() {
-		standort = new Standort(5000, 1000, 100, 200, 5);
+		standort = new Standort(Standorttyp.Standort1);
 		ukette  = new Unternehmenskette("KetteNummer1");
 		fil1 = new Filiale(standort, ukette);
 		fil1.setzeMitarbeiter(1);

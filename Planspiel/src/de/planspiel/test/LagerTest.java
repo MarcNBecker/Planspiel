@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 import de.planspiel.cafe.Haendler;
+import de.planspiel.cafe.Haendlertyp;
 import de.planspiel.cafe.Lager;
 import de.planspiel.cafe.Produkt;
 import de.planspiel.cafe.Produkttyp;
@@ -25,7 +26,7 @@ public class LagerTest {
 		kette = new Unternehmenskette("Test");
 		lager = new Lager(kette);
 		einkaufsliste = new Vector<Produkt>();
-		haendler = new Haendler();
+		haendler = new Haendler(Haendlertyp.Haendler1);
 		haendler.generierenAngebot(); //Hier kommen Zufallszahlen rein - das wollen wir nicht!
 	}
 	
