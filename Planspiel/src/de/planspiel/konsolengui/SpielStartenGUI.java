@@ -23,6 +23,7 @@ public class SpielStartenGUI extends KonsolenGUI {
 					String[] param = teile[1].split(",");
 					if(param.length == 1){
 						spiel.hinzufuegenUnternehmenskette(new Unternehmenskette(param[0]));
+						System.out.println("Spieler " + param[0] + " hinzugefügt");
 					} else {
 						throw new Exception();
 					}

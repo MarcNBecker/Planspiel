@@ -13,6 +13,7 @@ import de.planspiel.cafe.Standorttyp;
 import de.planspiel.cafe.Haendlertyp;
 import de.planspiel.cafe.Unternehmenskette;
 import de.planspiel.entscheidung.Entscheidung;
+import de.planspiel.konsolengui.EntscheidungTreffenGUI;
 import de.planspiel.konsolengui.SpielStartenGUI;
 
 public class Spiel {
@@ -40,6 +41,7 @@ public class Spiel {
 		setzeAktuelleRunde(1);
 		this.standortListe = new Vector<Standort>();
 		this.kettenListe = new Vector<Unternehmenskette>();
+		this.haendlerListe = new Vector<Haendler>();
 	}
 	
 	/**
@@ -71,6 +73,7 @@ public class Spiel {
 			// Report für jedes Unternehmen erzeugen
 			for(int i=0; i<holeKettenListe().size(); i++) {
 				Unternehmenskette kette = holeKettenListe().get(i);
+				System.out.println(kette.holeName());
 				// Ignoriere pleite Unternehmen
 				if (!kette.holePleite()) {
 					Report report = new Report(holeAktuelleRunde(), kette);
@@ -82,7 +85,7 @@ public class Spiel {
 			// Entscheidungs HashMap initialisieren
 			rundenEntscheidungen = new Vector<Entscheidung>();
 						
-			// TODO Entscheidungen aufnehmen
+			new EntscheidungTreffenGUI().run();
 			
 			// Entscheidungen ausführen
 			for(int i=0; i<holeRundenEntscheidungen().size(); i++){
