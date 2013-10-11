@@ -17,10 +17,11 @@ public class Report {
 	private double kasse;
 	private double kreditsumme;
 	private VerkaufsListe verkaufsListe;
-	private HashMap<Filiale, double[]> filialenListe; // double[3]
+	private HashMap<Filiale, double[]> filialenListe; // double[4]
 														// AnzahlMitarbeiter,
 														// Auslastung,
 														// AnzahlKonkurrenzfilialen
+														// AnzahlKunden
 	private double anschaffungskosten;
 	private double unterhaltungskosten;
 	private double personalkosten;
@@ -71,9 +72,22 @@ public class Report {
 		double[] infos = new double[3];
 		for (int i = 0; i < holeFilialenListe().size(); i++) {
 			Filiale filiale = filialen.get(i);
+			// Bestimme Mitarbeiter
 			infos[0] = filiale.holeMitarbeiter();
+			// Bestimme Auslastung
 			infos[1] = 1 - (filiale.holeFreieKapazitaet() / filiale.holeStartKapazitaet());
+			// Bestimme Konkurenzfilialen
 			infos[2] = filiale.holeStandort().holeFilialenListe().size() - 1;
+			// Bestimme AnzahlKunden
+			Vector<Kunde> kunden = filiale.holeStandort().holeKundenkreis();
+			int counter = 0;
+			for(int j=0; j<kunden.size(); j++){
+				Kunde kunde = kunden.get(j);
+				if(kunde.holeKettenListe().contains(holeKette())){
+					counter++;
+				}
+			}
+			infos[3] = counter;
 			holeFilialenListe().put(filiale, infos);
 		}
 	}

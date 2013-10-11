@@ -25,3 +25,6 @@ Haendler:
 Standort:
 - Konstruktor hat jetzt NUR NOCH Standorttyp name als Attribut
 - privates Attribut Standorttyp name mit getter (hier ist Rückgabewert String)
+
+Marktanteil:
+- public void mitteilenVerkauf(Unternehmenskette kette) hat setzeGesamtKunden ersetzt

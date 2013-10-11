@@ -28,14 +28,11 @@ public class Marktanteil {
 		return gesamtKunden;
 	}
 	
-	/**
-	 * Setzt die Kundenanzahl, die zur Basis des Marktanteils dient
-	 * @param gesamtKunden Kundenanzahl größer 0
-	 */
-	public void setzeGesamtKunden(int gesamtKunden) {
-		if(gesamtKunden > 0) {
-			this.gesamtKunden = gesamtKunden;
-		}
+	public void mitteilenVerkauf(Unternehmenskette kette){
+		int anzahlKundenKette = verkaufsListe.get(kette);
+		gesamtKunden++;
+		anzahlKundenKette++;
+		verkaufsListe.put(kette, anzahlKundenKette);
 	}
 	
 	/**
@@ -51,7 +48,7 @@ public class Marktanteil {
 	 */
 	public HashMap<Unternehmenskette, Double> berechnenMarktanteil() {
 		HashMap<Unternehmenskette, Double> marktanteilListe = new HashMap<Unternehmenskette, Double>(this.verkaufsListe.size());
-		Unternehmenskette[] kettenListe = (Unternehmenskette[]) verkaufsListe.entrySet().toArray();
+		Unternehmenskette[] kettenListe = verkaufsListe.keySet().toArray(new Unternehmenskette[0]);
 		for (int i = 0; i < kettenListe.length; i++) {
 			double marktanteil = Math.round(verkaufsListe.get(kettenListe[i]) / this.holeGesamtKunden() * 100.0) / 100.0;
 			marktanteilListe.put(kettenListe[i], marktanteil);

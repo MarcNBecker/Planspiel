@@ -1,10 +1,18 @@
 package de.planspiel.spiel;
 
 import java.util.HashMap;
+import java.util.Set;
 import java.util.Vector;
 
+import de.planspiel.cafe.Filiale;
 import de.planspiel.cafe.Haendler;
+import de.planspiel.cafe.Kredit;
+import de.planspiel.cafe.Kunde;
+import de.planspiel.cafe.Marktanteil;
+import de.planspiel.cafe.Report;
 import de.planspiel.cafe.Standort;
+import de.planspiel.cafe.Standorttyp;
+import de.planspiel.cafe.Haendlertyp;
 import de.planspiel.cafe.Unternehmenskette;
 import de.planspiel.entscheidung.Entscheidung;
 
@@ -21,6 +29,7 @@ public class Spiel {
 	private Vector<Haendler> haendlerListe;
 	private Vector<Unternehmenskette> kettenListe;
 	private HashMap<Unternehmenskette, Vector<Entscheidung>> rundenEntscheidungen;
+	private Marktanteil aktuellerMarktanteil;
 	
 	/**
 	 * Startet ein neues Spiel
@@ -38,21 +47,102 @@ public class Spiel {
 	 * Führt das Spiel durch
 	 */
 	public void spielen() {
-		// TODO
-		// Administratives zum Spielbeginn (Spieler hinzufügen, etc..)
-		// Pro Runde: Rundenzahl setzen
-		// globalen Kreditzinssatz und Laufzeit setzen
-		// rundenEntscheidungs HashMap initialisieren
-		// Kapazitaeten der Filialen initialisieren
-		// Report für jede Unternehmenskette erzeugen
-		// Pleite Unternehmen ignorieren
-		// Entscheidungen aufnehmen
-		// Entscheidungen ausführen
-		// Unternehmenskosten-Funktion aufrufen
-		// rundenEntscheidungs HashMap zurücksetzen
-		// Kunden einkaufen lassen
-		// Marktanteile berechnen -> btw..wir müssen noch checken ob die Reports auch richtig generiert und versorgt werden
-		// abschließenRunde() vom Report aufrufen
+		// Erzeugen der Standorte
+		Standorttyp[] standorte = Standorttyp.values();
+		for(int i=0; i<standorte.length; i++){
+			hinzufuegenStandort(new Standort(standorte[i]));
+		}
+		
+		// Erzeugen der Händler
+		Haendlertyp[] haendler = Haendlertyp.values();
+		for(int i=0; i<haendler.length; i++) {
+			hinzufuegenHaendler(new Haendler(haendler[i]));
+		}
+		
+		// TODO Spieler hinzufügen über GUI
+		// TODO gesamte Rundenanzahl setzen
+		
+		// Rundenorganisation
+		while(holeAktuelleRunde() <= holeRundenzahl()) {
+			// Kreditlaufzeit setzen
+			Kredit.setzeAktuelleLaufzeit(holeRundenzahl() - (holeAktuelleRunde() - 1));
+			
+			// Marktanteil erzeugen
+			setzeAktuellerMarktanteil(new Marktanteil());
+			
+			// Report für jedes Unternehmen erzeugen
+			int counter = 0;
+			for(int i=0; i<holeKettenListe().size(); i++) {
+				Unternehmenskette kette = holeKettenListe().get(i);
+				// Ignoriere pleite Unternehmen
+				if (!kette.holePleite()) {
+					Report report = new Report(holeAktuelleRunde(), kette);
+					report.setzeMarktanteil(holeAktuellerMarktanteil());
+					kette.hinzufuegenReport(report);
+					counter++;
+				}
+			}
+			// Entscheidungs HashMap initialisieren
+			rundenEntscheidungen = new HashMap<Unternehmenskette, Vector<Entscheidung>>(counter);
+						
+			// TODO Entscheidungen aufnehmen
+			
+			// Entscheidungen ausführen
+			Unternehmenskette[] keys = holeRundenEntscheidungen().keySet().toArray(new Unternehmenskette[0]);
+			for(int i=0; i<keys.length; i++){
+				// Ignoriere pleite Unternehmen
+				if(!keys[i].holePleite()) {
+					Vector<Entscheidung> entscheidungen = holeRundenEntscheidungen().get(keys[i]);
+					for(int j=0; j<entscheidungen.size(); j++){
+						Entscheidung e = entscheidungen.get(j);
+						e.ausfuehren();
+					}	
+				}
+			}
+			
+			// Kapazitäten initialisieren
+			for(int i=0; i<holeKettenListe().size(); i++) {
+				Unternehmenskette kette = holeKettenListe().get(i);
+				// Ignoriere pleite Unternehmen
+				if(!kette.holePleite()) {
+					for(int j=0; j<kette.holeAnzahlFilialen(); j++){
+						Filiale filiale = kette.holeFilialenListe().get(j);
+						filiale.initialisierenKapazitaet();
+					}
+				}
+			}
+			
+			// Kunden simulieren
+			for(int i=0; i<holeStandortListe().size(); i++) {
+				Standort standort = holeStandortListe().get(i);
+				for(int j=0; j<standort.holeKundenkreis().size(); j++){
+					Kunde kunde = standort.holeKundenkreis().get(j);
+					kunde.simulierenEinkauf();
+				}
+			}
+			
+			// Unternehmenskosten berechnen
+			for(int i=0; i<holeKettenListe().size(); i++) {
+				Unternehmenskette kette = holeKettenListe().get(i);
+				// Ignoriere pleite Unternehmen
+				if(!kette.holePleite()) {
+					kette.berechnenKosten();
+				}
+			}
+			
+			// Abschließen der Runde
+			for(int i=0; i<holeKettenListe().size(); i++){
+				Unternehmenskette kette = holeKettenListe().get(i);
+				if(!kette.holePleite()) {
+					Report report = kette.holeReportListe().get(holeAktuelleRunde() - 1);
+					report.abschließenRunde();
+				}
+			}
+			
+			// Runde neu setzen
+			setzeAktuelleRunde(holeAktuelleRunde() + 1);
+		}
+		
 	}
 	
 	/**
@@ -136,14 +226,29 @@ public class Spiel {
 		}
 	}
 	
+	/**
+	 * @return Gibt die Entscheidungen jeder Kette in dieser Runde zurück
+	 */
 	public HashMap<Unternehmenskette, Vector<Entscheidung>> holeRundenEntscheidungen() {
 		return rundenEntscheidungen;
 	}
 	
+	/**
+	 * Fügt eine Entscheidunge der entsprechenden Kette hinzu
+	 * @param e hinzuzufügende Entscheidung
+	 */
 	public void hinzufuegenRundenEntscheidung(Entscheidung e){
 		Unternehmenskette kette = e.holeKette();
 		Vector<Entscheidung> entscheidungen = rundenEntscheidungen.get(kette);
 		entscheidungen.add(e);
+	}
+	
+	public Marktanteil holeAktuellerMarktanteil() {
+		return aktuellerMarktanteil;
+	}
+	
+	public void setzeAktuellerMarktanteil(Marktanteil aktuellerMarktanteil) {
+		this.aktuellerMarktanteil = aktuellerMarktanteil;
 	}
 
 }
