@@ -91,6 +91,7 @@ public class Kunde {
 	public void simulierenEinkauf() {
 		// Unternehmensketten herausfiltern, die eine Filiale am Standort des
 		// Kunden haben.
+		//filialenListe = alle Filialen die an dem Standort des Kunden sind
 		Vector<Filiale> filialenListe = holeStandort().holeFilialenListe();
 		Vector<Filiale> favoriten = new Vector<Filiale>();
 
