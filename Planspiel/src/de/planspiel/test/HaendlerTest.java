@@ -38,6 +38,11 @@ public class HaendlerTest {
 		}
 	}
 	
+	@After
+	public void zuruecksetzen(){
+		haendler = null;
+	}
+	
 	@AfterClass
 	public static void beenden(){
 		Zufall.setzeTestmodus(false);
