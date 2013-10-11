@@ -13,11 +13,12 @@ import de.planspiel.cafe.Standorttyp;
 import de.planspiel.cafe.Haendlertyp;
 import de.planspiel.cafe.Unternehmenskette;
 import de.planspiel.entscheidung.Entscheidung;
+import de.planspiel.konsolengui.SpielStartenGUI;
 
 public class Spiel {
 
 	public static void main(String[] args) {
-
+		new Spiel().spielen();
 	}
 
 	private static Spiel spiel;
@@ -57,7 +58,7 @@ public class Spiel {
 			hinzufuegenHaendler(new Haendler(haendler[i]));
 		}
 		
-		// TODO Spieler hinzufügen über GUI
+		new SpielStartenGUI().run();
 		
 		// Rundenorganisation
 		while(holeAktuelleRunde() <= holeRundenzahl()) {
