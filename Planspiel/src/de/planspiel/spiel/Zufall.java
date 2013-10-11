@@ -10,12 +10,6 @@ import java.util.Random;
  */
 
 public class Zufall {
-
-	public static void main(String[] args){
-		for (int i=0; i<10; i++) {
-			System.out.println(Zufall.generierenQualitaet());
-		}
-	}
 	
 	private static boolean testModus = false;
 	private static boolean testEntscheidung = false;
