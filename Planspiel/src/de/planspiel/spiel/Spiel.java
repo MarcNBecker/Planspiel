@@ -1,6 +1,5 @@
 package de.planspiel.spiel;
 
-import java.util.HashMap;
 import java.util.Vector;
 
 import de.planspiel.cafe.Filiale;
@@ -27,16 +26,16 @@ public class Spiel {
 	private Vector<Standort> standortListe;
 	private Vector<Haendler> haendlerListe;
 	private Vector<Unternehmenskette> kettenListe;
-	private HashMap<Unternehmenskette, Vector<Entscheidung>> rundenEntscheidungen;
+	private Vector<Entscheidung> rundenEntscheidungen;
 	private Marktanteil aktuellerMarktanteil;
 	
 	/**
 	 * Startet ein neues Spiel
 	 * @param rundenzahl Zahl der Runden, die das Spiel läuft
 	 */
-	public Spiel(int rundenzahl) {
+	public Spiel() {
 		Spiel.spiel = this;
-		this.rundenzahl = rundenzahl;
+		this.rundenzahl = 10; // TODO Start-Wert setzen
 		setzeAktuelleRunde(1);
 		this.standortListe = new Vector<Standort>();
 		this.kettenListe = new Vector<Unternehmenskette>();
@@ -59,7 +58,6 @@ public class Spiel {
 		}
 		
 		// TODO Spieler hinzufügen über GUI
-		// TODO gesamte Rundenanzahl setzen
 		
 		// Rundenorganisation
 		while(holeAktuelleRunde() <= holeRundenzahl()) {
@@ -70,7 +68,6 @@ public class Spiel {
 			setzeAktuellerMarktanteil(new Marktanteil());
 			
 			// Report für jedes Unternehmen erzeugen
-			int counter = 0;
 			for(int i=0; i<holeKettenListe().size(); i++) {
 				Unternehmenskette kette = holeKettenListe().get(i);
 				// Ignoriere pleite Unternehmen
@@ -78,25 +75,20 @@ public class Spiel {
 					Report report = new Report(holeAktuelleRunde(), kette);
 					report.setzeMarktanteil(holeAktuellerMarktanteil());
 					kette.hinzufuegenReport(report);
-					counter++;
 				}
 			}
 			
 			// Entscheidungs HashMap initialisieren
-			rundenEntscheidungen = new HashMap<Unternehmenskette, Vector<Entscheidung>>(counter);
+			rundenEntscheidungen = new Vector<Entscheidung>();
 						
 			// TODO Entscheidungen aufnehmen
 			
 			// Entscheidungen ausführen
-			Unternehmenskette[] keys = holeRundenEntscheidungen().keySet().toArray(new Unternehmenskette[0]);
-			for(int i=0; i<keys.length; i++){
+			for(int i=0; i<holeRundenEntscheidungen().size(); i++){
+				Entscheidung e = holeRundenEntscheidungen().get(i);
 				// Ignoriere pleite Unternehmen
-				if(!keys[i].holePleite()) {
-					Vector<Entscheidung> entscheidungen = holeRundenEntscheidungen().get(keys[i]);
-					for(int j=0; j<entscheidungen.size(); j++){
-						Entscheidung e = entscheidungen.get(j);
-						e.ausfuehren();
-					}	
+				if(!e.holeKette().holePleite()) {
+					e.ausfuehren();
 				}
 			}
 			
@@ -121,19 +113,12 @@ public class Spiel {
 				}
 			}
 			
-			// Unternehmenskosten berechnen
+			// Unternehmenskosten berechnen und Runde abschließen
 			for(int i=0; i<holeKettenListe().size(); i++) {
 				Unternehmenskette kette = holeKettenListe().get(i);
 				// Ignoriere pleite Unternehmen
 				if(!kette.holePleite()) {
 					kette.berechnenKosten();
-				}
-			}
-			
-			// Abschließen der Runde
-			for(int i=0; i<holeKettenListe().size(); i++){
-				Unternehmenskette kette = holeKettenListe().get(i);
-				if(!kette.holePleite()) {
 					Report report = kette.holeReportListe().get(holeAktuelleRunde() - 1);
 					report.abschließenRunde();
 				}
@@ -231,18 +216,16 @@ public class Spiel {
 	/**
 	 * @return Gibt die Entscheidungen jeder Kette in dieser Runde zurück
 	 */
-	public HashMap<Unternehmenskette, Vector<Entscheidung>> holeRundenEntscheidungen() {
+	public Vector<Entscheidung> holeRundenEntscheidungen() {
 		return rundenEntscheidungen;
 	}
 	
 	/**
-	 * Fügt eine Entscheidunge der entsprechenden Kette hinzu
+	 * Fügt eine Entscheidungder Entscheidungsliste hinzu
 	 * @param e hinzuzufügende Entscheidung
 	 */
 	public void hinzufuegenRundenEntscheidung(Entscheidung e){
-		Unternehmenskette kette = e.holeKette();
-		Vector<Entscheidung> entscheidungen = rundenEntscheidungen.get(kette);
-		entscheidungen.add(e);
+		rundenEntscheidungen.add(e);
 	}
 	
 	public Marktanteil holeAktuellerMarktanteil() {
