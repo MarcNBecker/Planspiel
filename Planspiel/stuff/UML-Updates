@@ -8,6 +8,10 @@ PreisQualitätVerhältnis:
 Report:
 - Lager rausgeschmissen
 - Verkaufsliste rein
+- kreditsumme raus
+- startGesamtkapital, endGesamtkapital, startFremdkapital, endFremdkapital mit getter und setter (alle double)
+- public double berechnenGewinn()
+- public double berechnenGesamtgewinn();
 
 Verkausliste:
 - neue Klasse
@@ -32,3 +36,4 @@ Marktanteil:
 Spiel:
 - neues Attribut aktuellerMarktanteil mit getter und setter
 - rundenEntscheidung ist jetzt nur noch Vector<Entscheidung> -> entsprechend getter/setter setzen
+- bestimme Gewinner

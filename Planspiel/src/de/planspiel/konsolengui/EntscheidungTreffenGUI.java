@@ -1,10 +1,13 @@
 package de.planspiel.konsolengui;
 
+import java.util.HashMap;
+
 import de.planspiel.cafe.Filiale;
 import de.planspiel.cafe.Haendler;
 import de.planspiel.cafe.Lager;
 import de.planspiel.cafe.Produkt;
 import de.planspiel.cafe.Produkttyp;
+import de.planspiel.cafe.Report;
 import de.planspiel.cafe.Standort;
 import de.planspiel.cafe.Unternehmenskette;
 import de.planspiel.entscheidung.FilialeEroeffnenEntscheidung;
@@ -22,12 +25,17 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 		for(int i=0; i<spiel.holeKettenListe().size(); i++){
 			Unternehmenskette kette = spiel.holeKettenListe().get(i);
 			System.out.println("---------- ENTSCHEIDUNG TREFFEN FÜR "+ kette.holeName() +" ----------");
+			if(kette.holePleite()) {
+				System.out.println(kette.holeName() + " ist leider pleite :(");
+				continue;
+			}
 			while(true){
 				try {
 					String input = reader.readLine();
 					String[] teile = input.split(" ");
 					String cmd = teile[0].toUpperCase();
 					if(cmd.equals("HILFE")){
+						System.out.println("----------  Hilfe ----------");
 						System.out.println("Es stehen folgende Kommandos zur Verfügung (Kommandos in Großbuchstaben, Parameter in Kamelschreibweise)");
 						System.out.println("HILFE ------------------------------------------------- Zeigt eine Liste aller Kommandos an");
 						System.out.println("REPORT ------------------------------------------------ Zeigt den Report des Spielers mit allen Informationen an");
@@ -45,18 +53,48 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 						System.out.println("VERKAUFSPREIS_SETZEN produktName,preis ---------------- Setzt den Preis für das entsprechende Produkt");
 						System.out.println("FERTIG ------------------------------------------------ Beendet das Treffen der Entscheidungen und lässt den nächsten Spieler dran");
 					} else if (cmd.equals("FERTIG")) {
-						System.out.println("..Entscheidungsprozess für "+ kette.holeName() +" fertig..nächster Spieler ist dran..");
+						System.out.println("---------- Entscheidungsprozess für "+ kette.holeName() +" fertig..nächster Spieler ist dran ----------");
 						break;
 					} else if (cmd.equals("REPORT")) {
-						// TODO 
+						// Report der Vorrunde
+						Report report;
+						if(spiel.holeAktuelleRunde() == 1){
+							report = kette.holeReportListe().get(0);
+						} else {
+							report = kette.holeReportListe().get(spiel.holeAktuelleRunde()-2);	
+						}
+						System.out.println("---------- Report ---------- ");
+						System.out.println("Kasse: " + report.holeKasse() + " Euro");
+						System.out.println("Fremdkapital: " + report.holeEndFremdkapital() + " Euro");
+						System.out.println("Gesamtkapital: " + report.holeEndGesamtkapital() + " Euro\n"); //Umbruch
+						System.out.println("Filialanschaffungskosten: " + report.holeAnschaffungskosten() + " Euro");
+						System.out.println("Filalunterhaltungskosten: " + report.holeUnterhaltungskosten() + " Euro");
+						System.out.println("Personalkosten: " + report.holePersonalkosten() + " Euro");
+						System.out.println("Rohstoffkosten: " + report.holeRohstoffkosten() + " Euro");	
+						System.out.println("Marketingkosten: " + report.holeMarketingkosten() + " Euro");					
+						System.out.println("Kreditkosten: " + report.holeKreditkosten() + " Euro");
+						System.out.println("Umsatzerlöse: " + report.holeUmsatzerloese() + " Euro");
+						System.out.println("Sonstige Erlöse: " + report.holeSonstigeErloese() + " Euro");
+						System.out.println("Gewinn: " + report.berechnenGewinn() + " Euro bzw. Rundenergebnis: " + report.berechnenRundenergebnis() + " Euro"); 
+						System.out.println("Gesamtgewinn: " + report.berechnenGesamtgewinn() + " Euro\n");//Umbruch
+						for(int j=0; j<report.holeVerkaufsListe().holeProduktliste().size(); j++){
+							Produkt produkt = report.holeVerkaufsListe().holeProduktliste().get(j);
+							System.out.println("Verkaufzahlen " + produkt.holeName() + ": " + produkt.holeMenge());
+						}
+						System.out.println(); //Umbruch
+						HashMap<Unternehmenskette, Double> marktanteilMap = report.holeMarktanteil().berechnenMarktanteil();
+						Unternehmenskette[] keys = marktanteilMap.keySet().toArray(new Unternehmenskette[marktanteilMap.size()]);
+						for (int j=0; j<keys.length; j++){
+							System.out.println("Marktanteil " + keys[j].holeName() + ": " + marktanteilMap.get(keys[j]));
+						}						
 					} else if (cmd.equals("STANDORT")) {
-						System.out.println("Standorte:");
+						System.out.println("---------- Standorte ----------");
 						for(int j=0; j<spiel.holeStandortListe().size(); j++) {
 							Standort standort = spiel.holeStandortListe().get(j);
 							System.out.println(standort.holeName());
 						}
 					} else if (cmd.equals("HÄNDLER")) {
-						System.out.println("Händler:");
+						System.out.println("---------- Händler ----------");
 						for(int j=0; j<spiel.holeHaendlerListe().size(); j++) {
 							Haendler haendler = spiel.holeHaendlerListe().get(j);
 							System.out.println(haendler.holeName()+":");
@@ -66,14 +104,14 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 							}
 						}
 					} else if (cmd.equals("FILIALE")) {
-						System.out.println("Filialen:");
+						System.out.println("---------- Filialen ----------");
 						for(int j=0; j<kette.holeFilialenListe().size(); j++){
 							Filiale filiale = kette.holeFilialenListe().get(j);
 							System.out.println("Filiale am Standort " + filiale.holeStandort().holeName() + " mit " + filiale.holeMitarbeiter() + " und einer Kapazität von " + filiale.holeStartKapazitaet());
 						}
 					} else if (cmd.equals("LAGER")) {
 						Lager lager = kette.holeLager();
-						System.out.println("Lagerbestand:");
+						System.out.println("---------- Lagerbestand ----------");
 						for(int j=0; j<lager.holeProduktliste().size(); j++) {
 							Produkt produkt = lager.holeProduktliste().get(j);
 							System.out.println(produkt.holeMenge() + " " + produkt.holeName() + " zu Einkaufspreis " + produkt.holeEkpreis() + " Euro mit Qualität " + produkt.holeQualitaet() + " und Verkaufspreis " + produkt.holePreis() + " Euro");
@@ -150,7 +188,7 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 				}
 			}
 		}
-		System.out.println("..Entscheidungen wurden getroffen..Spiel simuliert jetzt..");
+		System.out.println("---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------");
 		System.out.println("---------- SIMULATION GESTARTET ----------");
 	}
 	

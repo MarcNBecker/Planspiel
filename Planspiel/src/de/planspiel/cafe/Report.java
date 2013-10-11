@@ -15,7 +15,10 @@ public class Report {
 	private int runde;
 	private Unternehmenskette kette;
 	private double kasse;
-	private double kreditsumme;
+	private double startGesamtkapital;
+	private double startFremdkapital;
+	private double endGesamtkapital;
+	private double endFremdkapital;
 	private VerkaufsListe verkaufsListe;
 	private HashMap<Filiale, double[]> filialenListe; // double[4]
 														// AnzahlMitarbeiter,
@@ -90,6 +93,35 @@ public class Report {
 			infos[3] = counter;
 			holeFilialenListe().put(filiale, infos);
 		}
+		setzeEndGesamtkapital(holeKette().berechnenGesamtkapital());
+		setzeEndFremdkapital(holeKette().berechnenFremdkapital());
+	}
+	
+	/**
+	 * @return Gewinn der aktuellen Periode
+	 */
+	public double berechnenGewinn() {
+		if(holeRunde() == 1) {
+			return 0;
+		}
+		double ekVorher = holeStartGesamtkapital() - holeStartFremdkapital();
+		double ekNachher = holeEndGesamtkapital() - holeEndFremdkapital();
+		double gewinn = ekNachher - ekVorher;
+		return gewinn;
+	}
+	
+	/**
+	 * @return Gesamter Gewinn bis zu dieser Runde
+	 */
+	public double berechnenGesamtgewinn() {
+		if(holeRunde() == 1) {
+			return 0;
+		}
+		Report ersterReport = holeKette().holeReportListe().get(0);
+		double ekVorher = ersterReport.holeStartGesamtkapital() - ersterReport.holeStartFremdkapital();
+		double ekNachher = holeStartGesamtkapital() - holeStartFremdkapital();
+		double gesamtgewinn = ekNachher - ekVorher;
+		return gesamtgewinn;
 	}
 
 	/**
@@ -119,29 +151,86 @@ public class Report {
 	 * @param kapital
 	 */
 	public void setzeKasse(double kasse) {
+		if(kasse < 0){
+			kasse = 0;
+		}
 		this.kasse = kasse;
 	}
-
+	
 	/**
-	 * @return Fremdkapital, also die Summe aller Restbeträge der Kredite in der
+	 * @return Gesamtkapital, vor der aktuellen Runde
+	 */
+	public double holeStartGesamtkapital() {
+		return startGesamtkapital;
+	}
+	
+	/**
+	 * Setzt das Gesamtkapital vor der aktuellen Runde
+	 * @param gesamtkapital
+	 */
+	public void setzeStartGesamtkapital(double gesamtkapital) {
+		if (gesamtkapital < 0) {
+			gesamtkapital = 0;
+		}
+		startGesamtkapital = gesamtkapital;
+	}
+	
+	/**
+	 * Setzt das Gesamtkapital nach der aktuellen Runde
+	 * @param gesamtkapital
+	 */
+	public void setzeEndGesamtkapital(double gesamtkapital) {
+		if (gesamtkapital < 0) {
+			gesamtkapital = 0;
+		}
+		endGesamtkapital = gesamtkapital;
+	}
+	
+	/**
+	 * @return Gesamtkapital nach der aktuellen Runde
+	 */
+	public double holeEndGesamtkapital() {
+		return endGesamtkapital;
+	}
+	
+	/**
+	 * @return Fremdkapital, also die Summe aller Restbeträge der Kredite, vor der
 	 *         aktuellen Runde
 	 */
-	public double holeKreditsumme() {
-		return kreditsumme;
+	public double holeStartFremdkapital() {
+		return startFremdkapital;
 	}
 
 	/**
 	 * Setzt das Fremdkapital, also die Summe aller Restbeträge der Kredite in
 	 * der aktuellen Runde
 	 * 
-	 * @param kreditsumme
-	 *            Fremdkapital
+	 * @param fremdkapital
+	 *            Fremdkapital, vor der Runde des Reports
 	 */
-	public void setzeKreditsumme(double kreditsumme) {
-		if (kreditsumme < 0) {
-			kreditsumme = 0;
+	public void setzeStartFremdkapital(double fremdkapital) {
+		if (fremdkapital < 0) {
+			fremdkapital = 0;
 		}
-		this.kreditsumme = kreditsumme;
+		this.startFremdkapital = fremdkapital;
+	}
+	
+	/**
+	 * @return Fremdkapital, also die Summe aller Restbeträge der Kredite, nach der aktuellen Runde
+	 */
+	public double holeEndFremdkapital() {
+		return endFremdkapital;
+	}
+	
+	/**
+	 * Setzt das Fremdkapital, nach der aktuellen Runde
+	 * @param fremdkapital Fremdkapital, nach der aktuellen Runde
+	 */
+	public void setzeEndFremdkapital(double fremdkapital) {
+		if (fremdkapital < 0) {
+			fremdkapital = 0;
+		}
+		this.endFremdkapital = fremdkapital;	
 	}
 
 	/**

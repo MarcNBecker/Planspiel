@@ -29,6 +29,9 @@ public class Marktanteil {
 	}
 	
 	public void mitteilenVerkauf(Unternehmenskette kette){
+		if(!verkaufsListe.containsKey(kette)) {
+			verkaufsListe.put(kette, 0);
+		}
 		int anzahlKundenKette = verkaufsListe.get(kette);
 		gesamtKunden++;
 		anzahlKundenKette++;
@@ -48,7 +51,7 @@ public class Marktanteil {
 	 */
 	public HashMap<Unternehmenskette, Double> berechnenMarktanteil() {
 		HashMap<Unternehmenskette, Double> marktanteilListe = new HashMap<Unternehmenskette, Double>(this.verkaufsListe.size());
-		Unternehmenskette[] kettenListe = verkaufsListe.keySet().toArray(new Unternehmenskette[0]);
+		Unternehmenskette[] kettenListe = verkaufsListe.keySet().toArray(new Unternehmenskette[marktanteilListe.size()]);
 		for (int i = 0; i < kettenListe.length; i++) {
 			double marktanteil = Math.round(verkaufsListe.get(kettenListe[i]) / this.holeGesamtKunden() * 100.0) / 100.0;
 			marktanteilListe.put(kettenListe[i], marktanteil);

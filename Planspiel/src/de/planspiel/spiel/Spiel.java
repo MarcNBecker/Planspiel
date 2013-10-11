@@ -14,6 +14,7 @@ import de.planspiel.cafe.Haendlertyp;
 import de.planspiel.cafe.Unternehmenskette;
 import de.planspiel.entscheidung.Entscheidung;
 import de.planspiel.konsolengui.EntscheidungTreffenGUI;
+import de.planspiel.konsolengui.SpielBeendenGUI;
 import de.planspiel.konsolengui.SpielStartenGUI;
 
 public class Spiel {
@@ -78,6 +79,8 @@ public class Spiel {
 				if (!kette.holePleite()) {
 					Report report = new Report(holeAktuelleRunde(), kette);
 					report.setzeMarktanteil(holeAktuellerMarktanteil());
+					report.setzeStartGesamtkapital(kette.berechnenGesamtkapital());
+					report.setzeStartFremdkapital(kette.berechnenFremdkapital());
 					kette.hinzufuegenReport(report);
 				}
 			}
@@ -132,8 +135,34 @@ public class Spiel {
 			setzeAktuelleRunde(holeAktuelleRunde() + 1);
 		}
 		
-		// TODO Gewinner ausgeben
+		new SpielBeendenGUI().run();
 		
+	}
+	
+	/**
+	 * Berechnet die Reihenfolge der Unternehmensketten, abhängig von ihrem Gesamtgewinn
+	 * Die erste Kette in dem zurückgegebenen Vector hat den größten Gesamtgewinn
+	 * @return Vector mit Unternehmensketten, die erste Kette hat den größten, die letzte den kleinsten Gesamtgewinn
+	 */
+	public Vector<Unternehmenskette> bestimmenGewinner() {
+		Vector<Unternehmenskette> reihenfolge = new Vector<Unternehmenskette>();
+		for(int i=0; i<holeKettenListe().size(); i++) {
+			Unternehmenskette aktuelleKette = holeKettenListe().get(i);
+			if(reihenfolge.size() == 0) {
+				reihenfolge.add(aktuelleKette);
+			} else {
+				for(int j=0; j<reihenfolge.size(); j++) {
+					Unternehmenskette aktuelleKetteInListe = reihenfolge.get(i);
+					double gesamtgewinnInListe = aktuelleKetteInListe.holeReportListe().get(holeAktuelleRunde()).berechnenGesamtgewinn();
+					double gesamtgewinnAktuell = aktuelleKette.holeReportListe().get(holeAktuelleRunde()).berechnenGesamtgewinn();
+					if(gesamtgewinnInListe < gesamtgewinnAktuell) {
+						reihenfolge.add(j, aktuelleKette);
+						break;
+					}
+				}
+			}
+		}
+		return reihenfolge;
 	}
 	
 	/**
