@@ -4,29 +4,52 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
+
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.SwingConstants;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.CardLayout;
+
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
+
 import java.awt.Color;
+
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
+
+import java.awt.GridLayout;
+
+import javax.swing.JSeparator;
+import javax.swing.BoxLayout;
+import javax.swing.ListSelectionModel;
 
 public class Einstellungsbild {
 
 	private JFrame frmEntscheidungen;
+	private JTextField textFieldKredit;
+	private JTextField textFieldMarketing;
+	private JTable tableVerkaufspreis;
+	private JTable tableRohstoffe;
+	private JTable tableFilialen;
 
 	/**
 	 * Launch the application.
@@ -60,76 +83,217 @@ public class Einstellungsbild {
 		frmEntscheidungen.setBounds(100, 100, 1280, 720);
 		frmEntscheidungen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JPanel Uebersicht = new JPanel();
-		Uebersicht.setBorder(new LineBorder(new Color(0, 0, 0)));
-		Uebersicht.setToolTipText("");
+		JPanel uebersichtPanel = new JPanel();
+		uebersichtPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		uebersichtPanel.setToolTipText("");
 		
-		JPanel Ausgabe = new JPanel();
+		JPanel entscheidungPanel = new JPanel();
+		uebersichtPanel.setLayout(new BorderLayout(0, 0));
 		
-		JPanel Navigation = new JPanel();
-		GroupLayout groupLayout = new GroupLayout(frmEntscheidungen.getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(Navigation, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-				.addComponent(Uebersicht, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 1264, Short.MAX_VALUE)
-				.addComponent(Ausgabe, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 1264, Short.MAX_VALUE)
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(Uebersicht, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(Ausgabe, GroupLayout.PREFERRED_SIZE, 597, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(Navigation, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
-		);
-		Uebersicht.setLayout(new BorderLayout(0, 0));
-		
-		JPanel Uebersicht_Kette = new JPanel();
-		Uebersicht.add(Uebersicht_Kette, BorderLayout.WEST);
-		Uebersicht_Kette.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		JPanel kettenPanel = new JPanel();
+		uebersichtPanel.add(kettenPanel, BorderLayout.WEST);
+		kettenPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JLabel lblNewLabel = new JLabel("Unternehmenskette");
-		Uebersicht_Kette.add(lblNewLabel);
+		kettenPanel.add(lblNewLabel);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		JLabel Ukettenname = new JLabel(".....");
-		Uebersicht_Kette.add(Ukettenname);
+		kettenPanel.add(Ukettenname);
 		Ukettenname.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JPanel Uebersicht_Runde = new JPanel();
-		Uebersicht.add(Uebersicht_Runde, BorderLayout.EAST);
-		Uebersicht_Runde.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		JPanel rundenPanel = new JPanel();
+		uebersichtPanel.add(rundenPanel, BorderLayout.EAST);
+		rundenPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JLabel lblNewLabel_1 = new JLabel("Runde");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		Uebersicht_Runde.add(lblNewLabel_1);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		JLabel lblRundeT = new JLabel("Runde");
+		lblRundeT.setHorizontalAlignment(SwingConstants.RIGHT);
+		rundenPanel.add(lblRundeT);
+		lblRundeT.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel Rundennr = new JLabel("....");
-		Rundennr.setHorizontalAlignment(SwingConstants.RIGHT);
-		Uebersicht_Runde.add(Rundennr);
+		JLabel lblRunde = new JLabel("....");
+		lblRunde.setHorizontalAlignment(SwingConstants.RIGHT);
+		rundenPanel.add(lblRunde);
 		
-		JLabel lblVon = new JLabel("von");
-		lblVon.setHorizontalAlignment(SwingConstants.RIGHT);
-		Uebersicht_Runde.add(lblVon);
-		lblVon.setFont(new Font("Tahoma", Font.BOLD, 14));
+		JLabel lblVonT = new JLabel("von");
+		lblVonT.setHorizontalAlignment(SwingConstants.RIGHT);
+		rundenPanel.add(lblVonT);
+		lblVonT.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel Gesamtrundennr = new JLabel("....");
-		Uebersicht_Runde.add(Gesamtrundennr);
-		Gesamtrundennr.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel lblGesamtRunde = new JLabel("....");
+		rundenPanel.add(lblGesamtRunde);
+		lblGesamtRunde.setHorizontalAlignment(SwingConstants.RIGHT);
+		frmEntscheidungen.getContentPane().setLayout(new BorderLayout(0, 0));
+		frmEntscheidungen.getContentPane().add(uebersichtPanel, BorderLayout.NORTH);
+		frmEntscheidungen.getContentPane().add(entscheidungPanel, BorderLayout.CENTER);
+		entscheidungPanel.setLayout(new BorderLayout(0, 0));
 		
-		JButton btnNewButton = new JButton("Weiter zur Entscheidung");
-		btnNewButton.addActionListener(new ActionListener() {
+		JPanel ausgabenPanel = new JPanel();
+		entscheidungPanel.add(ausgabenPanel, BorderLayout.NORTH);
+		ausgabenPanel.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		ausgabenPanel.add(panel, BorderLayout.WEST);
+		panel.setLayout(new GridLayout(2, 1, 0, 0));
+		
+		JPanel kreditPanel = new JPanel();
+		panel.add(kreditPanel);
+		kreditPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		JLabel lblKredit = new JLabel("Kredith\u00F6he:         ");
+		kreditPanel.add(lblKredit);
+		
+		textFieldKredit = new JTextField();
+		kreditPanel.add(textFieldKredit);
+		textFieldKredit.setColumns(10);
+		
+		JPanel marketingPanel = new JPanel();
+		panel.add(marketingPanel);
+		
+		JLabel lblMarketing = new JLabel("Marketingbudget:");
+		marketingPanel.add(lblMarketing);
+		
+		textFieldMarketing = new JTextField();
+		textFieldMarketing.setColumns(10);
+		marketingPanel.add(textFieldMarketing);
+		
+		tableVerkaufspreis = new JTable();
+		tableVerkaufspreis.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null},
+				{null, null},
+				{null, null},
+			},
+			new String[] {
+				"Produkt", "Verkaufspreis"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				String.class, Double.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+			boolean[] columnEditables = new boolean[] {
+				false, true
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		tableVerkaufspreis.getColumnModel().getColumn(0).setResizable(false);
+		tableVerkaufspreis.getColumnModel().getColumn(0).setPreferredWidth(107);
+		ausgabenPanel.add(tableVerkaufspreis, BorderLayout.SOUTH);
+		
+		JScrollPane scrollPaneVerkaufspreis = new JScrollPane(tableVerkaufspreis);
+		scrollPaneVerkaufspreis.setPreferredSize(new Dimension(1280, 100));
+		ausgabenPanel.add(scrollPaneVerkaufspreis, BorderLayout.CENTER);
+		
+		JPanel rohstoffPanel = new JPanel();
+		entscheidungPanel.add(rohstoffPanel, BorderLayout.CENTER);
+		rohstoffPanel.setLayout(new BorderLayout(0, 0));
+		
+		JPanel tabellePanel1 = new JPanel();
+		rohstoffPanel.add(tabellePanel1, BorderLayout.NORTH);
+		tabellePanel1.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblRohstoffeinkauf = new JLabel("Rohstoffeinkauf");
+		tabellePanel1.add(lblRohstoffeinkauf, BorderLayout.NORTH);
+		
+		tableRohstoffe = new JTable();
+		tabellePanel1.add(tableRohstoffe);
+		tableRohstoffe.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tableRohstoffe.setCellSelectionEnabled(true);
+		tableRohstoffe.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
+			}
+		));
+		
+		JScrollPane scrollPaneRohstoffe = new JScrollPane(tableRohstoffe);
+		tabellePanel1.add(scrollPaneRohstoffe);
+		scrollPaneRohstoffe.setPreferredSize(new Dimension(1280, 260));
+		
+		JButton buttonRohstoffekaufen = new JButton("Rohstoffe kaufen");
+		rohstoffPanel.add(buttonRohstoffekaufen, BorderLayout.WEST);
+		
+		JPanel filialenPanel = new JPanel();
+		entscheidungPanel.add(filialenPanel, BorderLayout.SOUTH);
+		filialenPanel.setLayout(new BorderLayout(0, 0));
+		
+		JPanel tabellePanel2 = new JPanel();
+		filialenPanel.add(tabellePanel2, BorderLayout.NORTH);
+		tabellePanel2.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblFilialenUndMitarbeiter = new JLabel("Filialen und Mitarbeiter");
+		tabellePanel2.add(lblFilialenUndMitarbeiter, BorderLayout.NORTH);
+		
+		tableFilialen = new JTable();
+		tabellePanel2.add(tableFilialen);
+		tableFilialen.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+			},
+			new String[] {
+				"Standort", "Anzahl Mitarbeiter", "einstellen/entlassen", "verkaufen"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				String.class, Integer.class, Object.class, Object.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+			boolean[] columnEditables = new boolean[] {
+				false, false, true, true
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		tableFilialen.getColumnModel().getColumn(0).setPreferredWidth(86);
+		tableFilialen.getColumnModel().getColumn(1).setResizable(false);
+		tableFilialen.getColumnModel().getColumn(1).setPreferredWidth(104);
+		tableFilialen.getColumnModel().getColumn(2).setPreferredWidth(113);
+		
+		JScrollPane scrollPaneFilialen = new JScrollPane(tableFilialen);
+		tabellePanel2.add(scrollPaneFilialen);
+		scrollPaneFilialen.setPreferredSize(new Dimension(1260, 200));
+		
+		JButton buttonFilialeKaufen = new JButton("Filiale kaufen");
+		filialenPanel.add(buttonFilialeKaufen, BorderLayout.WEST);
+		
+		JPanel buttonPanel = new JPanel();
+		frmEntscheidungen.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
+		buttonPanel.setLayout(new BorderLayout(0, 0));
+		
+		JButton zurueckButton = new JButton("Zur\u00FCck zum Ergebnis");
+		buttonPanel.add(zurueckButton, BorderLayout.WEST);
+		zurueckButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		Navigation.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		btnNewButton.setHorizontalAlignment(SwingConstants.RIGHT);
-		Navigation.add(btnNewButton);
-		frmEntscheidungen.getContentPane().setLayout(groupLayout);
+		zurueckButton.setHorizontalAlignment(SwingConstants.RIGHT);
+		
+		JButton absendenButton = new JButton("absenden");
+		buttonPanel.add(absendenButton, BorderLayout.EAST);
 	}
 }
