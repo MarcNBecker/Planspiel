@@ -31,7 +31,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
-public class ergebnisbild {
+public class Ergebnisbild {
 
 	private JFrame frmErgebnisDerLetzten;
 	private JTable Lagerbestand;
@@ -44,7 +44,7 @@ public class ergebnisbild {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ergebnisbild window = new ergebnisbild();
+					Ergebnisbild window = new Ergebnisbild();
 					window.frmErgebnisDerLetzten.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -56,7 +56,7 @@ public class ergebnisbild {
 	/**
 	 * Create the application.
 	 */
-	public ergebnisbild() {
+	public Ergebnisbild() {
 		initialize();
 	}
 
