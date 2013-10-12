@@ -37,6 +37,7 @@ public class Ergebnisbild {
 	private JTable Lagerbestand;
 	private JTable table_Filialen;
 	private JTable GuV;
+	private JTable Marktanteile;
 
 	/**
 	 * Launch the application.
@@ -100,7 +101,7 @@ public class Ergebnisbild {
 		JPanel Ereignis = new JPanel();
 		Ereignis.setBorder(new LineBorder(new Color(0, 0, 0)));
 		Ausgabe.add(Ereignis, BorderLayout.SOUTH);
-		Ereignis.setPreferredSize(new Dimension(1280, 50));
+		Ereignis.setPreferredSize(new Dimension(1280, 75));
 		Ereignis.setLayout(new BorderLayout(0, 0));
 		
 		JPanel Ereignis_2 = new JPanel();
@@ -126,21 +127,13 @@ public class Ergebnisbild {
 		Ergebnisse.setPreferredSize(new Dimension(1280, 150));
 		Ergebnisse.setLayout(new BorderLayout(0, 0));
 		
-		JPanel Ergebnisse_Werte = new JPanel();
-		Ergebnisse.add(Ergebnisse_Werte, BorderLayout.SOUTH);
-		Ergebnisse_Werte.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel_8 = new JLabel("Erfolg:");
-		lblNewLabel_8.setHorizontalAlignment(SwingConstants.LEFT);
-		Ergebnisse_Werte.add(lblNewLabel_8, BorderLayout.WEST);
-		
-		JLabel lblNewLabel_9 = new JLabel("Anzahl der Kunden in der letzten Periode:");
-		lblNewLabel_9.setHorizontalAlignment(SwingConstants.CENTER);
-		Ergebnisse_Werte.add(lblNewLabel_9, BorderLayout.CENTER);
+		JPanel panel = new JPanel();
+		Ergebnisse.add(panel, BorderLayout.CENTER);
+		panel.setLayout(new BorderLayout(0, 0));
 		
 		JPanel Ergebnisse_GuV = new JPanel();
-		Ergebnisse.add(Ergebnisse_GuV, BorderLayout.WEST);
-		Ergebnisse_GuV.setPreferredSize(new Dimension(750, 100));
+		panel.add(Ergebnisse_GuV, BorderLayout.NORTH);
+		Ergebnisse_GuV.setPreferredSize(new Dimension(1280, 180));
 		Ergebnisse_GuV.setLayout(new BorderLayout(0, 0));
 		
 		GuV = new JTable();
@@ -174,12 +167,42 @@ public class Ergebnisbild {
 		GuV.getColumnModel().getColumn(0).setResizable(false);
 		GuV.getColumnModel().getColumn(0).setPreferredWidth(100);
 		
-		JScrollPane scrollPane_Marktanteil = new JScrollPane();
-		Ergebnisse_GuV.add(scrollPane_Marktanteil, BorderLayout.EAST);
+		Marktanteile = new JTable();
+		Marktanteile.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+			},
+			new String[] {
+				"Unternehmenskette", "Marktanteil (des Umsatzes)"
+			}
+		));
+		Marktanteile.getColumnModel().getColumn(0).setPreferredWidth(130);
+		Marktanteile.getColumnModel().getColumn(1).setPreferredWidth(143);
+		Ergebnisse_GuV.add(Marktanteile, BorderLayout.NORTH);
 		Ergebnisse_GuV.add(GuV, BorderLayout.SOUTH);
 		
-		JScrollPane scrollPane_Ergebnisse_GuV = new JScrollPane(GuV);
-		Ergebnisse_GuV.add(scrollPane_Ergebnisse_GuV, BorderLayout.WEST);
+		JScrollPane scrollPane_Marktanteil = new JScrollPane(Marktanteile);
+		Ergebnisse_GuV.add(scrollPane_Marktanteil, BorderLayout.EAST);
+		
+				
+				JScrollPane scrollPane_Ergebnisse_GuV = new JScrollPane(GuV);
+				Ergebnisse_GuV.add(scrollPane_Ergebnisse_GuV, BorderLayout.WEST);
+		
+		JPanel Ergebnisse_Werte = new JPanel();
+		Ergebnisse.add(Ergebnisse_Werte, BorderLayout.SOUTH);
+		Ergebnisse_Werte.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblNewLabel_8 = new JLabel("Erfolg:");
+		lblNewLabel_8.setHorizontalAlignment(SwingConstants.LEFT);
+		Ergebnisse_Werte.add(lblNewLabel_8, BorderLayout.WEST);
+		
+		JLabel lblNewLabel_9 = new JLabel("Anzahl der Kunden in der letzten Periode:");
+		lblNewLabel_9.setHorizontalAlignment(SwingConstants.CENTER);
+		Ergebnisse_Werte.add(lblNewLabel_9, BorderLayout.CENTER);
 
 		
 		JPanel Ergebnisse_Ueberschrift = new JPanel();
@@ -194,7 +217,7 @@ public class Ergebnisbild {
 		Kennzahlen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		Ausgabe.add(Kennzahlen, BorderLayout.NORTH);
 		Kennzahlen.setLayout(new BorderLayout(0, 0));
-		Kennzahlen.setPreferredSize(new Dimension(1280, 300));
+		Kennzahlen.setPreferredSize(new Dimension(1280, 200));
 		
 		JPanel Kennzahlen_1 = new JPanel();
 		Kennzahlen.add(Kennzahlen_1, BorderLayout.NORTH);
@@ -220,21 +243,22 @@ public class Ergebnisbild {
 		Kapital.add(UketteK);
 		
 		JPanel Fremdkapital = new JPanel();
-		Kennzahlen_1.add(Fremdkapital, BorderLayout.CENTER);
+		Kennzahlen_1.add(Fremdkapital, BorderLayout.EAST);
+		Fremdkapital.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_3 = new JLabel("Fremdkapital:");
-		Fremdkapital.add(lblNewLabel_3);
+		Fremdkapital.add(lblNewLabel_3, BorderLayout.WEST);
 		
 		JLabel UketteFK = new JLabel("...");
 		Fremdkapital.add(UketteFK);
 		
 		JPanel Filialen = new JPanel();
-		Kennzahlen.add(Filialen, BorderLayout.WEST);
+		Kennzahlen.add(Filialen, BorderLayout.CENTER);
 		
 		table_Filialen = new JTable();
 		table_Filialen.setModel(new DefaultTableModel(
 			new Object[][] {
-				{Anschaffungskosten, null, null, null},
+				{null, null, null, null},
 				{null, null, null, null},
 				{null, null, null, null},
 				{null, null, null, null},
@@ -252,19 +276,10 @@ public class Ergebnisbild {
 		table_Filialen.getColumnModel().getColumn(2).setPreferredWidth(100);
 		table_Filialen.getColumnModel().getColumn(3).setPreferredWidth(134);
 		Filialen.setLayout(new BorderLayout(0, 0));
-		Filialen.add(table_Filialen);
-		
-		JScrollPane scrollPane_Filiale = new JScrollPane(table_Filialen);
-		Filialen.add(scrollPane_Filiale);
-		
-		
-		JPanel Lager = new JPanel();
-		Kennzahlen.add(Lager, BorderLayout.SOUTH);
-		Lager.setPreferredSize(new Dimension(1280, 80));
-		Lager.setLayout(new BorderLayout(0, 0));
 		
 
 		Lagerbestand = new JTable();
+		Filialen.add(Lagerbestand, BorderLayout.NORTH);
 		Lagerbestand.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, "", null, null, null},
@@ -275,11 +290,15 @@ public class Ergebnisbild {
 				"Rohstoff", "Menge", "Qualit\u00E4t", "Einkaufspreis", "Verkaufspreis"
 			}
 		));
-		Lager.add(Lagerbestand, BorderLayout.WEST);
+		//Lager.add(Lagerbestand, BorderLayout.WEST);
 		
 		JScrollPane scrollPane_Lager = new JScrollPane(Lagerbestand);
-		Lager.add(scrollPane_Lager, BorderLayout.WEST);
+		Filialen.add(scrollPane_Lager, BorderLayout.EAST);
 		scrollPane_Lager.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+		Filialen.add(table_Filialen);
+		
+		JScrollPane scrollPane_Filiale = new JScrollPane(table_Filialen);
+		Filialen.add(scrollPane_Filiale, BorderLayout.WEST);
 		Uebersicht.setLayout(new BorderLayout(0, 0));
 		
 		JPanel Uebersicht_Kette = new JPanel();
