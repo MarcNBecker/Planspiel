@@ -57,14 +57,19 @@ public class Anlegen_Unternehmenskette extends JDialog {
 			JPanel panel = new JPanel();
 			contentPanel.add(panel);
 			{
-				JLabel lblName = new JLabel("Name:        ");
+				JLabel lblName = new JLabel("Name: ");
 				panel.add(lblName);
 				lblName.setVerticalAlignment(SwingConstants.BOTTOM);
 			}
 			{
 				tfName = new JTextField();
 				panel.add(tfName);
-				tfName.setColumns(40);
+				tfName.setColumns(30);
+			}
+			{
+				JLabel lblOK = new JLabel("");
+				lblOK.setIcon(new ImageIcon(Anlegen_Unternehmenskette.class.getResource("/de/planspiel/gui/gut.png")));
+				panel.add(lblOK);
 			}
 		}
 		{
