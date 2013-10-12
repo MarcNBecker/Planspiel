@@ -54,7 +54,7 @@ public class MitarbeiterEntlassenEntscheidung extends Entscheidung {
 			this.mitarbeiter = maxEntlassungen;
 		}
 		if(filiale != null && mitarbeiter > 0) {
-			int e = einstellungen.get(kette);
+			int e = einstellungen.get(holeKette());
 			//Bestimme die restlichen Einstellungen, bis zu dieser Grenze sind alle Entlassungen kostenlos
 			int restE = e - mitarbeiter;
 			//Wenn diese negativ sind, dann müssen Leute entlassen werden

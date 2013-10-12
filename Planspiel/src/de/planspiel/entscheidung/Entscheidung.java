@@ -19,6 +19,7 @@ public abstract class Entscheidung {
 	 * @param kette Unternehmenskette, die die Entscheidung getroffen hat
 	 */
 	public Entscheidung(Unternehmenskette kette) {
+		this.kette = kette;
 		Spiel.holeSpiel().hinzufuegenRundenEntscheidung(this);
 	}
 	

@@ -1,3 +1,11 @@
+Fragen/Bugs:
+- Verantwortung für die Reihenfolge der Entscheidungen beim Spieler? 
+  Oder sicherstellen, dass FilialeVerkaufen und KreditAufnehmen VOR
+  kostenwirksamen Entscheidungen aufgerufen werden?
+- Wenn nur eine Entlassung durchgeführt wird gibts nen nullPointer
+
+----------------------------------------------------------------------------------------------
+
 2 - Events implementieren
 2 - Exception-Konzept umsetzen
 2 - Haltbarkeit des Rohstoffes

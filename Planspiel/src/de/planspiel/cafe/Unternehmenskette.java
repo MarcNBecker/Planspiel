@@ -141,16 +141,22 @@ public class Unternehmenskette {
 		switch(verursacher){
 		case FILIALE_ANSCHAFFUNG:
 			aktuellerReport.setzeAnschaffungskosten(aktuellerReport.holeAnschaffungskosten() + betrag);
+			break;
 		case FILIALE_UNTERHALTUNG:
 			aktuellerReport.setzeUnterhaltungskosten(aktuellerReport.holeUnterhaltungskosten() + betrag);
+			break;
 		case KREDIT:
 			aktuellerReport.setzeKreditkosten(aktuellerReport.holeKreditkosten() + betrag);
+			break;
 		case MARKETING:
 			aktuellerReport.setzeMarketingkosten(aktuellerReport.holeMarketingkosten() + betrag);
+			break;
 		case PERSONAL:
 			aktuellerReport.setzePersonalkosten(aktuellerReport.holePersonalkosten() + betrag);
+			break;
 		case ROHSTOFF:
 			aktuellerReport.setzeRohstoffkosten(aktuellerReport.holeRohstoffkosten() + betrag);
+			break;
 		}
 		return true;
 	}
@@ -168,8 +174,10 @@ public class Unternehmenskette {
 		switch(verursacher) {
 		case FILIALE_VERKAUF:
 			aktuellerReport.setzeSonstigeErloese(aktuellerReport.holeSonstigeErloese() + betrag);
+			break;
 		case UMSATZERLOESE:
 			aktuellerReport.setzeUmsatzerloese(aktuellerReport.holeUmsatzerloese() + betrag);
+			break;
 		}
 	}
 	

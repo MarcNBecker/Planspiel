@@ -204,6 +204,7 @@ public class Kunde {
 							gleichheitsListe.add(favorit);	
 						}
 					}
+					break;
 				}
 			}
 			

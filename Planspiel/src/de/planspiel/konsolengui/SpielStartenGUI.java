@@ -11,7 +11,8 @@ public class SpielStartenGUI extends KonsolenGUI {
 				String input = reader.readLine();
 				String[] teile = input.split(" ");
 				String cmd = teile[0].toUpperCase();
-				if(cmd.equals("---------- HILFE ----------")){
+				if(cmd.equals("HILFE")){
+					System.out.println("---------- HILFE ----------");
 					System.out.println("Es stehen folgende Kommandos zur Verfügung (Kommandos in Großbuchstaben, Parameter in Kamelschreibweise)");
 					System.out.println("HILFE - Zeigt eine Liste aller Kommandos an");
 					System.out.println("NEU nameDesSpielers - Fügt einen neuen Spieler mit dem entsprechenden Namen hinzu");

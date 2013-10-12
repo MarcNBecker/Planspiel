@@ -74,7 +74,6 @@ public class Spiel {
 			// Report für jedes Unternehmen erzeugen
 			for(int i=0; i<holeKettenListe().size(); i++) {
 				Unternehmenskette kette = holeKettenListe().get(i);
-				System.out.println(kette.holeName());
 				// Ignoriere pleite Unternehmen
 				if (!kette.holePleite()) {
 					Report report = new Report(holeAktuelleRunde(), kette);
