@@ -24,7 +24,7 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 
-public class einstellungsbild {
+public class Einstellungsbild {
 
 	private JFrame frmErgebnisDerLetzten;
 
@@ -35,7 +35,7 @@ public class einstellungsbild {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					einstellungsbild window = new einstellungsbild();
+					Einstellungsbild window = new Einstellungsbild();
 					window.frmErgebnisDerLetzten.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,7 @@ public class einstellungsbild {
 	/**
 	 * Create the application.
 	 */
-	public einstellungsbild() {
+	public Einstellungsbild() {
 		initialize();
 	}
 
