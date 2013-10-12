@@ -44,48 +44,48 @@ public class Kaufen_Filiale extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new GridLayout(2, 1, 0, 0));
 		{
-			JPanel panel_1 = new JPanel();
-			contentPanel.add(panel_1);
-			panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+			JPanel panelStandort = new JPanel();
+			contentPanel.add(panelStandort);
+			panelStandort.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 			{
 				JLabel lblStandort = new JLabel("Standort:           ");
 				lblStandort.setAlignmentX(Component.RIGHT_ALIGNMENT);
-				panel_1.add(lblStandort);
+				panelStandort.add(lblStandort);
 			}
 			{
 				JComboBox<Standorttyp> comboBox = new JComboBox<Standorttyp>();
-				panel_1.add(comboBox);
+				panelStandort.add(comboBox);
 				comboBox.setModel(new DefaultComboBoxModel<Standorttyp>(Standorttyp.values()));
 			}
 		}
 		{
-			JPanel panel_2 = new JPanel();
-			contentPanel.add(panel_2);
-			panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+			JPanel panelMitarbeiter = new JPanel();
+			contentPanel.add(panelMitarbeiter);
+			panelMitarbeiter.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 			{
 				JLabel lblAnzahlMitarbeiter = new JLabel("Anzahl Mitarbeiter: ");
-				panel_2.add(lblAnzahlMitarbeiter);
+				panelMitarbeiter.add(lblAnzahlMitarbeiter);
 			}
 			{
 				textFieldMitarbeiter = new JTextField();
-				panel_2.add(textFieldMitarbeiter);
+				panelMitarbeiter.add(textFieldMitarbeiter);
 				textFieldMitarbeiter.setColumns(10);
 			}
 		}
 		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			JPanel buttonPanel = new JPanel();
+			buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+			getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 			{
 				JButton kaufenButton = new JButton("kaufen");
 				kaufenButton.setActionCommand("OK");
-				buttonPane.add(kaufenButton);
+				buttonPanel.add(kaufenButton);
 				getRootPane().setDefaultButton(kaufenButton);
 			}
 			{
 				JButton cancelButton = new JButton("abbrechen");
 				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
+				buttonPanel.add(cancelButton);
 			}
 		}
 	}

@@ -26,7 +26,7 @@ import java.awt.Color;
 
 public class Einstellungsbild {
 
-	private JFrame frmErgebnisDerLetzten;
+	private JFrame frmEntscheidungen;
 
 	/**
 	 * Launch the application.
@@ -36,7 +36,7 @@ public class Einstellungsbild {
 			public void run() {
 				try {
 					Einstellungsbild window = new Einstellungsbild();
-					window.frmErgebnisDerLetzten.setVisible(true);
+					window.frmEntscheidungen.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -55,10 +55,10 @@ public class Einstellungsbild {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmErgebnisDerLetzten = new JFrame();
-		frmErgebnisDerLetzten.setTitle("Ergebnis der letzten Runde");
-		frmErgebnisDerLetzten.setBounds(100, 100, 1280, 720);
-		frmErgebnisDerLetzten.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmEntscheidungen = new JFrame();
+		frmEntscheidungen.setTitle("Entscheidungen");
+		frmEntscheidungen.setBounds(100, 100, 1280, 720);
+		frmEntscheidungen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel Uebersicht = new JPanel();
 		Uebersicht.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -67,7 +67,7 @@ public class Einstellungsbild {
 		JPanel Ausgabe = new JPanel();
 		
 		JPanel Navigation = new JPanel();
-		GroupLayout groupLayout = new GroupLayout(frmErgebnisDerLetzten.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(frmEntscheidungen.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -130,6 +130,6 @@ public class Einstellungsbild {
 		Navigation.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		btnNewButton.setHorizontalAlignment(SwingConstants.RIGHT);
 		Navigation.add(btnNewButton);
-		frmErgebnisDerLetzten.getContentPane().setLayout(groupLayout);
+		frmEntscheidungen.getContentPane().setLayout(groupLayout);
 	}
 }

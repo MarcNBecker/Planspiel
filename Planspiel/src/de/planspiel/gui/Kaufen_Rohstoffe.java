@@ -16,7 +16,7 @@ import javax.swing.JScrollPane;
 public class Kaufen_Rohstoffe extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTable table;
+	private JTable tableRohstoffe;
 
 	/**
 	 * Launch the application.
@@ -44,27 +44,27 @@ public class Kaufen_Rohstoffe extends JDialog {
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		contentPanel.setBounds(90, 90, 400, 250);
 		{
-			JPanel panel = new JPanel();
-			panel.setPreferredSize(new Dimension(100, 103));
-			contentPanel.add(panel, BorderLayout.NORTH);
-			panel.setLayout(new BorderLayout(0, 0));
+			JPanel panelRohstoffe = new JPanel();
+			panelRohstoffe.setPreferredSize(new Dimension(100, 103));
+			contentPanel.add(panelRohstoffe, BorderLayout.NORTH);
+			panelRohstoffe.setLayout(new BorderLayout(0, 0));
 			{
-				JPanel panel_1 = new JPanel();
-				panel.add(panel_1, BorderLayout.NORTH);
-				panel_1.setLayout(new BorderLayout(0, 0));
+				JPanel panelHaendler = new JPanel();
+				panelRohstoffe.add(panelHaendler, BorderLayout.NORTH);
+				panelHaendler.setLayout(new BorderLayout(0, 0));
 				{
 					JLabel lblHaendlerT = new JLabel("H\u00E4ndler");
-					panel_1.add(lblHaendlerT, BorderLayout.WEST);
+					panelHaendler.add(lblHaendlerT, BorderLayout.WEST);
 				}
 				{
 					JLabel lblHaendler = new JLabel("... :");
-					panel_1.add(lblHaendler);
+					panelHaendler.add(lblHaendler);
 				}
 			}
 			{
-				table = new JTable();
-				panel.add(table, BorderLayout.SOUTH);
-				table.setModel(new DefaultTableModel(new Object[][] { { null, null, null }, { null, null, null }, { null, null, null }, }, new String[] { "Rohstoff", "noch im Lager", "Kaufmenge" }) {
+				tableRohstoffe = new JTable();
+				panelRohstoffe.add(tableRohstoffe, BorderLayout.SOUTH);
+				tableRohstoffe.setModel(new DefaultTableModel(new Object[][] { { null, null, null }, { null, null, null }, { null, null, null }, }, new String[] { "Rohstoff", "noch im Lager", "Kaufmenge" }) {
 					Class[] columnTypes = new Class[] { String.class, Integer.class, Integer.class };
 
 					public Class getColumnClass(int columnIndex) {
@@ -77,44 +77,44 @@ public class Kaufen_Rohstoffe extends JDialog {
 						return columnEditables[column];
 					}
 				});
-				table.getColumnModel().getColumn(0).setResizable(false);
-				table.getColumnModel().getColumn(0).setPreferredWidth(88);
-				table.getColumnModel().getColumn(1).setResizable(false);
-				table.getColumnModel().getColumn(1).setPreferredWidth(76);
-				table.getColumnModel().getColumn(2).setResizable(false);
+				tableRohstoffe.getColumnModel().getColumn(0).setResizable(false);
+				tableRohstoffe.getColumnModel().getColumn(0).setPreferredWidth(88);
+				tableRohstoffe.getColumnModel().getColumn(1).setResizable(false);
+				tableRohstoffe.getColumnModel().getColumn(1).setPreferredWidth(76);
+				tableRohstoffe.getColumnModel().getColumn(2).setResizable(false);
 			}
 			{
-				JScrollPane scrollPane = new JScrollPane(table);
-				panel.add(scrollPane, BorderLayout.CENTER);
+				JScrollPane scrollPane = new JScrollPane(tableRohstoffe);
+				panelRohstoffe.add(scrollPane, BorderLayout.CENTER);
 			}
 			{
-				JPanel panel_2 = new JPanel();
-				panel.add(panel_2, BorderLayout.SOUTH);
-				panel_2.setLayout(new BorderLayout(0, 0));
+				JPanel panelSumme = new JPanel();
+				panelRohstoffe.add(panelSumme, BorderLayout.SOUTH);
+				panelSumme.setLayout(new BorderLayout(0, 0));
 				{
 					JLabel lblSummeT = new JLabel("Gesamtsumme: ");
-					panel_2.add(lblSummeT, BorderLayout.WEST);
+					panelSumme.add(lblSummeT, BorderLayout.WEST);
 				}
 				{
-					JLabel lblNewLabel_1 = new JLabel("...");
-					panel_2.add(lblNewLabel_1, BorderLayout.CENTER);
+					JLabel lblSumme = new JLabel("...");
+					panelSumme.add(lblSumme, BorderLayout.CENTER);
 				}
 			}
 		}
 		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			JPanel buttonPanel = new JPanel();
+			buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+			getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 			{
 				JButton kaufenButton = new JButton("kaufen");
 				kaufenButton.setActionCommand("OK");
-				buttonPane.add(kaufenButton);
+				buttonPanel.add(kaufenButton);
 				getRootPane().setDefaultButton(kaufenButton);
 			}
 			{
 				JButton cancelButton = new JButton("abbrechen");
 				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
+				buttonPanel.add(cancelButton);
 			}
 		}
 	}

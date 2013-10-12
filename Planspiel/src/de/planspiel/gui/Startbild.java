@@ -46,23 +46,23 @@ public class Startbild {
 		frmPlanspiel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPlanspiel.getContentPane().setLayout(new BorderLayout(0, 0));
 
-		JPanel panel = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
-		flowLayout.setAlignment(FlowLayout.LEADING);
-		flowLayout.setVgap(40);
-		flowLayout.setHgap(40);
-		frmPlanspiel.getContentPane().add(panel);
+		JPanel contentPanel = new JPanel();
+		FlowLayout fl_contentPanel = (FlowLayout) contentPanel.getLayout();
+		fl_contentPanel.setAlignment(FlowLayout.LEADING);
+		fl_contentPanel.setVgap(40);
+		fl_contentPanel.setHgap(40);
+		frmPlanspiel.getContentPane().add(contentPanel);
 
-		JLabel lblNewLabel = new JLabel("Herzlich Willkommen!\r\n...");
-		panel.add(lblNewLabel);
+		JLabel lblText = new JLabel("Herzlich Willkommen!\r\n...");
+		contentPanel.add(lblText);
 
-		JPanel panel_1 = new JPanel();
-		FlowLayout flowLayout_1 = (FlowLayout) panel_1.getLayout();
-		flowLayout_1.setAlignment(FlowLayout.TRAILING);
-		frmPlanspiel.getContentPane().add(panel_1, BorderLayout.SOUTH);
+		JPanel buttonPanel = new JPanel();
+		FlowLayout fl_buttonPanel = (FlowLayout) buttonPanel.getLayout();
+		fl_buttonPanel.setAlignment(FlowLayout.TRAILING);
+		frmPlanspiel.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
-		JButton btnSpielStarten = new JButton("Spiel starten");
-		panel_1.add(btnSpielStarten);
+		JButton SpielStartenButton = new JButton("Spiel starten");
+		buttonPanel.add(SpielStartenButton);
 	}
 
 }

@@ -45,42 +45,42 @@ public class Anlegen_Unternehmenskette extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.EAST);
 		contentPanel.setLayout(new GridLayout(3, 1, 0, 0));
 		{
-			JLabel label = new JLabel("");
-			contentPanel.add(label);
+			JLabel lblPlatzhalter = new JLabel("");
+			contentPanel.add(lblPlatzhalter);
 		}
 		{
-			JPanel panel = new JPanel();
-			contentPanel.add(panel);
+			JPanel panelName = new JPanel();
+			contentPanel.add(panelName);
 			{
 				JLabel lblName = new JLabel("Name: ");
-				panel.add(lblName);
+				panelName.add(lblName);
 				lblName.setVerticalAlignment(SwingConstants.BOTTOM);
 			}
 			{
 				tfName = new JTextField();
-				panel.add(tfName);
+				panelName.add(tfName);
 				tfName.setColumns(30);
 			}
 			{
 				JLabel lblOK = new JLabel("");
 				lblOK.setIcon(new ImageIcon(Anlegen_Unternehmenskette.class.getResource("/de/planspiel/gui/gut.png")));
-				panel.add(lblOK);
+				panelName.add(lblOK);
 			}
 		}
 		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			JPanel buttonPanel = new JPanel();
+			buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+			getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 			{
 				JButton anlegenButton = new JButton("weitere Unternehmenskette anlegen");
 				anlegenButton.setActionCommand("OK");
-				buttonPane.add(anlegenButton);
+				buttonPanel.add(anlegenButton);
 				getRootPane().setDefaultButton(anlegenButton);
 			}
 			{
 				JButton startButton = new JButton("Spiel beginnen");
 				startButton.setActionCommand("Cancel");
-				buttonPane.add(startButton);
+				buttonPanel.add(startButton);
 			}
 		}
 	}
