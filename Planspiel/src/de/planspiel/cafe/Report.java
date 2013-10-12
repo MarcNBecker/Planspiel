@@ -48,7 +48,6 @@ public class Report {
 	public Report(int runde, Unternehmenskette kette) {
 		this.runde = runde;
 		this.kette = kette;
-		this.verkaufsListe = new VerkaufsListe(kette);
 	}
 
 	/**
@@ -95,6 +94,9 @@ public class Report {
 		}
 		setzeEndGesamtkapital(holeKette().berechnenGesamtkapital());
 		setzeEndFremdkapital(holeKette().berechnenFremdkapital());
+		if(verkaufsListe == null){
+			verkaufsListe = new VerkaufsListe(holeKette());
+		}
 	}
 	
 	/**
@@ -389,7 +391,10 @@ public class Report {
 	 * @return Verkaufsliste mit Anzahl verkaufter Produkte der Runde
 	 */
 	public VerkaufsListe holeVerkaufsListe() {
+		if(verkaufsListe == null) {
+			verkaufsListe = new VerkaufsListe(holeKette());
+		}
 		return verkaufsListe;
 	}
-
+	
 }
