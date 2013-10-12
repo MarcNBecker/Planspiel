@@ -295,5 +295,14 @@ public class Einstellungsbild {
 		
 		JButton absendenButton = new JButton("absenden");
 		buttonPanel.add(absendenButton, BorderLayout.EAST);
+		
+		JPanel summePanel = new JPanel();
+		buttonPanel.add(summePanel, BorderLayout.CENTER);
+		
+		JLabel lblSummeDerKostenT = new JLabel("Summe der Kosten:");
+		summePanel.add(lblSummeDerKostenT);
+		
+		JLabel lblSummeDerKosten = new JLabel("...");
+		summePanel.add(lblSummeDerKosten);
 	}
 }
