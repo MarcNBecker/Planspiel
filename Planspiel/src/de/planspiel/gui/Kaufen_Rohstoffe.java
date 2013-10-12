@@ -12,9 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-
-import java.awt.Window.Type;
 
 public class Kaufen_Rohstoffe extends JDialog {
 
@@ -67,25 +64,20 @@ public class Kaufen_Rohstoffe extends JDialog {
 			{
 				table = new JTable();
 				panel.add(table, BorderLayout.SOUTH);
-				table.setModel(new DefaultTableModel(
-					new Object[][] {
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-					},
-					new String[] {
-						"Rohstoff", "noch im Lager", "Kaufmenge"
-					}
-				) {
-					Class[] columnTypes = new Class[] {
-						String.class, Integer.class, Integer.class
-					};
+				table.setModel(new DefaultTableModel(new Object[][] {
+						{ null, null, null }, { null, null, null },
+						{ null, null, null }, }, new String[] { "Rohstoff",
+						"noch im Lager", "Kaufmenge" }) {
+					Class[] columnTypes = new Class[] { String.class,
+							Integer.class, Integer.class };
+
 					public Class getColumnClass(int columnIndex) {
 						return columnTypes[columnIndex];
 					}
-					boolean[] columnEditables = new boolean[] {
-						false, false, true
-					};
+
+					boolean[] columnEditables = new boolean[] { false, false,
+							true };
+
 					public boolean isCellEditable(int row, int column) {
 						return columnEditables[column];
 					}

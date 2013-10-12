@@ -8,23 +8,12 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import de.planspiel.cafe.Standorttyp;
 import java.awt.GridLayout;
 import javax.swing.JTextField;
-import javax.swing.BoxLayout;
 import java.awt.Component;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.factories.FormFactory;
-import com.jgoodies.forms.layout.RowSpec;
-import net.miginfocom.swing.MigLayout;
 
 public class Kaufen_Filiale extends JDialog {
 
@@ -64,9 +53,9 @@ public class Kaufen_Filiale extends JDialog {
 				panel_1.add(lblStandort);
 			}
 			{
-				JComboBox comboBox = new JComboBox();
+				JComboBox<Standorttyp> comboBox = new JComboBox<Standorttyp>();
 				panel_1.add(comboBox);
-				comboBox.setModel(new DefaultComboBoxModel(Standorttyp.values()));
+				comboBox.setModel(new DefaultComboBoxModel<Standorttyp>(Standorttyp.values()));
 			}
 		}
 		{

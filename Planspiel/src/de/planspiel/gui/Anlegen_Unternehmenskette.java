@@ -2,9 +2,7 @@ package de.planspiel.gui;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.Image;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -13,10 +11,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import java.awt.Window.Type;
-
 import javax.swing.SwingConstants;
-import javax.swing.BoxLayout;
 
 import java.awt.GridLayout;
 
@@ -68,7 +63,8 @@ public class Anlegen_Unternehmenskette extends JDialog {
 			}
 			{
 				JLabel lblOK = new JLabel("");
-				lblOK.setIcon(new ImageIcon(Anlegen_Unternehmenskette.class.getResource("/de/planspiel/gui/gut.png")));
+				lblOK.setIcon(new ImageIcon(Anlegen_Unternehmenskette.class
+						.getResource("/de/planspiel/gui/gut.png")));
 				panel.add(lblOK);
 			}
 		}
@@ -77,7 +73,8 @@ public class Anlegen_Unternehmenskette extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton anlegenButton = new JButton("weitere Unternehmenskette anlegen");
+				JButton anlegenButton = new JButton(
+						"weitere Unternehmenskette anlegen");
 				anlegenButton.setActionCommand("OK");
 				buttonPane.add(anlegenButton);
 				getRootPane().setDefaultButton(anlegenButton);
