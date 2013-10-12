@@ -1,10 +1,11 @@
 2 - Events implementieren
 2 - Exception-Konzept umsetzen
 2 - Haltbarkeit des Rohstoffes
-2 - GUI mit spielen Funktion verknüpfen
+2 - GUI mit spielen Funktion verknÃ¼pfen
 
 Spiel:
 - Start-Werte setzen
+- VerkaufsListe mit Lager nach Entscheidung syncen
 
 Kredit:
 - Start-Werte setzen
