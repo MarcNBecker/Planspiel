@@ -63,8 +63,7 @@ public class Anlegen_Unternehmenskette extends JDialog {
 			}
 			{
 				JLabel lblOK = new JLabel("");
-				lblOK.setIcon(new ImageIcon(Anlegen_Unternehmenskette.class
-						.getResource("/de/planspiel/gui/gut.png")));
+				lblOK.setIcon(new ImageIcon(Anlegen_Unternehmenskette.class.getResource("/de/planspiel/gui/gut.png")));
 				panel.add(lblOK);
 			}
 		}
@@ -73,8 +72,7 @@ public class Anlegen_Unternehmenskette extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton anlegenButton = new JButton(
-						"weitere Unternehmenskette anlegen");
+				JButton anlegenButton = new JButton("weitere Unternehmenskette anlegen");
 				anlegenButton.setActionCommand("OK");
 				buttonPane.add(anlegenButton);
 				getRootPane().setDefaultButton(anlegenButton);
