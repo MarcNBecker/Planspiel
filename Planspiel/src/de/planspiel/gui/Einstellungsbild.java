@@ -46,7 +46,6 @@ public class Einstellungsbild {
 
 	private JFrame frmEntscheidungen;
 	private JTextField textFieldKredit;
-	private JTextField textFieldMarketing;
 	private JTable tableVerkaufspreis;
 	private JTable tableRohstoffe;
 	private JTable tableFilialen;
@@ -135,7 +134,7 @@ public class Einstellungsbild {
 		
 		JPanel panel = new JPanel();
 		ausgabenPanel.add(panel, BorderLayout.WEST);
-		panel.setLayout(new GridLayout(2, 1, 0, 0));
+		panel.setLayout(new GridLayout(1, 1, 0, 0));
 		
 		JPanel kreditPanel = new JPanel();
 		panel.add(kreditPanel);
@@ -147,16 +146,6 @@ public class Einstellungsbild {
 		textFieldKredit = new JTextField();
 		kreditPanel.add(textFieldKredit);
 		textFieldKredit.setColumns(10);
-		
-		JPanel marketingPanel = new JPanel();
-		panel.add(marketingPanel);
-		
-		JLabel lblMarketing = new JLabel("Marketingbudget:");
-		marketingPanel.add(lblMarketing);
-		
-		textFieldMarketing = new JTextField();
-		textFieldMarketing.setColumns(10);
-		marketingPanel.add(textFieldMarketing);
 		
 		tableVerkaufspreis = new JTable();
 		tableVerkaufspreis.setModel(new DefaultTableModel(
@@ -215,9 +204,30 @@ public class Einstellungsbild {
 				{null, null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
+				"ausgew\u00E4hlt", "H\u00E4ndler", "A - Preis", "A - Qualit\u00E4t", "B - Preis", "B - Qualit\u00E4t", "C - Preis", "C - Qualit\u00E4t"
 			}
-		));
+		) {
+			Class[] columnTypes = new Class[] {
+				Object.class, String.class, Double.class, Double.class, Double.class, Double.class, Double.class, Double.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+			boolean[] columnEditables = new boolean[] {
+				true, false, false, false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		tableRohstoffe.getColumnModel().getColumn(0).setResizable(false);
+		tableRohstoffe.getColumnModel().getColumn(1).setResizable(false);
+		tableRohstoffe.getColumnModel().getColumn(2).setResizable(false);
+		tableRohstoffe.getColumnModel().getColumn(3).setResizable(false);
+		tableRohstoffe.getColumnModel().getColumn(4).setResizable(false);
+		tableRohstoffe.getColumnModel().getColumn(5).setResizable(false);
+		tableRohstoffe.getColumnModel().getColumn(6).setResizable(false);
+		tableRohstoffe.getColumnModel().getColumn(7).setResizable(false);
 		
 		JScrollPane scrollPaneRohstoffe = new JScrollPane(tableRohstoffe);
 		tabellePanel1.add(scrollPaneRohstoffe);
@@ -241,29 +251,29 @@ public class Einstellungsbild {
 		tabellePanel2.add(tableFilialen);
 		tableFilialen.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
 			},
 			new String[] {
-				"Standort", "Anzahl Mitarbeiter", "einstellen/entlassen", "verkaufen"
+				"Standort", "Anzahl Mitarbeiter", "Marketingbudget", "einstellen/entlassen", "verkaufen"
 			}
 		) {
 			Class[] columnTypes = new Class[] {
-				String.class, Integer.class, Object.class, Object.class
+				String.class, Integer.class, Object.class, Object.class, Object.class
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
 			boolean[] columnEditables = new boolean[] {
-				false, false, true, true
+				true, true, false, true, true
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
@@ -272,7 +282,9 @@ public class Einstellungsbild {
 		tableFilialen.getColumnModel().getColumn(0).setPreferredWidth(86);
 		tableFilialen.getColumnModel().getColumn(1).setResizable(false);
 		tableFilialen.getColumnModel().getColumn(1).setPreferredWidth(104);
-		tableFilialen.getColumnModel().getColumn(2).setPreferredWidth(113);
+		tableFilialen.getColumnModel().getColumn(2).setResizable(false);
+		tableFilialen.getColumnModel().getColumn(2).setPreferredWidth(95);
+		tableFilialen.getColumnModel().getColumn(3).setPreferredWidth(113);
 		
 		JScrollPane scrollPaneFilialen = new JScrollPane(tableFilialen);
 		tabellePanel2.add(scrollPaneFilialen);
