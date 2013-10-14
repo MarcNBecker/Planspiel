@@ -150,7 +150,7 @@ public class Spiel {
 				reihenfolge.add(aktuelleKette);
 			} else {
 				for(int j=0; j<reihenfolge.size(); j++) {
-					Unternehmenskette aktuelleKetteInListe = reihenfolge.get(i);
+					Unternehmenskette aktuelleKetteInListe = reihenfolge.get(j);
 					double gesamtgewinnInListe = aktuelleKetteInListe.holeReportListe().lastElement().berechnenGesamtgewinn();
 					double gesamtgewinnAktuell = aktuelleKette.holeReportListe().lastElement().berechnenGesamtgewinn();
 					if(gesamtgewinnInListe < gesamtgewinnAktuell) {
