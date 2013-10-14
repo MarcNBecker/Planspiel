@@ -22,8 +22,11 @@ public class VerkaufsListe extends ProduktVerwalter {
 	private void uebertragenProdukte(Lager lager){
 		Vector<Produkt> lagerProdukte = lager.holeProduktliste();
 		for (int i = 0; i< lagerProdukte.size(); i++){
-			holeProduktliste().add(lagerProdukte.get(i));
-			holeProduktliste().get(i).setzeMenge(0);
+			Produkt lagerProdukt = lagerProdukte.get(i);
+			Produkt verkaufsProdukt = new Produkt(lagerProdukt.holeName(), lagerProdukt.holeQualitaet(), lagerProdukt.holeEkpreis());
+			verkaufsProdukt.setzePreis(lagerProdukt.holePreis());
+			verkaufsProdukt.setzeMenge(0);
+			holeProduktliste().add(verkaufsProdukt);
 		}
 	}
 	
