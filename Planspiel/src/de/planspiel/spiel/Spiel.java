@@ -78,8 +78,6 @@ public class Spiel {
 				if (!kette.holePleite()) {
 					Report report = new Report(holeAktuelleRunde(), kette);
 					report.setzeMarktanteil(holeAktuellerMarktanteil());
-					report.setzeStartGesamtkapital(kette.berechnenGesamtkapital());
-					report.setzeStartFremdkapital(kette.berechnenFremdkapital());
 					kette.hinzufuegenReport(report);
 				}
 			}
@@ -152,8 +150,8 @@ public class Spiel {
 			} else {
 				for(int j=0; j<reihenfolge.size(); j++) {
 					Unternehmenskette aktuelleKetteInListe = reihenfolge.get(i);
-					double gesamtgewinnInListe = aktuelleKetteInListe.holeReportListe().get(holeAktuelleRunde()).berechnenGesamtgewinn();
-					double gesamtgewinnAktuell = aktuelleKette.holeReportListe().get(holeAktuelleRunde()).berechnenGesamtgewinn();
+					double gesamtgewinnInListe = aktuelleKetteInListe.holeReportListe().lastElement().berechnenGesamtgewinn();
+					double gesamtgewinnAktuell = aktuelleKette.holeReportListe().lastElement().berechnenGesamtgewinn();
 					if(gesamtgewinnInListe < gesamtgewinnAktuell) {
 						reihenfolge.add(j, aktuelleKette);
 						break;

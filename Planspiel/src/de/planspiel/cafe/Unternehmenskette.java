@@ -33,7 +33,7 @@ public class Unternehmenskette {
 		this.kreditListe = new Vector<Kredit>();
 		this.lager = new Lager(this);
 		setzePleite(false);
-		setzeKasse(0); // TODO Start-Wert
+		setzeKasse(10000); // TODO Start-Wert
 		setzeGehalt(0); // TODO Start-Wert
 		setzeEntlassungskosten(0); // TODO Start-Wert
 	}
@@ -43,6 +43,13 @@ public class Unternehmenskette {
 	 * @param standort Standort an dem das Filialeobjekt erzeugt werden soll
 	 */
 	public Filiale eroeffnenFiliale(Standort standort) {
+		// Prüfe ob die Filiale am Standort bereits existiert
+		for(Filiale filiale : standort.holeFilialenListe()) {
+			if(filiale.holeKette() == this) {
+				// Filiale existiert nicht schon an dem Standort
+				return null;
+			}
+		}
 		//Der Konstrukter von Filiale ruft die entsprechende Standort-Methode auf
 		Filiale neueFiliale = new Filiale(standort, this);
 		hinzufuegenFiliale(neueFiliale);
@@ -91,12 +98,15 @@ public class Unternehmenskette {
 	/**
 	 * Fügt den Kredit dem Unternehmen hinzu, wenn der Betrag noch im Rahmen der Kreditwürdigkeit liegt
 	 * @param betrag
+	 * @return True, wenn das aufnehmen des Kredits erfolgreich war
 	 */
-	public void aufnehmenKredit(double betrag) {
+	public boolean aufnehmenKredit(double betrag) {
 		if(betrag <= pruefeKreditwuerdigkeit()){
 			hinzufuegenKredit(new Kredit(this, betrag));
 			setzeKasse(holeKasse() + betrag);
+			return true;
 		}
+		return false;
 	}
 	
 	/**
@@ -240,8 +250,8 @@ public class Unternehmenskette {
 		if(kasse >= 0) {
 			this.kasse = kasse;
 		} else {
-			aufnehmenKredit(Math.abs(kasse)); //Versuche einen Kredit aufzunehmen
-			if(holeKasse() < 0) { //Versuch fehlgeschlagen => Pleite, da keine Kreditwürdigkeit mehr
+			boolean kredit = aufnehmenKredit(Math.abs(kasse)); //Versuche einen Kredit aufzunehmen
+			if(!kredit) { //Versuch fehlgeschlagen => Pleite, da keine Kreditwürdigkeit mehr
 				setzePleite(true);
 			}
 		}

@@ -22,7 +22,10 @@ public class MitarbeiterEntlassenEntscheidung extends Entscheidung {
 	 */
 	public static void addiereZuEinstellungen(Unternehmenskette kette, int mitarbeiter) {
 		if (kette != null && mitarbeiter > 0) {
-			int aktuelleEinstellungen = einstellungen.get(kette);
+			Integer aktuelleEinstellungen = einstellungen.get(kette);
+			if(aktuelleEinstellungen == null) {
+				aktuelleEinstellungen = new Integer(0);
+			}
 			einstellungen.put(kette, aktuelleEinstellungen+mitarbeiter);	
 		}
 	}

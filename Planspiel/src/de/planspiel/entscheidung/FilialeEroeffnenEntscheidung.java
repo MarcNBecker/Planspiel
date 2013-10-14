@@ -32,7 +32,9 @@ public class FilialeEroeffnenEntscheidung extends Entscheidung {
 	public void ausfuehren() {
 		if(standort != null && mitarbeiter >= 0) {
 			Filiale neueFiliale = kette.eroeffnenFiliale(standort);
-			neueFiliale.setzeMitarbeiter(mitarbeiter);	
+			if(neueFiliale != null) {
+				neueFiliale.setzeMitarbeiter(mitarbeiter);	
+			}	
 		}
 	}
 

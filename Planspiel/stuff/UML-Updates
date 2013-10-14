@@ -37,3 +37,6 @@ Spiel:
 - neues Attribut aktuellerMarktanteil mit getter und setter
 - rundenEntscheidung ist jetzt nur noch Vector<Entscheidung> -> entsprechend getter/setter setzen
 - bestimme Gewinner
+
+Unternehmenskette:
+- aufnehmenKredit gibt jetzt einen boolean zurück

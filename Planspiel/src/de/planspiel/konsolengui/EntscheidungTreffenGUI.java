@@ -107,7 +107,7 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 						System.out.println("---------- Filialen ----------");
 						for(int j=0; j<kette.holeFilialenListe().size(); j++){
 							Filiale filiale = kette.holeFilialenListe().get(j);
-							System.out.println("Filiale am Standort " + filiale.holeStandort().holeName() + " mit " + filiale.holeMitarbeiter() + " und einer Kapazität von " + filiale.holeStartKapazitaet());
+							System.out.println("Filiale am Standort " + filiale.holeStandort().holeName() + " mit " + filiale.holeMitarbeiter() + " Mitarbeitern und einer Kapazität von " + filiale.holeStartKapazitaet());
 						}
 					} else if (cmd.equals("LAGER")) {
 						Lager lager = kette.holeLager();

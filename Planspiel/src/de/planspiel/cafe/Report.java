@@ -3,6 +3,8 @@ package de.planspiel.cafe;
 import java.util.HashMap;
 import java.util.Vector;
 
+import de.planspiel.spiel.Spiel;
+
 /**
  * Organisation der Rundenstände für jede Unternehmenskette gibt es pro Runde
  * einen Report, der alle Zwischenergebnisse aufnimmt
@@ -48,6 +50,9 @@ public class Report {
 	public Report(int runde, Unternehmenskette kette) {
 		this.runde = runde;
 		this.kette = kette;
+		this.kasse = kette.holeKasse();
+		this.startGesamtkapital = kette.berechnenGesamtkapital();
+		this.startFremdkapital = kette.berechnenFremdkapital();
 	}
 
 	/**
@@ -103,7 +108,7 @@ public class Report {
 	 * @return Gewinn der aktuellen Periode
 	 */
 	public double berechnenGewinn() {
-		if(holeRunde() == 1) {
+		if(holeRunde() == 1 && Spiel.holeSpiel().holeAktuelleRunde() == 1) {
 			return 0;
 		}
 		double ekVorher = holeStartGesamtkapital() - holeStartFremdkapital();
@@ -116,7 +121,7 @@ public class Report {
 	 * @return Gesamter Gewinn bis zu dieser Runde
 	 */
 	public double berechnenGesamtgewinn() {
-		if(holeRunde() == 1) {
+		if(holeRunde() == 1  && Spiel.holeSpiel().holeAktuelleRunde() == 1) {
 			return 0;
 		}
 		Report ersterReport = holeKette().holeReportListe().get(0);
