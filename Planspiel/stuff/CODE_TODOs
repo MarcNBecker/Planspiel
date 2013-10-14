@@ -2,8 +2,7 @@ Fragen/Bugs:
 - Verantwortung für die Reihenfolge der Entscheidungen beim Spieler? 
   Oder sicherstellen, dass FilialeVerkaufen und KreditAufnehmen VOR
   kostenwirksamen Entscheidungen aufgerufen werden?
-- Kapitalberechnungen sind sehr verwirrend
-- report durcheinander überprüfen (1. Runde vs. andere Runden, etc..)
+- Kapitalberechnungen sind sehr verwirrend -> gesamtgewinn springt in der letzten runde
 
 ----------------------------------------------------------------------------------------------
 

@@ -58,6 +58,7 @@ public class Report {
 	/**
 	 * Berechnet das Rundenergebnis, indem alle addierten Kosten von den Erlösen
 	 * abgezogen werden
+	 * @deprecated
 	 */
 	public double berechnenRundenergebnis() {
 		double kosten = this.holeAnschaffungskosten()

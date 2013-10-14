@@ -2,7 +2,7 @@ package de.planspiel.cafe;
 
 public enum Standorttyp {
 	Standort1(5000, 1000, 100, 200, 5), // TODO Start-Wert festsetzen
-	Standort2(0, 0, 0, 0, 0), // TODO Start-Wert festsetzen
+	Standort2(100, 100, 100, 10000, 5), // TODO Start-Wert festsetzen
 	Standort3(0, 0, 0, 0, 0); // TODO Start-Wert festsetzen
 	
 	private double laufendeFilialkosten;

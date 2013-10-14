@@ -75,7 +75,7 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 						System.out.println("Kreditkosten: " + runden(report.holeKreditkosten(), 2) + " Euro");
 						System.out.println("Umsatzerlöse: " + runden(report.holeUmsatzerloese(), 2) + " Euro");
 						System.out.println("Sonstige Erlöse: " + runden(report.holeSonstigeErloese(), 2) + " Euro");
-						System.out.println("Gewinn: " + runden(report.berechnenGewinn(), 2) + " Euro bzw. Rundenergebnis: " + runden(report.berechnenRundenergebnis(), 2) + " Euro"); 
+						System.out.println("Gewinn: " + runden(report.berechnenGewinn(), 2) + " Euro"); 
 						System.out.println("Gesamtgewinn: " + runden(report.berechnenGesamtgewinn(), 2) + " Euro\n");//Umbruch
 						for(int j=0; j<report.holeVerkaufsListe().holeProduktliste().size(); j++){
 							Produkt produkt = report.holeVerkaufsListe().holeProduktliste().get(j);
