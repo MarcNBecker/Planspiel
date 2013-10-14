@@ -126,7 +126,7 @@ public class Report {
 		}
 		Report ersterReport = holeKette().holeReportListe().get(0);
 		double ekVorher = ersterReport.holeStartGesamtkapital() - ersterReport.holeStartFremdkapital();
-		double ekNachher = holeStartGesamtkapital() - holeStartFremdkapital();
+		double ekNachher = holeEndGesamtkapital() - holeEndFremdkapital();
 		double gesamtgewinn = ekNachher - ekVorher;
 		return gesamtgewinn;
 	}
