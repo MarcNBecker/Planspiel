@@ -2,7 +2,6 @@ Fragen/Bugs:
 - Verantwortung für die Reihenfolge der Entscheidungen beim Spieler? 
   Oder sicherstellen, dass FilialeVerkaufen und KreditAufnehmen VOR
   kostenwirksamen Entscheidungen aufgerufen werden?
-- Sicherstellen, dass alle Zahlen gerundet werden (erst am UI oder beim Erzeugen intern?!?!?!?!)
 - Kapitalberechnungen sind sehr verwirrend
 - report durcheinander überprüfen (1. Runde vs. andere Runden, etc..)
 

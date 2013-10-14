@@ -64,19 +64,19 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 							report = kette.holeReportListe().get(spiel.holeAktuelleRunde()-2);	
 						}
 						System.out.println("---------- Report ---------- ");
-						System.out.println("Kasse: " + report.holeKasse() + " Euro");
-						System.out.println("Fremdkapital: " + report.holeEndFremdkapital() + " Euro");
-						System.out.println("Gesamtkapital: " + report.holeEndGesamtkapital() + " Euro\n"); //Umbruch
-						System.out.println("Filialanschaffungskosten: " + report.holeAnschaffungskosten() + " Euro");
-						System.out.println("Filalunterhaltungskosten: " + report.holeUnterhaltungskosten() + " Euro");
-						System.out.println("Personalkosten: " + report.holePersonalkosten() + " Euro");
-						System.out.println("Rohstoffkosten: " + report.holeRohstoffkosten() + " Euro");	
-						System.out.println("Marketingkosten: " + report.holeMarketingkosten() + " Euro");					
-						System.out.println("Kreditkosten: " + report.holeKreditkosten() + " Euro");
-						System.out.println("Umsatzerlöse: " + report.holeUmsatzerloese() + " Euro");
-						System.out.println("Sonstige Erlöse: " + report.holeSonstigeErloese() + " Euro");
-						System.out.println("Gewinn: " + report.berechnenGewinn() + " Euro bzw. Rundenergebnis: " + report.berechnenRundenergebnis() + " Euro"); 
-						System.out.println("Gesamtgewinn: " + report.berechnenGesamtgewinn() + " Euro\n");//Umbruch
+						System.out.println("Kasse: " + runden(report.holeKasse()) + " Euro");
+						System.out.println("Fremdkapital: " + runden(report.holeEndFremdkapital()) + " Euro");
+						System.out.println("Gesamtkapital: " + runden(report.holeEndGesamtkapital()) + " Euro\n"); //Umbruch
+						System.out.println("Filialanschaffungskosten: " + runden(report.holeAnschaffungskosten()) + " Euro");
+						System.out.println("Filalunterhaltungskosten: " + runden(report.holeUnterhaltungskosten()) + " Euro");
+						System.out.println("Personalkosten: " + runden(report.holePersonalkosten()) + " Euro");
+						System.out.println("Rohstoffkosten: " + runden(report.holeRohstoffkosten()) + " Euro");	
+						System.out.println("Marketingkosten: " + runden(report.holeMarketingkosten()) + " Euro");					
+						System.out.println("Kreditkosten: " + runden(report.holeKreditkosten()) + " Euro");
+						System.out.println("Umsatzerlöse: " + runden(report.holeUmsatzerloese()) + " Euro");
+						System.out.println("Sonstige Erlöse: " + runden(report.holeSonstigeErloese()) + " Euro");
+						System.out.println("Gewinn: " + runden(report.berechnenGewinn()) + " Euro bzw. Rundenergebnis: " + runden(report.berechnenRundenergebnis()) + " Euro"); 
+						System.out.println("Gesamtgewinn: " + runden(report.berechnenGesamtgewinn()) + " Euro\n");//Umbruch
 						for(int j=0; j<report.holeVerkaufsListe().holeProduktliste().size(); j++){
 							Produkt produkt = report.holeVerkaufsListe().holeProduktliste().get(j);
 							System.out.println("Verkaufzahlen " + produkt.holeName() + ": " + produkt.holeMenge());
@@ -85,7 +85,7 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 						HashMap<Unternehmenskette, Double> marktanteilMap = report.holeMarktanteil().berechnenMarktanteil();
 						Unternehmenskette[] keys = marktanteilMap.keySet().toArray(new Unternehmenskette[marktanteilMap.size()]);
 						for (int j=0; j<keys.length; j++){
-							System.out.println("Marktanteil " + keys[j].holeName() + ": " + marktanteilMap.get(keys[j]));
+							System.out.println("Marktanteil " + keys[j].holeName() + ": " + runden(marktanteilMap.get(keys[j])));
 						}						
 					} else if (cmd.equals("STANDORT")) {
 						System.out.println("---------- Standorte ----------");
@@ -100,7 +100,7 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 							System.out.println(haendler.holeName()+":");
 							for(int k=0; k<haendler.holeProduktliste().size(); k++) {
 								Produkt produkt = haendler.holeProduktliste().get(k);
-								System.out.println(produkt.holeName() + " mit Qualität " + produkt.holeQualitaet() + " zu Einkaufspreis " + produkt.holeEkpreis() + " Euro");
+								System.out.println(produkt.holeName() + " mit Qualität " + runden(produkt.holeQualitaet()) + " zu Einkaufspreis " + runden(produkt.holeEkpreis()) + " Euro");
 							}
 						}
 					} else if (cmd.equals("FILIALE")) {
@@ -114,7 +114,7 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 						System.out.println("---------- Lagerbestand ----------");
 						for(int j=0; j<lager.holeProduktliste().size(); j++) {
 							Produkt produkt = lager.holeProduktliste().get(j);
-							System.out.println(produkt.holeMenge() + " " + produkt.holeName() + " zu Einkaufspreis " + produkt.holeEkpreis() + " Euro mit Qualität " + produkt.holeQualitaet() + " und Verkaufspreis " + produkt.holePreis() + " Euro");
+							System.out.println(produkt.holeMenge() + " " + produkt.holeName() + " zu Einkaufspreis " + runden(produkt.holeEkpreis()) + " Euro mit Qualität " + runden(produkt.holeQualitaet()) + " und Verkaufspreis " + runden(produkt.holePreis()) + " Euro");
 						}
 					} else if (cmd.equals("FILIALE_ERÖFFNEN")) {
 						String[] param = teile[1].split(",");
@@ -220,6 +220,10 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 			}
 		}
 		throw new Exception();
+	}
+	
+	private double runden(double i) {
+		return (double)(((int)Math.round(i * 100.0)) / 100);
 	}
 	
 }
