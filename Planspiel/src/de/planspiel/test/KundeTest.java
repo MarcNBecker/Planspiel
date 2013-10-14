@@ -62,12 +62,12 @@ public class KundeTest {
 		fil2.setzeMitarbeiter(1);
 		fil2.initialisierenKapazitaet();
 		Zufall.setzeTestmodus(false);
-		standort.beeinflussenKunden(ukette, 99);
-		standort.beeinflussenKunden(ukette1, 99);
+		standort.beeinflussenKunden(ukette, 1);
+		standort.beeinflussenKunden(ukette1, 1);
 		Zufall.setzeTestmodus(true);
 		Zufall.setzeTestZufallszahl(2);
 		Zufall.setzeTestQualitaet(0.4);
-		Produkt p1 = new Produkt(Produkttyp.KAFFEE, 20);
+		Produkt p1 = new Produkt(Produkttyp.TEE, 20);
 		Produkt p2 = new Produkt(Produkttyp.KUCHEN, 10);
 		p1.setzePreis(1);
 		p1.setzeQualitaet(0.56);
