@@ -2,12 +2,11 @@ Fragen/Bugs:
 - Verantwortung für die Reihenfolge der Entscheidungen beim Spieler? 
   Oder sicherstellen, dass FilialeVerkaufen und KreditAufnehmen VOR
   kostenwirksamen Entscheidungen aufgerufen werden?
+- es werden anscheinend keine kunden generiert
 - Verkauf scheint nicht zu funktionieren
-- Kapitalberechnungen sind sehr verwirrend
-- mitarbeiter_einstellen wirft ne exception
-- filiale_verkaufen wirft ne exception
-- report durcheinander überprüfen (1. Runde vs. andere Runden, etc..)
 - marketing checken
+- Kapitalberechnungen sind sehr verwirrend
+- report durcheinander überprüfen (1. Runde vs. andere Runden, etc..)
 
 ----------------------------------------------------------------------------------------------
 

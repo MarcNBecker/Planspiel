@@ -128,7 +128,7 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 						String[] param = teile[1].split(",");
 						if(param.length == 1){
 							new FilialeVerkaufenEntscheidung(kette, findeFiliale(kette, findeStandort(param[0])));
-							System.out.println("Filiale am Standort " + param[0] + " verkauft und " + param[1] + " Mitarbeiter entlassen");
+							System.out.println("Filiale am Standort " + param[0] + " verkauft");
 						} else {
 							throw new Exception();
 						}						

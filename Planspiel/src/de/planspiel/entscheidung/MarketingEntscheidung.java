@@ -1,5 +1,6 @@
 package de.planspiel.entscheidung;
 
+import de.planspiel.cafe.Kostenverursacher;
 import de.planspiel.cafe.Standort;
 import de.planspiel.cafe.Unternehmenskette;
 
@@ -39,6 +40,7 @@ public class MarketingEntscheidung extends Entscheidung {
 	public void ausfuehren() {
 		if (betrag > 0) {
 			standort.beeinflussenKunden(kette, holeWahrscheinlichkeit(betrag));
+			kette.verbuchenKosten(Kostenverursacher.MARKETING, betrag);
 		}
 	}
 

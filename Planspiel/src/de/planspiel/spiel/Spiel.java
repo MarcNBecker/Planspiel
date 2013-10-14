@@ -49,6 +49,9 @@ public class Spiel {
 	 * Führt das Spiel durch
 	 */
 	public void spielen() {
+		//Spieler aufnehmen
+		new SpielStartenGUI().run();
+		
 		// Erzeugen der Standorte
 		Standorttyp[] standorte = Standorttyp.values();
 		for(int i=0; i<standorte.length; i++){
@@ -60,8 +63,6 @@ public class Spiel {
 		for(int i=0; i<haendler.length; i++) {
 			hinzufuegenHaendler(new Haendler(haendler[i]));
 		}
-		
-		new SpielStartenGUI().run();
 		
 		// Rundenorganisation
 		while(holeAktuelleRunde() <= holeRundenzahl()) {
