@@ -80,8 +80,8 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 						for(int j=0; j<report.holeVerkaufsListe().holeProduktliste().size(); j++){
 							Produkt produkt = report.holeVerkaufsListe().holeProduktliste().get(j);
 							System.out.println("Verkaufzahlen " + produkt.holeName() + ": " + produkt.holeMenge());
+							System.out.println(); //Umbruch
 						}
-						System.out.println(); //Umbruch
 						HashMap<Unternehmenskette, Double> marktanteilMap = report.holeMarktanteil().berechnenMarktanteil();
 						Unternehmenskette[] keys = marktanteilMap.keySet().toArray(new Unternehmenskette[marktanteilMap.size()]);
 						for (int j=0; j<keys.length; j++){
