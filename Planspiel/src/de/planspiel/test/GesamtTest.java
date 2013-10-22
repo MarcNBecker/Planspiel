@@ -8,7 +8,7 @@ import org.junit.*;
 
 import de.planspiel.cafe.*;
 import de.planspiel.entscheidung.*;
-import de.planspiel.event.*;
+import de.planspiel.ereignis.*;
 import de.planspiel.konsolengui.EntscheidungTreffenGUI;
 import de.planspiel.konsolengui.SpielBeendenGUI;
 import de.planspiel.konsolengui.SpielStartenGUI;
