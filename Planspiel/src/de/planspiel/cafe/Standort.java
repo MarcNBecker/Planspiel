@@ -69,7 +69,7 @@ public class Standort {
 			this.hinzufuegenKunde(new Kunde(this));
 		}
 		for (int i = 0; i<ketten.size(); i++) {
-			beeinflussenKundenProzentual(ketten.get(i), 0.6); // TODO Startwert festlegen, evtl. Algorithmus exakt programmieren
+			beeinflussenKundenProzentual(ketten.get(i), 0.3); // TODO Startwert festlegen, evtl. Algorithmus exakt programmieren
 		}
 	}
 

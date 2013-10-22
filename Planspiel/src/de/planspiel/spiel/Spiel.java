@@ -38,7 +38,7 @@ public class Spiel {
 	 */
 	public Spiel() {
 		Spiel.spiel = this;
-		this.rundenzahl = 10; // TODO Start-Wert setzen
+		this.rundenzahl = 12; // TODO Start-Wert setzen
 		setzeAktuelleRunde(1);
 		this.standortListe = new Vector<Standort>();
 		this.kettenListe = new Vector<Unternehmenskette>();

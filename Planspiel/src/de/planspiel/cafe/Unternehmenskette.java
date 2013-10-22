@@ -33,9 +33,9 @@ public class Unternehmenskette {
 		this.kreditListe = new Vector<Kredit>();
 		this.lager = new Lager(this);
 		setzePleite(false);
-		setzeKasse(10000); // TODO Start-Wert
-		setzeGehalt(0); // TODO Start-Wert
-		setzeEntlassungskosten(0); // TODO Start-Wert
+		setzeKasse(150000); // TODO Start-Wert
+		setzeGehalt(1600); // TODO Start-Wert
+		setzeEntlassungskosten(500); // TODO Start-Wert
 	}
 	
 	/**
