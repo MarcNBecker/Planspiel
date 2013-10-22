@@ -47,4 +47,10 @@ public abstract class ProduktVerwalter {
 		}
 	}
 	
+	/**
+	 * Leert die Produktliste
+	 */
+	public void leeren() {
+		this.produktListe = new Vector<Produkt>();
+	}
 }

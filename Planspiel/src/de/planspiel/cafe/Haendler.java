@@ -25,6 +25,7 @@ public class Haendler extends ProduktVerwalter {
 	 * @author Natalie
 	 */
 	public void generierenAngebot() {
+		leeren();
 		//Alle Preis Qualität Verhältnis von 3-6
 		for (int i = 0; i < Produkttyp.values().length; i++){
 			Produkttyp aktuellesProdukt = Produkttyp.values()[i];
