@@ -100,6 +100,7 @@ public class Report {
 		}
 		setzeEndGesamtkapital(holeKette().berechnenGesamtkapital());
 		setzeEndFremdkapital(holeKette().berechnenFremdkapital());
+		setzeKasse(holeKette().holeKasse());
 		if(verkaufsListe == null){
 			verkaufsListe = new VerkaufsListe(holeKette());
 		}

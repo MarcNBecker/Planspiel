@@ -69,6 +69,11 @@ public class Spiel {
 			// Kreditlaufzeit setzen
 			Kredit.setzeAktuelleLaufzeit(holeRundenzahl() - (holeAktuelleRunde() - 1));
 			
+			// Neue Händler Angebote generieren
+			for(Haendler h : holeHaendlerListe()) {
+				h.generierenAngebot();
+			}
+			
 			// Marktanteil erzeugen
 			setzeAktuellerMarktanteil(new Marktanteil());
 			

@@ -224,7 +224,8 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 	
 	private double runden(double i, int s) {
 		//return (double)(((int)Math.round(i * 100.0)) / 100);
-		return Math.round(i*10.0*s) / (10.0*s);
+		//return Math.round(i*10.0*s) / (10.0*s);
+		return i;
 	}
 	
 }
