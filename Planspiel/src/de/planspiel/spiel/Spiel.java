@@ -14,12 +14,14 @@ import de.planspiel.cafe.Haendlertyp;
 import de.planspiel.cafe.Unternehmenskette;
 import de.planspiel.entscheidung.Entscheidung;
 import de.planspiel.konsolengui.EntscheidungTreffenGUI;
+import de.planspiel.konsolengui.KonsolenGUI;
 import de.planspiel.konsolengui.SpielBeendenGUI;
 import de.planspiel.konsolengui.SpielStartenGUI;
 
 public class Spiel {
 
 	public static void main(String[] args) {
+		//KonsolenGUI.setzeTestModus(true);
 		new Spiel().spielen();
 	}
 
@@ -139,7 +141,7 @@ public class Spiel {
 		}
 		
 		new SpielBeendenGUI().run();
-		
+		KonsolenGUI.close();
 	}
 	
 	/**
