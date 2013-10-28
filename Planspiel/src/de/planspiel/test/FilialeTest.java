@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 import de.planspiel.cafe.Filiale;
+import de.planspiel.cafe.Marktanteil;
 import de.planspiel.cafe.Produkt;
 import de.planspiel.cafe.Produkttyp;
 import de.planspiel.cafe.Report;
@@ -20,13 +21,18 @@ public class FilialeTest {
 	private Filiale fil1;
 	private Spiel spiel = new Spiel();
 	private Report report;
+	private Marktanteil mAnteil;
+	
 	@Before
 	public void erstelleSUT() {
-		report = new Report(0, ukette);
+		
 		
 		standort = new Standort(Standorttyp.Standort1);
 		ukette  = new Unternehmenskette("KetteNummer1");
-		
+		report = new Report(0, ukette);
+		ukette.hinzufuegenReport(report);
+		mAnteil = new Marktanteil();
+		spiel.setzeAktuellerMarktanteil(mAnteil);
 		fil1 = new Filiale(standort, ukette);
 		fil1.setzeMitarbeiter(1);
 		fil1.initialisierenKapazitaet();
