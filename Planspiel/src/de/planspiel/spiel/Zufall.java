@@ -1,5 +1,7 @@
 package de.planspiel.spiel;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.Random;
 
 /**
@@ -12,6 +14,8 @@ import java.util.Random;
 public class Zufall {
 	
 	private static boolean testModus = false;
+	private static boolean dateiTestModus = false;
+	private static BufferedReader reader;
 	private static boolean testEntscheidung = false;
 	private static double testZufallszahl = 0.0;
 	private static double testQualitaet = 0.0;
@@ -21,8 +25,12 @@ public class Zufall {
 	 * optional auch mit Untergrenze
 	 */
 	public static double generierenZufallszahl(double grenze) {
-		if (Zufall.holeTestModus())
-			return Zufall.holeTestZufallszahl();
+		if(Zufall.holeTestModus()) {
+			if(Zufall.holeDateiTestModus()) {
+				return Zufall.leseZufallszahlAusDatei();
+			}
+			return Zufall.holeTestZufallszahl();	
+		}
 		double zufallszahl = Math.random() * grenze;
 		//int zufallszahl100 = (int) zufallszahl * 100;
 		//zufallszahl = zufallszahl100 / 100;
@@ -35,7 +43,7 @@ public class Zufall {
 	 * @return true oder false
 	 */
 	public static boolean treffenEntscheidung(double wahrscheinlichkeit) {
-		if (Zufall.holeTestModus()) {
+		if (Zufall.holeTestModus() && !Zufall.holeDateiTestModus()) {
 			return Zufall.holeTestEntscheidung();
 		}
 		double zufallszahl = generierenZufallszahl(1);
@@ -50,8 +58,12 @@ public class Zufall {
 	 * @return zufällige Qualität
 	 */
 	public static double generierenQualitaet() {
-		if(Zufall.holeTestModus())
-			return Zufall.holeTestQualitaet();
+		if(Zufall.holeTestModus()) {
+			if(Zufall.holeDateiTestModus()) {
+				return Zufall.leseZufallszahlAusDatei();
+			}
+			return Zufall.holeTestQualitaet();	
+		}
 		if(Zufall.treffenEntscheidung(2.0/3.0)) { // C-Markt Qualität von 0 - 0.6
 			Random r = new Random();
 			double nv = r.nextGaussian();
@@ -96,7 +108,54 @@ public class Zufall {
 	public static void setzeTestmodus(boolean testmodus) {
 		Zufall.testModus = testmodus;
 	}
+	
+	/**
+	 * 
+	 * @return dateiTestModus
+	 */
+	public static boolean holeDateiTestModus() {
+		return Zufall.dateiTestModus;
+	}
 
+	/**
+	 * Setzt den Datei Test-Modus auf true oder false.
+	 * @param testmodus
+	 */
+	public static void setzeDateiTestmodus(boolean bDateiTestModus) {
+		if (Zufall.dateiTestModus == false) {
+			try {
+				reader = new BufferedReader(new FileReader("zufall.txt"));
+			} catch (Exception e) {
+				return;
+			}
+		} else {
+			try {
+				reader.close();
+			} catch (Exception e) {}
+			reader = null;
+		}
+		Zufall.dateiTestModus = bDateiTestModus;
+	}
+
+	/**
+	 * Liest eine Zahl aus der Zufall-Datei aus
+	 */
+	public static double leseZufallszahlAusDatei() {
+		String zeile = "0";
+		try {
+			zeile = reader.readLine();
+			if(zeile == null) {
+				reader.close();
+				reader = new BufferedReader(new FileReader("zufall.txt"));
+				zeile = reader.readLine();
+				if (zeile == null) {
+					zeile = "0";
+				}
+			}
+		} catch (Exception e) {}
+		return Double.parseDouble(zeile);
+	}
+	
 	/**
 	 * @return testEntscheidung
 	 */
