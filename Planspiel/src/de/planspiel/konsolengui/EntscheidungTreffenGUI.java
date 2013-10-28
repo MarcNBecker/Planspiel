@@ -119,7 +119,7 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 					} else if (cmd.equals("FILIALE_ERÖFFNEN")) {
 						String[] param = teile[1].split(",");
 						if(param.length == 2){
-							new FilialeEroeffnenEntscheidung(kette, findeStandort(param[0]), Integer.parseInt(param[1]));
+							new FilialeEroeffnenEntscheidung(kette, findenStandort(param[0]), Integer.parseInt(param[1]));
 							writer.println("Filiale am Standort " + param[0] + " mit " + param[1] + " Mitarbeitern gebaut");
 						} else {
 							throw new Exception();
@@ -127,7 +127,7 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 					} else if (cmd.equals("FILIALE_VERKAUFEN")) {
 						String[] param = teile[1].split(",");
 						if(param.length == 1){
-							new FilialeVerkaufenEntscheidung(kette, findeFiliale(kette, findeStandort(param[0])));
+							new FilialeVerkaufenEntscheidung(kette, findenFiliale(kette, findenStandort(param[0])));
 							writer.println("Filiale am Standort " + param[0] + " verkauft");
 						} else {
 							throw new Exception();
@@ -143,7 +143,7 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 					} else if (cmd.equals("MARKETING_DURCHFÜHREN")) {
 						String[] param = teile[1].split(",");
 						if(param.length == 2){
-							new MarketingEntscheidung(kette, findeStandort(param[0]), Double.parseDouble(param[1]));
+							new MarketingEntscheidung(kette, findenStandort(param[0]), Double.parseDouble(param[1]));
 							writer.println("Marketing am Standort " + param[0] + " mit " + param[1] + " Euro durchgeführt");
 						} else {
 							throw new Exception();
@@ -151,7 +151,7 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 					} else if (cmd.equals("MITARBEITER_EINSTELLEN")) {
 						String[] param = teile[1].split(",");
 						if(param.length == 2){
-							new MitarbeiterEinstellenEntscheidung(kette, findeFiliale(kette, findeStandort(param[0])), Integer.parseInt(param[1]));
+							new MitarbeiterEinstellenEntscheidung(kette, findenFiliale(kette, findenStandort(param[0])), Integer.parseInt(param[1]));
 							writer.println(param[1] + " Mitarbeiter in Filiale am Standort " + param[0] + " eingestellt");
 						} else {
 							throw new Exception();
@@ -159,7 +159,7 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 					} else if (cmd.equals("MITARBEITER_ENTLASSEN")) {
 						String[] param = teile[1].split(",");
 						if(param.length == 2){
-							new MitarbeiterEntlassenEntscheidung(kette, findeFiliale(kette, findeStandort(param[0])), Integer.parseInt(param[1]));
+							new MitarbeiterEntlassenEntscheidung(kette, findenFiliale(kette, findenStandort(param[0])), Integer.parseInt(param[1]));
 							writer.println(param[1] + " Mitarbeiter in Filiale am Standort " + param[0] + " entlassen");
 						} else {
 							throw new Exception();
@@ -167,7 +167,7 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 					} else if (cmd.equals("ROHSTOFF_EINKAUFEN")) {
 						String[] param = teile[1].split(",");
 						if(param.length == 3){
-							new RohstoffEntscheidung(kette, findeHaendler(param[0]), Produkttyp.valueOf(param[1]), Integer.parseInt(param[2]));
+							new RohstoffEntscheidung(kette, findenHaendler(param[0]), Produkttyp.valueOf(param[1]), Integer.parseInt(param[2]));
 							writer.println("Produkt " + param[1] + " von " + param[0] + " in der Menge " + param[2] + " eingekauft");
 						} else {
 							throw new Exception();
@@ -192,7 +192,7 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 		writer.println("---------- SIMULATION GESTARTET ----------");
 	}
 	
-	private Standort findeStandort(String name) throws Exception {
+	private Standort findenStandort(String name) throws Exception {
 		for(int i=0; i<spiel.holeStandortListe().size(); i++) {
 			Standort s = spiel.holeStandortListe().get(i);
 			if(s.holeName().toUpperCase().equals(name.toUpperCase())){
@@ -202,7 +202,7 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 		throw new Exception();
 	}
 	
-	private Filiale findeFiliale(Unternehmenskette kette, Standort standort) throws Exception {
+	private Filiale findenFiliale(Unternehmenskette kette, Standort standort) throws Exception {
 		for(int i=0; i<standort.holeFilialenListe().size(); i++) {
 			Filiale f = standort.holeFilialenListe().get(i);
 			if(f.holeKette() == kette) {
@@ -212,7 +212,7 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 		throw new Exception();
 	}
 	
-	private Haendler findeHaendler(String name) throws Exception {
+	private Haendler findenHaendler(String name) throws Exception {
 		for(int i=0; i<spiel.holeHaendlerListe().size(); i++) {
 			Haendler h = spiel.holeHaendlerListe().get(i);
 			if(h.holeName().toUpperCase().equals(name.toUpperCase())){
