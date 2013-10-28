@@ -24,7 +24,9 @@ public class Spiel {
 		KonsolenGUI.setzeTestModus(true);
 		Zufall.setzeTestmodus(true);
 		Zufall.setzeDateiTestmodus(true);
+		//Zufall.setzeProtokollModus(true);
 		new Spiel().spielen();
+		//Zufall.schliessenProtokoll();
 	}
 
 	private static Spiel spiel;

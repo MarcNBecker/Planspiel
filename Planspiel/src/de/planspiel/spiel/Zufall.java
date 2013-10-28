@@ -1,7 +1,9 @@
 package de.planspiel.spiel;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.Random;
 
 /**
@@ -15,7 +17,9 @@ public class Zufall {
 	
 	private static boolean testModus = false;
 	private static boolean dateiTestModus = false;
+	private static boolean protokollModus = false;
 	private static BufferedReader reader;
+	private static PrintWriter writer;
 	private static boolean testEntscheidung = false;
 	private static double testZufallszahl = 0.0;
 	private static double testQualitaet = 0.0;
@@ -34,6 +38,9 @@ public class Zufall {
 		double zufallszahl = Math.random() * grenze;
 		//int zufallszahl100 = (int) zufallszahl * 100;
 		//zufallszahl = zufallszahl100 / 100;
+		if(Zufall.protokollModus == true) {
+			protokolliereZufallszahl(zufallszahl);
+		}
 		return zufallszahl;
 	}
 
@@ -89,6 +96,9 @@ public class Zufall {
 			double prozent = anv / 6; // Standardabweichung als Pronzentsatz
 			double maxQA = 0.4; // Maximale Qualität vom A-Markt (muss dann mit 0.6 addiert werden)
 			double qualitaet = (maxQA * prozent) + 0.6;	 // Qualitaet von 0.6 bis 1		
+			if(Zufall.protokollModus == true) {
+				protokolliereZufallszahl(qualitaet);
+			}
 			return qualitaet;
 		}
 	}
@@ -115,6 +125,22 @@ public class Zufall {
 	 */
 	public static boolean holeDateiTestModus() {
 		return Zufall.dateiTestModus;
+	}
+	
+	/**
+	 * Setzt den Test-Modus auf true oder false.
+	 * @param testmodus
+	 */
+	public static void setzeProtokollModus(boolean bProtokollModus) {
+		Zufall.protokollModus = bProtokollModus;
+	}
+	
+	/**
+	 * 
+	 * @return dateiTestModus
+	 */
+	public static boolean holeProtokollModus() {
+		return Zufall.protokollModus;
 	}
 
 	/**
@@ -156,6 +182,26 @@ public class Zufall {
 		return Double.parseDouble(zeile);
 	}
 	
+	/**
+	 * Protokolliert eine Zufallszahl mit
+	 */
+	public static void protokolliereZufallszahl(double d) {
+		if(writer == null) {
+			try {
+				writer = new PrintWriter("zufall.txt");
+			} catch (FileNotFoundException e) {
+				return;
+			}
+		}
+		writer.println(d);
+		writer.flush();
+	}
+	
+	public static void schliessenProtokoll() {
+		try {
+			writer.close();
+		} catch (Exception e) {}
+	}
 	/**
 	 * @return testEntscheidung
 	 */
