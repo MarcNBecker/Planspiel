@@ -198,9 +198,16 @@ public class Unternehmenskette {
 			Filiale filiale = holeFilialenListe().get(i);
 			filiale.berechnenKosten();
 		}
-		for (int i=0; i<holeKreditListe().size(); i++) {
+		/* for (int i=0; i<holeKreditListe().size(); i++) {
 			Kredit kredit = holeKreditListe().get(i);
 			kredit.tilgen();
+		} */
+		// Setzt die Schleifenlänge immer wieder neu und berücksichtigt somit Kredite, die bei der Tilgung von Krediten aufgenommen werden müssen
+		int i=0;
+		while (i < holeKreditListe().size()) {
+			Kredit kredit = holeKreditListe().get(i);
+			kredit.tilgen();
+			i++;
 		}
 	}
 	
@@ -245,12 +252,20 @@ public class Unternehmenskette {
 	 * @param kasse
 	 */
 	public void setzeKasse(double kasse) {
+		double aktuelleKasse = holeKasse();
 		if(kasse >= 0) {
 			this.kasse = kasse;
 		} else {
-			boolean kredit = aufnehmenKredit(Math.abs(kasse)); //Versuche einen Kredit aufzunehmen
+			//
+			double betrag = Math.abs(kasse);
+			// Diese Formel berechnet den Betrag der notwendig ist um den fehlenden Betrag und die erste Tilgung und Zins des Kredit zu tilgen
+			double aufnahmeBetrag = betrag / (1.0 - Kredit.holeAktuellerZinssatz() - (1.0 / ((double)Kredit.holeAktuelleLaufzeit())));
+			boolean kredit = aufnehmenKredit(aufnahmeBetrag); //Versuche einen Kredit aufzunehmen
 			if(!kredit) { //Versuch fehlgeschlagen => Pleite, da keine Kreditwürdigkeit mehr
 				setzePleite(true);
+			} else {
+				double abziehBetrag = aktuelleKasse - kasse;
+				setzeKasse(holeKasse() - abziehBetrag);
 			}
 		}
 	}

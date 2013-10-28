@@ -34,7 +34,7 @@ public class Kredit {
 		zinssatz = aktuellerZinssatz;
 		laufzeit = aktuelleLaufzeit;
 		restbetrag = betrag;
-		tilgung = ((int) betrag / laufzeit) + 1.0;
+		tilgung = betrag / ((double) laufzeit);
 	}
 
 	/**
