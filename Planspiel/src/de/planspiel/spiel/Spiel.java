@@ -95,13 +95,17 @@ public class Spiel {
 				}
 			}
 			
-			// Ereignisse starten
-			new ZinsEreignis(holeAktuelleRunde()).starten();
-			
 			// Entscheidungs HashMap initialisieren
 			rundenEntscheidungen = new Vector<Entscheidung>();
 						
-			new EntscheidungTreffenGUI().run();
+			// Entscheidung Treffen GUI anlegen
+			EntscheidungTreffenGUI eGUI = new EntscheidungTreffenGUI();
+						
+			// Ereignisse starten
+			new ZinsEreignis(holeAktuelleRunde(), eGUI).starten();
+			
+			// GUI starten
+			eGUI.run();
 			
 			// Entscheidungen ausführen
 			for(int i=0; i<holeRundenEntscheidungen().size(); i++){

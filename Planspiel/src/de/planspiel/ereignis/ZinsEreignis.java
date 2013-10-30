@@ -1,6 +1,7 @@
 package de.planspiel.ereignis;
 
 import de.planspiel.cafe.Kredit;
+import de.planspiel.konsolengui.EntscheidungTreffenGUI;
 import de.planspiel.spiel.Zufall;
 
 /**
@@ -11,9 +12,11 @@ import de.planspiel.spiel.Zufall;
 public class ZinsEreignis implements Ereignis {
 
 	private int runde;
+	private EntscheidungTreffenGUI gui;
 	
-	public ZinsEreignis(int runde) {
+	public ZinsEreignis(int runde, EntscheidungTreffenGUI gui) {
 		this.runde = runde;
+		this.gui = gui;
 	}
 	
 	@Override
@@ -24,8 +27,12 @@ public class ZinsEreignis implements Ereignis {
 			if(Kredit.holeAktuellerZinssatz() < 0) {
 				Kredit.setzeAktuellerZinssatz(0.001);
 			}
-			System.out.println("Ereignis: Zinssatz liegt jetzt bei " + (Math.round(Kredit.holeAktuellerZinssatz() * 10000.0) / 100.0) + "%"); //TODO Hier müssten eigentlich die Daten an die GUI weitergegeben werden
+			gui.hinzufuegenEreignis(this);
 		}
+	}
+	
+	public String toString() {
+		return "Ereignis: Zinssatz liegt jetzt bei " + (Math.round(Kredit.holeAktuellerZinssatz() * 10000.0) / 100.0) + "%";
 	}
 	
 	public int holeRunde() {

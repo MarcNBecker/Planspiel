@@ -1,6 +1,7 @@
 package de.planspiel.konsolengui;
 
 import java.util.HashMap;
+import java.util.Vector;
 
 import de.planspiel.cafe.Filiale;
 import de.planspiel.cafe.Haendler;
@@ -18,10 +19,16 @@ import de.planspiel.entscheidung.MitarbeiterEinstellenEntscheidung;
 import de.planspiel.entscheidung.MitarbeiterEntlassenEntscheidung;
 import de.planspiel.entscheidung.RohstoffEntscheidung;
 import de.planspiel.entscheidung.VerkaufspreisEntscheidung;
+import de.planspiel.ereignis.Ereignis;
 
 public class EntscheidungTreffenGUI extends KonsolenGUI {
 
+	private Vector<Ereignis> ereignisse;
+	
 	public void run() {
+		for(Ereignis e : ereignisse) {
+			writer.println(e.toString());
+		}
 		for(int i=0; i<spiel.holeKettenListe().size(); i++){
 			Unternehmenskette kette = spiel.holeKettenListe().get(i);
 			writer.println("---------- ENTSCHEIDUNG TREFFEN FÜR "+ kette.holeName() +" ----------");
@@ -225,6 +232,10 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 	private double runden(double i, int s) {
 		return  Math.round(i * Math.pow(10, s)) / Math.pow(10, s);
 		//return i;
+	}
+	
+	public void hinzufuegenEreignis(Ereignis e) {
+		ereignisse.add(e);
 	}
 	
 }
