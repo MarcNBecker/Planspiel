@@ -21,9 +21,9 @@ import de.planspiel.konsolengui.SpielStartenGUI;
 public class Spiel {
 
 	public static void main(String[] args) {
-		KonsolenGUI.setzeTestModus(true);
-		Zufall.setzeTestmodus(true);
-		Zufall.setzeDateiTestmodus(true);
+		//KonsolenGUI.setzeTestModus(true);
+		//Zufall.setzeTestmodus(true);
+		//Zufall.setzeDateiTestmodus(true);
 		//Zufall.setzeProtokollModus(true);
 		new Spiel().spielen();
 		//Zufall.schliessenProtokoll();

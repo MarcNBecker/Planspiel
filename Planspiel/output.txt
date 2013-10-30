@@ -1,0 +1,54 @@
+---------- SPIELER HINZUFÜGEN ----------
+Spieler Marc hinzugefügt
+---------- Spieler hinzufügen beendet..Spiel wird gestartet ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR Marc ----------
+---------- Entscheidungsprozess für Marc fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR Marc ----------
+---------- Entscheidungsprozess für Marc fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR Marc ----------
+---------- Entscheidungsprozess für Marc fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR Marc ----------
+---------- Entscheidungsprozess für Marc fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR Marc ----------
+---------- Entscheidungsprozess für Marc fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR Marc ----------
+---------- Entscheidungsprozess für Marc fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR Marc ----------
+---------- Entscheidungsprozess für Marc fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR Marc ----------
+---------- Entscheidungsprozess für Marc fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR Marc ----------
+---------- Entscheidungsprozess für Marc fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR Marc ----------
+---------- Entscheidungsprozess für Marc fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR Marc ----------
+---------- Entscheidungsprozess für Marc fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR Marc ----------
+---------- Entscheidungsprozess für Marc fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- SPIEL BEENDET ----------
+---------- GEWINNER ----------
+1. Marc mit einem Gesamtgewinn von 0.0

@@ -65,15 +65,11 @@ public class Zufall {
 	 * @return zufällige Qualität
 	 */
 	public static double generierenQualitaet() {
-		if(Zufall.holeTestModus()) {
-			if(Zufall.holeDateiTestModus()) {
-				return Zufall.leseZufallszahlAusDatei();
-			}
+		if(Zufall.holeTestModus() && !Zufall.holeDateiTestModus()) {
 			return Zufall.holeTestQualitaet();	
 		}
 		if(Zufall.treffenEntscheidung(2.0/3.0)) { // C-Markt Qualität von 0 - 0.6
-			Random r = new Random();
-			double nv = r.nextGaussian();
+			double nv = Zufall.generierenNVZufallszahl();
 			if (nv > 3.0) { //alle über 3 abkappen
 				nv = 3.0;
 			} else if (nv < -3.0) { //alle unter 3 abkappen
@@ -85,8 +81,7 @@ public class Zufall {
 			double qualitaet = maxQC * prozent; // Qualität von 0.0 bis 0.6
 			return qualitaet;
 		} else { // A-Markt Qualität von 0.6 - 1
-			Random r = new Random();
-			double nv = r.nextGaussian();
+			double nv = Zufall.generierenNVZufallszahl();
 			if (nv > 3.0) { //alle über 3 abkappen
 				nv = 3.0;
 			} else if (nv < -3.0) { //alle unter 3 abkappen
@@ -95,11 +90,21 @@ public class Zufall {
 			double anv = nv + 3.0; //von 0 bis 6 statt von -3 bis 3 laufen lassen
 			double prozent = anv / 6; // Standardabweichung als Pronzentsatz
 			double maxQA = 0.4; // Maximale Qualität vom A-Markt (muss dann mit 0.6 addiert werden)
-			double qualitaet = (maxQA * prozent) + 0.6;	 // Qualitaet von 0.6 bis 1		
-			if(Zufall.protokollModus == true) {
-				protokolliereZufallszahl(qualitaet);
-			}
+			double qualitaet = (maxQA * prozent) + 0.6;	 // Qualitaet von 0.6 bis 1
 			return qualitaet;
+		}
+	}
+	
+	public static double generierenNVZufallszahl() {
+		if(Zufall.holeDateiTestModus() && Zufall.holeTestModus()) {
+			return Zufall.leseZufallszahlAusDatei();
+		} else {
+			Random r = new Random();
+			double nv = r.nextGaussian();
+			if(Zufall.holeProtokollModus()) {
+				Zufall.protokolliereZufallszahl(nv);
+			}
+			return nv;
 		}
 	}
 	
