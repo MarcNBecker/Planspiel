@@ -13,6 +13,7 @@ import de.planspiel.cafe.Standorttyp;
 import de.planspiel.cafe.Haendlertyp;
 import de.planspiel.cafe.Unternehmenskette;
 import de.planspiel.entscheidung.Entscheidung;
+import de.planspiel.ereignis.ZinsEreignis;
 import de.planspiel.konsolengui.EntscheidungTreffenGUI;
 import de.planspiel.konsolengui.KonsolenGUI;
 import de.planspiel.konsolengui.SpielBeendenGUI;
@@ -93,6 +94,9 @@ public class Spiel {
 					kette.hinzufuegenReport(report);
 				}
 			}
+			
+			// Ereignisse starten
+			new ZinsEreignis(holeAktuelleRunde()).starten();
 			
 			// Entscheidungs HashMap initialisieren
 			rundenEntscheidungen = new Vector<Entscheidung>();
