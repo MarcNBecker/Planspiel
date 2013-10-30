@@ -28,18 +28,18 @@ public class GesamtTest {
 	public void erstelleSUT(){
 		//Beim Zufall den richtigen Testmodus (Zahlen einlesen) angeben
 		KonsolenGUI.setzeTestModus(true);
-		Zufall.setzeTestmodus(true);
-		Zufall.setzeDateiTestmodus(true);
+		//Zufall.setzeTestmodus(true);
+		//Zufall.setzeDateiTestmodus(true);
 		//Zufall.setzeProtokollModus(true);
 		spiel = new Spiel();
 		//Zufall.schliessenProtokoll();
 		
 	}
 	
-	/*@Test
+	@Test
 	public void testenSpielen(){
 		spiel.spielen();
-	}*/
+	}
 		
 	
 	@AfterClass
