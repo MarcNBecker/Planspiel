@@ -23,7 +23,7 @@ import de.planspiel.ereignis.Ereignis;
 
 public class EntscheidungTreffenGUI extends KonsolenGUI {
 
-	private Vector<Ereignis> ereignisse;
+	private Vector<Ereignis> ereignisse = new Vector<Ereignis>();
 	
 	public void run() {
 		for(Ereignis e : ereignisse) {
