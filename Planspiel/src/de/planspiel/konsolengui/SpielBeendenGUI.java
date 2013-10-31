@@ -13,6 +13,9 @@ public class SpielBeendenGUI extends KonsolenGUI {
 		for(int i=0; i<gewinnerReihenfolge.size(); i++) {
 			int rang = i+1;
 			Unternehmenskette kette = gewinnerReihenfolge.get(i);
+			if(KonsolenGUI.jUnitTestKlasse != null && rang == 1) {
+				KonsolenGUI.jUnitTestKlasse.setzeSiegerfuellung(kette.holeName());
+			}
 			writer.println(rang + ". " + kette.holeName() + " mit einem Gesamtgewinn von " + kette.holeReportListe().lastElement().berechnenGesamtgewinn());
 		}
 	}

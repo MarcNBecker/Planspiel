@@ -6,12 +6,14 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 import de.planspiel.spiel.Spiel;
+import de.planspiel.test.SiegbedingungsTest;
 
 public abstract class KonsolenGUI {
 	
 	private static boolean testModus = false;
 	private static String inDateiname = "input.txt";
 	private static String outDateiname = "output.txt";
+	public static SiegbedingungsTest jUnitTestKlasse;
 	
 	protected static Spiel spiel;
 	protected static BufferedReader reader;
@@ -41,11 +43,21 @@ public abstract class KonsolenGUI {
 	public static void setzeTestModus(boolean bTestModus) {
 		testModus = bTestModus;
 	}
+
+	public static void setzeTestModus(boolean bTestModus, SiegbedingungsTest oJUnitTestKlasse) {
+		jUnitTestKlasse = oJUnitTestKlasse;
+		setzeTestModus(bTestModus);
+	}
 	
 	public static void setzeTestModus(boolean bTestModus, String sInDateiname, String sOutDateiname) {
 		inDateiname = sInDateiname;
 		outDateiname = sOutDateiname;
 		setzeTestModus(bTestModus);
+	}
+
+	public static void setzeTestModus(boolean bTestModus, String sInDateiname, String sOutDateiname, SiegbedingungsTest oJUnitTestKlasse) {
+		jUnitTestKlasse = oJUnitTestKlasse;	
+		setzeTestModus(bTestModus, sInDateiname, sOutDateiname);
 	}
 	
 	public static void close() {

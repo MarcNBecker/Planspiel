@@ -1,45 +1,34 @@
 package de.planspiel.test;
 
-import static org.junit.Assert.*;
-
-import java.util.Vector;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.*;
 
-import de.planspiel.cafe.*;
-import de.planspiel.entscheidung.*;
-import de.planspiel.ereignis.*;
-import de.planspiel.konsolengui.EntscheidungTreffenGUI;
 import de.planspiel.konsolengui.KonsolenGUI;
-import de.planspiel.konsolengui.SpielBeendenGUI;
-import de.planspiel.konsolengui.SpielStartenGUI;
-import de.planspiel.spiel.*;
+import de.planspiel.spiel.Spiel;
 
-public class GesamtTest {
-	private Spiel spiel;
+public class GesamtTest extends SiegbedingungsTest {
 	
-	@BeforeClass
-	public static void vorbereiten(){
-		KonsolenGUI.setzeTestModus(true);
-		//Zufall.setzeTestmodus(true);
-		//Zufall.setzeDateiTestmodus(true);
-		//Zufall.setzeProtokollModus(true);
-	}
+	private Spiel spiel;
 	
 	@Before
 	public void erstelleSUT(){
+		KonsolenGUI.setzeTestModus(true, this);
+		//Zufall.setzeTestmodus(true);
+		//Zufall.setzeDateiTestmodus(true);
+		//Zufall.setzeProtokollModus(true);
 		spiel = new Spiel();
-		
 	}
 	
 	@Test
 	public void testenSpielen(){
 		spiel.spielen();
+		assertEquals(holeSiegbedingung(), holeSiegerfuellung());
 	}
 		
 	
-	@AfterClass
-	public static void beenden(){
+	@After
+	public void zerstoereSUT(){
 		//Zufall.schliessenProtokoll();
 		//Zufall.setzeProtokollModus(false);
 		//Zufall.setzeDateiTestmodus(false);
