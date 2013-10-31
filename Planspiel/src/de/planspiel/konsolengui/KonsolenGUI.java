@@ -10,6 +10,8 @@ import de.planspiel.spiel.Spiel;
 public abstract class KonsolenGUI {
 	
 	private static boolean testModus = false;
+	private static String inDateiname = "input.txt";
+	private static String outDateiname = "output.txt";
 	
 	protected static Spiel spiel;
 	protected static BufferedReader reader;
@@ -22,8 +24,8 @@ public abstract class KonsolenGUI {
 		spiel = Spiel.holeSpiel();
 		if(testModus) {
 			try {
-				reader = new BufferedReader(new FileReader("input.txt"));
-				writer = new PrintWriter("output.txt");
+				reader = new BufferedReader(new FileReader(inDateiname));
+				writer = new PrintWriter(outDateiname);
 			} catch (Exception e) {
 				reader = new BufferedReader(new InputStreamReader(System.in));
 				writer = new PrintWriter(System.out, true);
@@ -38,6 +40,12 @@ public abstract class KonsolenGUI {
 	
 	public static void setzeTestModus(boolean bTestModus) {
 		testModus = bTestModus;
+	}
+	
+	public static void setzeTestModus(boolean bTestModus, String sInDateiname, String sOutDateiname) {
+		inDateiname = sInDateiname;
+		outDateiname = sOutDateiname;
+		setzeTestModus(bTestModus);
 	}
 	
 	public static void close() {

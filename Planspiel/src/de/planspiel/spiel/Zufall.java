@@ -18,6 +18,7 @@ public class Zufall {
 	private static boolean testModus = false;
 	private static boolean dateiTestModus = false;
 	private static boolean protokollModus = false;
+	private static String zufallDateiname = "zufall.txt";
 	private static BufferedReader reader;
 	private static PrintWriter writer;
 	private static boolean testEntscheidung = false;
@@ -140,6 +141,11 @@ public class Zufall {
 		Zufall.protokollModus = bProtokollModus;
 	}
 	
+	public static void setzeProtokollModus(boolean bProtokollModus, String sZufallDateiname) {
+		zufallDateiname = sZufallDateiname;
+		setzeProtokollModus(bProtokollModus);
+	}
+	
 	/**
 	 * 
 	 * @return dateiTestModus
@@ -155,7 +161,7 @@ public class Zufall {
 	public static void setzeDateiTestmodus(boolean bDateiTestModus) {
 		if (Zufall.dateiTestModus == false) {
 			try {
-				reader = new BufferedReader(new FileReader("zufall.txt"));
+				reader = new BufferedReader(new FileReader(zufallDateiname));
 			} catch (Exception e) {
 				return;
 			}
@@ -168,6 +174,11 @@ public class Zufall {
 		Zufall.dateiTestModus = bDateiTestModus;
 	}
 
+	public static void setzeDateiTestmodus(boolean bDateiTestModus, String sZufallDateiname) {
+		zufallDateiname = sZufallDateiname;
+		setzeDateiTestmodus(bDateiTestModus);
+	}
+	
 	/**
 	 * Liest eine Zahl aus der Zufall-Datei aus
 	 */
@@ -177,7 +188,7 @@ public class Zufall {
 			zeile = reader.readLine();
 			if(zeile == null) {
 				reader.close();
-				reader = new BufferedReader(new FileReader("zufall.txt"));
+				reader = new BufferedReader(new FileReader(zufallDateiname));
 				zeile = reader.readLine();
 				if (zeile == null) {
 					zeile = "0";
@@ -193,7 +204,7 @@ public class Zufall {
 	public static void protokolliereZufallszahl(double d) {
 		if(writer == null) {
 			try {
-				writer = new PrintWriter("zufall.txt");
+				writer = new PrintWriter(zufallDateiname);
 			} catch (FileNotFoundException e) {
 				return;
 			}
