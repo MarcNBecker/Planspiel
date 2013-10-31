@@ -35,6 +35,7 @@ public class SpielStartenGUI extends KonsolenGUI {
 					String[] param = teile[1].split(",");
 					if(param.length == 1) {
 						KonsolenGUI.jUnitTestKlasse.setzeSiegbedingung(param[0]);
+						writer.println("Siegbedingung festgelegt: " + param[0] + " ist Sieger");
 					} else {
 						throw new Exception();
 					}
