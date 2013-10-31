@@ -22,10 +22,10 @@ import de.planspiel.konsolengui.SpielStartenGUI;
 public class Spiel {
 
 	public static void main(String[] args) {
-		//KonsolenGUI.setzeTestModus(true);
+		//KonsolenGUI.setzeTestModus(true, "input.txt", "output.txt");
 		//Zufall.setzeTestmodus(true);
-		//Zufall.setzeDateiTestmodus(true);
-		//Zufall.setzeProtokollModus(true);
+		//Zufall.setzeDateiTestmodus(true, "zufall.txt");
+		//Zufall.setzeProtokollModus(true, "zufall.txt");
 		new Spiel().spielen();
 		//Zufall.schliessenProtokoll();
 	}
