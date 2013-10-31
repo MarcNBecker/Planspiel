@@ -16,23 +16,19 @@ import de.planspiel.konsolengui.SpielStartenGUI;
 import de.planspiel.spiel.*;
 
 public class GesamtTest {
-	private static Spiel spiel;
-	
+	private Spiel spiel;
 	
 	@BeforeClass
 	public static void vorbereiten(){
-		Zufall.setzeTestmodus(true);
-	}
-	
-	@Before
-	public void erstelleSUT(){
-		//Beim Zufall den richtigen Testmodus (Zahlen einlesen) angeben
 		KonsolenGUI.setzeTestModus(true);
 		//Zufall.setzeTestmodus(true);
 		//Zufall.setzeDateiTestmodus(true);
 		//Zufall.setzeProtokollModus(true);
+	}
+	
+	@Before
+	public void erstelleSUT(){
 		spiel = new Spiel();
-		//Zufall.schliessenProtokoll();
 		
 	}
 	
@@ -44,7 +40,10 @@ public class GesamtTest {
 	
 	@AfterClass
 	public static void beenden(){
-		Zufall.setzeTestmodus(false);
+		//Zufall.schliessenProtokoll();
+		//Zufall.setzeProtokollModus(false);
+		//Zufall.setzeDateiTestmodus(false);
+		//Zufall.setzeTestmodus(false);
 		KonsolenGUI.setzeTestModus(false);
-		}
+	}
 }
