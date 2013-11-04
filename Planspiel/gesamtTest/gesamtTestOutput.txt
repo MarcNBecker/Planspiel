@@ -1,0 +1,57 @@
+---------- SPIELER HINZUFÜGEN ----------
+Spieler 1 hinzugefügt
+Spieler 2 hinzugefügt
+Siegbedingung festgelegt: 1 ist Sieger
+---------- Spieler hinzufügen beendet..Spiel wird gestartet ----------
+Ereignis: Zinssatz liegt jetzt bei 6.91%
+---------- ENTSCHEIDUNG TREFFEN FÜR 1 ----------
+Kredit über 100000 Euro aufgenommen
+Filiale am Standort Standort3 mit 4 Mitarbeitern gebaut
+Produkt KAFFEE von Haendler2 in der Menge 10000 eingekauft
+Produkt TEE von Haendler3 in der Menge 11000 eingekauft
+Produkt KUCHEN von Haendler1 in der Menge 10000 eingekauft
+Verkaufspreis für KAFFEE auf 3.5 Euro gesetzt
+Verkaufspreis für TEE auf 2.9 Euro gesetzt
+Verkaufspreis für KUCHEN auf 3.5 Euro gesetzt
+Marketing am Standort Standort3 mit 7000 Euro durchgeführt
+---------- Entscheidungsprozess für 1 fertig..nächster Spieler ist dran ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR 2 ----------
+Kredit über 150000 Euro aufgenommen
+Filiale am Standort Standort3 mit 7 Mitarbeitern gebaut
+Produkt KAFFEE von Haendler2 in der Menge 10000 eingekauft
+Produkt TEE von Haendler3 in der Menge 15000 eingekauft
+Produkt KUCHEN von Haendler1 in der Menge 12000 eingekauft
+Verkaufspreis für KAFFEE auf 3.8 Euro gesetzt
+Verkaufspreis für TEE auf 3.2 Euro gesetzt
+Verkaufspreis für KUCHEN auf 2.5 Euro gesetzt
+Marketing am Standort Standort3 mit 10000 Euro durchgeführt
+---------- Entscheidungsprozess für 2 fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+Ereignis: Zinssatz liegt jetzt bei 7.48%
+---------- ENTSCHEIDUNG TREFFEN FÜR 1 ----------
+Produkt TEE von Haendler3 in der Menge 4000 eingekauft
+1 Mitarbeiter in Filiale am Standort Standort3 eingestellt
+---------- Entscheidungsprozess für 1 fertig..nächster Spieler ist dran ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR 2 ----------
+Verkaufspreis für TEE auf 2.9 Euro gesetzt
+Verkaufspreis für KAFFEE auf 3.2 Euro gesetzt
+Marketing am Standort Standort3 mit 2000 Euro durchgeführt
+---------- Entscheidungsprozess für 2 fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR 1 ----------
+2 Mitarbeiter in Filiale am Standort Standort3 entlassen
+Verkaufspreis für TEE auf 1 Euro gesetzt
+---------- Entscheidungsprozess für 1 fertig..nächster Spieler ist dran ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR 2 ----------
+Verkaufspreis für TEE auf 2 Euro gesetzt
+Verkaufspreis für KAFFEE auf 2.3 Euro gesetzt
+Produkt KUCHEN von Haendler2 in der Menge 1000 eingekauft
+---------- Entscheidungsprozess für 2 fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- SPIEL BEENDET ----------
+---------- GEWINNER ----------
+1. 1 mit einem Gesamtgewinn von 14.454133638064377
+2. 2 mit einem Gesamtgewinn von -8341.01072103277

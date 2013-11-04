@@ -14,11 +14,11 @@ public class GesamtTest extends SiegbedingungsTest {
 	
 	@Before
 	public void erstelleSUT(){
-		KonsolenGUI.setzeTestModus(true, "beispielTest/beispielTestInput.txt", "beispielTest/beispielTestOutput.txt", this);
+		KonsolenGUI.setzeTestModus(true, "gesamtTest/gesamtTestInput.txt", "gesamtTest/gesamtTestOutput.txt", this);
 		Zufall.setzeTestmodus(true);
-		Zufall.setzeDateiTestmodus(true, "beispielTest/beispielTestZufall.txt");
-		//Zufall.setzeProtokollModus(true, "beispielTest/beispielTestZufall.txt");
-		spiel = new Spiel();
+		Zufall.setzeDateiTestmodus(true, "gesamtTest/gesamtTestZufall.txt");
+		//Zufall.setzeProtokollModus(true, "gesamtTest/gesamtTestZufall.txt");
+		spiel = new Spiel(3);
 	}
 	
 	@Test

@@ -25,9 +25,9 @@ public class Spiel {
 		//KonsolenGUI.setzeTestModus(true, "input.txt", "output.txt");
 		//Zufall.setzeTestmodus(true);
 		//Zufall.setzeDateiTestmodus(true, "zufall.txt");
-		//Zufall.setzeProtokollModus(true, "zufall.txt");
-		new Spiel().spielen();
-		//Zufall.schliessenProtokoll();
+		Zufall.setzeProtokollModus(true, "zufall.txt");
+		new Spiel(3).spielen();
+		Zufall.schliessenProtokoll();
 	}
 
 	private static Spiel spiel;
@@ -50,6 +50,11 @@ public class Spiel {
 		this.standortListe = new Vector<Standort>();
 		this.kettenListe = new Vector<Unternehmenskette>();
 		this.haendlerListe = new Vector<Haendler>();
+	}
+	
+	public Spiel(int rundenzahl) {
+		this();
+		this.rundenzahl = rundenzahl;
 	}
 	
 	/**
@@ -174,6 +179,9 @@ public class Spiel {
 					double gesamtgewinnAktuell = aktuelleKette.holeReportListe().lastElement().berechnenGesamtgewinn();
 					if(gesamtgewinnInListe < gesamtgewinnAktuell) {
 						reihenfolge.add(j, aktuelleKette);
+						break;
+					} else if (j == (reihenfolge.size() - 1)) {
+						reihenfolge.add(aktuelleKette);
 						break;
 					}
 				}

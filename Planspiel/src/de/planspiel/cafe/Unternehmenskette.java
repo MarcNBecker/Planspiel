@@ -260,6 +260,9 @@ public class Unternehmenskette {
 			double betrag = Math.abs(kasse);
 			// Diese Formel berechnet den Betrag der notwendig ist um den fehlenden Betrag und die erste Tilgung und Zins des Kredit zu tilgen
 			double aufnahmeBetrag = betrag / (1.0 - Kredit.holeAktuellerZinssatz() - (1.0 / ((double)Kredit.holeAktuelleLaufzeit())));
+			if(aufnahmeBetrag < betrag) {
+				aufnahmeBetrag = betrag + 1.0;
+			}
 			boolean kredit = aufnehmenKredit(aufnahmeBetrag); //Versuche einen Kredit aufzunehmen
 			if(!kredit) { //Versuch fehlgeschlagen => Pleite, da keine Kreditwürdigkeit mehr
 				setzePleite(true);

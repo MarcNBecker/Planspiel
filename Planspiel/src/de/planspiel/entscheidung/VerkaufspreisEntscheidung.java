@@ -31,7 +31,9 @@ public class VerkaufspreisEntscheidung extends Entscheidung {
 	 */
 	public void ausfuehren() {
 		Produkt p = kette.holeLager().suchenProdukt(produkttyp);
-		p.setzePreis(vkpreis);
+		if(p != null){
+			p.setzePreis(vkpreis);
+		}
 	}
 
 }

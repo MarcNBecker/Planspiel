@@ -64,7 +64,7 @@ public class Standort {
 	public void generierenKundenliste() {
 		//Die Anzahl der Kunden wird bestimmt durch alle Ketten multipliziert mit der Hälfte von maxKunden
 		Vector<Unternehmenskette> ketten = Spiel.holeSpiel().holeKettenListe();
-		int anzahlKunden = ketten.size() * this.holeMaxKunden() / 2;
+		int anzahlKunden = ketten.size() * this.holeMaxKunden(); // /2 entfernt
 		for (int i = 0; i < anzahlKunden; i++) {
 			this.hinzufuegenKunde(new Kunde(this));
 		}
