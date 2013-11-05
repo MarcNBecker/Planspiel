@@ -78,7 +78,7 @@ public class Report {
 				holeKette().holeAnzahlFilialen());
 		Vector<Filiale> filialen = holeKette().holeFilialenListe();
 		double[] infos = new double[3];
-		for (int i = 0; i < holeFilialenListe().size(); i++) {
+		for (int i = 0; i < holeKette().holeAnzahlFilialen(); i++) {
 			Filiale filiale = filialen.get(i);
 			// Bestimme Mitarbeiter
 			infos[0] = filiale.holeMitarbeiter();
