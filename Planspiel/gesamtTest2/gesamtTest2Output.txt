@@ -1,0 +1,107 @@
+---------- SPIELER HINZUFÜGEN ----------
+Spieler NATALIE hinzugefügt
+Spieler DANIEL hinzugefügt
+Siegbedingung festgelegt: NATALIE ist Sieger
+---------- Spieler hinzufügen beendet..Spiel wird gestartet ----------
+Ereignis: Zinssatz liegt jetzt bei 5.13%
+---------- ENTSCHEIDUNG TREFFEN FÜR NATALIE ----------
+Filiale am Standort Standort3 mit 2 Mitarbeitern gebaut
+Kredit über 10000 Euro aufgenommen
+Produkt KAFFEE von Haendler3 in der Menge 2000 eingekauft
+Produkt KAFFEE von Haendler1 in der Menge 1000 eingekauft
+Produkt TEE von Haendler1 in der Menge 2500 eingekauft
+Produkt KUCHEN von Haendler2 in der Menge 3000 eingekauft
+Verkaufspreis für KAFFEE auf 1.2 Euro gesetzt
+Verkaufspreis für TEE auf 1.3 Euro gesetzt
+Verkaufspreis für KUCHEN auf 1.5 Euro gesetzt
+---------- Entscheidungsprozess für NATALIE fertig..nächster Spieler ist dran ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR DANIEL ----------
+Filiale am Standort Standort2 mit 3 Mitarbeitern gebaut
+Produkt KAFFEE von Haendler1 in der Menge 3000 eingekauft
+Produkt KAFFEE von Haendler3 in der Menge 4000 eingekauft
+Produkt KUCHEN von Haendler2 in der Menge 2500 eingekauft
+Verkaufspreis für KAFFEE auf 1.45 Euro gesetzt
+Verkaufspreis für KUCHEN auf 1.0 Euro gesetzt
+Produkt TEE von Haendler2 in der Menge 4000 eingekauft
+Produkt TEE von Haendler3 in der Menge 4000 eingekauft
+Verkaufspreis für TEE auf 1.25 Euro gesetzt
+---------- Entscheidungsprozess für DANIEL fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR NATALIE ----------
+Marketing am Standort Standort3 mit 2000 Euro durchgeführt
+1 Mitarbeiter in Filiale am Standort Standort3 eingestellt
+Produkt KAFFEE von Haendler3 in der Menge 5000 eingekauft
+Produkt TEE von Haendler1 in der Menge 3000 eingekauft
+Produkt KUCHEN von Haendler3 in der Menge 3000 eingekauft
+Verkaufspreis für KUCHEN auf 1.4 Euro gesetzt
+Verkaufspreis für TEE auf 1.5 Euro gesetzt
+Verkaufspreis für KAFFEE auf 1.25 Euro gesetzt
+---------- Entscheidungsprozess für NATALIE fertig..nächster Spieler ist dran ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR DANIEL ----------
+Verkaufspreis für TEE auf 0.9 Euro gesetzt
+Produkt KUCHEN von Haendler1 in der Menge 2500 eingekauft
+Produkt KUCHEN von Haendler2 in der Menge 3500 eingekauft
+---------- Entscheidungsprozess für DANIEL fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR NATALIE ----------
+Produkt KAFFEE von Haendler2 in der Menge 1000 eingekauft
+Produkt KAFFEE von Haendler3 in der Menge 1000 eingekauft
+Produkt TEE von Haendler2 in der Menge 2000 eingekauft
+Produkt KUCHEN von Haendler2 in der Menge 1000 eingekauft
+Verkaufspreis für KAFFEE auf 1.3 Euro gesetzt
+Verkaufspreis für TEE auf 1.6 Euro gesetzt
+Verkaufspreis für KUCHEN auf 1.5 Euro gesetzt
+---------- Entscheidungsprozess für NATALIE fertig..nächster Spieler ist dran ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR DANIEL ----------
+Marketing am Standort Standort2 mit 5000 Euro durchgeführt
+1 Mitarbeiter in Filiale am Standort Standort2 eingestellt
+Verkaufspreis für KAFFEE auf 1.5 Euro gesetzt
+Verkaufspreis für TEE auf 1 Euro gesetzt
+Verkaufspreis für KUCHEN auf 1.2 Euro gesetzt
+---------- Entscheidungsprozess für DANIEL fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR NATALIE ----------
+Produkt KAFFEE von Haendler1 in der Menge 1000 eingekauft
+Produkt TEE von Haendler2 in der Menge 2000 eingekauft
+Produkt KUCHEN von Haendler1 in der Menge 1500 eingekauft
+Verkaufspreis für TEE auf 1.5 Euro gesetzt
+Verkaufspreis für KUCHEN auf 1.6 Euro gesetzt
+---------- Entscheidungsprozess für NATALIE fertig..nächster Spieler ist dran ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR DANIEL ----------
+Produkt TEE von Haendler2 in der Menge 4500 eingekauft
+Produkt KAFFEE von Haendler1 in der Menge 1500 eingekauft
+Produkt KUCHEN von Haendler1 in der Menge 2000 eingekauft
+Verkaufspreis für KUCHEN auf 1.3 Euro gesetzt
+Verkaufspreis für TEE auf 1.2 Euro gesetzt
+---------- Entscheidungsprozess für DANIEL fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+Ereignis: Zinssatz liegt jetzt bei 3.83%
+---------- ENTSCHEIDUNG TREFFEN FÜR NATALIE ----------
+Marketing am Standort Standort3 mit 2000 Euro durchgeführt
+Produkt KAFFEE von Haendler3 in der Menge 1000 eingekauft
+Produkt KAFFEE von Haendler2 in der Menge 3000 eingekauft
+Produkt TEE von Haendler1 in der Menge 2500 eingekauft
+Produkt KUCHEN von Haendler2 in der Menge 2500 eingekauft
+Verkaufspreis für KAFFEE auf 1.35 Euro gesetzt
+Verkaufspreis für TEE auf 1.3 Euro gesetzt
+Verkaufspreis für KUCHEN auf 1.3 Euro gesetzt
+---------- Entscheidungsprozess für NATALIE fertig..nächster Spieler ist dran ----------
+---------- ENTSCHEIDUNG TREFFEN FÜR DANIEL ----------
+Produkt KAFFEE von Haendler3 in der Menge 1500 eingekauft
+Produkt KAFFEE von Haendler2 in der Menge 3500 eingekauft
+Produkt TEE von Haendler1 in der Menge 3500 eingekauft
+Produkt KUCHEN von Haendler2 in der Menge 3500 eingekauft
+Verkaufspreis für KAFFEE auf 1.6 Euro gesetzt
+Verkaufspreis für TEE auf 1.5 Euro gesetzt
+Verkaufspreis für KUCHEN auf 1.5 Euro gesetzt
+---------- Entscheidungsprozess für DANIEL fertig..nächster Spieler ist dran ----------
+---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------
+---------- SIMULATION GESTARTET ----------
+---------- SPIEL BEENDET ----------
+---------- GEWINNER ----------
+1. NATALIE mit einem Gesamtgewinn von 7666.123175173241
+2. DANIEL mit einem Gesamtgewinn von 1421.2544969058363

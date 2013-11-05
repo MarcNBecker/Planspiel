@@ -26,7 +26,7 @@ public class Spiel {
 		//Zufall.setzeTestmodus(true);
 		//Zufall.setzeDateiTestmodus(true, "zufall.txt");
 		Zufall.setzeProtokollModus(true, "zufall.txt");
-		new Spiel(3).spielen();
+		new Spiel(5).spielen();
 		Zufall.schliessenProtokoll();
 	}
 
