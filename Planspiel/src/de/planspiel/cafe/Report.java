@@ -77,7 +77,7 @@ public class Report {
 		this.filialenListe = new HashMap<Filiale, double[]>(
 				holeKette().holeAnzahlFilialen());
 		Vector<Filiale> filialen = holeKette().holeFilialenListe();
-		double[] infos = new double[3];
+		double[] infos = new double[4];
 		for (int i = 0; i < holeKette().holeAnzahlFilialen(); i++) {
 			Filiale filiale = filialen.get(i);
 			// Bestimme Mitarbeiter
