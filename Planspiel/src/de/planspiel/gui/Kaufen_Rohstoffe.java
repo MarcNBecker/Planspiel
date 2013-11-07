@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 
 public class Kaufen_Rohstoffe extends JDialog {
 
+	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTable tableRohstoffe;
 
@@ -65,6 +66,7 @@ public class Kaufen_Rohstoffe extends JDialog {
 				tableRohstoffe = new JTable();
 				panelRohstoffe.add(tableRohstoffe, BorderLayout.SOUTH);
 				tableRohstoffe.setModel(new DefaultTableModel(new Object[][] { { null, null, null }, { null, null, null }, { null, null, null }, }, new String[] { "Rohstoff", "noch im Lager", "Kaufmenge" }) {
+					private static final long serialVersionUID = 1L;
 					Class[] columnTypes = new Class[] { String.class, Integer.class, Integer.class };
 
 					public Class getColumnClass(int columnIndex) {

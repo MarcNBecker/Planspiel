@@ -10,24 +10,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import javax.swing.SwingConstants;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JPanel;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.CardLayout;
 
-import javax.swing.JTextPane;
 import javax.swing.JTextField;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 
 import java.awt.Font;
 
-import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 
 import java.awt.Color;
@@ -38,8 +30,6 @@ import javax.swing.JScrollPane;
 
 import java.awt.GridLayout;
 
-import javax.swing.JSeparator;
-import javax.swing.BoxLayout;
 import javax.swing.ListSelectionModel;
 
 public class Einstellungsbild {
@@ -149,6 +139,7 @@ public class Einstellungsbild {
 
 		tableVerkaufspreis = new JTable();
 		tableVerkaufspreis.setModel(new DefaultTableModel(new Object[][] { { null, null }, { null, null }, { null, null }, }, new String[] { "Produkt", "Verkaufspreis" }) {
+			private static final long serialVersionUID = 1L;
 			Class[] columnTypes = new Class[] { String.class, Double.class };
 
 			public Class getColumnClass(int columnIndex) {
@@ -186,6 +177,7 @@ public class Einstellungsbild {
 		tableRohstoffe.setCellSelectionEnabled(true);
 		tableRohstoffe.setModel(new DefaultTableModel(new Object[][] { { null, null, null, null, null, null, null, null }, { null, null, null, null, null, null, null, null }, { null, null, null, null, null, null, null, null }, { null, null, null, null, null, null, null, null }, { null, null, null, null, null, null, null, null }, { null, null, null, null, null, null, null, null }, }, new String[] { "ausgew\u00E4hlt", "H\u00E4ndler", "A - Preis", "A - Qualit\u00E4t", "B - Preis",
 				"B - Qualit\u00E4t", "C - Preis", "C - Qualit\u00E4t" }) {
+					private static final long serialVersionUID = 1L;
 			Class[] columnTypes = new Class[] { Object.class, String.class, Double.class, Double.class, Double.class, Double.class, Double.class, Double.class };
 
 			public Class getColumnClass(int columnIndex) {
@@ -229,6 +221,7 @@ public class Einstellungsbild {
 		tabellePanel2.add(tableFilialen);
 		tableFilialen.setModel(new DefaultTableModel(new Object[][] { { null, null, null, null, null }, { null, null, null, null, null }, { null, null, null, null, null }, { null, null, null, null, null }, { null, null, null, null, null }, { null, null, null, null, null }, { null, null, null, null, null }, { null, null, null, null, null }, { null, null, null, null, null }, { null, null, null, null, null }, }, new String[] { "Standort", "Anzahl Mitarbeiter", "Marketingbudget",
 				"einstellen/entlassen", "verkaufen" }) {
+			private static final long serialVersionUID = 1L;
 			Class[] columnTypes = new Class[] { String.class, Integer.class, Object.class, Object.class, Object.class };
 
 			public Class getColumnClass(int columnIndex) {

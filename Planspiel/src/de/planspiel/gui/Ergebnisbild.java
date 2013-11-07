@@ -15,17 +15,10 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.CardLayout;
-import javax.swing.JTextPane;
-import javax.swing.JTextField;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
-import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
@@ -122,6 +115,7 @@ public class Ergebnisbild {
 
 		GuV = new JTable();
 		GuV.setModel(new DefaultTableModel(new Object[][] { { "Anschaffungskosten", null, "Umsatzerlöse", null }, { "Unterhaltungskosten", null, "Sonstige Erlöse", null }, { "Personalkosten", null, null, null }, { "Kreditkosten", null, null, null }, { "Marketingkosten", null, null, null }, { "Rohstoffkosten", null, null, null }, { "Summe", null, "Summe", null }, }, new String[] { "Kosten", "", "Erl\u00F6se", "" }) {
+			private static final long serialVersionUID = 1L;
 			Class[] columnTypes = new Class[] { String.class, Object.class, Object.class, Object.class };
 
 			public Class getColumnClass(int columnIndex) {
