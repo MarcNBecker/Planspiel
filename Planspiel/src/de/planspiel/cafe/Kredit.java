@@ -9,8 +9,8 @@ package de.planspiel.cafe;
  */
 public class Kredit {
 
-	private static double aktuellerZinssatz = 0.07; // TODO sinnvoller Startwert
-	private static int aktuelleLaufzeit = 1; // TODO sinnvoller Startwert
+	private static double aktuellerZinssatz = 0.07;
+	private static int aktuelleLaufzeit = 1;
 
 	private Unternehmenskette kette;
 	private double restbetrag;

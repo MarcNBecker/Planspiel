@@ -8,9 +8,9 @@ package de.planspiel.cafe;
  * 
  */
 public enum Produkttyp {
-	KAFFEE(0.15, 6), // TODO Sinnvollen Start-Werte setzen
-	TEE(0.15, 6), // TODO Sinnvollen Start-Werte setzen
-	KUCHEN(0.20, 5); // TODO Sinnvollen Start-Werte setzen
+	KAFFEE(0.15, 6), //
+	TEE(0.15, 6),
+	KUCHEN(0.20, 5);
 
 	private final double maxEK;
 	private final double maxVK;

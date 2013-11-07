@@ -13,8 +13,8 @@ public class MarketingEntscheidung extends Entscheidung {
 
 	private double betrag;
 	private Standort standort;
-	private double minBetrag = 1000.0; // TODO sinnvoller Start-Wert
-	private double maxBetrag = 10000.0; // TODO sinnvoller Start-Wert
+	private double minBetrag = 1000.0;
+	private double maxBetrag = 10000.0;
 
 	/**
 	 * Erstellt eine neue Entscheidung zum Marketing
