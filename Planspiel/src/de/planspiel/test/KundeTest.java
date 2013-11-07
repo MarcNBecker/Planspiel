@@ -23,12 +23,7 @@ public class KundeTest {
 	private Unternehmenskette ukette1;
 	private Filiale fil1;
 	private Filiale fil2;
-	private static int ctr;
 
-	@BeforeClass
-	public static void erstelleSUTgesamt() {
-		ctr = 0;
-	}
 
 	@Before
 	public void erstelleSUT() {
