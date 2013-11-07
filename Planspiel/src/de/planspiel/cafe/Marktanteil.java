@@ -6,8 +6,9 @@ import de.planspiel.spiel.Spiel;
 
 /**
  * Klasse zur Organisation von Marktanteilen
+ * 
  * @author Ann-Kathrin
- *
+ * 
  */
 public class Marktanteil {
 
@@ -15,21 +16,22 @@ public class Marktanteil {
 	private HashMap<Unternehmenskette, Integer> verkaufsListe;
 
 	/**
-	 * Erzeugt einen neuen Marktanteil mit einer HashMap der Größe aller Unternehmenskette
+	 * Erzeugt einen neuen Marktanteil mit einer HashMap der Größe aller
+	 * Unternehmenskette
 	 */
 	public Marktanteil() {
 		verkaufsListe = new HashMap<Unternehmenskette, Integer>(Spiel.holeSpiel().holeKettenListe().size());
 	}
-	
+
 	/**
 	 * @return Kundenanzahl die zur Basis des Marktanteils dient
 	 */
 	public int holeGesamtKunden() {
 		return gesamtKunden;
 	}
-	
-	public void mitteilenVerkauf(Unternehmenskette kette){
-		if(!verkaufsListe.containsKey(kette)) {
+
+	public void mitteilenVerkauf(Unternehmenskette kette) {
+		if (!verkaufsListe.containsKey(kette)) {
 			verkaufsListe.put(kette, 0);
 		}
 		int anzahlKundenKette = verkaufsListe.get(kette);
@@ -37,23 +39,25 @@ public class Marktanteil {
 		anzahlKundenKette++;
 		verkaufsListe.put(kette, anzahlKundenKette);
 	}
-	
+
 	/**
 	 * @return Gibt eine Liste mit Verkaufszahlen pro Unternehmen zurück
 	 */
 	public HashMap<Unternehmenskette, Integer> holeVerkaufsListe() {
 		return verkaufsListe;
 	}
-	
+
 	/**
-	 * Berechnte die Marktanteile auf Basis der Verkaufszahlen und gesamten Kunden
+	 * Berechnte die Marktanteile auf Basis der Verkaufszahlen und gesamten
+	 * Kunden
+	 * 
 	 * @return Liste mit Marktanteilen
 	 */
 	public HashMap<Unternehmenskette, Double> berechnenMarktanteil() {
 		HashMap<Unternehmenskette, Double> marktanteilListe = new HashMap<Unternehmenskette, Double>(this.verkaufsListe.size());
 		Unternehmenskette[] kettenListe = verkaufsListe.keySet().toArray(new Unternehmenskette[marktanteilListe.size()]);
 		for (int i = 0; i < kettenListe.length; i++) {
-			double marktanteil = (double)verkaufsListe.get(kettenListe[i]) / (double)this.holeGesamtKunden();
+			double marktanteil = (double) verkaufsListe.get(kettenListe[i]) / (double) this.holeGesamtKunden();
 			marktanteilListe.put(kettenListe[i], marktanteil);
 		}
 		return marktanteilListe;

@@ -12,40 +12,42 @@ import de.planspiel.spiel.Zufall;
 
 public class HaendlerTest {
 	Haendler haendler;
-	
+
 	@BeforeClass
-	public static void vorbereiten(){
+	public static void vorbereiten() {
 		Zufall.setzeTestmodus(true);
 		Zufall.setzeTestQualitaet(0.8);
 	}
-	
-	@Before 
-	public void erstelleSUT(){
+
+	@Before
+	public void erstelleSUT() {
 		haendler = new Haendler(Haendlertyp.Haendler1);
 	}
-	
+
 	@Test
-	public void testenErstellenAngebot(){
+	public void testenErstellenAngebot() {
 		Double[] ekArray = new Double[Produkttyp.values().length];
-		for (int i = 0; i< ekArray.length;i++){  //Array erstellen, das erwartete EKPreise enthält
+		for (int i = 0; i < ekArray.length; i++) { // Array erstellen, das
+													// erwartete EKPreise
+													// enthält
 			ekArray[i] = Produkttyp.values()[i].holeMaxEK() * PreisQualitaetVerhaeltnis.berechnenPreisFaktor(0.8);
 		}
-	
-		for (int j = 0; j<haendler.holeProduktliste().size(); j++){
+
+		for (int j = 0; j < haendler.holeProduktliste().size(); j++) {
 			assertEquals(haendler.holeProduktliste().get(j).holeName(), Produkttyp.values()[j]);
 			assertEquals(haendler.holeProduktliste().get(j).holeQualitaet(), 0.8, 0.0);
-			assertEquals(haendler.holeProduktliste().get(j).holeEkpreis(), ekArray[j], 0.0);	
+			assertEquals(haendler.holeProduktliste().get(j).holeEkpreis(), ekArray[j], 0.0);
 		}
 	}
-	
+
 	@After
-	public void zuruecksetzen(){
+	public void zuruecksetzen() {
 		haendler = null;
 	}
-	
+
 	@AfterClass
-	public static void beenden(){
+	public static void beenden() {
 		Zufall.setzeTestmodus(false);
 	}
-	
+
 }

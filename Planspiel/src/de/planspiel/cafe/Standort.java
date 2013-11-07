@@ -11,7 +11,7 @@ import de.planspiel.spiel.Zufall;
  * 
  */
 public class Standort {
-	
+
 	private Standorttyp name;
 	private Vector<Kunde> kundenkreis;
 	private Vector<Filiale> filialenListe;
@@ -55,63 +55,79 @@ public class Standort {
 	}
 
 	/**
-	 * Generiert die Kundenliste des Standorts
-	 * Die Anzahl der Kunden eines Stadorts ergibt sich aus Anzahl der
-	 * Unternehmensketten * maximale Kunden einer Filiale / 2 
-	 * Über eine Zufallszahl wird entschieden, welche Präferenz der Kunde hat Kunde wird
-	 * in die Kundenliste des Standorts eingefügt
+	 * Generiert die Kundenliste des Standorts Die Anzahl der Kunden eines
+	 * Stadorts ergibt sich aus Anzahl der Unternehmensketten * maximale Kunden
+	 * einer Filiale / 2 Über eine Zufallszahl wird entschieden, welche
+	 * Präferenz der Kunde hat Kunde wird in die Kundenliste des Standorts
+	 * eingefügt
 	 */
 	public void generierenKundenliste() {
-		//Die Anzahl der Kunden wird bestimmt durch alle Ketten multipliziert mit der Hälfte von maxKunden
+		// Die Anzahl der Kunden wird bestimmt durch alle Ketten multipliziert
+		// mit der Hälfte von maxKunden
 		Vector<Unternehmenskette> ketten = Spiel.holeSpiel().holeKettenListe();
 		int anzahlKunden = ketten.size() * this.holeMaxKunden(); // /2 entfernt
 		for (int i = 0; i < anzahlKunden; i++) {
 			this.hinzufuegenKunde(new Kunde(this));
 		}
-		for (int i = 0; i<ketten.size(); i++) {
-			beeinflussenKundenProzentual(ketten.get(i), 0.3); // TODO Startwert festlegen, evtl. Algorithmus exakt programmieren
+		for (int i = 0; i < ketten.size(); i++) {
+			beeinflussenKundenProzentual(ketten.get(i), 0.3); // TODO Startwert
+																// festlegen,
+																// evtl.
+																// Algorithmus
+																// exakt
+																// programmieren
 		}
 	}
 
 	/**
-	 * Beeinflusst die Kunden am Standort. Alle Kunden an diesem Standort werden durchlaufen
-	 * und lernen mit der Wahrscheinlichkeit p die Unternehmenskette kennen.
-	 * @param kette Kette, die der Kunde kennen lernen wird
-	 * @param p Wahrscheinlichkeit mit der der Kunde, die Kette kennenlernt
+	 * Beeinflusst die Kunden am Standort. Alle Kunden an diesem Standort werden
+	 * durchlaufen und lernen mit der Wahrscheinlichkeit p die Unternehmenskette
+	 * kennen.
+	 * 
+	 * @param kette
+	 *            Kette, die der Kunde kennen lernen wird
+	 * @param p
+	 *            Wahrscheinlichkeit mit der der Kunde, die Kette kennenlernt
 	 */
 	public void beeinflussenKunden(Unternehmenskette kette, double p) {
 		for (int i = 0; i < this.holeKundenkreis().size(); i++) {
 			Kunde kunde = holeKundenkreis().get(i);
-			if(Zufall.treffenEntscheidung(p)){
+			if (Zufall.treffenEntscheidung(p)) {
 				kunde.kennenlernen(kette);
 			}
 		}
 	}
 
 	/**
-	 * Beeinflusst die Kunden am Standort. Alle Kunden an diesem Standort werden durchlaufen
-	 * und (p*100) % lernen die Kette kennen
-	 * @param kette Kette, die der Kunde kennen lernen wird
-	 * @param p (p*100)% Kunden an diesem Standort lernen die Kette kennen
+	 * Beeinflusst die Kunden am Standort. Alle Kunden an diesem Standort werden
+	 * durchlaufen und (p*100) % lernen die Kette kennen
+	 * 
+	 * @param kette
+	 *            Kette, die der Kunde kennen lernen wird
+	 * @param p
+	 *            (p*100)% Kunden an diesem Standort lernen die Kette kennen
 	 */
 	public void beeinflussenKundenProzentual(Unternehmenskette kette, double p) {
-		int c = (int) (holeKundenkreis().size() * p); //so viele Kunden entsprechen (p*100)%
-		int f = 0; //Anzahl der Zufallsfehler
+		int c = (int) (holeKundenkreis().size() * p); // so viele Kunden
+														// entsprechen (p*100)%
+		int f = 0; // Anzahl der Zufallsfehler
 		while (c > 0) {
-			int zufallsZahl = (int)Zufall.generierenZufallszahl(holeKundenkreis().size());
+			int zufallsZahl = (int) Zufall.generierenZufallszahl(holeKundenkreis().size());
 			Kunde kunde = holeKundenkreis().get(zufallsZahl);
-			if(kunde != null && !kunde.holeKettenListe().contains(kette)) {
-				kunde.kennenlernen(kette); //Kunde lernt die Kette kennen
+			if (kunde != null && !kunde.holeKettenListe().contains(kette)) {
+				kunde.kennenlernen(kette); // Kunde lernt die Kette kennen
 				c--; // also muss ein Kunde weniger die Kette kennen lernen
 			} else {
-				f++; // es ist ein Zufallsfehler aufgetreten (Kunde kam zum 2. Mal dran)
-				if (f>10){
-					c--; // nach 10 Zufallsfehler wird kein weiterer mehr abgefangen
+				f++; // es ist ein Zufallsfehler aufgetreten (Kunde kam zum 2.
+						// Mal dran)
+				if (f > 10) {
+					c--; // nach 10 Zufallsfehler wird kein weiterer mehr
+							// abgefangen
 				}
 			}
 		}
 	}
-	
+
 	/**
 	 * Berechnet die Kunden, die an diesem Standort von der übergebenen Menge an
 	 * Mitarbeiter bedient werden können. Dem liegt eine lineare Funktion zu
@@ -146,7 +162,7 @@ public class Standort {
 	public String holeName() {
 		return name.toString();
 	}
-	
+
 	/**
 	 * @return Alle Kunden an diesem Standort
 	 */
@@ -202,8 +218,8 @@ public class Standort {
 	 */
 	public void hinzufuegenFiliale(Filiale filiale) {
 		if (filiale != null) {
-			if(filiale.holeKette().verbuchenKosten(Kostenverursacher.FILIALE_ANSCHAFFUNG, holeStartFilialkosten())){
-				holeFilialenListe().add(filiale);	
+			if (filiale.holeKette().verbuchenKosten(Kostenverursacher.FILIALE_ANSCHAFFUNG, holeStartFilialkosten())) {
+				holeFilialenListe().add(filiale);
 			}
 		}
 	}

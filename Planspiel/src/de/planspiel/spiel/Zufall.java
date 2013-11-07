@@ -8,13 +8,15 @@ import java.util.Random;
 
 /**
  * Klasse zur Generierung von Zufallszahlen und zum Treffen von Entscheidungen.
- * Kann zu Testzwecken verwendet werden, indem Testmodus und Testentscheidung und Testzufallszahl gesetzt werden.
+ * Kann zu Testzwecken verwendet werden, indem Testmodus und Testentscheidung
+ * und Testzufallszahl gesetzt werden.
+ * 
  * @author Ann-Kathrin Gessat
- *
+ * 
  */
 
 public class Zufall {
-	
+
 	private static boolean testModus = false;
 	private static boolean dateiTestModus = false;
 	private static boolean protokollModus = false;
@@ -26,20 +28,19 @@ public class Zufall {
 	private static double testQualitaet = 0.0;
 
 	/**
-	 * Zufallszahl zwischen 0 und Grenze
-	 * optional auch mit Untergrenze
+	 * Zufallszahl zwischen 0 und Grenze optional auch mit Untergrenze
 	 */
 	public static double generierenZufallszahl(double grenze) {
-		if(Zufall.holeTestModus()) {
-			if(Zufall.holeDateiTestModus()) {
+		if (Zufall.holeTestModus()) {
+			if (Zufall.holeDateiTestModus()) {
 				return Zufall.leseZufallszahlAusDatei();
 			}
-			return Zufall.holeTestZufallszahl();	
+			return Zufall.holeTestZufallszahl();
 		}
 		double zufallszahl = Math.random() * grenze;
-		//int zufallszahl100 = (int) zufallszahl * 100;
-		//zufallszahl = zufallszahl100 / 100;
-		if(Zufall.protokollModus == true) {
+		// int zufallszahl100 = (int) zufallszahl * 100;
+		// zufallszahl = zufallszahl100 / 100;
+		if (Zufall.protokollModus == true) {
 			protokolliereZufallszahl(zufallszahl);
 		}
 		return zufallszahl;
@@ -47,6 +48,7 @@ public class Zufall {
 
 	/**
 	 * Liefert zurück, ob Entscheidung getroffen wird oder nicht.
+	 * 
 	 * @param wahrscheinlichkeit
 	 * @return true oder false
 	 */
@@ -59,56 +61,63 @@ public class Zufall {
 			return true;
 		return false;
 	}
-	
+
 	/**
-	 * Generiert eine zufällige Qualität, die entweder dem A oder C Markt zuzuordnen ist
-	 * eine schwache Mindestqualität ist beispielsweise wahrscheinlicher als eine große Qualität
+	 * Generiert eine zufällige Qualität, die entweder dem A oder C Markt
+	 * zuzuordnen ist eine schwache Mindestqualität ist beispielsweise
+	 * wahrscheinlicher als eine große Qualität
+	 * 
 	 * @return zufällige Qualität
 	 */
 	public static double generierenQualitaet() {
-		if(Zufall.holeTestModus() && !Zufall.holeDateiTestModus()) {
-			return Zufall.holeTestQualitaet();	
+		if (Zufall.holeTestModus() && !Zufall.holeDateiTestModus()) {
+			return Zufall.holeTestQualitaet();
 		}
-		if(Zufall.treffenEntscheidung(2.0/3.0)) { // C-Markt Qualität von 0 - 0.6
+		if (Zufall.treffenEntscheidung(2.0 / 3.0)) { // C-Markt Qualität von 0 -
+														// 0.6
 			double nv = Zufall.generierenNVZufallszahl();
-			if (nv > 3.0) { //alle über 3 abkappen
+			if (nv > 3.0) { // alle über 3 abkappen
 				nv = 3.0;
-			} else if (nv < -3.0) { //alle unter 3 abkappen
+			} else if (nv < -3.0) { // alle unter 3 abkappen
 				nv = -3.0;
 			}
-			double anv = nv + 3.0; //von 0 bis 6 statt von -3 bis 3 laufen lassen
+			double anv = nv + 3.0; // von 0 bis 6 statt von -3 bis 3 laufen
+									// lassen
 			double prozent = anv / 6; // Standardabweichung als Pronzentsatz
 			double maxQC = 0.6; // Maximale Qualität vom C-Markt
 			double qualitaet = maxQC * prozent; // Qualität von 0.0 bis 0.6
 			return qualitaet;
 		} else { // A-Markt Qualität von 0.6 - 1
 			double nv = Zufall.generierenNVZufallszahl();
-			if (nv > 3.0) { //alle über 3 abkappen
+			if (nv > 3.0) { // alle über 3 abkappen
 				nv = 3.0;
-			} else if (nv < -3.0) { //alle unter 3 abkappen
+			} else if (nv < -3.0) { // alle unter 3 abkappen
 				nv = -3.0;
 			}
-			double anv = nv + 3.0; //von 0 bis 6 statt von -3 bis 3 laufen lassen
+			double anv = nv + 3.0; // von 0 bis 6 statt von -3 bis 3 laufen
+									// lassen
 			double prozent = anv / 6; // Standardabweichung als Pronzentsatz
-			double maxQA = 0.4; // Maximale Qualität vom A-Markt (muss dann mit 0.6 addiert werden)
-			double qualitaet = (maxQA * prozent) + 0.6;	 // Qualitaet von 0.6 bis 1
+			double maxQA = 0.4; // Maximale Qualität vom A-Markt (muss dann mit
+								// 0.6 addiert werden)
+			double qualitaet = (maxQA * prozent) + 0.6; // Qualitaet von 0.6 bis
+														// 1
 			return qualitaet;
 		}
 	}
-	
+
 	public static double generierenNVZufallszahl() {
-		if(Zufall.holeDateiTestModus() && Zufall.holeTestModus()) {
+		if (Zufall.holeDateiTestModus() && Zufall.holeTestModus()) {
 			return Zufall.leseZufallszahlAusDatei();
 		} else {
 			Random r = new Random();
 			double nv = r.nextGaussian();
-			if(Zufall.holeProtokollModus()) {
+			if (Zufall.holeProtokollModus()) {
 				Zufall.protokolliereZufallszahl(nv);
 			}
 			return nv;
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @return testModus
@@ -119,12 +128,13 @@ public class Zufall {
 
 	/**
 	 * Setzt den Test-Modus auf true oder false.
+	 * 
 	 * @param testmodus
 	 */
 	public static void setzeTestmodus(boolean testmodus) {
 		Zufall.testModus = testmodus;
 	}
-	
+
 	/**
 	 * 
 	 * @return dateiTestModus
@@ -132,20 +142,21 @@ public class Zufall {
 	public static boolean holeDateiTestModus() {
 		return Zufall.dateiTestModus;
 	}
-	
+
 	/**
 	 * Setzt den Test-Modus auf true oder false.
+	 * 
 	 * @param testmodus
 	 */
 	public static void setzeProtokollModus(boolean bProtokollModus) {
 		Zufall.protokollModus = bProtokollModus;
 	}
-	
+
 	public static void setzeProtokollModus(boolean bProtokollModus, String sZufallDateiname) {
 		zufallDateiname = sZufallDateiname;
 		setzeProtokollModus(bProtokollModus);
 	}
-	
+
 	/**
 	 * 
 	 * @return dateiTestModus
@@ -156,6 +167,7 @@ public class Zufall {
 
 	/**
 	 * Setzt den Datei Test-Modus auf true oder false.
+	 * 
 	 * @param testmodus
 	 */
 	public static void setzeDateiTestmodus(boolean bDateiTestModus) {
@@ -168,7 +180,8 @@ public class Zufall {
 		} else {
 			try {
 				reader.close();
-			} catch (Exception e) {}
+			} catch (Exception e) {
+			}
 			reader = null;
 		}
 		Zufall.dateiTestModus = bDateiTestModus;
@@ -178,7 +191,7 @@ public class Zufall {
 		zufallDateiname = sZufallDateiname;
 		setzeDateiTestmodus(bDateiTestModus);
 	}
-	
+
 	/**
 	 * Liest eine Zahl aus der Zufall-Datei aus
 	 */
@@ -186,7 +199,7 @@ public class Zufall {
 		String zeile = "0";
 		try {
 			zeile = reader.readLine();
-			if(zeile == null) {
+			if (zeile == null) {
 				reader.close();
 				reader = new BufferedReader(new FileReader(zufallDateiname));
 				zeile = reader.readLine();
@@ -194,15 +207,16 @@ public class Zufall {
 					zeile = "0";
 				}
 			}
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 		return Double.parseDouble(zeile);
 	}
-	
+
 	/**
 	 * Protokolliert eine Zufallszahl mit
 	 */
 	public static void protokolliereZufallszahl(double d) {
-		if(writer == null) {
+		if (writer == null) {
 			try {
 				writer = new PrintWriter(zufallDateiname);
 			} catch (FileNotFoundException e) {
@@ -212,12 +226,14 @@ public class Zufall {
 		writer.println(d);
 		writer.flush();
 	}
-	
+
 	public static void schliessenProtokoll() {
 		try {
 			writer.close();
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 	}
+
 	/**
 	 * @return testEntscheidung
 	 */
@@ -227,6 +243,7 @@ public class Zufall {
 
 	/**
 	 * Setzt die Test-Entscheidung auf true oder false.
+	 * 
 	 * @param testentscheidung
 	 */
 	public static void setzeTestEntscheidung(boolean testentscheidung) {
@@ -242,20 +259,22 @@ public class Zufall {
 
 	/**
 	 * Setzt die Test-Zufallszahl
+	 * 
 	 * @param testzufallszahl
 	 */
 	public static void setzeTestZufallszahl(double testzufallszahl) {
 		Zufall.testZufallszahl = testzufallszahl;
 	}
-	
+
 	/**
 	 * Setzt die Test-Qualität
+	 * 
 	 * @param testQualitaet
 	 */
 	public static void setzeTestQualitaet(double testQualitaet) {
 		Zufall.testQualitaet = testQualitaet;
 	}
-	
+
 	/**
 	 * @return Test-Qualität
 	 */

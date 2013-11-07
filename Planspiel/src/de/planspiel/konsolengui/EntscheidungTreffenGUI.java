@@ -24,24 +24,24 @@ import de.planspiel.ereignis.Ereignis;
 public class EntscheidungTreffenGUI extends KonsolenGUI {
 
 	private Vector<Ereignis> ereignisse = new Vector<Ereignis>();
-	
+
 	public void run() {
-		for(Ereignis e : ereignisse) {
+		for (Ereignis e : ereignisse) {
 			writer.println(e.toString());
 		}
-		for(int i=0; i<spiel.holeKettenListe().size(); i++){
+		for (int i = 0; i < spiel.holeKettenListe().size(); i++) {
 			Unternehmenskette kette = spiel.holeKettenListe().get(i);
-			writer.println("---------- ENTSCHEIDUNG TREFFEN FÜR "+ kette.holeName() +" ----------");
-			if(kette.holePleite()) {
+			writer.println("---------- ENTSCHEIDUNG TREFFEN FÜR " + kette.holeName() + " ----------");
+			if (kette.holePleite()) {
 				writer.println(kette.holeName() + " ist leider pleite :(");
 				continue;
 			}
-			while(true){
+			while (true) {
 				try {
 					String input = reader.readLine();
 					String[] teile = input.split(" ");
 					String cmd = teile[0].toUpperCase();
-					if(cmd.equals("HILFE")){
+					if (cmd.equals("HILFE")) {
 						writer.println("----------  Hilfe ----------");
 						writer.println("Es stehen folgende Kommandos zur Verfügung (Kommandos in Großbuchstaben, Parameter in Kamelschreibweise)");
 						writer.println("HILFE ------------------------------------------------- Zeigt eine Liste aller Kommandos an");
@@ -60,72 +60,72 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 						writer.println("VERKAUFSPREIS_SETZEN produktName,preis ---------------- Setzt den Preis für das entsprechende Produkt");
 						writer.println("FERTIG ------------------------------------------------ Beendet das Treffen der Entscheidungen und lässt den nächsten Spieler dran");
 					} else if (cmd.equals("FERTIG")) {
-						writer.println("---------- Entscheidungsprozess für "+ kette.holeName() +" fertig..nächster Spieler ist dran ----------");
+						writer.println("---------- Entscheidungsprozess für " + kette.holeName() + " fertig..nächster Spieler ist dran ----------");
 						break;
 					} else if (cmd.equals("REPORT")) {
 						// Report der Vorrunde
 						Report report;
-						if(spiel.holeAktuelleRunde() == 1){
+						if (spiel.holeAktuelleRunde() == 1) {
 							report = kette.holeReportListe().get(0);
 						} else {
-							report = kette.holeReportListe().get(spiel.holeAktuelleRunde()-2);	
+							report = kette.holeReportListe().get(spiel.holeAktuelleRunde() - 2);
 						}
 						writer.println("---------- Report ---------- ");
 						writer.println("Kasse: " + runden(report.holeKasse(), 2) + " Euro");
 						writer.println("Fremdkapital: " + runden(report.holeEndFremdkapital(), 2) + " Euro");
-						writer.println("Gesamtkapital: " + runden(report.holeEndGesamtkapital(), 2) + " Euro\n"); //Umbruch
+						writer.println("Gesamtkapital: " + runden(report.holeEndGesamtkapital(), 2) + " Euro\n"); // Umbruch
 						writer.println("Filialanschaffungskosten: " + runden(report.holeAnschaffungskosten(), 2) + " Euro");
 						writer.println("Filalunterhaltungskosten: " + runden(report.holeUnterhaltungskosten(), 2) + " Euro");
 						writer.println("Personalkosten: " + runden(report.holePersonalkosten(), 2) + " Euro");
-						writer.println("Rohstoffkosten: " + runden(report.holeRohstoffkosten(), 2) + " Euro");	
-						writer.println("Marketingkosten: " + runden(report.holeMarketingkosten(), 2) + " Euro");					
+						writer.println("Rohstoffkosten: " + runden(report.holeRohstoffkosten(), 2) + " Euro");
+						writer.println("Marketingkosten: " + runden(report.holeMarketingkosten(), 2) + " Euro");
 						writer.println("Kreditkosten: " + runden(report.holeKreditkosten(), 2) + " Euro");
 						writer.println("Umsatzerlöse: " + runden(report.holeUmsatzerloese(), 2) + " Euro");
 						writer.println("Sonstige Erlöse: " + runden(report.holeSonstigeErloese(), 2) + " Euro");
-						writer.println("Gewinn: " + runden(report.berechnenGewinn(), 2) + " Euro"); 
-						writer.println("Gesamtgewinn: " + runden(report.berechnenGesamtgewinn(), 2) + " Euro\n");//Umbruch
-						for(int j=0; j<report.holeVerkaufsListe().holeProduktliste().size(); j++){
+						writer.println("Gewinn: " + runden(report.berechnenGewinn(), 2) + " Euro");
+						writer.println("Gesamtgewinn: " + runden(report.berechnenGesamtgewinn(), 2) + " Euro\n");// Umbruch
+						for (int j = 0; j < report.holeVerkaufsListe().holeProduktliste().size(); j++) {
 							Produkt produkt = report.holeVerkaufsListe().holeProduktliste().get(j);
 							writer.println("Verkaufzahlen " + produkt.holeName() + ": " + produkt.holeMenge());
-							writer.println(); //Umbruch
+							writer.println(); // Umbruch
 						}
 						HashMap<Unternehmenskette, Double> marktanteilMap = report.holeMarktanteil().berechnenMarktanteil();
 						Unternehmenskette[] keys = marktanteilMap.keySet().toArray(new Unternehmenskette[marktanteilMap.size()]);
-						for (int j=0; j<keys.length; j++){
+						for (int j = 0; j < keys.length; j++) {
 							writer.println("Marktanteil " + keys[j].holeName() + ": " + runden(marktanteilMap.get(keys[j]), 4));
-						}						
+						}
 					} else if (cmd.equals("STANDORT")) {
 						writer.println("---------- Standorte ----------");
-						for(int j=0; j<spiel.holeStandortListe().size(); j++) {
+						for (int j = 0; j < spiel.holeStandortListe().size(); j++) {
 							Standort standort = spiel.holeStandortListe().get(j);
 							writer.println(standort.holeName());
 						}
 					} else if (cmd.equals("HÄNDLER")) {
 						writer.println("---------- Händler ----------");
-						for(int j=0; j<spiel.holeHaendlerListe().size(); j++) {
+						for (int j = 0; j < spiel.holeHaendlerListe().size(); j++) {
 							Haendler haendler = spiel.holeHaendlerListe().get(j);
-							writer.println(haendler.holeName()+":");
-							for(int k=0; k<haendler.holeProduktliste().size(); k++) {
+							writer.println(haendler.holeName() + ":");
+							for (int k = 0; k < haendler.holeProduktliste().size(); k++) {
 								Produkt produkt = haendler.holeProduktliste().get(k);
 								writer.println(produkt.holeName() + " mit Qualität " + runden(produkt.holeQualitaet(), 4) + " zu Einkaufspreis " + runden(produkt.holeEkpreis(), 2) + " Euro");
 							}
 						}
 					} else if (cmd.equals("FILIALE")) {
 						writer.println("---------- Filialen ----------");
-						for(int j=0; j<kette.holeFilialenListe().size(); j++){
+						for (int j = 0; j < kette.holeFilialenListe().size(); j++) {
 							Filiale filiale = kette.holeFilialenListe().get(j);
 							writer.println("Filiale am Standort " + filiale.holeStandort().holeName() + " mit " + filiale.holeMitarbeiter() + " Mitarbeitern und einer Kapazität von " + filiale.holeStartKapazitaet());
 						}
 					} else if (cmd.equals("LAGER")) {
 						Lager lager = kette.holeLager();
 						writer.println("---------- Lagerbestand ----------");
-						for(int j=0; j<lager.holeProduktliste().size(); j++) {
+						for (int j = 0; j < lager.holeProduktliste().size(); j++) {
 							Produkt produkt = lager.holeProduktliste().get(j);
 							writer.println(produkt.holeMenge() + " " + produkt.holeName() + " zu Einkaufspreis " + runden(produkt.holeEkpreis(), 2) + " Euro mit Qualität " + runden(produkt.holeQualitaet(), 4) + " und Verkaufspreis " + runden(produkt.holePreis(), 2) + " Euro");
 						}
 					} else if (cmd.equals("FILIALE_ERÖFFNEN")) {
 						String[] param = teile[1].split(",");
-						if(param.length == 2){
+						if (param.length == 2) {
 							new FilialeEroeffnenEntscheidung(kette, findenStandort(param[0]), Integer.parseInt(param[1]));
 							writer.println("Filiale am Standort " + param[0] + " mit " + param[1] + " Mitarbeitern gebaut");
 						} else {
@@ -133,23 +133,23 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 						}
 					} else if (cmd.equals("FILIALE_VERKAUFEN")) {
 						String[] param = teile[1].split(",");
-						if(param.length == 1){
+						if (param.length == 1) {
 							new FilialeVerkaufenEntscheidung(kette, findenFiliale(kette, findenStandort(param[0])));
 							writer.println("Filiale am Standort " + param[0] + " verkauft");
 						} else {
 							throw new Exception();
-						}						
+						}
 					} else if (cmd.equals("KREDIT_AUFNEHMEN")) {
 						String[] param = teile[1].split(",");
-						if(param.length == 1){
+						if (param.length == 1) {
 							new KreditEntscheidung(kette, Double.parseDouble(param[0]));
 							writer.println("Kredit über " + param[0] + " Euro aufgenommen");
 						} else {
 							throw new Exception();
-						}						
+						}
 					} else if (cmd.equals("MARKETING_DURCHFÜHREN")) {
 						String[] param = teile[1].split(",");
-						if(param.length == 2){
+						if (param.length == 2) {
 							new MarketingEntscheidung(kette, findenStandort(param[0]), Double.parseDouble(param[1]));
 							writer.println("Marketing am Standort " + param[0] + " mit " + param[1] + " Euro durchgeführt");
 						} else {
@@ -157,23 +157,23 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 						}
 					} else if (cmd.equals("MITARBEITER_EINSTELLEN")) {
 						String[] param = teile[1].split(",");
-						if(param.length == 2){
+						if (param.length == 2) {
 							new MitarbeiterEinstellenEntscheidung(kette, findenFiliale(kette, findenStandort(param[0])), Integer.parseInt(param[1]));
 							writer.println(param[1] + " Mitarbeiter in Filiale am Standort " + param[0] + " eingestellt");
 						} else {
 							throw new Exception();
-						}	
+						}
 					} else if (cmd.equals("MITARBEITER_ENTLASSEN")) {
 						String[] param = teile[1].split(",");
-						if(param.length == 2){
+						if (param.length == 2) {
 							new MitarbeiterEntlassenEntscheidung(kette, findenFiliale(kette, findenStandort(param[0])), Integer.parseInt(param[1]));
 							writer.println(param[1] + " Mitarbeiter in Filiale am Standort " + param[0] + " entlassen");
 						} else {
 							throw new Exception();
-						}	
+						}
 					} else if (cmd.equals("ROHSTOFF_EINKAUFEN")) {
 						String[] param = teile[1].split(",");
-						if(param.length == 3){
+						if (param.length == 3) {
 							new RohstoffEntscheidung(kette, findenHaendler(param[0]), Produkttyp.valueOf(param[1]), Integer.parseInt(param[2]));
 							writer.println("Produkt " + param[1] + " von " + param[0] + " in der Menge " + param[2] + " eingekauft");
 						} else {
@@ -181,12 +181,12 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 						}
 					} else if (cmd.equals("VERKAUFSPREIS_SETZEN")) {
 						String[] param = teile[1].split(",");
-						if(param.length == 2){
+						if (param.length == 2) {
 							new VerkaufspreisEntscheidung(kette, Produkttyp.valueOf(param[0]), Double.parseDouble(param[1]));
 							writer.println("Verkaufspreis für " + param[0] + " auf " + param[1] + " Euro gesetzt");
 						} else {
 							throw new Exception();
-						}	
+						}
 					} else {
 						throw new Exception();
 					}
@@ -198,44 +198,44 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 		writer.println("---------- Entscheidungen wurden getroffen..Spiel simuliert jetzt.. ----------");
 		writer.println("---------- SIMULATION GESTARTET ----------");
 	}
-	
+
 	private Standort findenStandort(String name) throws Exception {
-		for(int i=0; i<spiel.holeStandortListe().size(); i++) {
+		for (int i = 0; i < spiel.holeStandortListe().size(); i++) {
 			Standort s = spiel.holeStandortListe().get(i);
-			if(s.holeName().toUpperCase().equals(name.toUpperCase())){
+			if (s.holeName().toUpperCase().equals(name.toUpperCase())) {
 				return s;
 			}
 		}
 		throw new Exception();
 	}
-	
+
 	private Filiale findenFiliale(Unternehmenskette kette, Standort standort) throws Exception {
-		for(int i=0; i<standort.holeFilialenListe().size(); i++) {
+		for (int i = 0; i < standort.holeFilialenListe().size(); i++) {
 			Filiale f = standort.holeFilialenListe().get(i);
-			if(f.holeKette() == kette) {
+			if (f.holeKette() == kette) {
 				return f;
 			}
 		}
 		throw new Exception();
 	}
-	
+
 	private Haendler findenHaendler(String name) throws Exception {
-		for(int i=0; i<spiel.holeHaendlerListe().size(); i++) {
+		for (int i = 0; i < spiel.holeHaendlerListe().size(); i++) {
 			Haendler h = spiel.holeHaendlerListe().get(i);
-			if(h.holeName().toUpperCase().equals(name.toUpperCase())){
+			if (h.holeName().toUpperCase().equals(name.toUpperCase())) {
 				return h;
 			}
 		}
 		throw new Exception();
 	}
-	
+
 	private double runden(double i, int s) {
-		return  Math.round(i * Math.pow(10, s)) / Math.pow(10, s);
-		//return i;
+		return Math.round(i * Math.pow(10, s)) / Math.pow(10, s);
+		// return i;
 	}
-	
+
 	public void hinzufuegenEreignis(Ereignis e) {
 		ereignisse.add(e);
 	}
-	
+
 }

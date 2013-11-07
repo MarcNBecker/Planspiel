@@ -43,8 +43,8 @@ public class Kredit {
 	 */
 	public void tilgen() {
 		if (holeRestbetrag() > 0.0) {
-			if(holeKette().verbuchenKosten(Kostenverursacher.KREDIT, holeRestbetrag() * holeZinssatz() + holeTilgung())){
-				setzeRestbetrag(holeRestbetrag() - holeTilgung());	
+			if (holeKette().verbuchenKosten(Kostenverursacher.KREDIT, holeRestbetrag() * holeZinssatz() + holeTilgung())) {
+				setzeRestbetrag(holeRestbetrag() - holeTilgung());
 			}
 		}
 	}
@@ -65,7 +65,7 @@ public class Kredit {
 			Kredit.aktuellerZinssatz = aktuellerZinssatz;
 		}
 	}
-	
+
 	/**
 	 * @return Aktuelle globale Kreditlaufzeit
 	 */
@@ -82,14 +82,14 @@ public class Kredit {
 			Kredit.aktuelleLaufzeit = aktuelleLaufzeit;
 		}
 	}
-	
+
 	/**
 	 * @return Unternehmenskette die den Kredit beantragt hat
 	 */
 	public Unternehmenskette holeKette() {
 		return kette;
 	}
-	
+
 	/**
 	 * @return Restbetrag des Kredits, der noch getilgt werden muss
 	 */
@@ -110,7 +110,7 @@ public class Kredit {
 			holeKette().entfernenKredit(this);
 		}
 	}
-	
+
 	/**
 	 * @return Zinssatz dieses Kredites
 	 */
@@ -124,7 +124,7 @@ public class Kredit {
 	public double holeTilgung() {
 		return tilgung;
 	}
-	
+
 	/**
 	 * @return Laufzeit dieses Kredites
 	 */

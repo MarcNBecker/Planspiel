@@ -9,22 +9,22 @@ import de.planspiel.spiel.Spiel;
 import de.planspiel.test.SiegbedingungsTest;
 
 public abstract class KonsolenGUI {
-	
+
 	private static boolean testModus = false;
 	private static String inDateiname = "input.txt";
 	private static String outDateiname = "output.txt";
 	public static SiegbedingungsTest jUnitTestKlasse;
-	
+
 	protected static Spiel spiel;
 	protected static BufferedReader reader;
 	protected static PrintWriter writer;
-	
+
 	public KonsolenGUI() {
-		if(spiel != null) {
+		if (spiel != null) {
 			return;
 		}
 		spiel = Spiel.holeSpiel();
-		if(testModus) {
+		if (testModus) {
 			try {
 				reader = new BufferedReader(new FileReader(inDateiname));
 				writer = new PrintWriter(outDateiname);
@@ -36,10 +36,10 @@ public abstract class KonsolenGUI {
 			}
 		} else {
 			reader = new BufferedReader(new InputStreamReader(System.in));
-			writer = new PrintWriter(System.out, true);	
+			writer = new PrintWriter(System.out, true);
 		}
 	}
-	
+
 	public static void setzeTestModus(boolean bTestModus) {
 		testModus = bTestModus;
 	}
@@ -48,7 +48,7 @@ public abstract class KonsolenGUI {
 		jUnitTestKlasse = oJUnitTestKlasse;
 		setzeTestModus(bTestModus);
 	}
-	
+
 	public static void setzeTestModus(boolean bTestModus, String sInDateiname, String sOutDateiname) {
 		inDateiname = sInDateiname;
 		outDateiname = sOutDateiname;
@@ -56,16 +56,17 @@ public abstract class KonsolenGUI {
 	}
 
 	public static void setzeTestModus(boolean bTestModus, String sInDateiname, String sOutDateiname, SiegbedingungsTest oJUnitTestKlasse) {
-		jUnitTestKlasse = oJUnitTestKlasse;	
+		jUnitTestKlasse = oJUnitTestKlasse;
 		setzeTestModus(bTestModus, sInDateiname, sOutDateiname);
 	}
-	
+
 	public static void close() {
 		try {
 			reader.close();
 			writer.close();
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 	}
-	
+
 	public abstract void run();
 }

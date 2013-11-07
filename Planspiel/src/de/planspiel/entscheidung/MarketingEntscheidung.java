@@ -26,8 +26,7 @@ public class MarketingEntscheidung extends Entscheidung {
 	 *            beeinflusst die Wahrscheinlichkeit, dass ein neuer Kunde das
 	 *            Unternehmen kennenlernt
 	 */
-	public MarketingEntscheidung(Unternehmenskette kette, Standort standort,
-			double betrag) {
+	public MarketingEntscheidung(Unternehmenskette kette, Standort standort, double betrag) {
 		super(kette);
 		this.standort = standort;
 		this.betrag = betrag;
