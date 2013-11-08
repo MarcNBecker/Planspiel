@@ -5,7 +5,7 @@ import de.planspiel.spiel.Spiel;
 /**
  * Klasse zur Organisation von Filialen
  * 
- * @author Daniel
+ * @author Daniel Degraf
  * 
  */
 public class Filiale {
