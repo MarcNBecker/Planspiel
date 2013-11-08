@@ -19,6 +19,11 @@ import de.planspiel.konsolengui.KonsolenGUI;
 import de.planspiel.konsolengui.SpielBeendenGUI;
 import de.planspiel.konsolengui.SpielStartenGUI;
 
+/**
+ * Klasse zur Verwaltung des kompletten Spiels
+ * @author Marc Becker
+ *
+ */
 public class Spiel {
 
 	public static void main(String[] args) {
@@ -40,10 +45,7 @@ public class Spiel {
 	private Marktanteil aktuellerMarktanteil;
 
 	/**
-	 * Startet ein neues Spiel
-	 * 
-	 * @param rundenzahl
-	 *            Zahl der Runden, die das Spiel läuft
+	 * Erstellt ein neues Spiel mit 12 Runden
 	 */
 	public Spiel() {
 		Spiel.spiel = this;
@@ -53,7 +55,11 @@ public class Spiel {
 		this.kettenListe = new Vector<Unternehmenskette>();
 		this.haendlerListe = new Vector<Haendler>();
 	}
-
+	
+	/**
+	 * Erstellt ein neues Spiel mit variabler Rundenzahl
+	 * @param rundenzahl Anzahl der Runden, die gespielt werden sollen
+	 */
 	public Spiel(int rundenzahl) {
 		this();
 		this.rundenzahl = rundenzahl;

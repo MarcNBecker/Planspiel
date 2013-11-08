@@ -1,5 +1,10 @@
 package de.planspiel.cafe;
 
+/**
+ * Definition eines Standorts
+ * @author Marc Becker
+ */
+
 public enum Standorttyp {
 	Standort1(5000, 1000, 100, 200, 5), // Test-Standort
 	Standort2(2000, 100000, 3200, 12800, 4),

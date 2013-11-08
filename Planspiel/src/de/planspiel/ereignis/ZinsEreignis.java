@@ -7,7 +7,7 @@ import de.planspiel.spiel.Zufall;
 /**
  * Proof of concept für ein Eregnis
  * 
- * @author D059166
+ * @author Marc Becker
  * 
  */
 public class ZinsEreignis implements Ereignis {

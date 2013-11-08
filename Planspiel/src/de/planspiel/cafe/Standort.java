@@ -6,9 +6,8 @@ import de.planspiel.spiel.Spiel;
 import de.planspiel.spiel.Zufall;
 
 /**
- * 
+ * Klasse zur Verwaltung des Standortes
  * @author Marc Becker
- * 
  */
 public class Standort {
 

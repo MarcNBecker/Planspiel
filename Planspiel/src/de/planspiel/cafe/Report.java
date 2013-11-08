@@ -9,7 +9,7 @@ import de.planspiel.spiel.Spiel;
  * Organisation der Rundenstände für jede Unternehmenskette gibt es pro Runde
  * einen Report, der alle Zwischenergebnisse aufnimmt
  * 
- * @author Ann-Kathrin
+ * @author Ann-Kathrin, Marc Becker
  * 
  */
 
@@ -53,17 +53,6 @@ public class Report {
 		this.kasse = kette.holeKasse();
 		this.startGesamtkapital = kette.berechnenGesamtkapital();
 		this.startFremdkapital = kette.berechnenFremdkapital();
-	}
-
-	/**
-	 * Berechnet das Rundenergebnis, indem alle addierten Kosten von den Erlösen
-	 * abgezogen werden
-	 * 
-	 * @deprecated
-	 */
-	public double berechnenRundenergebnis() {
-		double kosten = this.holeAnschaffungskosten() + this.holeUnterhaltungskosten() + this.holePersonalkosten() + this.holeKreditkosten() + this.holeMarketingkosten() + this.holeRohstoffkosten();
-		return this.holeUmsatzerloese() + this.holeSonstigeErloese() - kosten;
 	}
 
 	/**

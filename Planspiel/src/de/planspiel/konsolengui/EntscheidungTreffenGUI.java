@@ -21,6 +21,13 @@ import de.planspiel.entscheidung.RohstoffEntscheidung;
 import de.planspiel.entscheidung.VerkaufspreisEntscheidung;
 import de.planspiel.ereignis.Ereignis;
 
+/**
+ * Interpreter der DSL für alle Entscheidungsspezifischen Befehle
+ * Hier werden alle Befehle interpretiert, die während einer Spielrunde vom Spiel entgegengenommen werden können
+ * @author Marc Becker
+ *
+ */
+
 public class EntscheidungTreffenGUI extends KonsolenGUI {
 
 	private Vector<Ereignis> ereignisse = new Vector<Ereignis>();

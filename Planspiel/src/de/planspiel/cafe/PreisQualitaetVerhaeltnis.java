@@ -1,5 +1,11 @@
 package de.planspiel.cafe;
 
+/**
+ * Klasse zur Darstellung des Zusammenhanges zwischen Qualität und Preis
+ * 
+ * @author Marc Becker
+ */
+
 public class PreisQualitaetVerhaeltnis {
 
 	/**

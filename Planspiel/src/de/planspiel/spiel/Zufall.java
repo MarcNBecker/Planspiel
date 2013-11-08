@@ -11,7 +11,7 @@ import java.util.Random;
  * Kann zu Testzwecken verwendet werden, indem Testmodus und Testentscheidung
  * und Testzufallszahl gesetzt werden.
  * 
- * @author Ann-Kathrin Gessat
+ * @author Ann-Kathrin Gessat, Marc Becker
  * 
  */
 

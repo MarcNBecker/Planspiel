@@ -4,7 +4,7 @@ package de.planspiel.cafe;
  * 
  * Klasse zur Simulation von Krediten
  * 
- * @author D059166
+ * @author Marc Becker
  * 
  */
 public class Kredit {

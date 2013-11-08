@@ -2,6 +2,11 @@ package de.planspiel.cafe;
 
 import java.util.Vector;
 
+/**
+ * Klasse zur Verwaltung einer VerkaufsListe pro Spieler
+ * @author Natalie
+ *
+ */
 public class VerkaufsListe extends ProduktVerwalter {
 	private Unternehmenskette kette;
 

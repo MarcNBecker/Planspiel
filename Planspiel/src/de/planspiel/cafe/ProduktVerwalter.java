@@ -5,7 +5,7 @@ import java.util.Vector;
 /**
  * Abstrakte Klasse für alle Verwalter eines Produkts
  * 
- * @author Marc
+ * @author Marc Becker, Natalie
  */
 public abstract class ProduktVerwalter {
 

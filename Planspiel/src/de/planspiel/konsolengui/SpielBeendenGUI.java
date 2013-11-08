@@ -4,6 +4,11 @@ import java.util.Vector;
 
 import de.planspiel.cafe.Unternehmenskette;
 
+/**
+ * Interpreter, der keine Befehle entgegennimmt, aber vom Spiel zum Ende aufgerufen wird,
+ * um das Ergebnis an den globalen Interpreter out-Stream weiterzugeben
+ * @author Marc Becker
+ */
 public class SpielBeendenGUI extends KonsolenGUI {
 
 	public void run() {

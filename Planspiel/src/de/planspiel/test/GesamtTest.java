@@ -8,6 +8,10 @@ import de.planspiel.konsolengui.KonsolenGUI;
 import de.planspiel.spiel.Spiel;
 import de.planspiel.spiel.Zufall;
 
+/**
+ * Erster Gesamttest mit 2 Spielern über 3 Runden
+ * @author Marc Becker
+ */
 public class GesamtTest extends SiegbedingungsTest {
 
 	private Spiel spiel;
