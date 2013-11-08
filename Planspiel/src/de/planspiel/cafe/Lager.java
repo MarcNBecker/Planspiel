@@ -5,7 +5,7 @@ import java.util.Vector;
 /**
  * Klasse zur Organisation der Produktbestände eines Unternehmens
  * 
- * @author Natalie
+ * @author Natalie Buchner
  * 
  */
 public class Lager extends ProduktVerwalter {

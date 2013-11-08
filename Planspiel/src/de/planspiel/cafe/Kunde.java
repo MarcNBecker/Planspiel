@@ -7,7 +7,7 @@ import de.planspiel.spiel.Zufall;
 /**
  * Klasse zur Organisation des Kunden
  * 
- * @author Daniel, Max, Marc Becker
+ * @author Daniel Degraf, Maximilian Igers, Marc Becker
  */
 public class Kunde {
 

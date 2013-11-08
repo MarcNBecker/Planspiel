@@ -5,7 +5,7 @@ import de.planspiel.spiel.Zufall;
 /**
  * Klasse zur Organisation des Händlers
  * 
- * @author Natalie
+ * @author Natalie Buchner
  * 
  */
 public class Haendler extends ProduktVerwalter {

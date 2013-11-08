@@ -3,7 +3,7 @@ package de.planspiel.cafe;
 /**
  * Verschiedene Präferenzen, die einem Kunden zugordnet werden.
  * 
- * @author Daniel
+ * @author Daniel Degraf
  * 
  */
 public enum Praeferenz {
