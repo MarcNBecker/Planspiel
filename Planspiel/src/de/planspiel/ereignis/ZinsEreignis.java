@@ -20,6 +20,11 @@ public class ZinsEreignis implements Ereignis {
 		this.gui = gui;
 	}
 
+	/**
+	 * Führt das Ereignis aus in Runde 1. Bei allen anderen Runden bestimmt der
+	 * Zufall, ob das Ereignis ausgeführt wird oder nicht. Bei Ausführung wird
+	 * ein neuer Zinssatz für Kredite festgelegt.
+	 */
 	@Override
 	public void starten() {
 		if (Zufall.treffenEntscheidung(2.0 / 3.0) || holeRunde() == 1) {
@@ -33,7 +38,8 @@ public class ZinsEreignis implements Ereignis {
 	}
 
 	/**
-	 * @return Liefert einen String zurück, der über den aktuellen Zinssatz für Kredite Auskunft gibt
+	 * @return Liefert einen String zurück, der über den aktuellen Zinssatz für
+	 *         Kredite Auskunft gibt
 	 */
 	@Override
 	public String toString() {

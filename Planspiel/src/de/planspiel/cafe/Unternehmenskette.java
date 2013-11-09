@@ -154,6 +154,17 @@ public class Unternehmenskette {
 		}
 	}
 
+	/**
+	 * Verbuchen der Kosten, die im Laufe einer Spielrunde anfallen können. Über
+	 * Kostenverursacher genaue Zuodnung zum jeweiligen Kostenbereich
+	 * 
+	 * @param verursacher
+	 *            Gibt an, in welchem Bereich die Kosten angefallen sind
+	 * @param betrag
+	 *            Gibt die Höhe der Kosten an
+	 * @return true oder false, je nachdem, ob die Verbuchung der Kosten
+	 *         geklappt hat oder nicht
+	 */
 	public boolean verbuchenKosten(Kostenverursacher verursacher, double betrag) {
 		if (verursacher == null) {
 			return false;
@@ -190,6 +201,14 @@ public class Unternehmenskette {
 		return true;
 	}
 
+	/**
+	 * Verbuchen der Erträge, die im Laufe einer Spielrunde anfallen können. Über
+	 * Ertragsverursacher genaue Zuodnung zum jeweiligen Ertragsbereich
+	 * @param verursacher
+	 * 				Gibt an, in welchem Bereich Ertrag entstanden ist
+	 * @param betrag
+	 * 				Gibt die Höhe des Ertrags an
+	 */
 	public void verbuchenErtrag(Ertragsverursacher verursacher, double betrag) {
 		if (verursacher == null) {
 			return;

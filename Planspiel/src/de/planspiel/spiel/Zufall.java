@@ -28,7 +28,7 @@ public class Zufall {
 	private static double testQualitaet = 0.0;
 
 	/**
-	 * Zufallszahl zwischen 0 und Grenze optional auch mit Untergrenze
+	 * return Zufallszahl zwischen 0 und Grenze optional auch mit Untergrenze
 	 */
 	public static double generierenZufallszahl(double grenze) {
 		if (Zufall.holeTestModus()) {
@@ -105,6 +105,12 @@ public class Zufall {
 		}
 	}
 
+	/**
+	 * Liest Zufallszahl aus Datei aus bei Testmodus oder generiert
+	 * normalverteilte Zufallszahl
+	 * Im Protokollmodus wird die Zufallszahl noch protokolliert
+	 * @return normalverteilte Zufallszahl
+	 */
 	public static double generierenNVZufallszahl() {
 		if (Zufall.holeDateiTestModus() && Zufall.holeTestModus()) {
 			return Zufall.leseZufallszahlAusDatei();
