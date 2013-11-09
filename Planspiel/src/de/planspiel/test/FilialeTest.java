@@ -68,7 +68,7 @@ public class FilialeTest {
 	 */
 
 	@After
-	public void zur�cksetzen() {
+	public void zuruecksetzen() {
 		ukette.holeLager().einlagern(new Produkt(Produkttyp.KAFFEE, 10));
 	}
 }

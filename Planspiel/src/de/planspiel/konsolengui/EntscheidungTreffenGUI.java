@@ -33,7 +33,11 @@ import de.planspiel.ereignis.Ereignis;
 public class EntscheidungTreffenGUI extends KonsolenGUI {
 
 	private Vector<Ereignis> ereignisse = new Vector<Ereignis>();
-
+	
+	/**
+	 * @see de.planspiel.konsolengui.KonsolenGUI#run()
+	 */
+	@Override
 	public void run() {
 		for (Ereignis e : ereignisse) {
 			writer.println(e.toString());
@@ -208,6 +212,12 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 		writer.println("---------- SIMULATION GESTARTET ----------");
 	}
 
+	/**
+	 * Findet einen Standort anhand des Standort Namens
+	 * @param name Name des Standort
+	 * @return Standort
+	 * @throws Exception wenn zu dem angegebenen Namen kein Standort existiert
+	 */
 	private Standort findenStandort(String name) throws Exception {
 		for (int i = 0; i < spiel.holeStandortListe().size(); i++) {
 			Standort s = spiel.holeStandortListe().get(i);
@@ -218,6 +228,13 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 		throw new Exception();
 	}
 
+	/**
+	 * Findet die Filiale einer Unternehmenskette an einem Standort
+	 * @param kette Die Unternehmenskette
+	 * @param standort Der Standort, wo die Filiale sich befinden soll
+	 * @return die Filiale
+	 * @throws Exception Wirft eine Exception, wenn an dem angegebenen Standort keine Filiale existiert
+	 */
 	private Filiale findenFiliale(Unternehmenskette kette, Standort standort) throws Exception {
 		for (int i = 0; i < standort.holeFilialenListe().size(); i++) {
 			Filiale f = standort.holeFilialenListe().get(i);
@@ -228,6 +245,12 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 		throw new Exception();
 	}
 
+	/**
+	 * Findet den entsprechenden Händler anhand des Namens
+	 * @param name Name des Händlers
+	 * @return Der Händler
+	 * @throws Exception Wirft eine Exception, wenn kein Händler mit dem Namen existiert
+	 */
 	private Haendler findenHaendler(String name) throws Exception {
 		for (int i = 0; i < spiel.holeHaendlerListe().size(); i++) {
 			Haendler h = spiel.holeHaendlerListe().get(i);
@@ -238,11 +261,21 @@ public class EntscheidungTreffenGUI extends KonsolenGUI {
 		throw new Exception();
 	}
 
+	/**
+	 * Rundet eine Zahl
+	 * @param i die Zahl
+	 * @param s Anzahl der Stellen, die nach dem Runden erhalten bleiben sollen
+	 * @return die gerundete Zahl
+	 */
 	private double runden(double i, int s) {
 		return Math.round(i * Math.pow(10, s)) / Math.pow(10, s);
 		// return i;
 	}
-
+	
+	/**
+	 * Fügt ein Ereignis dem Interpreter zur Ausgabe hinzu
+	 * @param e das Ereignis
+	 */
 	public void hinzufuegenEreignis(Ereignis e) {
 		ereignisse.add(e);
 	}

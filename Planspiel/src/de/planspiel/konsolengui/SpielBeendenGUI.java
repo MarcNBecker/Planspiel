@@ -12,7 +12,11 @@ import de.planspiel.cafe.Unternehmenskette;
  * @author Marc Becker
  */
 public class SpielBeendenGUI extends KonsolenGUI {
-
+	
+	/**
+	 * @see de.planspiel.konsolengui.KonsolenGUI#run()
+	 */
+	@Override
 	public void run() {
 		writer.println("---------- SPIEL BEENDET ----------");
 		writer.println("---------- GEWINNER ----------");

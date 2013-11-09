@@ -9,7 +9,11 @@ import de.planspiel.cafe.Unternehmenskette;
  * @author Marc Becker
  */
 public class SpielStartenGUI extends KonsolenGUI {
-
+	
+	/**
+	 * @see de.planspiel.konsolengui.KonsolenGUI#run()
+	 */
+	@Override
 	public void run() {
 		writer.println("---------- SPIELER HINZUFÜGEN ----------");
 		while (true) {

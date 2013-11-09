@@ -26,6 +26,11 @@ public abstract class KonsolenGUI {
 	protected static BufferedReader reader;
 	protected static PrintWriter writer;
 
+	/**
+	 * Erstellt die statischen Attribute der Interpreter
+	 * Im Testmodus liest der Interpreter aus einer Datei aus.
+	 * Im normalen Spielablauf werden Javas STDIN und STDOUT herangezogen
+	 */
 	public KonsolenGUI() {
 		if (spiel != null) {
 			return;
@@ -46,27 +51,55 @@ public abstract class KonsolenGUI {
 			writer = new PrintWriter(System.out, true);
 		}
 	}
-
+	
+	/**
+	 * Setzt den Testmodus
+	 * @param bTestModus TestModus
+	 */
 	public static void setzeTestModus(boolean bTestModus) {
 		testModus = bTestModus;
 	}
 
+	/**
+	 * Setzt den Testmodus unter angabe einer Klasse, die die Siegbedingung definiert
+	 * @param bTestModus TestModus
+	 * @param oJUnitTestKlasse Klasse die zur Verwaltung der Siegbedingung und Siegerfüllung vorhanden ist.
+	 * 			Die abstrakte Klasse SiegbedingungsTest sollte eine Oberklasse vom aufrufenden JUnit Test sein 
+	 */
 	public static void setzeTestModus(boolean bTestModus, SiegbedingungsTest oJUnitTestKlasse) {
 		jUnitTestKlasse = oJUnitTestKlasse;
 		setzeTestModus(bTestModus);
 	}
 
+	/**
+	 * Setzt des Testmodus unter Angabe der Dateinamen für Input und Output
+	 * @param bTestModus TestModus
+	 * @param sInDateiname Dateiname, der Datei mit den Input Befehlen
+	 * @param sOutDateiname Dateiname, der Datei, die für den Output zuständig ist
+	 */
 	public static void setzeTestModus(boolean bTestModus, String sInDateiname, String sOutDateiname) {
 		inDateiname = sInDateiname;
 		outDateiname = sOutDateiname;
 		setzeTestModus(bTestModus);
 	}
-
+	
+	/**
+	 * Setzt den TestModus unter Angabe von sowohl Dateinamen für Input und Output, als auch einer Klasse zur
+	 * Verwaltung der Siegbedingung
+	 * @param bTestModus TestModus
+	 * @param sInDateiname Dateiname, der Datei mit den Input Befehlen
+	 * @param sOutDateiname Dateiname, der Datei, die für den Output zuständig ist
+	 * @param oJUnitTestKlasse Klasse die zur Verwaltung der Siegbedingung und Siegerfüllung vorhanden ist.
+	 * 			Die abstrakte Klasse SiegbedingungsTest sollte eine Oberklasse vom aufrufenden JUnit Test sein 
+	 */
 	public static void setzeTestModus(boolean bTestModus, String sInDateiname, String sOutDateiname, SiegbedingungsTest oJUnitTestKlasse) {
 		jUnitTestKlasse = oJUnitTestKlasse;
 		setzeTestModus(bTestModus, sInDateiname, sOutDateiname);
 	}
-
+	
+	/**
+	 * Schließt alle von den Interpreter verwendeten Ressourcen
+	 */
 	public static void close() {
 		try {
 			reader.close();
@@ -74,6 +107,8 @@ public abstract class KonsolenGUI {
 		} catch (Exception e) {
 		}
 	}
-
+	/**
+	 * Führt den Interpreter aus und interpretiert die Befehle
+	 */
 	public abstract void run();
 }
