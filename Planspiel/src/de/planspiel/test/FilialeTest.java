@@ -1,5 +1,9 @@
 package de.planspiel.test;
 
+/**
+ * @author Daniel Degraf
+ */
+ 
 import static org.junit.Assert.*;
 
 import org.junit.*;
@@ -64,7 +68,7 @@ public class FilialeTest {
 	 */
 
 	@After
-	public void zurücksetzen() {
+	public void zurï¿½cksetzen() {
 		ukette.holeLager().einlagern(new Produkt(Produkttyp.KAFFEE, 10));
 	}
 }
