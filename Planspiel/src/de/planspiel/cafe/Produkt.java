@@ -38,7 +38,6 @@ public class Produkt {
 	 *            Double-Wert, der die Produktqualitaet angibt
 	 * @param ekpreis
 	 *            Double-Wert, der den Einkaufspreis angibt
-	 * @author Natalie
 	 */
 	public Produkt(Produkttyp name, double qualitaet, double ekpreis) {
 		this.name = name;
@@ -74,7 +73,6 @@ public class Produkt {
 	 *            verglichen werden
 	 * @return true falls die Produkte übereinstimmen, false falls die Produkte
 	 *         nicht übereinstimmen
-	 * @author Natalie
 	 */
 	public boolean vergleichen(Produkt produkt) {
 		// Prüfen: Name gleich, Qualität gleich oder höher, Preis gleich oder
@@ -94,7 +92,6 @@ public class Produkt {
 	 *            Produkt, das mit dem Existierenden verschmolzen wird
 	 * @return null falls es sich nicht um gleichnamige Produkte handet, Produkt
 	 *         falls es sich um die gleichen Produkte handelt
-	 * @author Natalie
 	 */
 	public Produkt verschmelzen(Produkt produkt) {
 		if (!(produkt.holeName().equals(this.holeName())))

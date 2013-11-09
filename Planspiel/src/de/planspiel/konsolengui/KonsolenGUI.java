@@ -9,9 +9,10 @@ import de.planspiel.spiel.Spiel;
 import de.planspiel.test.SiegbedingungsTest;
 
 /**
- * Abstrakte Klasse aller Interpreter, die Befehle der DSL entgegennehmen
- * Allen Interpreter stehen ein globaler in und out Stream zur Verfügung,
- * welche von der abstrakten Klasse verwaltet werden.
+ * Abstrakte Klasse aller Interpreter, die Befehle der DSL entgegennehmen Allen
+ * Interpreter stehen ein globaler in und out Stream zur Verfügung, welche von
+ * der abstrakten Klasse verwaltet werden.
+ * 
  * @author Marc Becker
  */
 public abstract class KonsolenGUI {

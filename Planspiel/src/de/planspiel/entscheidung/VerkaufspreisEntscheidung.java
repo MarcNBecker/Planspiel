@@ -8,7 +8,7 @@ import de.planspiel.cafe.Unternehmenskette;
  * Abstraktion einer Entscheidung zur Änderung des Verkaufspreises eines
  * Produkts
  * 
- * @author Marc
+ * @author Marc Becker
  */
 public class VerkaufspreisEntscheidung extends Entscheidung {
 

@@ -29,7 +29,6 @@ public class Lager extends ProduktVerwalter {
 	 * 
 	 * @param produkt
 	 *            Produkt, das eingelagert werden soll
-	 * @author Natalie
 	 */
 	public void einlagern(Produkt produkt) {
 		Produkt gesuchtesProdukt = suchenProdukt(produkt.holeName());
@@ -53,7 +52,6 @@ public class Lager extends ProduktVerwalter {
 	 * @return Null, falls das Produkt nicht vorhanden ist, ansonsten ein neues
 	 *         Produkt, welches die ausgelagerte Menge enthält sowie
 	 *         entsprechende Qualität und Preis
-	 * @author Natalie
 	 */
 	public Produkt auslagern(Produkttyp name, int menge) {
 		Produkt gesuchtesProdukt = suchenProdukt(name);
@@ -90,7 +88,6 @@ public class Lager extends ProduktVerwalter {
 	 *            Produkte enthält
 	 * @param haendler
 	 *            Haendler-Objekt, das angibt bei welchem Händler gekauft wird
-	 * @author Natalie
 	 */
 	public void einkaufen(Vector<Produkt> einkaufsliste, Haendler haendler) {
 		Produkt einkaufProdukt = null;
@@ -115,7 +112,6 @@ public class Lager extends ProduktVerwalter {
 	 * Einkaufspreis
 	 * 
 	 * @return 0.0 Falls nichts auf Lager ist, ansonsten Summe der Produktwerte
-	 * @author Natalie
 	 */
 	public double berechnenWert() {
 		double wert = 0.0;

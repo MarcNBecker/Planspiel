@@ -32,10 +32,18 @@ public class ZinsEreignis implements Ereignis {
 		}
 	}
 
+	/**
+	 * @return Liefert einen String zurück, der über den aktuellen Zinssatz für Kredite Auskunft gibt
+	 */
+	@Override
 	public String toString() {
 		return "Ereignis: Zinssatz liegt jetzt bei " + (Math.round(Kredit.holeAktuellerZinssatz() * 10000.0) / 100.0) + "%";
 	}
 
+	/**
+	 * 
+	 * @return Liefert die Runde der Entscheidung zurück
+	 */
 	public int holeRunde() {
 		return runde;
 	}

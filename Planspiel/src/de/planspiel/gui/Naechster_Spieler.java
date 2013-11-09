@@ -9,6 +9,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 
+/**
+ * 
+ * @author Ann-Kathrin Gessat
+ *
+ */
 public class Naechster_Spieler extends JDialog {
 
 	private static final long serialVersionUID = 1L;

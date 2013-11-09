@@ -9,7 +9,7 @@ import de.planspiel.spiel.Spiel;
  * Organisation der Rundenstände für jede Unternehmenskette gibt es pro Runde
  * einen Report, der alle Zwischenergebnisse aufnimmt
  * 
- * @author Ann-Kathrin, Marc Becker
+ * @author Ann-Kathrin Gessat, Marc Becker
  * 
  */
 
@@ -36,8 +36,6 @@ public class Report {
 	private double umsatzerloese;
 	private double sonstigeerloese;
 	private Marktanteil marktanteil;
-
-	// Attribut für Ereignisse + getter, setter
 
 	/**
 	 * Erzeugt einen neuen Report für eine bestimmte Unternehmenskette

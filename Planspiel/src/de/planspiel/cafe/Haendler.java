@@ -14,6 +14,9 @@ public class Haendler extends ProduktVerwalter {
 
 	/**
 	 * Erzeugt einen neuen Händler und generiert direkt ein erstes Angebot
+	 * 
+	 * @param name
+	 * 			Name des Händlers
 	 */
 	public Haendler(Haendlertyp name) {
 		super();
@@ -25,7 +28,6 @@ public class Haendler extends ProduktVerwalter {
 	 * Generiert für alle möglichen Produkttypen ein Angebot mit zufälligen
 	 * Qualitäten und Preisen
 	 * 
-	 * @author Natalie
 	 */
 	public void generierenAngebot() {
 		leeren();
@@ -39,6 +41,10 @@ public class Haendler extends ProduktVerwalter {
 		}
 	}
 
+	/**
+	 * 
+	 * @return Liefert den Namen des Händlers zurück
+	 */
 	public String holeName() {
 		return name.toString();
 	}

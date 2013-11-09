@@ -1,7 +1,7 @@
 package de.planspiel.test;
 
 /**
- * @author Daniel
+ * @author Daniel Degraf
  */
 
 import org.junit.*;

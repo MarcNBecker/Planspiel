@@ -5,7 +5,7 @@ import de.planspiel.cafe.*;
 /**
  * Abstraktion einer Entscheidung zur Eröffnung einer Filiale
  * 
- * @author Marc
+ * @author Marc Becker
  */
 public class FilialeEroeffnenEntscheidung extends Entscheidung {
 

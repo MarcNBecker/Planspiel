@@ -6,7 +6,7 @@ import de.planspiel.cafe.Unternehmenskette;
 /**
  * Abstraktion einer Entscheidung zur Einstellung von Mitarbeitern
  * 
- * @author Marc
+ * @author Marc Becker
  */
 public class MitarbeiterEinstellenEntscheidung extends Entscheidung {
 

@@ -10,7 +10,7 @@ import de.planspiel.cafe.Unternehmenskette;
 /**
  * Abstraktion einer Entscheidung zum Kauf von Produkten
  * 
- * @author Marc
+ * @author Marc Becker
  */
 public class RohstoffEntscheidung extends Entscheidung {
 

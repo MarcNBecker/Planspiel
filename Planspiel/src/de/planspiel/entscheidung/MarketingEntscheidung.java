@@ -7,7 +7,7 @@ import de.planspiel.cafe.Unternehmenskette;
 /**
  * Abstraktion einer Entscheidung zur Durchführung von Marketing
  * 
- * @author Marc
+ * @author Marc Becker
  */
 public class MarketingEntscheidung extends Entscheidung {
 

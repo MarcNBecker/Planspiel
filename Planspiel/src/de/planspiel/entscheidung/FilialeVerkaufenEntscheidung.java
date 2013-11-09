@@ -6,7 +6,7 @@ import de.planspiel.cafe.Unternehmenskette;
 /**
  * Abstraktion einer Entscheidung zum Verkauf einer Filiale
  * 
- * @author Marc
+ * @author Marc Becker
  */
 public class FilialeVerkaufenEntscheidung extends Entscheidung {
 

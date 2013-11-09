@@ -307,10 +307,18 @@ public class Spiel {
 		rundenEntscheidungen.add(e);
 	}
 
+	/**
+	 * 
+	 * @return Gibt den aktuellen Marktanteil zurück
+	 */
 	public Marktanteil holeAktuellerMarktanteil() {
 		return aktuellerMarktanteil;
 	}
 
+	/**
+	 * Setzt den aktuellen Marktanteil
+	 * @param aktuellerMarktanteil
+	 */
 	public void setzeAktuellerMarktanteil(Marktanteil aktuellerMarktanteil) {
 		this.aktuellerMarktanteil = aktuellerMarktanteil;
 	}

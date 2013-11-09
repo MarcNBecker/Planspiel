@@ -15,6 +15,11 @@ import javax.swing.SwingConstants;
 
 import java.awt.GridLayout;
 
+/**
+ * 
+ * @author Ann-Kathrin Gessat
+ *
+ */
 public class Anlegen_Unternehmenskette extends JDialog {
 
 	private static final long serialVersionUID = 1L;

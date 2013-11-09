@@ -32,6 +32,11 @@ import java.awt.GridLayout;
 
 import javax.swing.ListSelectionModel;
 
+/**
+ * 
+ * @author Ann-Kathrin Gessat
+ *
+ */
 public class Einstellungsbild {
 
 	private JFrame frmEntscheidungen;

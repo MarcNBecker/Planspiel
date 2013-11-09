@@ -5,12 +5,15 @@ import java.util.Vector;
 /**
  * Abstrakte Klasse für alle Verwalter eines Produkts
  * 
- * @author Marc Becker, Natalie
+ * @author Marc Becker, Natalie Buchner
  */
 public abstract class ProduktVerwalter {
 
 	private Vector<Produkt> produktListe;
 
+	/**
+	 * Erzeugt einen neuen Produktverwalter und erzeugt eine Produktliste
+	 */
 	public ProduktVerwalter() {
 		this.produktListe = new Vector<Produkt>();
 	}
@@ -30,7 +33,6 @@ public abstract class ProduktVerwalter {
 	 *            Produkttypen-Wert, der angibt welches Produkt gesucht wird
 	 * @return Null falls das Produkt noch nicht existiert, Produkt wenn es
 	 *         gefunden wurde
-	 * @author Natalie
 	 */
 	public Produkt suchenProdukt(Produkttyp name) {
 		for (int i = 0; i < holeProduktliste().size(); i++) {

@@ -3,8 +3,9 @@ package de.planspiel.konsolengui;
 import de.planspiel.cafe.Unternehmenskette;
 
 /**
- * Interpreter Klasse zur Initialisierung des Spiels.
- * Diese kann neue Spieler hinzufügen und im Test-Modus eine Siegbedingung entgegennehmen
+ * Interpreter Klasse zur Initialisierung des Spiels. Diese kann neue Spieler
+ * hinzufügen und im Test-Modus eine Siegbedingung entgegennehmen
+ * 
  * @author Marc Becker
  */
 public class SpielStartenGUI extends KonsolenGUI {

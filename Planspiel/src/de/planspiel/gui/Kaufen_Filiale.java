@@ -15,6 +15,11 @@ import java.awt.GridLayout;
 import javax.swing.JTextField;
 import java.awt.Component;
 
+/**
+ * 
+ * @author Ann-Kathrin Gessat
+ *
+ */
 public class Kaufen_Filiale extends JDialog {
 
 	private static final long serialVersionUID = 1L;

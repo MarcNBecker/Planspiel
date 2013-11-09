@@ -9,6 +9,11 @@ import java.awt.FlowLayout;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
+/**
+ * 
+ * @author Ann-Kathrin Gessat
+ *
+ */
 public class Startbild {
 
 	private JFrame frmPlanspiel;

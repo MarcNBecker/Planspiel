@@ -13,6 +13,11 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 
+/**
+ * 
+ * @author Ann-Kathrin Gessat
+ *
+ */
 public class Kaufen_Rohstoffe extends JDialog {
 
 	private static final long serialVersionUID = 1L;

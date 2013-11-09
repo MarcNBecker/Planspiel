@@ -10,7 +10,7 @@ import de.planspiel.spiel.Spiel;
 /**
  * Abstraktion einer Entscheidung zur Entlassung von Mitarbeitern
  * 
- * @author Marc
+ * @author Marc Becker
  */
 public class MitarbeiterEntlassenEntscheidung extends Entscheidung {
 

@@ -24,6 +24,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
+/**
+ * 
+ * @author Maximilian Igers
+ *
+ */
 public class Ergebnisbild {
 	private JFrame frmErgebnisDerLetzten;
 	private JTable Lagerbestand;

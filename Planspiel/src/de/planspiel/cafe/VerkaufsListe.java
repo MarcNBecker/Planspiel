@@ -4,7 +4,7 @@ import java.util.Vector;
 
 /**
  * Klasse zur Verwaltung einer VerkaufsListe pro Spieler
- * @author Natalie
+ * @author Natalie Buchner
  *
  */
 public class VerkaufsListe extends ProduktVerwalter {

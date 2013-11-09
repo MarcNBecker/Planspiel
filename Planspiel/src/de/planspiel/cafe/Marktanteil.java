@@ -7,7 +7,7 @@ import de.planspiel.spiel.Spiel;
 /**
  * Klasse zur Organisation von Marktanteilen
  * 
- * @author Ann-Kathrin
+ * @author Ann-Kathrin Gessat
  * 
  */
 public class Marktanteil {
@@ -30,6 +30,15 @@ public class Marktanteil {
 		return gesamtKunden;
 	}
 
+	/**
+	 * Fügt das Produkt, das verkauft wurde, in die Verkaufsliste der
+	 * Unternehmenskette ein, zählt die Gesamtanzahl an Kunden und die Anzahl
+	 * der Kunden der Unternehmenskette um eins hoch und fügt diese Werte
+	 * ebenfalls in die Verkaufsliste ein.
+	 * 
+	 * @param kette
+	 *            Unternehmenskette, die etwas verkauft hat
+	 */
 	public void mitteilenVerkauf(Unternehmenskette kette) {
 		if (!verkaufsListe.containsKey(kette)) {
 			verkaufsListe.put(kette, 0);

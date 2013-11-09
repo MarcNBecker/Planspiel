@@ -2,6 +2,7 @@ package de.planspiel.cafe;
 
 /**
  * Definition der Händler
+ * 
  * @author Marc Becker
  */
 

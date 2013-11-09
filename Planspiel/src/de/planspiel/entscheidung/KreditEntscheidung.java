@@ -5,7 +5,7 @@ import de.planspiel.cafe.Unternehmenskette;
 /**
  * Abstraktion einer Entscheidung zum Aufnehmen eines Kredits
  * 
- * @author Marc
+ * @author Marc Becker
  */
 public class KreditEntscheidung extends Entscheidung {
 

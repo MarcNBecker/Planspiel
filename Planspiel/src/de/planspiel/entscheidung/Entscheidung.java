@@ -7,7 +7,7 @@ import de.planspiel.spiel.Spiel;
  * Abstrakte Klasse für eine Entscheidung Die Funktion dieser ist sich darum zu
  * kümmern, dass das Spiel alle Entscheidungen mitgeteilt bekommt
  * 
- * @author Marc
+ * @author Marc Becker
  * 
  */
 public abstract class Entscheidung {
