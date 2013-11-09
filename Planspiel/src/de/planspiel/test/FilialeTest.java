@@ -1,8 +1,4 @@
 package de.planspiel.test;
-
-/**
- * @author Daniel Degraf
- */
  
 import static org.junit.Assert.*;
 
@@ -18,6 +14,10 @@ import de.planspiel.cafe.Standorttyp;
 import de.planspiel.cafe.Unternehmenskette;
 import de.planspiel.spiel.Spiel;
 
+/**
+ * Test der Klasse Filiale, der die Methoden Verkaufen und pruefenKundenprodukt testet.
+ * @author Daniel Degraf
+ */
 public class FilialeTest {
 
 	private Standort standort;
@@ -48,9 +48,6 @@ public class FilialeTest {
 	@Test
 	public void testenVerkaufen() {
 		fil1.verkaufen(Produkttyp.KAFFEE, 10);
-		// Produkt vergleichsProdukt = new Produkt(Produkttyp.KAFFEE, 20);
-		// assertEquals(ukette.holeLager().suchenProdukt(Produkttyp.KAFFEE).holeMenge(),
-		// 10);
 		assertEquals(fil1.holeFreieKapazitaet(), 99);
 	}
 
@@ -62,11 +59,7 @@ public class FilialeTest {
 		assertEquals(fil1.pruefenKundenprodukt(kundenProdukt), true);
 	}
 
-	/*
-	 * @TestMietkosten und Gehalt muss hier festgelegt werden public void
-	 * testenBerechnenKosten() { fil1.berechnenKosten(); }
-	 */
-
+	
 	@After
 	public void zuruecksetzen() {
 		ukette.holeLager().einlagern(new Produkt(Produkttyp.KAFFEE, 10));

@@ -16,6 +16,13 @@ import de.planspiel.cafe.Unternehmenskette;
 import de.planspiel.spiel.Spiel;
 import de.planspiel.spiel.Zufall;
 
+/**
+ * Test der Klasse Lager, der die Methoden Einkaufen, Einlagern und Auslagern testet, 
+ * wobei bei testenAuslagern zwei verschiedene Fälle getestet werden: 
+ * Fall 1: Die noch im Lager vorhandene Menge des Produkts ist größer als die auszulagernde Menge
+ * Fall 2: Die noch im Lager vorhandene Menge des Produkts ist kleiner als die auszulagernde Menge
+ * @author Natalie Buchner
+ */
 public class LagerTest {
 
 	private Spiel spiel;
@@ -37,7 +44,7 @@ public class LagerTest {
 	}
 
 	@Test
-	public void testenProduktEinlagern() {
+	public void testenEinlagern() {
 		einkaufsliste.add(new Produkt(Produkttyp.KAFFEE, 0.5, 4));
 		lager.einlagern(einkaufsliste.get(0));
 
@@ -45,9 +52,9 @@ public class LagerTest {
 	}
 
 	@Test
-	public void testenProduktAuslagernMehr() {
-		einkaufsliste.add(new Produkt(Produkttyp.TEE, 50)); // Name und Menge
-															// übergeben
+	public void testenAuslagernMehr() {
+		//Fall 1: Es ist mehr auf Lager als ausgelagert werden soll
+		einkaufsliste.add(new Produkt(Produkttyp.TEE, 50));
 		lager.einlagern(einkaufsliste.get(0));
 		Produkt ausgelagertesProdukt = lager.auslagern(Produkttyp.TEE, 10);
 
@@ -55,9 +62,9 @@ public class LagerTest {
 	}
 
 	@Test
-	public void testenProduktAuslagernWeniger() {
-		einkaufsliste.add(new Produkt(Produkttyp.TEE, 5)); // Name und Menge
-															// übergeben
+	public void testenAuslagernWeniger() {
+		//Fall 2: Es ist weniger auf Lager als ausgelagert werden soll
+		einkaufsliste.add(new Produkt(Produkttyp.TEE, 5));
 		lager.einlagern(einkaufsliste.get(0));
 		Produkt ausgelagertesProdukt = lager.auslagern(Produkttyp.TEE, 10);
 

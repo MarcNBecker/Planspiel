@@ -1,9 +1,5 @@
 package de.planspiel.test;
 
-/**
- * @author Daniel Degraf
- */
-
 import org.junit.*;
 
 import de.planspiel.cafe.Filiale;
@@ -16,6 +12,12 @@ import de.planspiel.cafe.Unternehmenskette;
 import de.planspiel.spiel.Spiel;
 import de.planspiel.spiel.Zufall;
 
+/**
+ * Test der Klasse Kunde, der die Methode simulierenEinkauf testet. Dafür 
+ * ist die Erstellung eines komplexen SUT erforderlich, da diese 
+ * Methode mit einem Großteil aller anderen Klassen interagiert.
+ * @author Daniel Degraf
+ */
 public class KundeTest {
 	private Standort standort;
 

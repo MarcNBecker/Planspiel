@@ -8,6 +8,12 @@ import de.planspiel.cafe.PreisQualitaetVerhaeltnis;
 import de.planspiel.cafe.Produkt;
 import de.planspiel.cafe.Produkttyp;
 
+/**
+ * Test der Klasse PreisQualitaetVerhaeltnis, der die Methode berechnenPreisfaktor testet. 
+ * Es wird überprüft, ob die Berechnung in der Methode dasselbe Ergebnis liefert wie die 
+ * Anwendung der entwickelten Formel
+ * @author Natalie Buchner
+ */
 public class PreisQualitaetVTest {
 
 	Produkt produkt1;
