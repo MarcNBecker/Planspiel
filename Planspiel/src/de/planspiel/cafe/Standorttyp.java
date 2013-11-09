@@ -23,15 +23,17 @@ public enum Standorttyp {
 	 * einzustellen
 	 * 
 	 * @param laufendeFilialkosten
-	 * 				laufende Filialkosten pro Runde
+	 *            laufende Filialkosten pro Runde
 	 * @param startFilialkosten
-	 * 				Start-Filialkosten für die Eröffnung an diesem Standorttypen
+	 *            Start-Filialkosten für die Eröffnung an diesem Standorttypen
 	 * @param minKunden
-	 * 				Mindestanzahl an Kunden, die der Kundeskreis des Standorttypen hat
+	 *            Kunden, die von einen Mitarbeiter bedient werden können
 	 * @param maxKunden
-	 * 				maximale Anzahl an Kunden, die der Kundeskreis des Standorttypen hat
+	 *            Kunden, die von maxMitarbeiter Mitarbeiter bedient werden
+	 *            können
 	 * @param maxMitarbeiter
-	 * 				maximale Anzahl an Mitarbeiter, die sich lohnt einzustellen
+	 *            Mitarbeiteranzahl, ab der sich zusätzliche Mitarbeiter nicht
+	 *            mehr lohnen
 	 */
 	private Standorttyp(double laufendeFilialkosten, double startFilialkosten, int minKunden, int maxKunden, int maxMitarbeiter) {
 		this.laufendeFilialkosten = laufendeFilialkosten;
@@ -59,7 +61,8 @@ public enum Standorttyp {
 
 	/**
 	 * 
-	 * @return Liefert die Mindestanzahl an Kunden des Standorttypen zurück
+	 * @return Liefert Kunden, die von einen Mitarbeiter bedient werden können,
+	 *         zurück
 	 */
 	public int holeMinKunden() {
 		return minKunden;
@@ -67,7 +70,8 @@ public enum Standorttyp {
 
 	/**
 	 * 
-	 * @return Liefert die maximale Anzahl an Kunden des Standorttypen zurück
+	 * @return Liefert Kunden, die von maxMitarbeiter Mitarbeiter bedient werden
+	 *         können, zurück
 	 */
 	public int holeMaxKunden() {
 		return maxKunden;
@@ -75,8 +79,8 @@ public enum Standorttyp {
 
 	/**
 	 * 
-	 * @return Liefert die maximale Anzahl an Mitarbeitern, die sich lohnt
-	 *         einzustellen, des Standorttypen zurück
+	 * @return Liefert Mitarbeiteranzahl, ab der sich zusätzliche Mitarbeiter nicht
+	 *            mehr lohnen zurück
 	 */
 	public int holeMaxMitarbeiter() {
 		return maxMitarbeiter;

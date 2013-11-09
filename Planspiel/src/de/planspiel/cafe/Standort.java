@@ -26,19 +26,8 @@ public class Standort {
 	/**
 	 * Erzeugt einen neuen Standort
 	 * 
-	 * @param laufendeFilialkosten
-	 * @param startFilialkosten
-	 * @param anteilFilialverkauf
-	 *            Prozentualer Anteil an den startFilialkosten, die man bei
-	 *            Verkauf einer Filiale zurückbekommt
-	 * @param minKunden
-	 *            Kunden, die von einen Mitarbeiter bedient werden können
-	 * @param maxKunden
-	 *            Kunden, die von maxMitarbeiter Mitarbeiter bedient werden
-	 *            können
-	 * @param maxMitarbeiter
-	 *            Mitarbeiteranzahl, ab der sich zusätzliche Mitarbeiter nicht
-	 *            mehr lohnen
+	 * @param name
+	 * 			Standorttyp, der alle Eigenschaften enthält
 	 */
 	public Standort(Standorttyp name) {
 		this.name = name;
