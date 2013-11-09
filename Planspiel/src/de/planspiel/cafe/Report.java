@@ -139,9 +139,9 @@ public class Report {
 	}
 
 	/**
-	 * Setzt das Kapital der Kette in der aktuellen Runde
+	 * Setzt die Kasse der Kette in der aktuellen Runde
 	 * 
-	 * @param kapital
+	 * @param kasse
 	 */
 	public void setzeKasse(double kasse) {
 		if (kasse < 0) {

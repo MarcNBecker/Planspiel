@@ -21,9 +21,6 @@ public class Kunde {
 	 * 
 	 * @param standort
 	 *            Gibt an, an welchem Standort der Kunde agiert.
-	 * @param praeferenz
-	 *            Gibt an, welche Praefernez der Kunde hat (siehe ENUM
-	 *            Praeferenz)
 	 */
 	public Kunde(Standort standort) {
 		this.kettenListe = new Vector<Unternehmenskette>();
