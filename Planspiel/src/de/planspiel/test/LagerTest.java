@@ -9,7 +9,6 @@ import org.junit.*;
 import de.planspiel.cafe.Haendler;
 import de.planspiel.cafe.Haendlertyp;
 import de.planspiel.cafe.Lager;
-import de.planspiel.cafe.PreisQualitaetVerhaeltnis;
 import de.planspiel.cafe.Produkt;
 import de.planspiel.cafe.Produkttyp;
 import de.planspiel.cafe.Report;
@@ -65,21 +64,21 @@ public class LagerTest {
 		assertEquals(ausgelagertesProdukt.holeName() == Produkttyp.TEE && ausgelagertesProdukt.holeMenge() == 5, true);
 	}
 
-	/*
-	 * @Test public void testenEinkaufen(){ kette.hinzufuegenReport(report);
-	 * //Report vorbereiten, damit Kosten verbucht werden können!
-	 * spiel.setzeAktuelleRunde(1); Vector<Produkt> kaufliste = new
-	 * Vector<Produkt>(); kaufliste.add(new Produkt(Produkttyp.KAFFEE, 100));
-	 * kaufliste.add(new Produkt(Produkttyp.KUCHEN, 50));
-	 * lager.einkaufen(kaufliste, haendler);
-	 * assertEquals(lager.holeProduktliste().get(0).holeEkpreis(),
-	 * Produkttyp.KAFFEE
-	 * .holeMaxEK()*PreisQualitaetVerhaeltnis.berechnenPreisFaktor(0.5), 0.001);
-	 * assertEquals(lager.holeProduktliste().get(1).holeEkpreis(),
-	 * Produkttyp.KUCHEN
-	 * .holeMaxEK()*PreisQualitaetVerhaeltnis.berechnenPreisFaktor(0.5), 0.001);
-	 * }
-	 */
+	
+	@Test public void testenEinkaufen(){ 
+		report = new Report(1, kette);
+		kette.hinzufuegenReport(report);
+		//Report vorbereiten, damit Kosten verbucht werden können!
+		spiel.setzeAktuelleRunde(1); 
+		Vector<Produkt> kaufliste = new
+		Vector<Produkt>(); 
+		kaufliste.add(new Produkt(Produkttyp.KAFFEE, 100));
+		kaufliste.add(new Produkt(Produkttyp.KUCHEN, 50));
+		lager.einkaufen(kaufliste, haendler);
+		assertEquals(lager.holeProduktliste().get(0).holeEkpreis(), 0.012833, 0.001);
+		assertEquals(lager.holeProduktliste().get(1).holeEkpreis(), 0.0171113, 0.001);
+	 }
+	
 
 	@Test
 	public void testenBerechnenWert() {
