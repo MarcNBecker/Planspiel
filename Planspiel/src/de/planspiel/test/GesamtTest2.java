@@ -10,6 +10,7 @@ import de.planspiel.spiel.Zufall;
 
 /**
  * Zweiter Gesamttest mit 2 Spielern über 5 Runden
+ * 
  * @author Natalie Buchner, Daniel Degraf
  */
 public class GesamtTest2 extends SiegbedingungsTest {

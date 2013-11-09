@@ -11,8 +11,9 @@ import de.planspiel.cafe.Produkttyp;
 import de.planspiel.spiel.Zufall;
 
 /**
- * Test der Klasse Haendler, der die Angebotserstellung testet, wobei 
- * eine feste Testqualität für alle Produkte gesetzt wird.
+ * Test der Klasse Haendler, der die Angebotserstellung testet, wobei eine feste
+ * Testqualität für alle Produkte gesetzt wird.
+ * 
  * @author Natalie Buchner
  */
 public class HaendlerTest {

@@ -10,6 +10,7 @@ import de.planspiel.spiel.Zufall;
 
 /**
  * Erster Gesamttest mit 2 Spielern über 3 Runden
+ * 
  * @author Marc Becker
  */
 public class GesamtTest extends SiegbedingungsTest {

@@ -1,5 +1,5 @@
 package de.planspiel.test;
- 
+
 import static org.junit.Assert.*;
 
 import org.junit.*;
@@ -15,7 +15,9 @@ import de.planspiel.cafe.Unternehmenskette;
 import de.planspiel.spiel.Spiel;
 
 /**
- * Test der Klasse Filiale, der die Methoden Verkaufen und pruefenKundenprodukt testet.
+ * Test der Klasse Filiale, der die Methoden verkaufen und pruefenKundenprodukt
+ * testet.
+ * 
  * @author Daniel Degraf
  */
 public class FilialeTest {
@@ -59,7 +61,6 @@ public class FilialeTest {
 		assertEquals(fil1.pruefenKundenprodukt(kundenProdukt), true);
 	}
 
-	
 	@After
 	public void zuruecksetzen() {
 		ukette.holeLager().einlagern(new Produkt(Produkttyp.KAFFEE, 10));

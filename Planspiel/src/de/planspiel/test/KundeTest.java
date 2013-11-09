@@ -13,9 +13,10 @@ import de.planspiel.spiel.Spiel;
 import de.planspiel.spiel.Zufall;
 
 /**
- * Test der Klasse Kunde, der die Methode simulierenEinkauf testet. Dafür 
- * ist die Erstellung eines komplexen SUT erforderlich, da diese 
- * Methode mit einem Großteil aller anderen Klassen interagiert.
+ * Test der Klasse Kunde, der die Methode simulierenEinkauf testet. Dafür ist
+ * die Erstellung eines komplexen SUT erforderlich, da diese Methode mit einem
+ * Großteil aller anderen Klassen interagiert.
+ * 
  * @author Daniel Degraf
  */
 public class KundeTest {
@@ -25,7 +26,6 @@ public class KundeTest {
 	private Unternehmenskette ukette1;
 	private Filiale fil1;
 	private Filiale fil2;
-
 
 	@Before
 	public void erstelleSUT() {

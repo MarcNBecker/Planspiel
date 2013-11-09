@@ -17,10 +17,12 @@ import de.planspiel.spiel.Spiel;
 import de.planspiel.spiel.Zufall;
 
 /**
- * Test der Klasse Lager, der die Methoden Einkaufen, Einlagern und Auslagern testet, 
- * wobei bei testenAuslagern zwei verschiedene Fälle getestet werden: 
- * Fall 1: Die noch im Lager vorhandene Menge des Produkts ist größer als die auszulagernde Menge
- * Fall 2: Die noch im Lager vorhandene Menge des Produkts ist kleiner als die auszulagernde Menge
+ * Test der Klasse Lager, der die Methoden Einkaufen, Einlagern und Auslagern
+ * testet, wobei bei testenAuslagern zwei verschiedene Fälle getestet werden:
+ * Fall 1: Die noch im Lager vorhandene Menge des Produkts ist größer als die
+ * auszulagernde Menge Fall 2: Die noch im Lager vorhandene Menge des Produkts
+ * ist kleiner als die auszulagernde Menge
+ * 
  * @author Natalie Buchner
  */
 public class LagerTest {
@@ -53,7 +55,7 @@ public class LagerTest {
 
 	@Test
 	public void testenAuslagernMehr() {
-		//Fall 1: Es ist mehr auf Lager als ausgelagert werden soll
+		// Fall 1: Es ist mehr auf Lager als ausgelagert werden soll
 		einkaufsliste.add(new Produkt(Produkttyp.TEE, 50));
 		lager.einlagern(einkaufsliste.get(0));
 		Produkt ausgelagertesProdukt = lager.auslagern(Produkttyp.TEE, 10);
@@ -63,7 +65,7 @@ public class LagerTest {
 
 	@Test
 	public void testenAuslagernWeniger() {
-		//Fall 2: Es ist weniger auf Lager als ausgelagert werden soll
+		// Fall 2: Es ist weniger auf Lager als ausgelagert werden soll
 		einkaufsliste.add(new Produkt(Produkttyp.TEE, 5));
 		lager.einlagern(einkaufsliste.get(0));
 		Produkt ausgelagertesProdukt = lager.auslagern(Produkttyp.TEE, 10);
@@ -71,21 +73,19 @@ public class LagerTest {
 		assertEquals(ausgelagertesProdukt.holeName() == Produkttyp.TEE && ausgelagertesProdukt.holeMenge() == 5, true);
 	}
 
-	
-	@Test public void testenEinkaufen(){ 
+	@Test
+	public void testenEinkaufen() {
 		report = new Report(1, kette);
 		kette.hinzufuegenReport(report);
-		//Report vorbereiten, damit Kosten verbucht werden können!
-		spiel.setzeAktuelleRunde(1); 
-		Vector<Produkt> kaufliste = new
-		Vector<Produkt>(); 
+		// Report vorbereiten, damit Kosten verbucht werden können!
+		spiel.setzeAktuelleRunde(1);
+		Vector<Produkt> kaufliste = new Vector<Produkt>();
 		kaufliste.add(new Produkt(Produkttyp.KAFFEE, 100));
 		kaufliste.add(new Produkt(Produkttyp.KUCHEN, 50));
 		lager.einkaufen(kaufliste, haendler);
 		assertEquals(lager.holeProduktliste().get(0).holeEkpreis(), 0.012833, 0.001);
 		assertEquals(lager.holeProduktliste().get(1).holeEkpreis(), 0.0171113, 0.001);
-	 }
-	
+	}
 
 	@Test
 	public void testenBerechnenWert() {

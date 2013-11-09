@@ -8,7 +8,9 @@ import de.planspiel.cafe.Produkt;
 import de.planspiel.cafe.Produkttyp;
 
 /**
- * Test der Klasse Produkte, der die Methoden Vergleichen und Verschmelzen testet.
+ * Test der Klasse Produkte, der die Methoden Vergleichen und Verschmelzen
+ * testet.
+ * 
  * @author Natalie Buchner
  */
 public class ProduktTest {
