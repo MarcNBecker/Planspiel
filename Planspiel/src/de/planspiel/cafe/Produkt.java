@@ -4,7 +4,7 @@ package de.planspiel.cafe;
  * Klasse zur Organisation von Produkten Diese Klasse wird auch als
  * Kommunikation zwischen Produkt-Verwaltern genutzt
  * 
- * @author Natalie
+ * @author Natalie Buchner
  * 
  */
 public class Produkt {
