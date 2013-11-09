@@ -72,8 +72,10 @@ public class Kaufen_Rohstoffe extends JDialog {
 				panelRohstoffe.add(tableRohstoffe, BorderLayout.SOUTH);
 				tableRohstoffe.setModel(new DefaultTableModel(new Object[][] { { null, null, null }, { null, null, null }, { null, null, null }, }, new String[] { "Rohstoff", "noch im Lager", "Kaufmenge" }) {
 					private static final long serialVersionUID = 1L;
+					@SuppressWarnings("rawtypes")
 					Class[] columnTypes = new Class[] { String.class, Integer.class, Integer.class };
 
+					@SuppressWarnings({ "rawtypes", "unchecked" })
 					public Class getColumnClass(int columnIndex) {
 						return columnTypes[columnIndex];
 					}

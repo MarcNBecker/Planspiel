@@ -145,8 +145,10 @@ public class Einstellungsbild {
 		tableVerkaufspreis = new JTable();
 		tableVerkaufspreis.setModel(new DefaultTableModel(new Object[][] { { null, null }, { null, null }, { null, null }, }, new String[] { "Produkt", "Verkaufspreis" }) {
 			private static final long serialVersionUID = 1L;
+			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] { String.class, Double.class };
 
+			@SuppressWarnings({ "rawtypes", "unchecked" })
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
@@ -183,8 +185,10 @@ public class Einstellungsbild {
 		tableRohstoffe.setModel(new DefaultTableModel(new Object[][] { { null, null, null, null, null, null, null, null }, { null, null, null, null, null, null, null, null }, { null, null, null, null, null, null, null, null }, { null, null, null, null, null, null, null, null }, { null, null, null, null, null, null, null, null }, { null, null, null, null, null, null, null, null }, }, new String[] { "ausgew\u00E4hlt", "H\u00E4ndler", "A - Preis", "A - Qualit\u00E4t", "B - Preis",
 				"B - Qualit\u00E4t", "C - Preis", "C - Qualit\u00E4t" }) {
 					private static final long serialVersionUID = 1L;
+			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] { Object.class, String.class, Double.class, Double.class, Double.class, Double.class, Double.class, Double.class };
 
+			@SuppressWarnings({ "rawtypes", "unchecked" })
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
@@ -227,8 +231,10 @@ public class Einstellungsbild {
 		tableFilialen.setModel(new DefaultTableModel(new Object[][] { { null, null, null, null, null }, { null, null, null, null, null }, { null, null, null, null, null }, { null, null, null, null, null }, { null, null, null, null, null }, { null, null, null, null, null }, { null, null, null, null, null }, { null, null, null, null, null }, { null, null, null, null, null }, { null, null, null, null, null }, }, new String[] { "Standort", "Anzahl Mitarbeiter", "Marketingbudget",
 				"einstellen/entlassen", "verkaufen" }) {
 			private static final long serialVersionUID = 1L;
+			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] { String.class, Integer.class, Object.class, Object.class, Object.class };
 
+			@SuppressWarnings({ "rawtypes", "unchecked" })
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}

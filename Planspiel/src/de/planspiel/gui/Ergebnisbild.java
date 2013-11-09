@@ -4,9 +4,11 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
+
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.SwingConstants;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -15,10 +17,15 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.border.LineBorder;
+
 import java.awt.Color;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
@@ -121,8 +128,10 @@ public class Ergebnisbild {
 		GuV = new JTable();
 		GuV.setModel(new DefaultTableModel(new Object[][] { { "Anschaffungskosten", null, "Umsatzerlöse", null }, { "Unterhaltungskosten", null, "Sonstige Erlöse", null }, { "Personalkosten", null, null, null }, { "Kreditkosten", null, null, null }, { "Marketingkosten", null, null, null }, { "Rohstoffkosten", null, null, null }, { "Summe", null, "Summe", null }, }, new String[] { "Kosten", "", "Erl\u00F6se", "" }) {
 			private static final long serialVersionUID = 1L;
+			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] { String.class, Object.class, Object.class, Object.class };
 
+			@SuppressWarnings({ "rawtypes", "unchecked" })
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
